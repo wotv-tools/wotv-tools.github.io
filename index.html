@@ -75,6 +75,10 @@
     function displayStats() {
       let itemKey = $('#items').val();
 
+      if (!itemKey) {
+        return;
+      }
+
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
       $('#grow3_stats').empty();
