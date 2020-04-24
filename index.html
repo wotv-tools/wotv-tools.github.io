@@ -27,13 +27,8 @@
       <th>CRIT.A</th>
     </tr>
     <tr id="grow1_stats"></tr>
-    <tr id="grow1_rate"></tr>
-
     <tr id="grow2_stats"></tr>
-    <tr id="grow2_rate"></tr>
-
     <tr id="grow3_stats"></tr>
-    <tr id="grow3_rate"></tr>
   </table>
 
   <script>
@@ -81,35 +76,30 @@
       let itemKey = $('#items').val();
 
       $('#grow1_stats').empty();
-      $('#grow1_rate').empty();
       $('#grow2_stats').empty();
-      $('#grow2_rate').empty();
       $('#grow3_stats').empty();
-      $('#grow3_rate').empty();
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let typeRateRow = $('#grow' + (i+1) + '_rate');
         let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
         let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
 
         typeStatsRow.append('<td>' + type.label + '</td>');
         typeRateRow.append('<td></td>');
         stats.forEach((stat) => {
-          let new_stat = '';
+          let ave_stat = '';
           if (item_stats[stat.value]) {
-            new_stat = item.status[0][stat.value] + '/' + item_stats[stat.value];
-          }
-          typeStatsRow.append('<td>' + new_stat + '</td>');
+            ave_stat = item_rates[stat.value] / 100 * item.randa[stat.value]
+            ave_stat = Math.min(
+              Math.floor(ave_stat + item.status[0][stat.value]),
+              item_stats[stat.value]);
 
-          let new_rate = '';
-          if (item_rates[stat.value]) {
-            new_rate = item_rates[stat.value];
+            ave_stat +=  '/' + item_stats[stat.value];
           }
-          typeRateRow.append('<td>' + new_rate + '</td>');
+          typeStatsRow.append('<td>' + ave_stat + '</td>');
         });
       });
     }
