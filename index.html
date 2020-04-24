@@ -143,6 +143,10 @@
             item_rates[stat.value] = base[stat.value];
           }
 
+          if (seals[stat.value]) {
+            item_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
           if (item_rates[stat.value] < 0) {
             item_rates[stat.value] = 0;
           }
@@ -152,7 +156,7 @@
       return item_rates;
     }
 
-    let growthMap = {}, nameMap = {}, typeMap = {};
+    let growthMap = {}, nameMap = {}, sealGrowthMap = {}, typeMap = {};
     let itemMap = {};
 
     $.getJSON('typenames.json', function(data) {
@@ -207,6 +211,13 @@
             };
           }
         });
+      });
+    });
+
+    $.getJSON('sealGrowth.json', function(data) {
+      data.items.forEach((item) => {
+        let stat = stats[item.grow_up[0].eff_dst];
+        sealGrowMap[stat.value] = item.grow_up[0].val;
       });
     });
   </script>
