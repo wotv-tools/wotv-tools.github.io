@@ -136,13 +136,13 @@
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (adjust[stat.value]) {
-            item_stats[stat.value] = base[stat.value] + adjust[stat.value];
+            item_rates[stat.value] = base[stat.value] + adjust[stat.value];
           } else {
-            item_stats[stat.value] = base[stat.value];
+            item_rates[stat.value] = base[stat.value];
           }
 
-          if (item_stats[stat.value] < 0) {
-            item_stats[stat.value] = 0;
+          if (item_rates[stat.value] < 0) {
+            item_rates[stat.value] = 0;
           }
         }
       })
