@@ -26,9 +26,9 @@
       <th>CRIT</th>
       <th>CRIT.A</th>
     </tr>
-    <tr id="grow1"></tr>
-    <tr id="grow2"></tr>
-    <tr id="grow3"></tr>
+    <span id="grow1"></span>
+    <span id="grow2"></span>
+    <span id="grow3"></span>
   </table>
 
   <script>
@@ -86,14 +86,20 @@
         let typeRow = $('#grow' + (i+1));
         let item_stats = getItemStat(typeGrowth.curve[0], item.status[1]);
 
-        typeRow.append('<td>' + type.label + '</td>');
+        let typeInnerHtml = '';
+        typeInnerHtml += '<tr><td>' + type.label + '</td>';
+
         stats.forEach((stat) => {
           let text = '';
           if (item_stats[stat.value]) {
             text = item.status[0][stat.value] + '/' + item_stats[stat.value];
           }
-          typeRow.append('<td>' + text + '</td>');
+
+          typeInnerHtml += '<td>' + text + '</td>';
         });
+
+        typeInnerHtml += '</tr>';
+        typeRow.append(typeInnerHtml);
       });
     }
 
