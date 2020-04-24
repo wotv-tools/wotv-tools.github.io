@@ -85,7 +85,11 @@
 
         typeRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
-          typeRow.append('<td>' + item.status[0][stat.value] + '/' + item_stats[stat.value] + '</td>');
+          let text = '';
+          if (item_stats[stat.value]) {
+            text = item.status[0][stat.value] + '/' + item_stats[stat.value];
+          }
+          typeRow.append('<td>' + text + '</td>');
         });
       });
     }
@@ -96,7 +100,7 @@
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (curve[stat.value]) {
-            item_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+            item_stats[stat.value] = Math.floor((100 + curve[stat.value]) / 100 * base[stat.value]);
           } else {
             item_stats[stat.value] = base[stat.value];
           }
