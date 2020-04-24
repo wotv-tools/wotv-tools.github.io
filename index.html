@@ -4,7 +4,7 @@
 <script src="jquery-3.5.0.min.js" type="text/javascript"></script>
 </head>
 <body>
-  <table id="table">
+  <table id="table" style="border: 1px solid black;">
     <tr>
       <th>
         <select id="items" onchange="displayStats()"></select>
@@ -30,7 +30,7 @@
 
   <script>
     function displayStats() {
-      let itemKey = $('#items').value;
+      let itemKey = $('#items').val();
 
       $('#grow1').empty();
       $('#grow2').empty();
