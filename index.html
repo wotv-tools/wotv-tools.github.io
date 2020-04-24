@@ -88,7 +88,6 @@
         let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
 
         typeStatsRow.append('<td>' + type.label + '</td>');
-        typeRateRow.append('<td></td>');
         stats.forEach((stat) => {
           let ave_stat = '';
           if (item_stats[stat.value]) {
