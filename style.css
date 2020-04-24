@@ -5,4 +5,5 @@ table, th, td {
 
 .seal_on {
   font-weight: bold;
+  text-decoration: underline;
 }
