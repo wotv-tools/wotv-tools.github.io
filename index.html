@@ -217,7 +217,7 @@
     $.getJSON('sealGrowth.json', function(data) {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
-        sealGrowMap[stat.value] = item.grow_up[0].val;
+        sealGrowthMap[stat.value] = item.grow_up[0].val;
       });
     });
   </script>
