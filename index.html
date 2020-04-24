@@ -114,6 +114,11 @@
         seals[stat] = 1;
         displayStats();
       }
+
+      $('.stat').removeClass('seal_on');
+      Object.keys(seals).forEach((seal) => {
+        $('.stat_' + seal).addClass('seal_on');
+      })
     }
 
     function getItemStats(curve, base) {

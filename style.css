@@ -2,3 +2,7 @@ table, th, td {
   border: 1px solid black;
   text-align: center;
 }
+
+.seal_on {
+  font-weight: bold;
+}
