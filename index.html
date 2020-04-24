@@ -29,6 +29,46 @@
   </table>
 
   <script>
+    let stats = [{
+      label: "HP",
+      value: "hp"
+    }, {
+      label: "TP",
+      value: "mp"
+    }, {
+      label: "AP",
+      value: "ap"
+    }, {
+      label: "ATK",
+      value: "atk"
+    }, {
+      label: "DEF",
+      value: "def"
+    }, {
+      label: "MAG",
+      value: "mag"
+    }, {
+      label: "SPR",
+      value: "mnd"
+    }, {
+      label: "ACC",
+      value: "hit"
+    }, {
+      label: "DEX",
+      value: "dex"
+    }, {
+      label: "AGI",
+      value: "spd"
+    }, {
+      label: "EVA",
+      value: "avd"
+    }, {
+      label: "CRIT",
+      value: "crt"
+    }, {
+      label: "CRIT.A",
+      value: "crta"
+    }]
     function displayStats() {
       let itemKey = $('#items').val();
 
@@ -41,10 +81,29 @@
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeRow = $('#grow' + (i+1));
+        let item_stats = getItemStat(typeGrowth.curve[0], item.status[1]);
 
         typeRow.append('<td>' + type.label + '</td>');
-        typeRow.append('<td>' + item.status[0].hp + '/' + (100+typeGrowth.curve[0].hp)/100*item.status[1].hp + '</td>');
+        stats.forEach((stat) => {
+          typeRow.append('<td>' + item.status[0][stat.value] + '/' + item_stats[stat.value] + '</td>');
+        });
       });
+    }
+
+    function getItemStat(curve, base) {
+      let item_stats = {};
+
+      stats.forEach((stat) => {
+        if (base[stat.value]) {
+          if (curve[stat.value]) {
+            item_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+          } else {
+            item_stats[stat.value] = base[stat.value];
+          }
+        }
+      });
+
+      return item_stats;
     }
 
     let growthMap = {}, nameMap = {}, typeMap = {};
