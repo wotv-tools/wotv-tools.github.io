@@ -91,7 +91,8 @@
         stats.forEach((stat) => {
           let ave_stat = '';
           if (item_stats[stat.value]) {
-            ave_stat = item_rates[stat.value] / 100 * item.randa[0][stat.value];
+            ave_stat = item_rates[stat.value] / 100;
+            ave_stat = 49 * item.randa[0][stat.value];
 
             ave_stat = Math.min(
               Math.floor(ave_stat + item.status[0][stat.value]),
