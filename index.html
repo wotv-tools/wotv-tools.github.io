@@ -26,9 +26,14 @@
       <th>CRIT</th>
       <th>CRIT.A</th>
     </tr>
-    <span id="grow1"></span>
-    <span id="grow2"></span>
-    <span id="grow3"></span>
+    <tr id="grow1_stats"></tr>
+    <tr id="grow1_rate"></tr>
+
+    <tr id="grow2_stats"></tr>
+    <tr id="grow2_rate"></tr>
+
+    <tr id="grow3_stats"></tr>
+    <tr id="grow3_rate"></tr>
   </table>
 
   <script>
@@ -75,35 +80,41 @@
     function displayStats() {
       let itemKey = $('#items').val();
 
-      $('#grow1').empty();
-      $('#grow2').empty();
-      $('#grow3').empty();
+      $('#grow1_stats').empty();
+      $('#grow1_rate').empty();
+      $('#grow2_stats').empty();
+      $('#grow2_rate').empty();
+      $('#grow3_stats').empty();
+      $('#grow3_rate').empty();
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
-        let typeRow = $('#grow' + (i+1));
-        let item_stats = getItemStat(typeGrowth.curve[0], item.status[1]);
+        let typeStatsRow = $('#grow' + (i+1) + '_stats');
+        let typeRateRow = $('#grow' + (i+1) + '_rate');
+        let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
+        let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
 
-        let typeInnerHtml = '';
-        typeInnerHtml += '<tr><td>' + type.label + '</td>';
-
+        typeStatsRow.append('<td>' + type.label + '</td>');
+        typeRateRow.append('<td></td>');
         stats.forEach((stat) => {
-          let text = '';
+          let new_stat = '';
           if (item_stats[stat.value]) {
-            text = item.status[0][stat.value] + '/' + item_stats[stat.value];
+            new_stat = item.status[0][stat.value] + '/' + item_stats[stat.value];
           }
+          typeStatsRow.append('<td>' + new_stat + '</td>');
 
-          typeInnerHtml += '<td>' + text + '</td>';
+          let new_rate = '';
+          if (item_rates[stat.value]) {
+            new_rate = item_rates[stat.value];
+          }
+          typeRateRow.append('<td>' + new_rate + '</td>');
         });
-
-        typeInnerHtml += '</tr>';
-        typeRow.append(typeInnerHtml);
       });
     }
 
-    function getItemStat(curve, base) {
+    function getItemStats(curve, base) {
       let item_stats = {};
 
       stats.forEach((stat) => {
@@ -117,6 +128,24 @@
       });
 
       return item_stats;
+    }
+
+    function getItemRates(adjust, base) {
+      let item_rates = {};
+
+      stats.forEach((stat) => {
+        if (base[stat.value]) {
+          if (adjust[stat.value]) {
+            item_stats[stat.value] = base[stat.value] + adjust[stat.value];
+          } else {
+            item_stats[stat.value] = base[stat.value];
+          }
+
+          if (item_stats[stat.value] < 0) {
+            item_stats[stat.value] = 0;
+          }
+        }
+      })
     }
 
     let growthMap = {}, nameMap = {}, typeMap = {};
