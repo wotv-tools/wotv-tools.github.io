@@ -4,6 +4,104 @@
 <script src="jquery-3.5.0.min.js" type="text/javascript"></script>
 </head>
 <body>
+  <table id="table">
+    <tr>
+      <th>
+        <select id="items" onchange="displayStats()"></select>
+      </th>
+      <th>HP</th>
+      <th>TP</th>
+      <th>AP</th>
+      <th>ATK</th>
+      <th>DEF</th>
+      <th>MAG</th>
+      <th>SPR</th>
+      <th>ACC</th>
+      <th>DEX</th>
+      <th>AGI</th>
+      <th>EVA</th>
+      <th>CRIT</th>
+      <th>CRIT.A</th>
+    </tr>
+    <tr id="grow1"></tr>
+    <tr id="grow2"></tr>
+    <tr id="grow3"></tr>
+  </table>
 
+  <script>
+    function displayStats() {
+      let itemKey = $('#items').value;
+
+      $('#grow1').empty();
+      $('#grow2').empty();
+      $('#grow3').empty();
+
+      let item = itemMap[itemKey];
+      let types = typeMap[item.rtype];
+      types.forEach((type, i) => {
+        let typeGrowth = growthMap[type.value];
+        let typeRow = $('#grow' + (i+1));
+
+        typeRow.append('<td>' + type.label + '</td>');
+        typeRow.append('<td>' + item.status[0].hp + '/' + (100+typeGrowth.curve[0].hp)/100*item.status[1].hp + '</td>');
+      });
+    }
+
+    let growthMap = {}, nameMap = {}, typeMap = {};
+    let itemMap = {};
+
+    $.getJSON('typenames.json', function(data) {
+      let typeNameMap = {};
+      data.infos.forEach((info) => {
+        typeNameMap[info.key] = info.value;
+      });
+      $.getJSON('typesets.json', function(data) {
+        data.items.forEach((item) => {
+          typeMap[item.iname] = [
+            {
+              label: typeNameMap[item.lot[0].grow1],
+              value: item.lot[0].grow1
+            }, {
+              label: typeNameMap[item.lot[0].grow2],
+              value: item.lot[0].grow2
+            }, {
+              label: typeNameMap[item.lot[0].grow3],
+              value: item.lot[0].grow3
+            }
+          ];
+        });
+      });
+    });
+
+    $.getJSON('growth.json', function(data) {
+      data.items.forEach((item) => {
+        growthMap[item.type] = {
+          curve: item.curve,
+          rstatus : item.rstatus
+        }
+      });
+    });
+
+    $.getJSON('names.json', function(data) {
+      data.infos.forEach((info) => {
+        nameMap[info.key] = info.value;
+      });
+
+      $.getJSON('items.json', function(data) {
+        data.items.forEach((item) => {
+          if (item.type >= 0) {
+            $('#items').append('<option value="' + item.iname +'">' + nameMap[item.iname] + '</option>');
+
+            itemMap[item.iname] = {
+              name: nameMap[item.iname],
+              rtype: item.rtype,
+              status: item.status,
+              type: item.type
+            };
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
