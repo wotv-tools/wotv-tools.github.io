@@ -3,6 +3,14 @@ table, th, td {
   text-align: center;
 }
 
+table th {
+  width: 45px;
+}
+
+table th:first-child {
+  width: 60px;
+}
+
 th {
   padding: 5px;
 }
