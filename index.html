@@ -213,6 +213,7 @@
       });
 
       $.getJSON('items.json', function(data) {
+        let itemList = [];
         data.items.forEach((item) => {
           if (item.type >= 0) {
             itemMap[item.iname] = {
@@ -223,11 +224,18 @@
               status: item.status,
               type: item.type
             };
+
+            itemList.push({
+              label: nameMap[item.iname],
+              value : item.iname
+            });
           }
         });
 
-        Object.keys(itemMap).sort().forEach((key) => {
-          $('#items').append('<option value="' + key +'">' + itemMap[key].name + '</option>');
+        itemList.sort((a, b) => {
+          return a.label > b.label;
+        }).forEach((item) => {
+          $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
         });
       });
     });
