@@ -131,7 +131,14 @@
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (curve[stat.value]) {
-            item_stats[stat.value] = Math.floor((100 + curve[stat.value]) / 100 * base[stat.value]);
+            item_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+
+            let isNeg = item_stats[stat.value] < 0;
+
+            item_stats[stat.value] = Math.floor(Math.abs(item_stats[stat.value]));
+            if (isNeg) {
+              item_stats[stat.value] *= -1;
+            }
           } else {
             item_stats[stat.value] = base[stat.value];
           }
