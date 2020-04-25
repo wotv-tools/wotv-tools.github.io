@@ -152,7 +152,7 @@
           }
         }
 
-        typeStatsRow.append('<td><div>' + type.label + '</div><div>' +  + '</div></td>');
+        typeStatsRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
           if (ave_stats[stat.value] > item_stats[stat.value]) {
             ave_stats[stat.value] = item_stats[stat.value];
