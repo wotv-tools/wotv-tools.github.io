@@ -94,7 +94,7 @@
         typeStatsRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
           let ave_stat = '';
-          if (item_stats[stat.value]) {
+          if (item_stats[stat.value] !== null) {
             ave_stat = item_rates[stat.value] / 100;
             ave_stat *= 49 * item.randa[0][stat.value];
 
