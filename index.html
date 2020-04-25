@@ -143,6 +143,8 @@
 
           if (!isNaN(item_stats[stat.value])) {
             typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
+          } else {
+            typeStatsRow.append('<td></td>');
           }
         });
       });
