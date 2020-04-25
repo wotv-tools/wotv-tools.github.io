@@ -104,7 +104,7 @@
 
             ave_stat +=  '/' + item_stats[stat.value];
           }
-          typeStatsRow.append('<td>' + ave_stat + '</td>');
+          typeStatsRow.append('<td title="' + item_rates[stat.value] + '">' + ave_stat + '</td>');
         });
       });
     }
