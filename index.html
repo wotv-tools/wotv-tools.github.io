@@ -233,7 +233,7 @@
         });
 
         itemList.sort((a, b) => {
-          return a.label > b.label;
+          return a.label > b.label ? 1 : -1;
         }).forEach((item) => {
           $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
         });
