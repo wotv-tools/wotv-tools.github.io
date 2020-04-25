@@ -11,6 +11,7 @@
         <select id="items" onchange="displayStats()">
           <option disabled selected>-- Select an item --</option>
         </select>
+        <div id="skill"></div>
       </th>
       <th class="stat stat_hp" onclick="toggleSeal('hp')">HP</th>
       <th class="stat stat_mp" onclick="toggleSeal('mp')">TP</th>
@@ -85,6 +86,9 @@
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
+
+      $('#skill').text(item.skl1);
+
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
@@ -207,6 +211,12 @@
       });
     });
 
+    $.getJSON('SkillExpr.json', function(data) {
+      data.infos.forEach((info) => {
+        skillExprMap[info.key] = info.value;
+      });
+    });
+
     $.getJSON('names.json', function(data) {
       data.infos.forEach((info) => {
         nameMap[info.key] = info.value;
@@ -221,6 +231,7 @@
               randa: item.randa,
               randr: item.randr,
               rtype: item.rtype,
+              skl1: skillExprMap[item.skl1[0]],
               status: item.status,
               type: item.type
             };
