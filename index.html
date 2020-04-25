@@ -111,7 +111,9 @@
       $('#base_growth').empty();
       $('#base_growth').append('<td>Base Growth</td>');
       stats.forEach((stat) => {
-        $('#base_growth').append('<td>' + item.randr[0][stat.value] + '%</td>');
+        if (item.randr[0][stat.value]) {
+          $('#base_growth').append('<td>' + item.randr[0][stat.value] + '%</td>');
+        }
       });
 
       $('#grow1_stats').empty();
