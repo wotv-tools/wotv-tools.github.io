@@ -12,6 +12,7 @@
           <option disabled selected>-- Select an item --</option>
         </select>
       </th>
+      <th>Level</th>
       <th class="stat stat_hp" onclick="toggleSeal('hp')">HP</th>
       <th class="stat stat_mp" onclick="toggleSeal('mp')">TP</th>
       <th class="stat stat_ap" onclick="toggleSeal('ap')">AP</th>
@@ -26,9 +27,55 @@
       <th class="stat stat_crt" onclick="toggleSeal('crt')">CRIT</th>
       <th class="stat stat_crta" onclick="toggleSeal('crta')">CRIT.A</th>
     </tr>
-    <tr id="grow1_stats"></tr>
-    <tr id="grow2_stats"></tr>
-    <tr id="grow3_stats"></tr>
+    <tr class="level1"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
+    <tr class="level"></tr>
   </table>
 
   <script>
@@ -79,24 +126,28 @@
         return;
       }
 
-      $('#grow1_stats').empty();
-      $('#grow2_stats').empty();
-      $('#grow3_stats').empty();
+      $('.level1').empty();
+      $('.level').empty();
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
-      types.forEach((type, i) => {
-        let typeGrowth = growthMap[type.value];
-        let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
-        let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
+      let itemStatDist = getItemStatDist(item, types);
 
-        typeStatsRow.append('<td>' + type.label + '</td>');
+      // set first level
+      $('.level1').append('<td>' + types.join(' | ') + '</td>');
+      stats.forEach((stat) => {
+        $('.level1').append('<td>' + item.status[0][stat.value] + '/' + item_stats[stat.value]);
+      });
+
+      $('.level').each((el, i) => {
+        el.append('<td>' + i + '</td>');
+
         stats.forEach((stat) => {
-          let ave_stat = '';
+          let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
+
           if (!isNaN(item_stats[stat.value])) {
-            ave_stat = item_rates[stat.value] / 100;
-            ave_stat *= 49 * item.randa[0][stat.value];
+            let ave_stat = item_rates[stat.value] / 100;
+            ave_stat *= i * item.randa[0][stat.value];
 
             ave_stat = Math.min(
               Math.floor(ave_stat + item.status[0][stat.value]),
@@ -106,7 +157,45 @@
           }
           typeStatsRow.append('<td title="' + item_rates[stat.value] + '%">' + ave_stat + '</td>');
         });
+
+
       });
+    }
+
+    function getItemStatDist(item, types) {
+      let itemStatDist = [];
+
+      types.forEach((type, i) => {
+        let dist = [];
+        let typeGrowth = growthMap[type.value];
+        let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
+        let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
+
+        // set lv1
+        let next_dist = {};
+        stats.forEach((stat) => {
+          next_dist[stat.value] = item.status[0][stat.value];
+        });
+
+        $('.level').each((el, i) =>
+          stats.forEach((stat) => {
+            if (!isNaN(item_stats[stat.value])) {
+              next_dist[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
+
+              if (next_dist[stat.value] > item_stats[stat.value]) {
+                next_dist[stat.value] = item_stats[stat.value];
+                item_rates[stat.value] = 0;
+              }
+            }
+          });
+
+          dist.push(Object.assign({}, next_dist));
+        });
+
+        itemStatDist.push(dist);
+      });
+
+      return itemStatDist;
     }
 
     let seals = {}
@@ -149,8 +238,6 @@
     }
 
     function getItemRates(adjust, base) {
-      let item_rates = {};
-
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (adjust[stat.value]) {
@@ -170,6 +257,24 @@
       });
 
       return item_rates;
+    }
+
+    function getPity(item_rates) {
+      let pity_rate = 1;
+      let pity_stat;
+      let highest_rate = 0;
+
+      stats.forEach((stat) => {
+        pity_rate *= (1 - item_rates[stat.value]);
+        if (item_rates[stat.value] > highest_rate) {
+          pity_stat = stat.value;
+        }
+      });
+
+      return {
+        rate: pity_rate,
+        stat: pity_state
+      };
     }
 
     let growthMap = {}, nameMap = {}, sealGrowthMap = {}, typeMap = {};
