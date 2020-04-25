@@ -8,44 +8,88 @@
   <h1>
     This tool calculates the AVERAGE stat gain for an item.
   </h1>
+
+  <div id="instructions">
+    Select your item, item level, and seal(s).
+  </div>
+
+  <div id="inputs">
+    <select id="items" onchange="displayStats()">
+      <option disabled selected>-- Select an item --</option>
+    </select>
+    <select id="level" onchange="displayStats()">
+      <option value="10">Lv. 10</option>
+      <option value="20">Lv. 20</option>
+      <option value="30">Lv. 30</option>
+      <option value="40">Lv. 40</option>
+      <option value="50" selected>Lv. 50</option>
+    </select>
+  </div>
+
   <table id="table">
     <tr>
       <th>
-        <select id="items" onchange="displayStats()">
-          <option disabled selected>-- Select an item --</option>
-        </select>
-        <select id="level" onchange="displayStats()">
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="40">40</option>
-          <option value="50" selected>50</option>
-        </select>
-        <div id="skill"></div>
+        Seals <span id="seals_display">0/3</span>
       </th>
-      <th class="stat stat_hp" onclick="toggleSeal('hp')">HP</th>
-      <th class="stat stat_mp" onclick="toggleSeal('mp')">TP</th>
-      <th class="stat stat_ap" onclick="toggleSeal('ap')">AP</th>
-      <th class="stat stat_atk" onclick="toggleSeal('atk')">ATK</th>
-      <th class="stat stat_def" onclick="toggleSeal('def')">DEF</th>
-      <th class="stat stat_mag" onclick="toggleSeal('mag')">MAG</th>
-      <th class="stat stat_mnd" onclick="toggleSeal('mnd')">SPR</th>
-      <th class="stat stat_hit" onclick="toggleSeal('hit')">ACC</th>
-      <th class="stat stat_dex" onclick="toggleSeal('dex')">DEX</th>
-      <th class="stat stat_spd" onclick="toggleSeal('spd')">AGI</th>
-      <th class="stat stat_avd" onclick="toggleSeal('avd')">EVA</th>
-      <th class="stat stat_crt" onclick="toggleSeal('crt')">CRIT</th>
-      <th class="stat stat_crta" onclick="toggleSeal('crta')">CRIT.A</th>
+      <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
+        <label for="">HP</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
+        <label for="">TP</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
+        <label for="">AP</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
+        <label for="">ATK</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_def" onclick="toggleSeal('def')">
+        <label for="">DEF</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
+        <label for="">MAG</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
+        <label for="">SPR</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
+        <label for="">ACC</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
+        <label for="">DEX</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
+        <label for="">AGI</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
+        <label for="">EVA</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
+        <label for="">CRIT</label><br/>
+        <input type="checkbox" disabled />
+      </th>
+      <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
+        <label for="">CRIT.A</label><br/>
+        <input type="checkbox" disabled />
+      </th>
     </tr>
-    <tr id="base_growth" class="testing"></tr>
     <tr id="grow1_stats"></tr>
     <tr id="grow2_stats"></tr>
     <tr id="grow3_stats"></tr>
   </table>
 
-  <div>
-    Click on the stats at the top of the table to toggle seals. This assumes you use the seal for every level up.
-  </div>
+
 
   <script>
     let stats = [{
@@ -96,23 +140,10 @@
         return;
       }
 
+      resetSeals();
+
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
-
-      /*** Missing text
-      $('#skill').empty();
-      if (item.skl1) {
-        item.skl1.forEach((skl) => {
-          $('#skill').append('<div>' + skillExprMap[skl] + '</div>');
-        });
-      }
-      ***/
-
-      $('#base_growth').empty();
-      $('#base_growth').append('<td>Base Growth</td>');
-      stats.forEach((stat) => {
-        $('#base_growth').append('<td>' + (item.randr[0][stat.value] ? item.randr[0][stat.value] : '') + '%</td>');
-      });
 
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
@@ -162,6 +193,7 @@
           }
 
           if (!isNaN(item_stats[stat.value])) {
+            $('.stat.stat_' + stat.value).removeClass('disabled');
             typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
           } else {
             typeStatsRow.append('<td></td>');
@@ -171,19 +203,28 @@
     }
 
     let seals = {}
+    function resetSeals() {
+      seals = {};
+      $('.stat').addClass('disabled');
+      $('.stat')
+      $('.stat input').prop('checked', false);
+    }
     function toggleSeal(stat) {
+      if ($('.stat.stat_' + stat).hasClass('disabled')) {
+        return;
+      }
+
       if (seals[stat] == 1) {
+        $('.stat.stat_' + stat + ' input').prop('checked', false);
         delete seals[stat];
         displayStats();
       } else if (Object.keys(seals).length < 3) {
         seals[stat] = 1;
+        $('.stat.stat_' + stat + ' input').prop('checked', true);
         displayStats();
       }
 
-      $('.stat').removeClass('seal_on');
-      Object.keys(seals).forEach((seal) => {
-        $('.stat_' + seal).addClass('seal_on');
-      })
+      $('#seals_disp').text(Object.keys(seals).length + '/3');
     }
 
     function getItemStats(curve, base) {

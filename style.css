@@ -3,9 +3,12 @@ table, th, td {
   text-align: center;
 }
 
-.seal_on {
-  font-weight: bold;
-  text-decoration: underline;
+th {
+  padding: 5px;
+}
+
+.disabled {
+  background-color: lightgray;
 }
 
 .testing {
