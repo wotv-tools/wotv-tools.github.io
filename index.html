@@ -87,12 +87,14 @@
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
 
+      /*** Missing text
       $('#skill').empty();
       if (item.skl1) {
         item.skl1.forEach((skl) => {
           $('#skill').append('<div>' + skillExprMap[skl] + '</div>');
         });
       }
+      ***/
 
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
