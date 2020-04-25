@@ -235,18 +235,25 @@
       });
       $.getJSON('typesets.json', function(data) {
         data.items.forEach((item) => {
-          typeMap[item.iname] = [
-            {
+          typeMap[item.iname] = [];
+          if (item.lot[0].grow1) {
+            typeMap[item.iname].push({
               label: typeNameMap[item.lot[0].grow1],
               value: item.lot[0].grow1
-            }, {
+            });
+          }
+          if (item.lot[0].grow2) {
+            typeMap[item.iname].push({
               label: typeNameMap[item.lot[0].grow2],
               value: item.lot[0].grow2
-            }, {
+            });
+          }
+          if (item.lot[0].grow3) {
+            typeMap[item.iname].push({
               label: typeNameMap[item.lot[0].grow3],
               value: item.lot[0].grow3
-            }
-          ];
+            });
+          }
         });
       });
     });
