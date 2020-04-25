@@ -128,7 +128,7 @@
               pity_rate *= (1 - (item_rates[stat.value] / 100));
 
               if (!pity_stat || item_rates[stat.value] > item_rates[pity_stat]) {
-                  pity_stat = stat;
+                  pity_stat = stat.value;
               }
 
               if (ave_stats[stat.value] > item_stats[stat.value]) {
