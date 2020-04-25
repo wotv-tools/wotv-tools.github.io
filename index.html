@@ -104,21 +104,43 @@
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
         let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
         let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
+        let ave_stats = Object.assign({}, item.status[0]);
+
+        for (let i = 0; i < 49; i++) {
+          let pity_rate = 1;
+          let pity_stat;
+
+          stats.forEach((stat) => {
+            if (!isNaN(item_stats[stat.value])) {
+              ave_stats[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
+              pity_rate *= (1 - item_rates[stat.value]);
+
+              if (!pity_stat || item_rates[stat.value] > item_rates[pity_stat]) {
+                  pity_stat = stat;
+              }
+
+              if (ave_stats[stat.value] > item.status[0][stat.value]) {
+                ave_stats[stat.value] = item.status[0][stat.value];
+                item_rates[stat.value] = 0;
+              }
+            }
+          });
+
+          // add pity
+          ave_stats[pity_stat] += pity_rate * item.randa[0][pity_stat];
+          if (ave_stats[pity_stat] > item.status[0][pity_stat]) {
+            ave_stats[pity_stat] = item.status[0][pity_stat];
+            item_rates[pity_stat] = 0;
+          }
+        }
 
         typeStatsRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
-          let ave_stat = '';
-          if (!isNaN(item_stats[stat.value])) {
-            ave_stat = item_rates[stat.value] / 100;
-            ave_stat *= 49 * item.randa[0][stat.value];
-
-            ave_stat = Math.min(
-              Math.floor(ave_stat + item.status[0][stat.value]),
-              item_stats[stat.value]);
-
-            ave_stat +=  '/' + item_stats[stat.value];
+          if (ave_stats[stat.value] > item_stats[stat.value]) {
+            ave_stats[stat.value] = item_stats[stat.value];
+            item_rates[stat.value] = 0;
           }
-          typeStatsRow.append('<td title="' + item_rates[stat.value] + '%">' + ave_stat + '</td>');
+          typeStatsRow.append('<td>' + ave_stat + '/' + item_stats[stat.value] + '</td>');
         });
       });
     }
