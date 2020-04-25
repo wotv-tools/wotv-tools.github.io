@@ -177,7 +177,7 @@
           next_dist[stat.value] = item.status[0][stat.value];
         });
 
-        $('.level').each((el, i) =>
+        $('.level').each((el, i) => {
           stats.forEach((stat) => {
             if (!isNaN(item_stats[stat.value])) {
               next_dist[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
