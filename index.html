@@ -125,7 +125,7 @@
           stats.forEach((stat) => {
             if (!isNaN(item_stats[stat.value])) {
               ave_stats[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
-              pity_rate *= (1 - item_rates[stat.value]);
+              pity_rate *= (1 - (item_rates[stat.value] / 100));
 
               if (!pity_stat || item_rates[stat.value] > item_rates[pity_stat]) {
                   pity_stat = stat;
