@@ -176,9 +176,7 @@
       return item_rates;
     }
 
-    let growthMap = {}, nameMap = {}, sealGrowthMap = {}, typeMap = {};
-    let itemMap = {};
-
+    let typeMap = {};
     $.getJSON('typenames.json', function(data) {
       let typeNameMap = {};
       data.infos.forEach((info) => {
@@ -202,6 +200,7 @@
       });
     });
 
+    let growthMap = {};
     $.getJSON('growth.json', function(data) {
       data.items.forEach((item) => {
         growthMap[item.type] = {
@@ -211,52 +210,56 @@
       });
     });
 
+    let skillExprMap = {};
     $.getJSON('SkillExpr.json', function(data) {
       data.infos.forEach((info) => {
         skillExprMap[info.key] = info.value;
       });
     });
 
+    let nameMap = {};
     $.getJSON('names.json', function(data) {
       data.infos.forEach((info) => {
         nameMap[info.key] = info.value;
       });
-
-      $.getJSON('items.json', function(data) {
-        let itemList = [];
-        data.items.forEach((item) => {
-          if (item.type >= 0 && item.randa && item.randr) {
-            itemMap[item.iname] = {
-              name: nameMap[item.iname],
-              randa: item.randa,
-              randr: item.randr,
-              rtype: item.rtype,
-              skl1: skillExprMap[item.skl1[0]],
-              status: item.status,
-              type: item.type
-            };
-
-            itemList.push({
-              label: nameMap[item.iname],
-              value : item.iname
-            });
-          }
-        });
-
-        itemList.sort((a, b) => {
-          return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
-        });
-      });
     });
 
+    let sealGrowthMap = {};
     $.getJSON('sealGrowth.json', function(data) {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
         sealGrowthMap[stat.value] = item.grow_up[0].val;
+      });
+    });
+
+    let itemMap = {};
+    $.getJSON('items.json', function(data) {
+      let itemList = [];
+      data.items.forEach((item) => {
+        if (item.type >= 0 && item.randa && item.randr) {
+          itemMap[item.iname] = {
+            name: nameMap[item.iname],
+            randa: item.randa,
+            randr: item.randr,
+            rtype: item.rtype,
+            skl1: skillExprMap[item.skl1[0]],
+            status: item.status,
+            type: item.type
+          };
+
+          itemList.push({
+            label: nameMap[item.iname],
+            value : item.iname
+          });
+        }
+      });
+
+      itemList.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      }).forEach((item) => {
+        if (item.label) {
+          $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
+        }
       });
     });
   </script>
