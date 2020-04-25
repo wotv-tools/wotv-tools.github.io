@@ -139,7 +139,7 @@
           });
 
           // add pity
-          ave_stats[pity_stat] += pity_rate * item.randa[0][pity_stat];
+          ave_stats[pity_stat] += pity_rate;
           if (ave_stats[pity_stat] > item_stats[pity_stat]) {
             ave_stats[pity_stat] = item_stats[pity_stat];
             item_rates[pity_stat] = 0;
