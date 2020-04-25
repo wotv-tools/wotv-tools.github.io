@@ -7,3 +7,7 @@ table, th, td {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.testing {
+  display: none;
+}
