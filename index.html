@@ -195,7 +195,7 @@
             ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
-          if (!isNaN(item_stats[stat.value])) {
+          if (!isNaN(item_stats[stat.value] && item.status[0][stat.value] != 0 && item_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value).removeClass('disabled');
             typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
           } else {
