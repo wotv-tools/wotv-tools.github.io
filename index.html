@@ -140,7 +140,10 @@
             ave_stats[stat.value] = item_stats[stat.value];
             item_rates[stat.value] = 0;
           }
-          typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
+
+          if (!isNaN(item_stats[stat.value])) {
+            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
+          }
         });
       });
     }
