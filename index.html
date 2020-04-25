@@ -139,6 +139,8 @@
           if (ave_stats[stat.value] > item_stats[stat.value]) {
             ave_stats[stat.value] = item_stats[stat.value];
             item_rates[stat.value] = 0;
+          } else {
+            ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
           if (!isNaN(item_stats[stat.value])) {
