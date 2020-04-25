@@ -330,10 +330,12 @@
               type: item.type
             };
 
-            itemList.push({
-              label: nameMap[item.iname],
-              value : item.iname
-            });
+            if (nameMap[item.name]) {
+              itemList.push({
+                label: nameMap[item.iname],
+                value : item.iname
+              });
+            }
           }
         });
 
