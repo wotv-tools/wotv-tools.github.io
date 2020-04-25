@@ -208,8 +208,6 @@
       $.getJSON('items.json', function(data) {
         data.items.forEach((item) => {
           if (item.type >= 0) {
-            $('#items').append('<option value="' + item.iname +'">' + nameMap[item.iname] + '</option>');
-
             itemMap[item.iname] = {
               name: nameMap[item.iname],
               randa: item.randa,
@@ -219,6 +217,10 @@
               type: item.type
             };
           }
+        });
+
+        Object.keys(itemMap).forEach((key) => {
+          $('#items').append('<option value="' + key +'">' + itemMap[key].name + '</option>');
         });
       });
     });
