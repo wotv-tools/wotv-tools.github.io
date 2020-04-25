@@ -37,6 +37,7 @@
       <th class="stat stat_crt" onclick="toggleSeal('crt')">CRIT</th>
       <th class="stat stat_crta" onclick="toggleSeal('crta')">CRIT.A</th>
     </tr>
+    <tr id="base_growth"></tr>
     <tr id="grow1_stats"></tr>
     <tr id="grow2_stats"></tr>
     <tr id="grow3_stats"></tr>
@@ -95,10 +96,6 @@
         return;
       }
 
-      $('#grow1_stats').empty();
-      $('#grow2_stats').empty();
-      $('#grow3_stats').empty();
-
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
 
@@ -111,6 +108,15 @@
       }
       ***/
 
+      $('#base_growth').empty();
+      $('#base_growth').append('<td>Base Growth</td>');
+      stats.forEach((stat) => {
+        $('#base_growth').append('<td>' + item.randr[0][stat.value] + '%</td>');
+      });
+
+      $('#grow1_stats').empty();
+      $('#grow2_stats').empty();
+      $('#grow3_stats').empty();
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
@@ -146,7 +152,7 @@
           }
         }
 
-        typeStatsRow.append('<td>' + type.label + '</td>');
+        typeStatsRow.append('<td><div>' + type.label + '</div><div>' +  + '</div></td>');
         stats.forEach((stat) => {
           if (ave_stats[stat.value] > item_stats[stat.value]) {
             ave_stats[stat.value] = item_stats[stat.value];
@@ -214,7 +220,7 @@
             item_rates[stat.value] = base[stat.value];
           }
 
-          if (seals[stat.value]) {
+          if (seals[stat.value] && sealGrowthMap[stat.value]) {
             item_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
