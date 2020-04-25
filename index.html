@@ -14,10 +14,10 @@
   </div>
 
   <div id="inputs">
-    <select id="items" onchange="displayStats()">
+    <select id="items" onchange="onItemChange()">
       <option disabled selected>-- Select an item --</option>
     </select>
-    <select id="level" onchange="displayStats()">
+    <select id="level" onchange="onItemChange()">
       <option value="10">Lv. 10</option>
       <option value="20">Lv. 20</option>
       <option value="30">Lv. 30</option>
@@ -131,7 +131,12 @@
     }, {
       label: "CRIT.A",
       value: "crta"
-    }]
+    }];
+
+    function onItemChange() {
+      resetSeals();
+      displayStats();
+    }
     function displayStats() {
       let itemKey = $('#items').val();
       let level = $('#level').val();
@@ -139,8 +144,6 @@
       if (!itemKey) {
         return;
       }
-
-      resetSeals();
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
