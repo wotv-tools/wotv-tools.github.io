@@ -226,7 +226,7 @@
           }
         });
 
-        Object.keys(itemMap).forEach((key) => {
+        Object.keys(itemMap).sort().forEach((key) => {
           $('#items').append('<option value="' + key +'">' + itemMap[key].name + '</option>');
         });
       });
