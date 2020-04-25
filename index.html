@@ -320,7 +320,7 @@
       $.getJSON('items.json', function(data) {
         let itemList = [];
         data.items.forEach((item) => {
-          if (item.type >= 0) {
+          if (item.type >= 0 && item.randa && item.randr) {
             itemMap[item.iname] = {
               name: nameMap[item.iname],
               randa: item.randa,
