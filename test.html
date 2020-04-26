@@ -367,6 +367,10 @@
     let buffNameList = [];
     $.getJSON('BuffName.json', (data) => {
       buffNameList = data.infos;
+
+      // pretty sure this is the right list
+      // but needs modifications for now
+      buffNameList.splice(0,0,)
     });
 
     let skillMap = {};
@@ -394,6 +398,12 @@
     let itemCategoryList = [];
     $.getJSON('ArtifactCategory.json', (data) => {
       itemCategoryList = data.infos;
+
+      // for some reason doesn't match exactly
+      itemCategoryList.splice(4,1); // remove LARGESWORD
+      itemCategoryList.splice(6,1); // remove ROD
+      itemCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+      itemCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
     });
 
     let itemMap = {};
