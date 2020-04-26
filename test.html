@@ -177,10 +177,12 @@
       $('#skills').empty();
       if (item_sk) {
         item_sk.forEach((skl) => {
-          if (skillExprMap[skl]) {
-            $('#skills').append('<li>' + skillExprMap[skl] + '</li>');
-          } else {
-            $('#skills').append('<li>' + skl + '</li>');
+          let skill = skillMap[skl];
+          if (skill.s_buffs) {
+            skill.s_buffs.forEach((buff) => {
+              let buff = buff[buff];
+              $('#skills').append('<div>' + buffName[buff.type1] + ' ' + buff.val1 + '</div>');
+            });
           }
         });
       }
@@ -355,10 +357,22 @@
       });
     });
 
-    let skillExprMap = {};
-    $.getJSON('SkillExpr.json', (data) => {
-      data.infos.forEach((info) => {
-        skillExprMap[info.key] = info.value;
+    let buffMap = {};
+    $.getJSON('Buff.json', (data) => {
+      data.items.forEach((item) => {
+        buffMap[item.iname] = item;
+      });
+    });
+
+    let buffNameList = [];
+    $.getJSON('BuffName.json', (data) => {
+      buffNameList = data.infos;
+    });
+
+    let skillMap = {};
+    $.getJSON('Skill.json', (data) => {
+      data.items.forEach((item) => {
+        skillExprMap[item.iname] = item;
       });
     });
 
