@@ -27,7 +27,7 @@
       </select>
     </div>
 
-    <div id="cat"></div>
+    <div id="desc"></div>
     <ul id="skills"></ul>
   </div>
 
@@ -152,9 +152,26 @@
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
 
-      $('#cat').empty();
+      $('#desc').empty();
+      switch (item.rare) {
+        case 0:
+          $('#desc').append('<div>N - Rarity</div>');
+          break;
+        case 1:
+          $('#desc').append('<div>R - Rarity</div>');
+          break;
+        case 3:
+          $('#desc').append('<div>SR - Rarity</div>');
+          break;
+        case 4:
+          $('#desc').append('<div>MR - Rarity</div>');
+          break;
+        case 5:
+          $('#desc').append('<div>UR - Rarity</div>');
+          break;
+      }
       item.cat.forEach((cat) => {
-        $('#cat').append('<div>' + itemCategoryList[cat].value + '</div>');
+        $('#desc').append('<div>' + itemCategoryList[cat].value + '</div>');
       });
 
       $('#skills').empty();
@@ -376,6 +393,7 @@
             iname: item.iname,
             randa: item.randa,
             randr: item.randr,
+            rare: item.rare,
             rtype: item.rtype,
             skl1: item.skl1,
             skl2: item.skl2,
