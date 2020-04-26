@@ -179,8 +179,8 @@
         item_sk.forEach((skl) => {
           let skill = skillMap[skl];
           if (skill.s_buffs) {
-            skill.s_buffs.forEach((buff) => {
-              let buff = buff[buff];
+            skill.s_buffs.forEach((s_buff) => {
+              let buff = buffMap[s_buff];
               $('#skills').append('<div>' + buffName[buff.type1] + ' ' + buff.val1 + '</div>');
             });
           }
