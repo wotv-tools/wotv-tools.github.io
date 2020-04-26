@@ -154,7 +154,6 @@
       let types = typeMap[item.rtype];
 
       $('#skills').empty();
-
       if (item_sk) {
         item_sk.forEach((skl) => {
           if (skillExprMap[skl]) {
@@ -295,12 +294,12 @@
     }
 
     let typeMap = {};
-    $.getJSON('typenames.json', function(data) {
+    $.getJSON('ArtifactGrow.json', (data) => {
       let typeNameMap = {};
       data.infos.forEach((info) => {
         typeNameMap[info.key] = info.value;
       });
-      $.getJSON('typesets.json', function(data) {
+      $.getJSON('ArtifactRandLot.json', (data) => {
         data.items.forEach((item) => {
           typeMap[item.iname] = [];
           if (item.lot[0].grow1) {
@@ -326,7 +325,7 @@
     });
 
     let growthMap = {};
-    $.getJSON('growth.json', function(data) {
+    $.getJSON('Grow.json', (data) => {
       data.items.forEach((item) => {
         growthMap[item.type] = {
           curve: item.curve,
@@ -336,21 +335,21 @@
     });
 
     let skillExprMap = {};
-    $.getJSON('SkillExpr.json', function(data) {
+    $.getJSON('SkillExpr.json', (data) => {
       data.infos.forEach((info) => {
         skillExprMap[info.key] = info.value;
       });
     });
 
     let nameMap = {};
-    $.getJSON('names.json', function(data) {
+    $.getJSON('ArtifactName.json', (data) => {
       data.infos.forEach((info) => {
         nameMap[info.key] = info.value;
       });
     });
 
     let sealGrowthMap = {};
-    $.getJSON('sealGrowth.json', function(data) {
+    $.getJSON('ArtifactGrowItem.json', (data) => {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
         sealGrowthMap[stat.value] = item.grow_up[0].val;
@@ -358,7 +357,7 @@
     });
 
     let itemMap = {};
-    $.getJSON('items.json', function(data) {
+    $.getJSON('Artifact.json', (data) => {
       let itemList = [];
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
