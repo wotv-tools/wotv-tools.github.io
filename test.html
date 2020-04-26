@@ -27,9 +27,11 @@
       </select>
     </div>
 
-    <div id="skills">
-
-    </div>
+    <table>
+      <tr>
+        <th>Skills</th>
+      </tr>
+      <tr id="skills"></tr>
   </div>
 
   <table id="table">
@@ -157,9 +159,9 @@
       if (item_sk) {
         item_sk.forEach((skl) => {
           if (skillExprMap[skl]) {
-            $('#skills').append('<div>' + skillExprMap[skl] + '</div>');
+            $('#skills').append('<td>' + skillExprMap[skl] + '</td>');
           } else {
-            $('#skills').append('<div>' + skl + '</div>');
+            $('#skills').append('<td>' + skl + '</td>');
           }
         });
       }
