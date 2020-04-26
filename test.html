@@ -27,6 +27,7 @@
       </select>
     </div>
 
+    <div id="cat"></div>
     <ul id="skills"></ul>
   </div>
 
@@ -150,6 +151,11 @@
       let item = itemMap[itemKey];
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
+
+      $('#cat').empty();
+      item.cat.forEach((cat) => {
+        $('#cat').append('<div>' + itemCategoryList[cat].value + '</div>');
+      });
 
       $('#skills').empty();
       if (item_sk) {
@@ -354,6 +360,11 @@
       });
     });
 
+    let itemCategoryList = [];
+    $.getJSON('ArtifactCategory.json', (data) => {
+      itemCategoryList = data.infos;
+    });
+
     let itemMap = {};
     $.getJSON('Artifact.json', (data) => {
       let itemList = [];
@@ -361,6 +372,7 @@
         if (item.type >= 0 && item.randa && item.randr) {
           itemMap[item.iname] = {
             name: nameMap[item.iname],
+            cat: item.cat,
             randa: item.randa,
             randr: item.randr,
             rtype: item.rtype,
