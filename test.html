@@ -13,20 +13,23 @@
     Select your item, item level, and seal(s).
   </div>
 
-  <div id="inputs">
-    <select id="items" onchange="onItemChange()">
-      <option disabled selected>-- Select an item --</option>
-    </select>
-    <select id="level" onchange="onItemChange()">
-      <option value="10">Lv. 10</option>
-      <option value="20">Lv. 20</option>
-      <option value="30">Lv. 30</option>
-      <option value="40">Lv. 40</option>
-      <option value="50" selected>Lv. 50</option>
-    </select>
-  </div>
-  <div id="skills">
+  <div>
+    <div id="inputs">
+      <select id="items" onchange="onItemChange()">
+        <option disabled selected>-- Select an item --</option>
+      </select>
+      <select id="level" onchange="onItemChange()">
+        <option value="10">Lv. 10</option>
+        <option value="20">Lv. 20</option>
+        <option value="30">Lv. 30</option>
+        <option value="40">Lv. 40</option>
+        <option value="50" selected>Lv. 50</option>
+      </select>
+    </div>
 
+    <div id="skills">
+
+    </div>
   </div>
 
   <table id="table">
@@ -147,12 +150,13 @@
       }
 
       let item = itemMap[itemKey];
+      let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
 
       $('#skills').empty();
 
-      if (item.skl1) {
-        item.skl1.forEach((skl) => {
+      if (item_sk) {
+        item_sk.forEach((skl) => {
           if (skillExprMap[skl]) {
             $('#skills').append('<div>' + skillExprMap[skl] + '</div>');
           } else {
@@ -364,6 +368,10 @@
             randr: item.randr,
             rtype: item.rtype,
             skl1: item.skl1,
+            skl2: item.skl2,
+            skl3: item.skl3,
+            skl4: item.skl4,
+            skl5: item.skl5,
             status: item.status,
             type: item.type
           };
