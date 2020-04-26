@@ -73,14 +73,6 @@
       "value": "Shield"
     },
     {
-      "key": "LIGHTSHIELD",
-      "value": "Light Shield"
-    },
-    {
-      "key": "HEAVYSHIELD",
-      "value": "Heavy Shield"
-    },
-    {
       "key": "ARMOR",
       "value": "Armor"
     },
@@ -97,24 +89,8 @@
       "value": "Clothing"
     },
     {
-      "key": "LIGHTARMOR",
-      "value": "Light Armor"
-    },
-    {
-      "key": "HEAVYARMOR",
-      "value": "Heavy Armor"
-    },
-    {
-      "key": "ROBE",
-      "value": "Robe"
-    },
-    {
       "key": "ACCESSORY",
       "value": "Accessory"
-    },
-    {
-      "key": "SEPARATOR",
-      "value": ", "
     }
   ]
 }
