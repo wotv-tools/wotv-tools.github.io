@@ -25,6 +25,9 @@
       <option value="50" selected>Lv. 50</option>
     </select>
   </div>
+  <div id="skills">
+
+  </div>
 
   <table id="table">
     <tr>
@@ -145,6 +148,18 @@
 
       let item = itemMap[itemKey];
       let types = typeMap[item.rtype];
+
+      $('#skills').empty();
+
+      if (item.skl1) {
+        item.skl1.forEach((skl) => {
+          if (skillExprMap[skl]) {
+            $('#skills').append('<div>' + skillExprMap[skl] + '</div>');
+          } else {
+            $('#skills').append('<div>' + skl + '</div>');
+          }
+        });
+      }
 
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
