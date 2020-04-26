@@ -372,7 +372,7 @@
     let skillMap = {};
     $.getJSON('Skill.json', (data) => {
       data.items.forEach((item) => {
-        skillExprMap[item.iname] = item;
+        skillMap[item.iname] = item;
       });
     });
 
