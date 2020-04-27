@@ -249,7 +249,16 @@
       $('#recipe').empty();
       if (recipeMap[item.iname]) {
         recipeMap[item.iname].craft.forEach((material) => {
-          $('#recipe').append('<div>' + itemNameMap[item.iname] + '</div>');
+          switch (material.type) {
+            case 0:
+              let itemName = itemNameMap[material.id];
+              let mat_url = 'https://wotvfarmcalculator.github.io/beta.html?i=' + encodeURIComponent(itemName);
+              $('#recipe').append('<div>' + material.num + 'x <a href="' + mat_url + '">' + itemName + '</a></div>');
+              break;
+            case 1:
+              $('#recipe').append('<div>' + material.num + 'x ' + artifactName[material.id] + ' Lv. ' + materia.lv + '</div>');
+              break;
+          }
         });
       }
     }
