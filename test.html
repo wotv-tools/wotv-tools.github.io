@@ -398,7 +398,7 @@
       buffNameList = data.infos;
 
       // modifications
-      (new Array(30)).forEach(() => {
+      for (let i = 0; i < 30; i++) {
         buffNameList.splice(0,0,null);
       });
     });
