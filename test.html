@@ -197,8 +197,10 @@
                 case 123:
                   let buff2 = buffMap[buff.id1];
                   buff_text = buffNameList[buff2.type1] + ' Granted';
+                  break;
                 default:
-                buff_text = buffNameList[buff.type1].value;
+                  buff_text = buffNameList[buff.type1].value;
+                  break;
               }
 
               switch (buff.calc1) {
