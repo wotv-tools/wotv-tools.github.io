@@ -95,7 +95,7 @@
   </table>
 
   <h3>How to craft</h3>
-  <div id="recipe"></div>
+  <ul id="recipe"></ul>
 
   <script>
     let stats = [{
@@ -254,10 +254,10 @@
             case 0:
               let itemName = itemNameMap[material.id];
               let mat_url = 'https://wotvfarmcalculator.github.io/beta.html?i=' + encodeURIComponent(itemName);
-              $('#recipe').append('<div>' + material.num + 'x <a target="_blank" href="' + mat_url + '">' + itemName + '</a></div>');
+              $('#recipe').append('<li>' + material.num + 'x <a target="_blank" href="' + mat_url + '">' + itemName + '</a></li>');
               break;
             case 1:
-              $('#recipe').append('<div>' + material.num + 'x ' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</div>');
+              $('#recipe').append('<li>' + material.num + 'x ' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</li>');
               break;
           }
         });
