@@ -410,22 +410,8 @@
       let itemList = [];
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
-          itemMap[item.iname] = {
-            name: nameMap[item.iname],
-            cat: item.cat,
-            iname: item.iname,
-            randa: item.randa,
-            randr: item.randr,
-            rare: item.rare,
-            rtype: item.rtype,
-            skl1: item.skl1,
-            skl2: item.skl2,
-            skl3: item.skl3,
-            skl4: item.skl4,
-            skl5: item.skl5,
-            status: item.status,
-            type: item.type
-          };
+          itemMap[item.iname] = item;
+          itemMap[item.iname].name = name: nameMap[item.iname];
 
           itemList.push({
             label: nameMap[item.iname],
