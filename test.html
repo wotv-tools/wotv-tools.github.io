@@ -396,15 +396,11 @@
     });
 
     let buffNameList = [];
-    let _buffNameList = [];
     $.getJSON('en/Buff.json', (data) => {
       // pretty sure this is the right list
       // but needs modifications for now
-      _buffNameList = data.infos;
-
-
-      buffNameList[63] = 'Strike Attack'; // originall 33 (-30)
-      buffNameList[64] = 'Missile Attack'; // originally 64 (-30)
+      buffNameList = data.infos;
+      buffNameList.splice(0,0, new Array(30));
     });
 
     let skillMap = {};
