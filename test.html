@@ -188,10 +188,12 @@
               let buff_text;
 
               switch (buff.type1) {
+                // Species Killer
                 case 120:
-                  let killer_index_offset = -16;
-                  buff_text = buffNameList[buff.type1 + buff.tag1[0]].value;
+                  let killer_index_offset = -8;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
                   break;
+                // Condition Granted
                 case 123:
                   let buff2 = buffMap[buff.id1];
                   buff_text = buffNameList[buff2.type1] + ' Granted';
