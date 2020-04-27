@@ -317,12 +317,12 @@
     }
 
     let typeMap = {};
-    $.getJSON('ArtifactGrow.json', (data) => {
+    $.getJSON('en/ArtifactGrow.json', (data) => {
       let typeNameMap = {};
       data.infos.forEach((info) => {
         typeNameMap[info.key] = info.value;
       });
-      $.getJSON('ArtifactRandLot.json', (data) => {
+      $.getJSON('data/ArtifactRandLot.json', (data) => {
         data.items.forEach((item) => {
           typeMap[item.iname] = [];
           if (item.lot[0].grow1) {
@@ -348,7 +348,7 @@
     });
 
     let growthMap = {};
-    $.getJSON('Grow.json', (data) => {
+    $.getJSON('data/Grow.json', (data) => {
       data.items.forEach((item) => {
         growthMap[item.type] = {
           curve: item.curve,
@@ -358,14 +358,14 @@
     });
 
     let buffMap = {};
-    $.getJSON('Buff.json', (data) => {
+    $.getJSON('data/Buff.json', (data) => {
       data.items.forEach((item) => {
         buffMap[item.iname] = item;
       });
     });
 
     let buffNameList = [];
-    $.getJSON('BuffName.json', (data) => {
+    $.getJSON('en/Buff.json', (data) => {
       buffNameList = data.infos;
 
       // pretty sure this is the right list
@@ -373,21 +373,21 @@
     });
 
     let skillMap = {};
-    $.getJSON('Skill.json', (data) => {
+    $.getJSON('data/Skill.json', (data) => {
       data.items.forEach((item) => {
         skillMap[item.iname] = item;
       });
     });
 
     let nameMap = {};
-    $.getJSON('ArtifactName.json', (data) => {
+    $.getJSON('en/ArtifactName.json', (data) => {
       data.infos.forEach((info) => {
         nameMap[info.key] = info.value;
       });
     });
 
     let sealGrowthMap = {};
-    $.getJSON('ArtifactGrowItem.json', (data) => {
+    $.getJSON('data/ArtifactGrowItem.json', (data) => {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
         sealGrowthMap[stat.value] = item.grow_up[0].val;

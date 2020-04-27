@@ -1,0 +1,172 @@
+{
+  "infos": [
+    {
+      "key": "init",
+      "value": "Tutorial Summon"
+    },
+    {
+      "key": "p_gacha_unit_20191114",
+      "value": "Release Commemoration UR Unit Guaranteed 10x Summon"
+    },
+    {
+      "key": "p_gacha_vc_20191114",
+      "value": "Release Commemoration UR Vision Card Guaranteed 10x Summon"
+    },
+    {
+      "key": "ff14_gacha_20191114_01",
+      "value": "FFXIV Collaborative Summon"
+    },
+    {
+      "key": "ff14_gacha_20191114_10",
+      "value": "FFXIV Collaborative 10x Summon"
+    },
+    {
+      "key": "no_coin_gacha_20191118_10",
+      "value": "\"1 Million Downloads\" Celebration — FREE 10x Summon"
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step1",
+      "value": "Head Start — Step Up Summon Step 1"
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step2",
+      "value": "Head Start — Step Up Summon Step 2"
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step3",
+      "value": "Head Start — Step Up Summon Step 3"
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_GL20200408_01",
+      "value": "New Unit/Vision Card Summon"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200408_10",
+      "value": "New Unit/Vision Card 10x Summon"
+    },
+    {
+      "key": "p_gacha_unit_GL20200408_10",
+      "value": "\"2 Million Downloads\" Celebration — UR Unit Guaranteed 10x Summon"
+    },
+    {
+      "key": "p_gacha_vc_GL20200408_10",
+      "value": "\"2 Millions Downloads\" Celebration — UR Vision Card Guaranteed 10x Summon"
+    },
+    {
+      "key": "no_coin_gacha_GL20200408_10",
+      "value": "\"2 Million Downloads\" Celebration — FREE 10x Summon"
+    },
+    {
+      "key": "no_coin_gacha_GL20200415_10",
+      "value": "\"2 Million Downloads\" Celebration Part II — FREE 10x Summon"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200415_01",
+      "value": "\"2 Million Downloads\" Celebration — Featured Summon"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200415_10",
+      "value": "\"2 Million Downloads\" Celebration — Featured 10x Summon"
+    },
+    {
+      "key": "p_gacha_unit_gl20200422_10",
+      "value": "FFT UR Unit Guaranteed 10x Summon"
+    },
+    {
+      "key": "p_gacha_vc_gl20200422_10",
+      "value": "FFT UR Vision Card Guaranteed 10x Summon"
+    },
+    {
+      "key": "fft_gacha_20191226_ORND_1",
+      "value": "FFT Collaborative Summon — Orlandeau"
+    },
+    {
+      "key": "fft_gacha_20191226_ORND_10",
+      "value": "FFT Collaborative 10x Summon — Orlandeau"
+    },
+    {
+      "key": "fft_gacha_20191226_RAMZ_1",
+      "value": "FFT Collaborative Summon — Ramza"
+    },
+    {
+      "key": "fft_gacha_20191226_RAMZ_10",
+      "value": "FFT Collaborative 10x Summon — Ramza"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_1",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_2",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_3",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_4",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_5",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_6",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_7",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_8",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_9",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_10",
+      "value": "FFT Collaboration Daily Free Summon"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200422_01",
+      "value": "\"3 Million Downloads\" Celebration — Featured Summon"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200422_10",
+      "value": "\"3 Million Downloads\" Celebration — Featured 10x Summon"
+    },
+    {
+      "key": "global_pickup_sterne_20200325_01",
+      "value": "Release Commemoration Featured Summon"
+    },
+    {
+      "key": "global_pickup_sterne_20200325_10",
+      "value": "Release Commemoration Featured 10x Summon"
+    },
+    {
+      "key": "global_pickup_fredrica_20200401_01",
+      "value": "New Unit/Vision Card Summon"
+    },
+    {
+      "key": "global_pickup_fredrica_20200401_10",
+      "value": "New Unit/Vision Card 10x Summon"
+    },
+    {
+      "key": "global_ur_unit_fredrica_20200401",
+      "value": "UR Unit Guaranteed 10x Summon"
+    },
+    {
+      "key": "global_ur_vc_fredrica_20200401",
+      "value": "UR Vision Card Guaranteed 10x Summon"
+    }
+  ]
+}
