@@ -406,7 +406,7 @@
     });
 
     let itemMap = {};
-    $.getJSON('Artifact.json', (data) => {
+    $.getJSON('data/Artifact.json', (data) => {
       let itemList = [];
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
