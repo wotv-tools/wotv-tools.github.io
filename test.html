@@ -396,7 +396,11 @@
       // pretty sure this is the right list
       // but needs modifications for now
       buffNameList = data.infos;
-      buffNameList.splice(0,0, new Array(30));
+
+      // modifications
+      (new Array(30)).forEach(() => {
+        buffNameList.splice(0,0,null);
+      });
     });
 
     let skillMap = {};
