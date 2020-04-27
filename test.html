@@ -94,6 +94,8 @@
     <tr id="grow3_stats"></tr>
   </table>
 
+  <div id="recipe"></div>
+
   <script>
     let stats = [{
       label: "HP",
@@ -242,6 +244,14 @@
           }
         });
       });
+
+      // get recipe
+      $('#recipe').empty();
+      if (recipeMap[item.iname]) {
+        reipceMap[item.iname].craft.forEach((material) => {
+          $('#recipe').append('<div>' + itemNameMap[item.iname] + '</div>');
+        });
+      }
     }
 
     let seals = {}
@@ -411,7 +421,7 @@
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
           itemMap[item.iname] = item;
-          itemMap[item.iname].name = name: nameMap[item.iname];
+          itemMap[item.iname].name = nameMap[item.iname];
 
           itemList.push({
             label: nameMap[item.iname],
@@ -426,6 +436,21 @@
         if (item.label) {
           $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
         }
+      });
+    });
+
+    // RECIPES
+    let recipeMap = {};
+    $.getJSON('data/ArtifactRecipe.json', (data) => {
+      data.items.forEach((item) => {
+        recipeMap[item.iname] = item;
+      });
+    });
+
+    let itemNameMap = {};
+    $.getJSON('en/ItemName.json', (data) => {
+      data.infos.forEach((info) => {
+        itemNameMap[info.key] = info.value;
       });
     });
   </script>
