@@ -190,7 +190,7 @@
               switch (buff.type1) {
                 case 120:
                   let BUFF_INDEX_OFFSET = 21;
-                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + BUFF_INDEX_OFFSET];
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + BUFF_INDEX_OFFSET].value;
                   break;
                 default:
                 buff_text = buffNameList[buff.type1].value;
