@@ -185,7 +185,15 @@
           if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
               let buff = buffMap[s_buff];
-              $('#skills').append('<div>' + buffNameList[buff.type1].value + ' ' + buff.val1 + '</div>');
+              let buff_text = buffNameList[buff.type1].value;
+              switch (buff.calc1) {
+                case 3:
+                  buff_text += ' Res';
+                  break;
+              }
+              
+              buff_text += ' ' + buff.val1
+              $('#skills').append('<div>' + buff_text + '</div>');
             });
           }
         });
@@ -425,6 +433,10 @@
       // insert 1 dummy
       for (let i = 0; i < 1; i++) {
         buffNameList.splice(94,0,null);
+      }
+      // insert 1 dummy
+      for (let i = 0; i < 1; i++) {
+        buffNameList.splice(118,0,null);
       }
       // insert 10 dummy
       for (let i = 0; i < 10; i++) {
