@@ -13,90 +13,99 @@
     Select your item, item level, and seal(s).
   </div>
 
-  <div>
-    <div id="inputs">
-      <select id="items" onchange="onItemChange()">
-        <option disabled selected>-- Select an item --</option>
-      </select>
-      <select id="level" onchange="onItemChange()">
-        <option value="10">Lv. 10</option>
-        <option value="20">Lv. 20</option>
-        <option value="30">Lv. 30</option>
-        <option value="40">Lv. 40</option>
-        <option value="50" selected>Lv. 50</option>
-      </select>
-    </div>
-
-    <div id="desc"></div>
-    <ul id="skills"></ul>
+  <div id="inputs">
+    <select id="items" onchange="onItemChange()">
+      <option disabled selected>-- Select an item --</option>
+    </select>
+    <select id="level" onchange="onItemChange()">
+      <option value="10">Lv. 10</option>
+      <option value="20">Lv. 20</option>
+      <option value="30">Lv. 30</option>
+      <option value="40">Lv. 40</option>
+      <option value="50" selected>Lv. 50</option>
+    </select>
   </div>
 
-  <table id="table">
-    <tr>
-      <th>
-        Seals <span id="seals_display">0/3</span>
-      </th>
-      <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
-        <label for="">HP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
-        <label for="">TP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
-        <label for="">AP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
-        <label for="">ATK</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_def" onclick="toggleSeal('def')">
-        <label for="">DEF</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
-        <label for="">MAG</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
-        <label for="">SPR</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
-        <label for="">ACC</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
-        <label for="">DEX</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
-        <label for="">AGI</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
-        <label for="">EVA</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
-        <label for="">CRIT</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
-        <label for="">CRIT.A</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-    </tr>
-    <tr id="grow1_stats"></tr>
-    <tr id="grow2_stats"></tr>
-    <tr id="grow3_stats"></tr>
-  </table>
+  <div id="info" class="hidden">
+    <table>
+      <tr>
+        <td>
+          <img src=""/>
+        </td>
+        <td>
+          <div id="desc"></div>
+          <ul id="skills"></ul>
+        </td>
+      </tr>
+    </table>
 
-  <h3>How to craft</h3>
-  <div id="all_mat_link"></div>
-  <table id="recipe"></table>
+    <table id="table">
+      <tr>
+        <th>
+          Seals <span id="seals_display">0/3</span>
+        </th>
+        <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
+          <label for="">HP</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
+          <label for="">TP</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
+          <label for="">AP</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
+          <label for="">ATK</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_def" onclick="toggleSeal('def')">
+          <label for="">DEF</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
+          <label for="">MAG</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
+          <label for="">SPR</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
+          <label for="">ACC</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
+          <label for="">DEX</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
+          <label for="">AGI</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
+          <label for="">EVA</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
+          <label for="">CRIT</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+        <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
+          <label for="">CRIT.A</label><br/>
+          <input type="checkbox" disabled />
+        </th>
+      </tr>
+      <tr id="grow1_stats"></tr>
+      <tr id="grow2_stats"></tr>
+      <tr id="grow3_stats"></tr>
+    </table>
+
+    <h3>How to craft</h3>
+    <div id="all_mat_link"></div>
+    <table id="recipe"></table>
+  </div>
 
   <script>
     let stats = [{
@@ -155,6 +164,8 @@
       let item = itemMap[itemKey];
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
+
+      $('#image').attr('src', 'img/' + item.asset);
 
       $('#desc').empty();
       switch (item.rare) {
@@ -294,6 +305,8 @@
 
         $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
+
+      $('#info').removeClass('hidden');
     }
 
     let seals = {}
