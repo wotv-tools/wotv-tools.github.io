@@ -192,6 +192,9 @@
                   let killer_index_offset = -16;
                   buff_text = buffNameList[buff.type1 + buff.tag1[0]].value;
                   break;
+                case 123:
+                  let buff2 = buffMap[buff.id1];
+                  buff_text = buffNameList[buff2.type1] + ' Granted';
                 default:
                 buff_text = buffNameList[buff.type1].value;
               }
