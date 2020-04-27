@@ -185,7 +185,17 @@
           if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
               let buff = buffMap[s_buff];
-              let buff_text = buffNameList[buff.type1].value;
+              let buff_text;
+
+              let BUFF_INDEX_OFFSET = 20;
+              switch (buff.type1) {
+                case 120:
+                  buff_text = buffNameList[buff.type1 + buff.tag1 + BUFF_INDEX_OFFSET];
+                  break;
+                default:
+                buff_text = buffNameList[buff.type1].value;
+              }
+
               switch (buff.calc1) {
                 case 3:
                   buff_text += ' Res';
