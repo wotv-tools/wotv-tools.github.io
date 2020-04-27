@@ -95,7 +95,8 @@
   </table>
 
   <h3>How to craft</h3>
-  <ul id="recipe"></ul>
+  <div id="all_mat_link"></div>
+  <table id="recipe"></table>
 
   <script>
     let stats = [{
@@ -247,20 +248,26 @@
       });
 
       // get recipe
+      $('#all_mat_link').empty();
       $('#recipe').empty();
       if (recipeMap[item.iname]) {
+        let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
+        let all_mats = [];
         recipeMap[item.iname].craft.forEach((material) => {
           switch (material.type) {
             case 0:
               let itemName = itemNameMap[material.id];
-              let mat_url = 'https://wotvfarmcalculator.github.io/beta.html?i=' + encodeURIComponent(itemName);
-              $('#recipe').append('<li>' + material.num + 'x <a target="_blank" href="' + mat_url + '">' + itemName + '</a></li>');
+              let mat_url = mat_link + encodeURIComponent(itemName);
+              all_mats.push(itemName);
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
               break;
             case 1:
-              $('#recipe').append('<li>' + material.num + 'x ' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</li>');
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td>' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</td></tr>');
               break;
           }
         });
+
+        $('#all_mat_link').append('<a href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
     }
 
