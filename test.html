@@ -256,7 +256,7 @@
               $('#recipe').append('<div>' + material.num + 'x <a target="_blank" href="' + mat_url + '">' + itemName + '</a></div>');
               break;
             case 1:
-              $('#recipe').append('<div>' + material.num + 'x ' + artifactName[material.id] + ' Lv. ' + materia.lv + '</div>');
+              $('#recipe').append('<div>' + material.num + 'x ' + artifactNameMap[material.id] + ' Lv. ' + materia.lv + '</div>');
               break;
           }
         });
@@ -398,10 +398,10 @@
       });
     });
 
-    let nameMap = {};
+    let artifactNameMap = {};
     $.getJSON('en/ArtifactName.json', (data) => {
       data.infos.forEach((info) => {
-        nameMap[info.key] = info.value;
+        artifactNameMap[info.key] = info.value;
       });
     });
 
@@ -430,10 +430,10 @@
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
           itemMap[item.iname] = item;
-          itemMap[item.iname].name = nameMap[item.iname];
+          itemMap[item.iname].name = artifactNameMap[item.iname];
 
           itemList.push({
-            label: nameMap[item.iname],
+            label: artifactNameMap[item.iname],
             value : item.iname
           });
         }
