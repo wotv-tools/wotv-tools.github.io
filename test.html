@@ -189,6 +189,7 @@
 
               switch (buff.type1) {
                 case 120:
+                  let killer_index_offset = -8;
                   buff_text = buffNameList[buff.type1 + buff.tag1[0]].value;
                   break;
                 default:
@@ -474,10 +475,6 @@
       // insert 6 dummy
       for (let i = 0; i < 6; i++) {
         buffNameList.splice(184,0,null);
-      }
-      // remove 8 Fixed Elemental Dmg
-      for (let i = 0; i < 8; i++) {
-        buffNameList.splice(205,1);
       }
     });
 
