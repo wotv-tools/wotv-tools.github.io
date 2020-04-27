@@ -392,10 +392,11 @@
     });
 
     let buffNameList = [];
+    let _buffNameList = [];
     $.getJSON('en/Buff.json', (data) => {
       // pretty sure this is the right list
       // but needs modifications for now
-      // buffNameList = data.infos;
+      _buffNameList = data.infos;
 
 
       buffNameList[63] = 'Strike Attack'; // originall 33
