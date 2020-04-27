@@ -398,9 +398,13 @@
       buffNameList = data.infos;
 
       // modifications
-      for (let i = 0; i < 30; i++) {
-        buffNameList.splice(0,0,null);
-      };
+      for (let i = 0; i < 7; i++) {
+        buffNameList.splice(0,1);
+      }
+      for (let i = 0; i < 16; i++) {
+        buffNameList.splice(5,0,null);
+      }
+
     });
 
     let skillMap = {};
