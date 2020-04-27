@@ -248,7 +248,7 @@
       // get recipe
       $('#recipe').empty();
       if (recipeMap[item.iname]) {
-        reipceMap[item.iname].craft.forEach((material) => {
+        recipeMap[item.iname].craft.forEach((material) => {
           $('#recipe').append('<div>' + itemNameMap[item.iname] + '</div>');
         });
       }
