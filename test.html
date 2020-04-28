@@ -450,7 +450,7 @@
       item_td.prepend('<div>' + item.name + '</div>');
 
       newEl.attr('id', null);
-      newEl.prepend(item_id);
+      newEl.prepend(item_td);
       newEl.children().last().remove();
       newEl.append('<td class="clickable" onclick="unsave(this)">X</td>');
       $('#saved').append(newEl);
