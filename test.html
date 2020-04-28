@@ -318,9 +318,8 @@
       });
 
       // get recipe
-      $('#all_mat_link').empty();
-      $('#recipe').empty();
-      if (artifactRecipeMap[item.iname]) {
+        $('#recipe').empty();
+        if (artifactRecipeMap[item.iname]) {
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
@@ -344,7 +343,7 @@
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });
-        $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
+        // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
 
       $('#total_mats').empty();
