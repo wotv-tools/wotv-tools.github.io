@@ -365,8 +365,15 @@
 
       $('#seals_display').text(Object.keys(seals).length + '/3');
     }
-    function save(event) {
-      console.log(event);
+    function save(el) {
+      let newEl = $(el).parent('tr').clone();
+      let itemKey = $('#artifacts').val();
+      let item = artifactMap[itemKey];
+
+      newEl.attr('id', null);
+      newEl.prepend('<td>' + item.name + '</td>');
+      newEl.children().last().remove();
+      $('#saved').append(newEl);
     }
 
     function getArtifactStats(curve, base) {
