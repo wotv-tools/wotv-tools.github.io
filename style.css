@@ -1,26 +1,10 @@
-table, th, td {
-  border: 1px solid black;
-  text-align: center;
-}
-
-table th {
-  width: 45px;
-}
-
-table th:first-child {
-  width: 60px;
-}
-
 th {
   padding: 5px;
 }
 
-.disabled {
-  background-color: lightgray;
-}
-
-.hidden {
-  display: none;
+th, td {
+  border: 1px solid black;
+  text-align: center;
 }
 
 th, td {
@@ -43,10 +27,10 @@ table#stats th:first-child {
   width: 60px;
 }
 
-table#stats th {
-  padding: 5px;
+.disabled {
+  background-color: lightgray;
 }
 
-.no-border {
-  border: none;
+.hidden {
+  display: none;
 }

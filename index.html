@@ -6,94 +6,112 @@
 </head>
 <body>
   <h1>
-    This tool calculates the AVERAGE stat gain for an item.
+    This tool calculates the AVERAGE stat gain for an equipment.
   </h1>
 
   <div id="instructions">
-    Select your item, item level, and seal(s).
+    Select your equipment, equipment level, and seal(s).
   </div>
 
-  <div>
-    <div id="inputs">
-      <select id="items" onchange="onItemChange()">
-        <option disabled selected>-- Select an item --</option>
-      </select>
-      <select id="level" onchange="onItemChange()">
-        <option value="10">Lv. 10</option>
-        <option value="20">Lv. 20</option>
-        <option value="30">Lv. 30</option>
-        <option value="40">Lv. 40</option>
-        <option value="50" selected>Lv. 50</option>
-      </select>
-    </div>
-
-    <div id="skills">
-
-    </div>
+  <div id="inputs">
+    <select id="artifacts" onchange="onArtifactChange()">
+      <option disabled selected>-- Select an equipment --</option>
+    </select>
+    <select id="level" onchange="onArtifactChange()">
+      <option value="10">Lv. 10</option>
+      <option value="20">Lv. 20</option>
+      <option value="30">Lv. 30</option>
+      <option value="40">Lv. 40</option>
+      <option value="50" selected>Lv. 50</option>
+    </select>
   </div>
 
-  <table id="table">
-    <tr>
-      <th>
-        Seals <span id="seals_display">0/3</span>
-      </th>
-      <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
-        <label for="">HP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
-        <label for="">TP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
-        <label for="">AP</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
-        <label for="">ATK</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_def" onclick="toggleSeal('def')">
-        <label for="">DEF</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
-        <label for="">MAG</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
-        <label for="">SPR</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
-        <label for="">ACC</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
-        <label for="">DEX</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
-        <label for="">AGI</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
-        <label for="">EVA</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
-        <label for="">CRIT</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-      <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
-        <label for="">CRIT.A</label><br/>
-        <input type="checkbox" disabled />
-      </th>
-    </tr>
-    <tr id="grow1_stats"></tr>
-    <tr id="grow2_stats"></tr>
-    <tr id="grow3_stats"></tr>
-  </table>
+  <div id="content" class="hidden">
+    <table id="info" class="no-border">
+      <tr>
+        <td colspan="2">
+          <img id="image" src=""/>
+        </td>
+        <td class="no-border">
+          <table id="stats">
+            <tr>
+              <th>
+                Seals <span id="seals_display">0/3</span>
+              </th>
+              <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
+                <label for="">HP</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
+                <label for="">TP</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
+                <label for="">AP</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
+                <label for="">ATK</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_def" onclick="toggleSeal('def')">
+                <label for="">DEF</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
+                <label for="">MAG</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
+                <label for="">SPR</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
+                <label for="">ACC</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
+                <label for="">DEX</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
+                <label for="">AGI</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
+                <label for="">EVA</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
+                <label for="">CRIT</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+              <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
+                <label for="">CRIT.A</label><br/>
+                <input type="checkbox" disabled />
+              </th>
+            </tr>
+            <tr id="grow1_stats"></tr>
+            <tr id="grow2_stats"></tr>
+            <tr id="grow3_stats"></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="type"></td>
+        <td id="rarity"></td>
+      </tr>
+      <tr>
+        <td id="skills" colspan="2"></td>
+      </tr>
+    </table>
+
+
+
+    <h3>How to craft</h3>
+    <div id="all_mat_link"></div>
+    <table id="recipe"></table>
+  </div>
 
   <script>
     let stats = [{
@@ -137,32 +155,88 @@
       value: "crta"
     }];
 
-    function onItemChange() {
+    function onArtifactChange() {
       resetSeals();
       displayStats();
     }
     function displayStats() {
-      let itemKey = $('#items').val();
+      let itemKey = $('#artifacts').val();
       let level = $('#level').val();
 
       if (!itemKey) {
         return;
       }
 
-      let item = itemMap[itemKey];
+      let item = artifactMap[itemKey];
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
+
+      $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
+
+      $('#type').empty();
+      item.cat.forEach((cat) => {
+        $('#type').append('<div>' + artifactCategoryList[cat].value + '</div>');
+      });
+
+      $('#rarity').empty();
+      switch (item.rare) {
+        case 0:
+          $('#rarity').append('<div>N - Rarity</div>');
+          break;
+        case 1:
+          $('#rarity').append('<div>R - Rarity</div>');
+          break;
+        case 2:
+          $('#rarity').append('<div>SR - Rarity</div>');
+          break;
+        case 3:
+          $('#rarity').append('<div>MR - Rarity</div>');
+          break;
+        case 4:
+          $('#rarity').append('<div>UR - Rarity</div>');
+          break;
+      }
 
       $('#skills').empty();
       if (item_sk) {
         item_sk.forEach((skl) => {
-          if (skillExprMap[skl]) {
-            $('#skills').append('<div>' + skillExprMap[skl] + '</div>');
-          } else {
-            $('#skills').append('<div>' + skl + '</div>');
+          let skill = skillMap[skl];
+          if (skill.s_buffs) {
+            skill.s_buffs.forEach((s_buff) => {
+              let buff = buffMap[s_buff];
+              let buff_text;
+
+              switch (buff.type1) {
+                // Species Killer
+                case 120:
+                  let killer_index_offset = -8;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
+                  break;
+                // Condition Granted
+                case 123:
+                  let buff2 = buffMap[buff.id1];
+                  buff_text = buffNameList[buff2.type1] + ' Granted';
+                  break;
+                default:
+                  buff_text = buffNameList[buff.type1].value;
+                  break;
+              }
+
+              switch (buff.calc1) {
+                case 3:
+                  buff_text += ' Res';
+                  break;
+              }
+
+              buff_text += ' ' + buff.val1
+              $('#skills').append('<div>' + buff_text + '</div>');
+            });
           }
         });
       }
+
+      // $('#desc').empty();
+      // $('#desc').append(artifactFlavorMap[item.iname]);
 
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
@@ -170,8 +244,8 @@
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
-        let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
+        let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
+        let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         let ave_stats = Object.assign({}, item.status[0]);
 
         for (let i = 1; i < level; i++) {
@@ -179,46 +253,71 @@
           let pity_stat;
 
           stats.forEach((stat) => {
-            if (!isNaN(item_stats[stat.value])) {
-              ave_stats[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
-              pity_rate *= (1 - (item_rates[stat.value] / 100));
+            if (!isNaN(artifact_stats[stat.value])) {
+              ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
+              pity_rate *= (1 - (artifact_rates[stat.value] / 100));
 
-              if (!pity_stat || item_rates[stat.value] > item_rates[pity_stat]) {
+              if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
                   pity_stat = stat.value;
               }
 
-              if (ave_stats[stat.value] > item_stats[stat.value]) {
-                ave_stats[stat.value] = item_stats[stat.value];
-                item_rates[stat.value] = 0;
+              if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+                ave_stats[stat.value] = artifact_stats[stat.value];
+                artifact_rates[stat.value] = 0;
               }
             }
           });
 
           // add pity
           ave_stats[pity_stat] += pity_rate;
-          if (ave_stats[pity_stat] > item_stats[pity_stat]) {
-            ave_stats[pity_stat] = item_stats[pity_stat];
-            item_rates[pity_stat] = 0;
+          if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
+            ave_stats[pity_stat] = artifact_stats[pity_stat];
+            artifact_rates[pity_stat] = 0;
           }
         }
 
         typeStatsRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
-          if (ave_stats[stat.value] > item_stats[stat.value]) {
-            ave_stats[stat.value] = item_stats[stat.value];
-            item_rates[stat.value] = 0;
+          if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+            ave_stats[stat.value] = artifact_stats[stat.value];
+            artifact_rates[stat.value] = 0;
           } else {
             ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
-          if (!isNaN(item_stats[stat.value] && item.status[0][stat.value] != 0 && item_stats[stat.value] != 0)) {
+          if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value).removeClass('disabled');
-            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
+            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + artifact_stats[stat.value] + '</td>');
           } else {
             typeStatsRow.append('<td></td>');
           }
         });
       });
+
+      // get recipe
+      $('#all_mat_link').empty();
+      $('#recipe').empty();
+      if (artifactRecipeMap[item.iname]) {
+        let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
+        let all_mats = [];
+        artifactRecipeMap[item.iname].craft.forEach((material) => {
+          switch (material.type) {
+            case 0:
+              let itemName = itemNameMap[material.id];
+              let mat_url = mat_link + encodeURIComponent(itemName);
+              all_mats.push(itemName);
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
+              break;
+            case 1:
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td>' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</td></tr>');
+              break;
+          }
+        });
+
+        $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
+      }
+
+      $('#content').removeClass('hidden');
     }
 
     let seals = {}
@@ -246,60 +345,60 @@
       $('#seals_display').text(Object.keys(seals).length + '/3');
     }
 
-    function getItemStats(curve, base) {
-      let item_stats = {};
+    function getArtifactStats(curve, base) {
+      let artifact_stats = {};
 
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (curve[stat.value]) {
-            item_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+            artifact_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
 
-            let isNeg = item_stats[stat.value] < 0;
+            let isNeg = artifact_stats[stat.value] < 0;
 
-            item_stats[stat.value] = Math.floor(Math.abs(item_stats[stat.value]));
+            artifact_stats[stat.value] = Math.floor(Math.abs(artifact_stats[stat.value]));
             if (isNeg) {
-              item_stats[stat.value] *= -1;
+              artifact_stats[stat.value] *= -1;
             }
           } else {
-            item_stats[stat.value] = base[stat.value];
+            artifact_stats[stat.value] = base[stat.value];
           }
         }
       });
 
-      return item_stats;
+      return artifact_stats;
     }
 
-    function getItemRates(adjust, base) {
-      let item_rates = {};
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
 
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (adjust[stat.value]) {
-            item_rates[stat.value] = base[stat.value] + adjust[stat.value];
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
           } else {
-            item_rates[stat.value] = base[stat.value];
+            artifact_rates[stat.value] = base[stat.value];
           }
 
           if (seals[stat.value] && sealGrowthMap[stat.value]) {
-            item_rates[stat.value] += sealGrowthMap[stat.value];
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
-          if (item_rates[stat.value] < 0) {
-            item_rates[stat.value] = 0;
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
           }
         }
       });
 
-      return item_rates;
+      return artifact_rates;
     }
 
     let typeMap = {};
-    $.getJSON('ArtifactGrow.json', (data) => {
+    $.getJSON('en/ArtifactGrow.json', (data) => {
       let typeNameMap = {};
       data.infos.forEach((info) => {
         typeNameMap[info.key] = info.value;
       });
-      $.getJSON('ArtifactRandLot.json', (data) => {
+      $.getJSON('data/ArtifactRandLot.json', (data) => {
         data.items.forEach((item) => {
           typeMap[item.iname] = [];
           if (item.lot[0].grow1) {
@@ -325,7 +424,7 @@
     });
 
     let growthMap = {};
-    $.getJSON('Grow.json', (data) => {
+    $.getJSON('data/Grow.json', (data) => {
       data.items.forEach((item) => {
         growthMap[item.type] = {
           curve: item.curve,
@@ -334,60 +433,158 @@
       });
     });
 
-    let skillExprMap = {};
-    $.getJSON('SkillExpr.json', (data) => {
-      data.infos.forEach((info) => {
-        skillExprMap[info.key] = info.value;
+    let buffMap = {};
+    $.getJSON('data/Buff.json', (data) => {
+      data.items.forEach((item) => {
+        buffMap[item.iname] = item;
       });
     });
 
-    let nameMap = {};
-    $.getJSON('ArtifactName.json', (data) => {
+    let buffNameList = [];
+    $.getJSON('en/Buff.json', (data) => {
+      // pretty sure this is the right list
+      // but needs modifications for now
+      buffNameList = data.infos;
+
+      // modifications
+      // remove first 7
+      for (let i = 0; i < 7; i++) {
+        buffNameList.splice(0,1);
+      }
+      // insert 16 dummy
+      for (let i = 0; i < 16; i++) {
+        buffNameList.splice(5,0,null);
+      }
+      // insert 12 dummy
+      for (let i = 0; i < 11; i++) {
+        buffNameList.splice(30,0,null);
+      }
+      // insert 10 dummy
+      for (let i = 0; i < 10; i++) {
+        buffNameList.splice(51,0,null);
+      }
+      // insert 4 dummy
+      for (let i = 0; i < 4; i++) {
+        buffNameList.splice(66,0,null);
+      }
+      // insert 10 dummy
+      for (let i = 0; i < 10; i++) {
+        buffNameList.splice(71,0,null);
+      }
+      // insert 1 dummy
+      for (let i = 0; i < 1; i++) {
+        buffNameList.splice(94,0,null);
+      }
+      // insert 1 dummy
+      for (let i = 0; i < 1; i++) {
+        buffNameList.splice(118,0,null);
+      }
+      // insert 10 dummy
+      for (let i = 0; i < 10; i++) {
+        buffNameList.splice(124,0,null);
+      }
+      // insert 4 dummy
+      for (let i = 0; i < 4; i++) {
+        buffNameList.splice(135,0,null);
+      }
+      // insert 8 dummy
+      for (let i = 0; i < 8; i++) {
+        buffNameList.splice(143,0,null);
+      }
+      // insert 10 dummy
+      for (let i = 0; i < 10; i++) {
+        buffNameList.splice(160,0,null);
+      }
+      // insert 7 dummy
+      for (let i = 0; i < 7; i++) {
+        buffNameList.splice(173,0,null);
+      }
+      // remove 22 Debuff Res
+      for (let i = 0; i < 22; i++) {
+        buffNameList.splice(183,1);
+      }
+      // insert 6 dummy
+      for (let i = 0; i < 6; i++) {
+        buffNameList.splice(184,0,null);
+      }
+    });
+
+    let skillMap = {};
+    $.getJSON('data/Skill.json', (data) => {
+      data.items.forEach((item) => {
+        skillMap[item.iname] = item;
+      });
+    });
+
+    let artifactNameMap = {};
+    $.getJSON('en/ArtifactName.json', (data) => {
       data.infos.forEach((info) => {
-        nameMap[info.key] = info.value;
+        artifactNameMap[info.key] = info.value;
       });
     });
 
     let sealGrowthMap = {};
-    $.getJSON('ArtifactGrowItem.json', (data) => {
+    $.getJSON('data/ArtifactGrowItem.json', (data) => {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
         sealGrowthMap[stat.value] = item.grow_up[0].val;
       });
     });
 
-    let itemMap = {};
-    $.getJSON('Artifact.json', (data) => {
-      let itemList = [];
+    let artifactCategoryList = [];
+    $.getJSON('en/ArtifactCategory.json', (data) => {
+      artifactCategoryList = data.infos;
+
+      // for some reason doesn't match exactly
+      artifactCategoryList.splice(4,1); // remove LARGESWORD
+      artifactCategoryList.splice(6,1); // remove ROD
+      artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+      artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+    });
+
+    let artifactMap = {};
+    $.getJSON('data/Artifact.json', (data) => {
+      let artifactList = [];
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
-          itemMap[item.iname] = {
-            name: nameMap[item.iname],
-            randa: item.randa,
-            randr: item.randr,
-            rtype: item.rtype,
-            skl1: item.skl1,
-            skl2: item.skl2,
-            skl3: item.skl3,
-            skl4: item.skl4,
-            skl5: item.skl5,
-            status: item.status,
-            type: item.type
-          };
+          artifactMap[item.iname] = item;
+          artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-          itemList.push({
-            label: nameMap[item.iname],
+          artifactList.push({
+            label: artifactNameMap[item.iname],
             value : item.iname
           });
         }
       });
 
-      itemList.sort((a, b) => {
+      artifactList.sort((a, b) => {
         return a.label > b.label ? 1 : -1;
       }).forEach((item) => {
         if (item.label) {
-          $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
+          $('#artifacts').append('<option value="' + item.value +'">' + item.label + '</option>');
         }
+      });
+    });
+
+    let artifactFlavorMap = {};
+    $.getJSON('en/ArtifactFlvr.json', (data) => {
+      data.infos.forEach((info) => {
+        artifactFlavorMap[info.key] = info.value;
+      });
+    });
+
+    // RECIPES
+    let artifactRecipeMap = {};
+    $.getJSON('data/ArtifactRecipe.json', (data) => {
+      data.items.forEach((item) => {
+        artifactRecipeMap[item.iname] = item;
+      });
+    });
+
+    let itemNameMap = {};
+    $.getJSON('en/ItemName.json', (data) => {
+      data.infos.forEach((info) => {
+        itemNameMap[info.key] = info.value;
       });
     });
   </script>
