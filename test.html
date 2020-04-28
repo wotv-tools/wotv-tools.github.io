@@ -29,13 +29,13 @@
   <div id="info" class="hidden">
     <table>
       <tr>
-        <td>
+        <td rowspan="2">
           <img id="image" src=""/>
         </td>
-        <td>
-          <div id="desc"></div>
-          <div id="skills"></div>
-        </td>
+        <td id="desc"></td>
+      </tr>
+      <tr>
+        <td id="skills"></td>
       </tr>
     </table>
 
@@ -168,6 +168,9 @@
       $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
 
       $('#desc').empty();
+      item.cat.forEach((cat) => {
+        $('#desc').append('<div>' + itemCategoryList[cat].value + '</div>');
+      });
       switch (item.rare) {
         case 0:
           $('#desc').append('<div>N - Rarity</div>');
@@ -185,9 +188,6 @@
           $('#desc').append('<div>UR - Rarity</div>');
           break;
       }
-      item.cat.forEach((cat) => {
-        $('#desc').append('<div>' + itemCategoryList[cat].value + '</div>');
-      });
 
       $('#skills').empty();
       if (item_sk) {
