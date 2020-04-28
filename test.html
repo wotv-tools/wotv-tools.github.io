@@ -113,6 +113,8 @@
     <table id="recipe"></table>
   </div>
 
+  <div id="saved"></div>
+
   <script>
     let stats = [{
       label: "HP",
@@ -291,6 +293,8 @@
           } else {
             typeStatsRow.append('<td></td>');
           }
+
+          typeStatsRow.append('<td onclick="save()">Save</td>');
         });
       });
 
@@ -343,6 +347,9 @@
       }
 
       $('#seals_display').text(Object.keys(seals).length + '/3');
+    }
+    function save(event) {
+      console.log(event);
     }
 
     function getArtifactStats(curve, base) {
