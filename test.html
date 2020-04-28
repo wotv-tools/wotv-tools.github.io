@@ -447,6 +447,7 @@
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
       let item_td = $('#skills').clone();
+      item_td.attr('rowspan', null);
       item_td.prepend('<div>' + item.name + '</div>');
 
       newEl.attr('id', null);
