@@ -106,11 +106,18 @@
       </tr>
     </table>
 
-    <h3>How to craft</h3>
-    <table id="recipe"></table>
-
-    <h4>Total Materials</h4>
-    <table id="total_mats"></table>
+    <table>
+      <tr>
+        <td>
+          <h3>How to craft</h3>
+          <table id="recipe"></table>
+        </td>
+        <td>
+          <h4>Total Materials</h4>
+          <table id="total_mats"></table>
+        </td>
+      </tr>
+    </table>
 
     <h3>Saved Equipment</h3>
     <table id="saved">
@@ -439,9 +446,11 @@
       let newEl = $(el).parent('tr').clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
+      let item_td = $('#skills').clone();
+      item_td.prepend('<div>' + item.name + '</div>');
 
       newEl.attr('id', null);
-      newEl.prepend('<td>' + item.name + '</td>');
+      newEl.prepend(item_id);
       newEl.children().last().remove();
       newEl.append('<td class="clickable" onclick="unsave(this)">X</td>');
       $('#saved').append(newEl);
