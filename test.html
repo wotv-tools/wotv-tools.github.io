@@ -321,25 +321,35 @@
         let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
+          let itemName = 'UNKNOWN';
+          let mat_url = '#';
+          let img_url = '#';
           switch (material.type) {
             case 0:
-              let itemName = itemNameMap[material.id];
-              let mat_url = mat_link + encodeURIComponent(itemName);
-              let img_url = '/img/items/' + material.id + '.png';
+              itemName = itemNameMap[material.id];
+              mat_url = mat_link + encodeURIComponent(itemName);
+              img_url = '/img/items/' + material.id + '.png';
               all_mats.push(itemName);
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
               break;
             case 1:
-              let itemName = artifactNameMap[material.id];
-              let img_url = '/img/equipment/' + material.id + '.png';
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td>' + itemName + ' Lv. ' + material.lv + '</td></tr>');
+              itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
+              img_url = '/img/equipment/' + material.id + '.png';
               break;
           }
+          $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
         });
         $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
 
+      $('#total_mats').empty();
       let mats_total = getTotalMaterials(item.iname);
+      for (mat in mats_total) {
+        let itemName = itemNameMap[mat];
+        let mat_url = mat_link + encodeURIComponent(itemName);
+        let img_url = '/img/items/' + mat + '.png';
+        all_mats.push(itemName);
+        $('#total_mats').append('<tr><td>' + mats_total[mat] + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
+      }
 
       $('#content').removeClass('hidden');
     }
