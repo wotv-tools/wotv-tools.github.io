@@ -32,6 +32,6 @@ table#stats th:first-child {
   display: none;
 }
 
-.no-border {
+.borderless {
   border: none;
 }
