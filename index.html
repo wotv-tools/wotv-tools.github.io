@@ -27,12 +27,12 @@
   </div>
 
   <div id="content" class="hidden">
-    <table id="info" class="no-border">
+    <table id="info" class="borderless">
       <tr>
         <td colspan="2">
           <img id="image" src=""/>
         </td>
-        <td class="no-border">
+        <td class="borderless">
           <table id="stats">
             <tr>
               <th>
@@ -106,11 +106,18 @@
       </tr>
     </table>
 
-    <h3>How to craft</h3>
-    <table id="recipe"></table>
-
-    <h4>Total Materials</h4>
-    <table id="total_mats"></table>
+    <table class="borderless">
+      <tr>
+        <td valign="top" class="borderless">
+          <h3>Recipe</h3>
+          <table id="recipe"></table>
+        </td>
+        <td valign="top" class="borderless">
+          <h3>Total Materials</h3>
+          <table id="total_mats"></table>
+        </td>
+      </tr>
+    </table>
 
     <h3>Saved Equipment</h3>
     <table id="saved">
@@ -439,9 +446,13 @@
       let newEl = $(el).parent('tr').clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
+      let item_td = $('#skills').clone();
+      item_td.attr('colspan', null);
+      item_td.attr('id', null);
+      item_td.prepend('<div><b>' + item.name + '</b></div>');
 
       newEl.attr('id', null);
-      newEl.prepend('<td>' + item.name + '</td>');
+      newEl.prepend(item_td);
       newEl.children().last().remove();
       newEl.append('<td class="clickable" onclick="unsave(this)">X</td>');
       $('#saved').append(newEl);
