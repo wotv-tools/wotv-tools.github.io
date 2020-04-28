@@ -30,16 +30,16 @@
     <table>
       <tr>
         <td>
-          <img src=""/>
+          <img id="image" src=""/>
         </td>
         <td>
           <div id="desc"></div>
-          <ul id="skills"></ul>
+          <div id="skills"></div>
         </td>
       </tr>
     </table>
 
-    <table id="table">
+    <table id="stats">
       <tr>
         <th>
           Seals <span id="seals_display">0/3</span>
@@ -165,7 +165,7 @@
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
 
-      $('#image').attr('src', 'img/' + item.asset);
+      $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
 
       $('#desc').empty();
       switch (item.rare) {

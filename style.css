@@ -22,3 +22,23 @@ th {
 .hidden {
   display: none;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table#stats {
+  text-align: center;
+}
+
+table#stats th {
+  width: 45px;
+}
+
+table#stats th:first-child {
+  width: 60px;
+}
+
+table#stats th {
+  padding: 5px;
+}
