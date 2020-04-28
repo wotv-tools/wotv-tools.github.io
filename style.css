@@ -23,8 +23,12 @@ th {
   display: none;
 }
 
-table, th, td {
+th, td {
   border: 1px solid black;
+}
+
+table#info img#image {
+  width: 150px;
 }
 
 table#stats {

@@ -6,18 +6,18 @@
 </head>
 <body>
   <h1>
-    This tool calculates the AVERAGE stat gain for an item.
+    This tool calculates the AVERAGE stat gain for an equipment.
   </h1>
 
   <div id="instructions">
-    Select your item, item level, and seal(s).
+    Select your equipment, equipment level, and seal(s).
   </div>
 
   <div id="inputs">
-    <select id="items" onchange="onItemChange()">
-      <option disabled selected>-- Select an item --</option>
+    <select id="equipments" onchange="onArtifactChange()">
+      <option disabled selected>-- Select an equipment --</option>
     </select>
-    <select id="level" onchange="onItemChange()">
+    <select id="level" onchange="onArtifactChange()">
       <option value="10">Lv. 10</option>
       <option value="20">Lv. 20</option>
       <option value="30">Lv. 30</option>
@@ -32,7 +32,7 @@
         <td colspan="2">
           <img id="image" src=""/>
         </td>
-        <td rowspan="3">
+        <td>
           <table id="stats">
             <tr>
               <th>
@@ -102,7 +102,8 @@
         <td id="rarity"></td>
       </tr>
       <tr>
-        <td id="skills"></td>
+        <td id="skills" colspan="2"></td>
+        <td id="desc"></td>
       </tr>
     </table>
 
@@ -155,19 +156,19 @@
       value: "crta"
     }];
 
-    function onItemChange() {
+    function onArtifactChange() {
       resetSeals();
       displayStats();
     }
     function displayStats() {
-      let itemKey = $('#items').val();
+      let itemKey = $('#artifacts').val();
       let level = $('#level').val();
 
       if (!itemKey) {
         return;
       }
 
-      let item = itemMap[itemKey];
+      let item = artifactMap[itemKey];
       let item_sk = item['skl' + (level/10)];
       let types = typeMap[item.rtype];
 
@@ -175,7 +176,7 @@
 
       $('#type').empty();
       item.cat.forEach((cat) => {
-        $('#type').append('<div>' + itemCategoryList[cat].value + '</div>');
+        $('#type').append('<div>' + artifactCategoryList[cat].value + '</div>');
       });
 
       $('#rarity').empty();
@@ -235,14 +236,17 @@
         });
       }
 
+      $('#desc').empty();
+      $('#desc').append(artifactFlavorMap[item.iname]);
+
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
       $('#grow3_stats').empty();
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let item_stats = getItemStats(typeGrowth.curve[0], item.status[1]);
-        let item_rates = getItemRates(typeGrowth.rstatus[0], item.randr[0]);
+        let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
+        let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         let ave_stats = Object.assign({}, item.status[0]);
 
         for (let i = 1; i < level; i++) {
@@ -250,41 +254,41 @@
           let pity_stat;
 
           stats.forEach((stat) => {
-            if (!isNaN(item_stats[stat.value])) {
-              ave_stats[stat.value] += item_rates[stat.value] / 100 * item.randa[0][stat.value];
-              pity_rate *= (1 - (item_rates[stat.value] / 100));
+            if (!isNaN(artifact_stats[stat.value])) {
+              ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
+              pity_rate *= (1 - (artifact_rates[stat.value] / 100));
 
-              if (!pity_stat || item_rates[stat.value] > item_rates[pity_stat]) {
+              if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
                   pity_stat = stat.value;
               }
 
-              if (ave_stats[stat.value] > item_stats[stat.value]) {
-                ave_stats[stat.value] = item_stats[stat.value];
-                item_rates[stat.value] = 0;
+              if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+                ave_stats[stat.value] = artifact_stats[stat.value];
+                artifact_rates[stat.value] = 0;
               }
             }
           });
 
           // add pity
           ave_stats[pity_stat] += pity_rate;
-          if (ave_stats[pity_stat] > item_stats[pity_stat]) {
-            ave_stats[pity_stat] = item_stats[pity_stat];
-            item_rates[pity_stat] = 0;
+          if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
+            ave_stats[pity_stat] = artifact_stats[pity_stat];
+            artifact_rates[pity_stat] = 0;
           }
         }
 
         typeStatsRow.append('<td>' + type.label + '</td>');
         stats.forEach((stat) => {
-          if (ave_stats[stat.value] > item_stats[stat.value]) {
-            ave_stats[stat.value] = item_stats[stat.value];
-            item_rates[stat.value] = 0;
+          if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+            ave_stats[stat.value] = artifact_stats[stat.value];
+            artifact_rates[stat.value] = 0;
           } else {
             ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
-          if (!isNaN(item_stats[stat.value] && item.status[0][stat.value] != 0 && item_stats[stat.value] != 0)) {
+          if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value).removeClass('disabled');
-            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + item_stats[stat.value] + '</td>');
+            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + artifact_stats[stat.value] + '</td>');
           } else {
             typeStatsRow.append('<td></td>');
           }
@@ -294,10 +298,10 @@
       // get recipe
       $('#all_mat_link').empty();
       $('#recipe').empty();
-      if (recipeMap[item.iname]) {
+      if (artifactRecipeMap[item.iname]) {
         let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
         let all_mats = [];
-        recipeMap[item.iname].craft.forEach((material) => {
+        artifactRecipeMap[item.iname].craft.forEach((material) => {
           switch (material.type) {
             case 0:
               let itemName = itemNameMap[material.id];
@@ -342,51 +346,51 @@
       $('#seals_display').text(Object.keys(seals).length + '/3');
     }
 
-    function getItemStats(curve, base) {
-      let item_stats = {};
+    function getArtifactStats(curve, base) {
+      let artifact_stats = {};
 
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (curve[stat.value]) {
-            item_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+            artifact_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
 
-            let isNeg = item_stats[stat.value] < 0;
+            let isNeg = artifact_stats[stat.value] < 0;
 
-            item_stats[stat.value] = Math.floor(Math.abs(item_stats[stat.value]));
+            artifact_stats[stat.value] = Math.floor(Math.abs(artifact_stats[stat.value]));
             if (isNeg) {
-              item_stats[stat.value] *= -1;
+              artifact_stats[stat.value] *= -1;
             }
           } else {
-            item_stats[stat.value] = base[stat.value];
+            artifact_stats[stat.value] = base[stat.value];
           }
         }
       });
 
-      return item_stats;
+      return artifact_stats;
     }
 
-    function getItemRates(adjust, base) {
-      let item_rates = {};
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
 
       stats.forEach((stat) => {
         if (base[stat.value]) {
           if (adjust[stat.value]) {
-            item_rates[stat.value] = base[stat.value] + adjust[stat.value];
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
           } else {
-            item_rates[stat.value] = base[stat.value];
+            artifact_rates[stat.value] = base[stat.value];
           }
 
           if (seals[stat.value] && sealGrowthMap[stat.value]) {
-            item_rates[stat.value] += sealGrowthMap[stat.value];
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
-          if (item_rates[stat.value] < 0) {
-            item_rates[stat.value] = 0;
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
           }
         }
       });
 
-      return item_rates;
+      return artifact_rates;
     }
 
     let typeMap = {};
@@ -528,46 +532,53 @@
       });
     });
 
-    let itemCategoryList = [];
+    let artifactCategoryList = [];
     $.getJSON('en/ArtifactCategory.json', (data) => {
-      itemCategoryList = data.infos;
+      artifactCategoryList = data.infos;
 
       // for some reason doesn't match exactly
-      itemCategoryList.splice(4,1); // remove LARGESWORD
-      itemCategoryList.splice(6,1); // remove ROD
-      itemCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
-      itemCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+      artifactCategoryList.splice(4,1); // remove LARGESWORD
+      artifactCategoryList.splice(6,1); // remove ROD
+      artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+      artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
     });
 
-    let itemMap = {};
+    let artifactMap = {};
     $.getJSON('data/Artifact.json', (data) => {
-      let itemList = [];
+      let artifactList = [];
       data.items.forEach((item) => {
         if (item.type >= 0 && item.randa && item.randr) {
-          itemMap[item.iname] = item;
-          itemMap[item.iname].name = artifactNameMap[item.iname];
+          artifactMap[item.iname] = item;
+          artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-          itemList.push({
+          artifactList.push({
             label: artifactNameMap[item.iname],
             value : item.iname
           });
         }
       });
 
-      itemList.sort((a, b) => {
+      artifactList.sort((a, b) => {
         return a.label > b.label ? 1 : -1;
       }).forEach((item) => {
         if (item.label) {
-          $('#items').append('<option value="' + item.value +'">' + item.label + '</option>');
+          $('#artifacts').append('<option value="' + item.value +'">' + item.label + '</option>');
         }
       });
     });
 
+    let artifactFlavorMap = {};
+    $.getJSON('data/ArtifactFlvr.json', (data) => {
+      data.infos.forEach((info) => {
+        artifactFlavorMap[info.key] = info.value;
+      });
+    });
+
     // RECIPES
-    let recipeMap = {};
+    let artifactRecipeMap = {};
     $.getJSON('data/ArtifactRecipe.json', (data) => {
       data.items.forEach((item) => {
-        recipeMap[item.iname] = item;
+        artifactRecipeMap[item.iname] = item;
       });
     });
 
