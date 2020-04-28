@@ -106,8 +106,6 @@
       </tr>
     </table>
 
-
-
     <h3>How to craft</h3>
     <div id="all_mat_link"></div>
     <table id="recipe"></table>
@@ -335,9 +333,10 @@
               break;
           }
         });
-
         $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
+
+      let mats_total = getTotalMaterials(item.iname);
 
       $('#content').removeClass('hidden');
     }
@@ -365,6 +364,53 @@
       }
 
       $('#seals_display').text(Object.keys(seals).length + '/3');
+    }
+    function getTotalMaterials(iname) {
+      let mat_list = {};
+
+      artifactRecipeMap[iname].craft.forEach((material) => {
+        switch (material.type) {
+          case 0:
+            let itemName = itemNameMap[material.id];
+
+            if (!itemName in mat_list) {
+              mat_list[itemName] = 0;
+            }
+
+            mat_list[itemName] += material.num;
+            break;
+          case 1:
+            let artifactAwake = artifactAwakeMap[iname];
+            artifactAwake.awakes.forEach((awake) => {
+              if (awake.lv <= material.lv) {
+                for (key in awake) {
+                  if (key.startsWith('mat')) {
+                    let mat = itemNameMap[awake[key]].split(',');
+
+                    if (!mat[0] in mat_list) {
+                      mat_list[mat[0]] = 0;
+                    }
+
+                    mat_list[mat[0]] += parseInt(mat[1]);
+                  }
+                }
+              }
+            });
+
+            let item_mat_list = getRecipeMaterials(material.id);
+
+            for (key in item_mat_list) {
+              if (!key in mat_list) {
+                mat_list[key] = 0;
+              }
+
+              mat_list[key] += item_mat_list[key];
+            }
+            break;
+        }
+      });
+
+      return mat_list;
     }
     function save(el) {
       let newEl = $(el).parent('tr').clone();
@@ -615,6 +661,13 @@
       data.items.forEach((item) => {
         artifactRecipeMap[item.iname] = item;
       });
+    });
+
+    let artifactAwakeMap = {};
+    $.getJSON('data/ArtifactAwake.json', (data) => {
+      data.items.forEeach((item) => {
+        artifactAwakeMap[item.iname] = item;
+      })
     });
 
     let itemNameMap = {};
