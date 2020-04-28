@@ -665,7 +665,7 @@
 
     let artifactAwakeMap = {};
     $.getJSON('data/ArtifactAwake.json', (data) => {
-      data.items.forEeach((item) => {
+      data.items.forEach((item) => {
         artifactAwakeMap[item.iname] = item;
       })
     });
