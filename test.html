@@ -134,6 +134,7 @@
   </div>
 
   <script>
+    let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
     let stats = [{
       label: "HP",
       value: "hp"
@@ -319,7 +320,6 @@
       $('#all_mat_link').empty();
       $('#recipe').empty();
       if (artifactRecipeMap[item.iname]) {
-        let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
