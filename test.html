@@ -373,7 +373,7 @@
           case 0:
             let itemName = itemNameMap[material.id];
 
-            if (!itemName in mat_list) {
+            if (!(itemName in mat_list)) {
               mat_list[itemName] = 0;
             }
 
@@ -388,7 +388,7 @@
                     let mat = awake[key].split(',');
                     let mat_name = itemNameMap[mat[0]];
 
-                    if (!mat_name in mat_list) {
+                    if (!(mat_name in mat_list)) {
                       mat_list[mat_name] = 0;
                     }
 
@@ -401,7 +401,7 @@
             let item_mat_list = getTotalMaterials(material.id);
 
             for (key in item_mat_list) {
-              if (!key in mat_list) {
+              if (!(key in mat_list)) {
                 mat_list[key] = 0;
               }
 
