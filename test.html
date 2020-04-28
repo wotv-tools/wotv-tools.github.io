@@ -385,13 +385,14 @@
               if (awake.lv <= material.lv) {
                 for (key in awake) {
                   if (key.startsWith('mat')) {
-                    let mat = itemNameMap[awake[key]].split(',');
+                    let mat = awake[key].split(',');
+                    let mat_name = itemNameMap[mat[0]];
 
-                    if (!mat[0] in mat_list) {
-                      mat_list[mat[0]] = 0;
+                    if (!mat_name in mat_list) {
+                      mat_list[mat_name] = 0;
                     }
 
-                    mat_list[mat[0]] += parseInt(mat[1]);
+                    mat_list[mat_name] += parseInt(mat[1]);
                   }
                 }
               }
