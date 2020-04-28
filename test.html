@@ -347,7 +347,7 @@
       }
 
       $('#total_mats').empty();
-      let mats_total = getTotalMaterials(item.iname);
+      let mats_total = getTotalMaterials(item.iname, level);
       for (mat in mats_total) {
         let itemName = itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
@@ -386,7 +386,7 @@
 
       $('#seals_display').text(Object.keys(seals).length + '/3');
     }
-    function getTotalMaterials(iname) {
+    function getTotalMaterials(iname, lv) {
       let mat_list = {};
 
       artifactRecipeMap[iname].craft.forEach((material) => {
@@ -401,24 +401,7 @@
             mat_list[material.id] += material.num;
             break;
           case 1:
-            let artifactAwake = artifactAwakeMap[iname];
-            artifactAwake.awakes.forEach((awake) => {
-              if (awake.lv <= material.lv) {
-                for (key in awake) {
-                  if (key.startsWith('mat')) {
-                    let mat = awake[key].split(',');
-
-                    if (!(mat[0] in mat_list)) {
-                      mat_list[mat[0]] = 0;
-                    }
-
-                    mat_list[mat[0]] += parseInt(mat[1]);
-                  }
-                }
-              }
-            });
-
-            let item_mat_list = getTotalMaterials(material.id);
+            let item_mat_list = getTotalMaterials(material.id, material.lv);
 
             for (key in item_mat_list) {
               if (!(key in mat_list)) {
@@ -428,6 +411,23 @@
               mat_list[key] += item_mat_list[key];
             }
             break;
+        }
+      });
+
+      let artifactAwake = artifactAwakeMap[iname];
+      artifactAwake.awakes.forEach((awake) => {
+        if (awake.lv <= lv) {
+          for (key in awake) {
+            if (key.startsWith('mat')) {
+              let mat = awake[key].split(',');
+
+              if (!(mat[0] in mat_list)) {
+                mat_list[mat[0]] = 0;
+              }
+
+              mat_list[mat[0]] += parseInt(mat[1]);
+            }
+          }
         }
       });
 
