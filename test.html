@@ -351,10 +351,10 @@
       for (mat in mats_total) {
         let itemName = itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
-        // let img_url = '/img/items/' + mat + '.png';
+        let img_url = '/img/items/' + mat + '.png';
         let tr = $('<tr></tr>');
         tr.append('<td>' + mats_total[mat] + 'x</td>');
-        tr.append('<td><img src="' + img_url + '"/></td>');
+        // tr.append('<td><img src="' + img_url + '"/></td>');
         tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
         $('#total_mats').append(tr);
       }
@@ -394,11 +394,11 @@
           case 0:
             let itemName = itemNameMap[material.id];
 
-            if (!(itemName in mat_list)) {
-              mat_list[itemName] = 0;
+            if (!(material.id in mat_list)) {
+              mat_list[material.id] = 0;
             }
 
-            mat_list[itemName] += material.num;
+            mat_list[material.id] += material.num;
             break;
           case 1:
             let artifactAwake = artifactAwakeMap[iname];
@@ -407,13 +407,12 @@
                 for (key in awake) {
                   if (key.startsWith('mat')) {
                     let mat = awake[key].split(',');
-                    let mat_name = itemNameMap[mat[0]];
 
-                    if (!(mat_name in mat_list)) {
-                      mat_list[mat_name] = 0;
+                    if (!(mat[0] in mat_list)) {
+                      mat_list[mat[0]] = 0;
                     }
 
-                    mat_list[mat_name] += parseInt(mat[1]);
+                    mat_list[mat[0]] += parseInt(mat[1]);
                   }
                 }
               }
