@@ -106,11 +106,11 @@
       </tr>
     </table>
 
-
-
     <h3>How to craft</h3>
-    <div id="all_mat_link"></div>
     <table id="recipe"></table>
+
+    <h4>Total Materials</h4>
+    <table id="total_mats"></table>
 
     <h3>Saved Equipment</h3>
     <table id="saved">
@@ -135,6 +135,7 @@
   </div>
 
   <script>
+    let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
     let stats = [{
       label: "HP",
       value: "hp"
@@ -317,26 +318,45 @@
       });
 
       // get recipe
-      $('#all_mat_link').empty();
-      $('#recipe').empty();
-      if (artifactRecipeMap[item.iname]) {
-        let mat_link = 'https://wotvfarmcalculator.github.io/beta.html?i=';
+        $('#recipe').empty();
+        if (artifactRecipeMap[item.iname]) {
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
+          let itemName = 'UNKNOWN';
+          let mat_url = '#';
+          let img_url = '#';
           switch (material.type) {
             case 0:
-              let itemName = itemNameMap[material.id];
-              let mat_url = mat_link + encodeURIComponent(itemName);
+              itemName = itemNameMap[material.id];
+              mat_url = mat_link + encodeURIComponent(itemName);
+              img_url = '/img/items/' + material.id + '.png';
               all_mats.push(itemName);
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
               break;
             case 1:
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td>' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</td></tr>');
+              itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
+              img_url = '/img/equipment/' + material.id + '.png';
               break;
           }
+          let tr = $('<tr></tr>');
+          tr.append('<td>' + material.num + 'x</td>');
+          // tr.append('<td><img src="' + img_url + '"/></td>');
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+          $('#recipe').append(tr);
         });
+        // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
+      }
 
-        $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
+      $('#total_mats').empty();
+      let mats_total = getTotalMaterials(item.iname, level);
+      for (mat in mats_total) {
+        let itemName = itemNameMap[mat];
+        let mat_url = mat_link + encodeURIComponent(itemName);
+        let img_url = '/img/items/' + mat + '.png';
+        let tr = $('<tr></tr>');
+        tr.append('<td>' + mats_total[mat] + 'x</td>');
+        // tr.append('<td><img src="' + img_url + '"/></td>');
+        tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+        $('#total_mats').append(tr);
       }
 
       $('#content').removeClass('hidden');
@@ -365,6 +385,53 @@
       }
 
       $('#seals_display').text(Object.keys(seals).length + '/3');
+    }
+    function getTotalMaterials(iname, lv) {
+      let mat_list = {};
+
+      artifactRecipeMap[iname].craft.forEach((material) => {
+        switch (material.type) {
+          case 0:
+            let itemName = itemNameMap[material.id];
+
+            if (!(material.id in mat_list)) {
+              mat_list[material.id] = 0;
+            }
+
+            mat_list[material.id] += material.num;
+            break;
+          case 1:
+            let item_mat_list = getTotalMaterials(material.id, material.lv);
+
+            for (key in item_mat_list) {
+              if (!(key in mat_list)) {
+                mat_list[key] = 0;
+              }
+
+              mat_list[key] += item_mat_list[key];
+            }
+            break;
+        }
+      });
+
+      let artifactAwake = artifactAwakeMap[iname];
+      artifactAwake.awakes.forEach((awake) => {
+        if (awake.lv <= lv) {
+          for (key in awake) {
+            if (key.startsWith('mat')) {
+              let mat = awake[key].split(',');
+
+              if (!(mat[0] in mat_list)) {
+                mat_list[mat[0]] = 0;
+              }
+
+              mat_list[mat[0]] += parseInt(mat[1]);
+            }
+          }
+        }
+      });
+
+      return mat_list;
     }
     function save(el) {
       let newEl = $(el).parent('tr').clone();
@@ -615,6 +682,13 @@
       data.items.forEach((item) => {
         artifactRecipeMap[item.iname] = item;
       });
+    });
+
+    let artifactAwakeMap = {};
+    $.getJSON('data/ArtifactAwake.json', (data) => {
+      data.items.forEach((item) => {
+        artifactAwakeMap[item.iname] = item;
+      })
     });
 
     let itemNameMap = {};
