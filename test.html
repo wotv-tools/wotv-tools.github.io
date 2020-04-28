@@ -111,27 +111,28 @@
     <h3>How to craft</h3>
     <div id="all_mat_link"></div>
     <table id="recipe"></table>
-  </div>
 
-  <table id="saved">
-    <tr>
-      <th>Weapon</th>
-      <th>Type</th>
-      <th>HP</th>
-      <th>TP</th>
-      <th>AP</th>
-      <th>ATK</th>
-      <th>DEF</th>
-      <th>MAG</th>
-      <th>SPR</th>
-      <th>ACC</th>
-      <th>DEX</th>
-      <th>AGI</th>
-      <th>EVA</th>
-      <th>CRIT</th>
-      <th>CRIT.A</th>
-    </tr>
-  </table>
+    <h3>Saved Equipment</h3>
+    <table id="saved">
+      <tr>
+        <th>Weapon</th>
+        <th>Type</th>
+        <th>HP</th>
+        <th>TP</th>
+        <th>AP</th>
+        <th>ATK</th>
+        <th>DEF</th>
+        <th>MAG</th>
+        <th>SPR</th>
+        <th>ACC</th>
+        <th>DEX</th>
+        <th>AGI</th>
+        <th>EVA</th>
+        <th>CRIT</th>
+        <th>CRIT.A</th>
+      </tr>
+    </table>
+  </div>
 
   <script>
     let stats = [{
@@ -373,7 +374,11 @@
       newEl.attr('id', null);
       newEl.prepend('<td>' + item.name + '</td>');
       newEl.children().last().remove();
+      newEl.append('<td onclick="delete(this)>X</td>"');
       $('#saved').append(newEl);
+    }
+    function delete(el) {
+      $(el).parent('tr').remove();
     }
 
     function getArtifactStats(curve, base) {
