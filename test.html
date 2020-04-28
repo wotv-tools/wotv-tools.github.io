@@ -337,7 +337,11 @@
               img_url = '/img/equipment/' + material.id + '.png';
               break;
           }
-          $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
+          let tr = $('<tr></tr>');
+          tr.append('<td>' + material.num + 'x</td>');
+          // tr.append('<td><img src="' + img_url + '"/></td>');
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+          $('#recipe').append(tr);
         });
         $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
@@ -347,8 +351,12 @@
       for (mat in mats_total) {
         let itemName = itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
-        let img_url = '/img/items/' + mat + '.png';
-        $('#total_mats').append('<tr><td>' + mats_total[mat] + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
+        // let img_url = '/img/items/' + mat + '.png';
+        let tr = $('<tr></tr>');
+        tr.append('<td>' + mats_total[mat] + 'x</td>');
+        tr.append('<td><img src="' + img_url + '"/></td>');
+        tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+        $('#total_mats').append(tr);
       }
 
       $('#content').removeClass('hidden');
