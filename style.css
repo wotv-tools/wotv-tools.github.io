@@ -20,6 +20,10 @@ table#stats th:first-child {
   width: 60px;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .disabled {
   background-color: lightgray;
 }
@@ -28,6 +32,6 @@ table#stats th:first-child {
   display: none;
 }
 
-.clickable {
-  cursor: pointer;
+.no-border {
+  border: none;
 }
