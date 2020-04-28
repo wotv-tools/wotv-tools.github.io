@@ -325,11 +325,14 @@
             case 0:
               let itemName = itemNameMap[material.id];
               let mat_url = mat_link + encodeURIComponent(itemName);
+              let img_url = '/img/items/' + material.id + '.png';
               all_mats.push(itemName);
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
               break;
             case 1:
-              $('#recipe').append('<tr><td>' + material.num + 'x</td><td>' + artifactNameMap[material.id] + ' Lv. ' + material.lv + '</td></tr>');
+              let itemName = artifactNameMap[material.id];
+              let img_url = '/img/equipment/' + material.id + '.png';
+              $('#recipe').append('<tr><td>' + material.num + 'x</td><td><img src="' + img_url + '"/></td><td>' + itemName + ' Lv. ' + material.lv + '</td></tr>');
               break;
           }
         });
