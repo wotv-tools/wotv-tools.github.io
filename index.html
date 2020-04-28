@@ -323,24 +323,26 @@
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
-          let mat_url = '#';
           let img_url = '#';
+          let tr = $('<tr></tr>');
+
+          tr.append('<td>' + material.num + 'x</td>');
+
           switch (material.type) {
             case 0:
               itemName = itemNameMap[material.id];
-              mat_url = mat_link + encodeURIComponent(itemName);
+              let mat_url = mat_link + encodeURIComponent(itemName);
               img_url = '/img/items/' + material.id + '.png';
               all_mats.push(itemName);
+              tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
               break;
             case 1:
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
               img_url = '/img/equipment/' + material.id + '.png';
+              tr.append('<td>' + itemName + '</td>');
               break;
           }
-          let tr = $('<tr></tr>');
-          tr.append('<td>' + material.num + 'x</td>');
           // tr.append('<td><img src="' + img_url + '"/></td>');
-          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });
         // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
