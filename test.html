@@ -348,7 +348,6 @@
         let itemName = itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
         let img_url = '/img/items/' + mat + '.png';
-        all_mats.push(itemName);
         $('#total_mats').append('<tr><td>' + mats_total[mat] + 'x</td><td><img src="' + img_url + '"/></td><td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td></tr>');
       }
 
