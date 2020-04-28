@@ -26,8 +26,8 @@
     </select>
   </div>
 
-  <div id="info" class="hidden">
-    <table>
+  <div id="content" class="hidden">
+    <table id="info">
       <tr>
         <td colspan="2">
           <img id="image" src=""/>
@@ -100,10 +100,10 @@
       <tr>
         <td id="type"></td>
         <td id="rarity"></td>
+        <td id="desc" rowspan="2"></td>
       </tr>
       <tr>
         <td id="skills" colspan="2"></td>
-        <td id="desc"></td>
       </tr>
     </table>
 
@@ -318,7 +318,7 @@
         $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
       }
 
-      $('#info').removeClass('hidden');
+      $('#content').removeClass('hidden');
     }
 
     let seals = {}
