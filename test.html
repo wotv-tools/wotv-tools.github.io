@@ -113,7 +113,25 @@
     <table id="recipe"></table>
   </div>
 
-  <div id="saved"></div>
+  <table id="saved">
+    <tr>
+      <th>Weapon</th>
+      <th>Type</th>
+      <th>HP</th>
+      <th>TP</th>
+      <th>AP</th>
+      <th>ATK</th>
+      <th>DEF</th>
+      <th>MAG</th>
+      <th>SPR</th>
+      <th>ACC</th>
+      <th>DEX</th>
+      <th>AGI</th>
+      <th>EVA</th>
+      <th>CRIT</th>
+      <th>CRIT.A</th>
+    </tr>
+  </table>
 
   <script>
     let stats = [{
@@ -293,9 +311,8 @@
           } else {
             typeStatsRow.append('<td></td>');
           }
-
-          typeStatsRow.append('<td onclick="save()">Save</td>');
         });
+        typeStatsRow.append('<td onclick="save(this)">Save</td>');
       });
 
       // get recipe
