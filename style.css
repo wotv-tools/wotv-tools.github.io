@@ -46,3 +46,7 @@ table#stats th:first-child {
 table#stats th {
   padding: 5px;
 }
+
+.no-border {
+  border: none;
+}
