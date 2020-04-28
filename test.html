@@ -568,7 +568,7 @@
     });
 
     let artifactFlavorMap = {};
-    $.getJSON('data/ArtifactFlvr.json', (data) => {
+    $.getJSON('en/ArtifactFlvr.json', (data) => {
       data.infos.forEach((info) => {
         artifactFlavorMap[info.key] = info.value;
       });
