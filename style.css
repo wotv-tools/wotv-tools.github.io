@@ -1,14 +1,7 @@
-th {
+th, td {
+  border: 1px solid black;
   padding: 5px;
-}
-
-th, td {
-  border: 1px solid black;
   text-align: center;
-}
-
-th, td {
-  border: 1px solid black;
 }
 
 table#info img#image {
@@ -33,4 +26,8 @@ table#stats th:first-child {
 
 .hidden {
   display: none;
+}
+
+.clickable {
+  cursor: pointer;
 }

@@ -38,55 +38,55 @@
               <th>
                 Seals <span id="seals_display">0/3</span>
               </th>
-              <th class="stat disabled stat_hp" onclick="toggleSeal('hp')">
+              <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
                 <label for="">HP</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_mp" onclick="toggleSeal('mp')">
+              <th class="stat clickable disabled stat_mp" onclick="toggleSeal('mp')">
                 <label for="">TP</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_ap" onclick="toggleSeal('ap')">
+              <th class="stat clickable disabled stat_ap" onclick="toggleSeal('ap')">
                 <label for="">AP</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_atk" onclick="toggleSeal('atk')">
+              <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
                 <label for="">ATK</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_def" onclick="toggleSeal('def')">
+              <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
                 <label for="">DEF</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_mag" onclick="toggleSeal('mag')">
+              <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
                 <label for="">MAG</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_mnd" onclick="toggleSeal('mnd')">
+              <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
                 <label for="">SPR</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_hit" onclick="toggleSeal('hit')">
+              <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
                 <label for="">ACC</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_dex" onclick="toggleSeal('dex')">
+              <th class="stat clickable disabled stat_dex" onclick="toggleSeal('dex')">
                 <label for="">DEX</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_spd" onclick="toggleSeal('spd')">
+              <th class="stat clickable disabled stat_spd" onclick="toggleSeal('spd')">
                 <label for="">AGI</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_avd" onclick="toggleSeal('avd')">
+              <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
                 <label for="">EVA</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_crt" onclick="toggleSeal('crt')">
+              <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
                 <label for="">CRIT</label><br/>
                 <input type="checkbox" disabled />
               </th>
-              <th class="stat disabled stat_crta" onclick="toggleSeal('crta')">
+              <th class="stat clickable disabled stat_crta" onclick="toggleSeal('crta')">
                 <label for="">CRIT.A</label><br/>
                 <input type="checkbox" disabled />
               </th>
@@ -313,7 +313,7 @@
             typeStatsRow.append('<td></td>');
           }
         });
-        typeStatsRow.append('<td onclick="save(this)">Save</td>');
+        typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
       });
 
       // get recipe
@@ -374,7 +374,7 @@
       newEl.attr('id', null);
       newEl.prepend('<td>' + item.name + '</td>');
       newEl.children().last().remove();
-      newEl.append('<td onclick="unsave(this)">X</td>');
+      newEl.append('<td class="clickable" onclick="unsave(this)">X</td>');
       $('#saved').append(newEl);
     }
     function unsave(el) {
