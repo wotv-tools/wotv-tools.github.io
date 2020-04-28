@@ -374,10 +374,10 @@
       newEl.attr('id', null);
       newEl.prepend('<td>' + item.name + '</td>');
       newEl.children().last().remove();
-      newEl.append('<td onclick="delete(this)>X</td>"');
+      newEl.append('<td onclick="unsave(this)>X</td>"');
       $('#saved').append(newEl);
     }
-    function delete(el) {
+    function unsave(el) {
       $(el).parent('tr').remove();
     }
 
