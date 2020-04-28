@@ -219,16 +219,16 @@
                   break;
                 default:
                   buff_text = buffNameList[buff.type1].value;
+
+                  switch (buff.calc1) {
+                    case 3:
+                      buff_text += ' Res';
+                      break;
+                  }
+
+                  buff_text += ' ' + buff.val1
                   break;
               }
-
-              switch (buff.calc1) {
-                case 3:
-                  buff_text += ' Res';
-                  break;
-              }
-
-              buff_text += ' ' + buff.val1
               $('#skills').append('<div>' + buff_text + '</div>');
             });
           }
