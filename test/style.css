@@ -1,0 +1,37 @@
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+table#info img#image {
+  width: 150px;
+}
+
+table#stats {
+  text-align: center;
+}
+
+table#stats th {
+  width: 45px;
+}
+
+table#stats th:first-child {
+  width: 60px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: lightgray;
+}
+
+.hidden {
+  display: none;
+}
+
+.borderless {
+  border: none;
+}
