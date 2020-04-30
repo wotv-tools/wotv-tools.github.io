@@ -26,6 +26,7 @@ table#stats th:first-child {
 
 .disabled {
   background-color: lightgray;
+  color: gray;
 }
 
 .hidden {
