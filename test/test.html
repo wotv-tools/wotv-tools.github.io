@@ -370,8 +370,9 @@
       // typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
 
       // get recipe
-        $('#recipe').empty();
-        if (artifactRecipeMap[item.iname]) {
+      $('#recipe').empty();
+      $('#total_mats').empty();
+      if (artifactRecipeMap[item.iname]) {
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
@@ -398,19 +399,18 @@
           $('#recipe').append(tr);
         });
         // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
-      }
 
-      $('#total_mats').empty();
-      let mats_total = getTotalMaterials(item.iname, level);
-      for (mat in mats_total) {
-        let itemName = itemNameMap[mat];
-        let mat_url = mat_link + encodeURIComponent(itemName);
-        let img_url = '/img/items/' + mat + '.png';
-        let tr = $('<tr></tr>');
-        tr.append('<td>' + mats_total[mat] + 'x</td>');
-        // tr.append('<td><img src="' + img_url + '"/></td>');
-        tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
-        $('#total_mats').append(tr);
+        let mats_total = getTotalMaterials(item.iname, level);
+        for (mat in mats_total) {
+          let itemName = itemNameMap[mat];
+          let mat_url = mat_link + encodeURIComponent(itemName);
+          let img_url = '/img/items/' + mat + '.png';
+          let tr = $('<tr></tr>');
+          tr.append('<td>' + mats_total[mat] + 'x</td>');
+          // tr.append('<td><img src="' + img_url + '"/></td>');
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+          $('#total_mats').append(tr);
+        }
       }
 
       $('#content').removeClass('hidden');
