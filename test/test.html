@@ -304,7 +304,7 @@
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
                 // guessing growth for no rstatus growth
-                ave_stats[stat.value] += Math.min(level-1, typeGrowth.curve[0].lv) / typeGrowth.curve[0] * (artifact_stats[stat.value] - item.status[0][stat.value]);
+                ave_stats[stat.value] += Math.min(level-1, typeGrowth.curve[0].lv) / typeGrowth.curve[0].lv * (artifact_stats[stat.value] - item.status[0][stat.value]);
               }
             });
             break;
