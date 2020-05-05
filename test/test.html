@@ -288,68 +288,85 @@
       $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
 
-      if (types) {
-        types.forEach((type, i) => {
-          let typeGrowth = growthMap[type.value];
-          let typeStatsRow = $('#grow' + (i+1) + '_stats');
-          let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
-          let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
-          let ave_stats = Object.assign({}, item.status[0]);
-
-          for (let i = 1; i < level; i++) {
-            let pity_rate = 1;
-            let pity_stat;
+      types.forEach((type, i) => {
+        let typeGrowth = growthMap[type.value];
+        let typeStatsRow = $('#grow' + (i+1) + '_stats');
+        let artifact_stats, artifact_rates, ave_stats;
+        switch(type.value) {
+          case 'ARTIFACT_TRUST':
+            artifact_stats = item.status[1];
+            ave_stats = item.status[1];
+            break;
+          case 'ARTIFACT_50':
+            artifact_stats = item.status[1];
+            ave_stats = Object.assign({}, item.status[0]);
 
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
-                ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
-                pity_rate *= (1 - (artifact_rates[stat.value] / 100));
-
-                if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
-                    pity_stat = stat.value;
-                }
-
-                if (ave_stats[stat.value] > artifact_stats[stat.value]) {
-                  ave_stats[stat.value] = artifact_stats[stat.value];
-                  artifact_rates[stat.value] = 0;
-                }
+                ave_stats[stat.value] += Math.min(level-1, typeGrowth.curve[0].lv) / typeGrowth.curve[0] * (artifact_stats[stat.value] - item.status[0][stat.value]);
               }
             });
+            break;
+          default:
+            artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
+            ave_stats = Object.assign({}, item.status[0]);
 
-            // add pity
-            ave_stats[pity_stat] += pity_rate;
-            if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
-              ave_stats[pity_stat] = artifact_stats[pity_stat];
-              artifact_rates[pity_stat] = 0;
+            for (let i = 1; i < level; i++) {
+              let pity_rate = 1;
+              let pity_stat;
+
+              stats.forEach((stat) => {
+                if (!isNaN(artifact_stats[stat.value])) {
+                  ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
+                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+
+                  if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
+                      pity_stat = stat.value;
+                  }
+
+                  if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+                    ave_stats[stat.value] = artifact_stats[stat.value];
+                    artifact_rates[stat.value] = 0;
+                  }
+                }
+              });
+
+              // add pity
+              ave_stats[pity_stat] += pity_rate;
+              if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
+                ave_stats[pity_stat] = artifact_stats[pity_stat];
+                artifact_rates[pity_stat] = 0;
+              }
             }
+            break;
+        }
+
+        typeStatsRow.append('<td>' + type.label + '</td>');
+        stats.forEach((stat) => {
+          if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+            ave_stats[stat.value] = artifact_stats[stat.value];
+            artifact_rates[stat.value] = 0;
+          } else {
+            ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
-          typeStatsRow.append('<td>' + type.label + '</td>');
-          stats.forEach((stat) => {
-            if (ave_stats[stat.value] > artifact_stats[stat.value]) {
-              ave_stats[stat.value] = artifact_stats[stat.value];
-              artifact_rates[stat.value] = 0;
-            } else {
-              ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
-            }
-
-            if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-              $('.stat.stat_' + stat.value).removeClass('disabled');
-              typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + artifact_stats[stat.value] + '</td>');
-            } else {
-              typeStatsRow.append('<td></td>');
-            }
-          });
-          typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
-        });
-      } else {
-        let typeStatsRow = $('#grow1_stats');
-        typeStatsRow.append('<td>(none)</td>');
-        stats.forEach((stat) => {
-          typeStatsRow.append('<td>' + status[1][stat] + '/' + status[1][stat] + '</td>');
+          if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
+            $('.stat.stat_' + stat.value).removeClass('disabled');
+            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + artifact_stats[stat.value] + '</td>');
+          } else {
+            typeStatsRow.append('<td></td>');
+          }
         });
         typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
-      }
+      });
+
+      // let typeStatsRow = $('#grow1_stats');
+      // typeStatsRow.append('<td>(none)</td>');
+      // stats.forEach((stat) => {
+      //   typeStatsRow.append('<td>' + status[1][stat] + '/' + status[1][stat] + '</td>');
+      // });
+      // typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
 
       // get recipe
         $('#recipe').empty();
