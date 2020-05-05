@@ -309,7 +309,7 @@
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
                 // guessing growth for no rstatus growth
-                ave_stats[stat.value] = item.status[0][stat.value] + Math.min(level-1, typeGrowth.curve[0].lv) / typeGrowth.curve[0].lv * (item.status[1][stat.value] - item.status[0][stat.value]);
+                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv) / typeGrowth.curve[0].lv;
               }
             });
             break;
@@ -324,7 +324,7 @@
 
               stats.forEach((stat) => {
                 if (!isNaN(artifact_stats[stat.value])) {
-                  ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
+                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
                   pity_rate *= (1 - (artifact_rates[stat.value] / 100));
 
                   if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
