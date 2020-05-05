@@ -304,7 +304,7 @@
             break;
           case 'ARTIFACT_50':
             artifact_stats = item.status[1];
-            ave_stats = item.status[0];
+            ave_stats = Object.assign({}, item.status[0]);
 
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
