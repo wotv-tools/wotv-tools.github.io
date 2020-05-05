@@ -151,6 +151,12 @@
     </table>
   </div>
 
+  <footer>
+    <div><a target="_blank" href="changelogs.html">Change Logs</a> - 2020-05-05</div>
+    <div>Please report issues <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">here</a>.</div>
+    <div>All data taken from <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">https://github.com/shalzuth/wotv-ffbe-dump</a></div>
+  </footer>
+
   <script>
     let mat_link = 'https://wotvfarmcalculator.github.io/?i=';
     let stats = [{
@@ -200,15 +206,13 @@
     }
     function displayStats() {
       let itemKey = $('#artifacts').val();
-      let level = $('#level').val();
-
       if (!itemKey) {
         return;
       }
 
       let item = artifactMap[itemKey];
+      let level = $('#level').val();
       let item_sk = item['skl' + (level/10)];
-      let types = typeMap[item.rtype];
 
       $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
 
@@ -243,13 +247,18 @@
           if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
               let buff = buffMap[s_buff];
-              let buff_text;
+              let buff_text, killer_index_offset;
 
               switch (buff.type1) {
+                // Elemental Killer
+                case 119:
+                  killer_index_offset = 76;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value; + ' ' + buff.val1;
+                  break;
                 // Species Killer
                 case 120:
-                  let killer_index_offset = -8;
-                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
+                  killer_index_offset = -8;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value + ' ' + buff.val1;
                   break;
                 // Condition Granted
                 case 123:
@@ -270,6 +279,8 @@
               }
               $('#skills').append('<div>' + buff_text + '</div>');
             });
+          } else if (skillNameMap[skl]) {
+              $('#skills').append('<div>' + skillNameMap[skl] + '</div>');
           }
         });
       }
@@ -280,39 +291,61 @@
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
       $('#grow3_stats').empty();
+      let types = typeMap[item.rtype];
+
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
-        let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
-        let ave_stats = Object.assign({}, item.status[0]);
+        let artifact_stats, artifact_rates, ave_stats;
+        switch(type.value) {
+          case 'ARTIFACT_TRUST':
+            artifact_stats = item.status[1];
+            ave_stats = item.status[1];
+            break;
+          case 'ARTIFACT_50':
+            artifact_stats = item.status[1];
+            ave_stats = Object.assign({}, item.status[0]);
 
-        for (let i = 1; i < level; i++) {
-          let pity_rate = 1;
-          let pity_stat;
-
-          stats.forEach((stat) => {
-            if (!isNaN(artifact_stats[stat.value])) {
-              ave_stats[stat.value] += artifact_rates[stat.value] / 100 * item.randa[0][stat.value];
-              pity_rate *= (1 - (artifact_rates[stat.value] / 100));
-
-              if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
-                  pity_stat = stat.value;
+            stats.forEach((stat) => {
+              if (!isNaN(artifact_stats[stat.value])) {
+                // guessing growth for no rstatus growth
+                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
               }
+            });
+            break;
+          default:
+            artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
+            ave_stats = Object.assign({}, item.status[0]);
 
-              if (ave_stats[stat.value] > artifact_stats[stat.value]) {
-                ave_stats[stat.value] = artifact_stats[stat.value];
-                artifact_rates[stat.value] = 0;
+            for (let i = 1; i < level; i++) {
+              let pity_rate = 1;
+              let pity_stat;
+
+              stats.forEach((stat) => {
+                if (!isNaN(artifact_stats[stat.value])) {
+                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
+                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+
+                  if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
+                      pity_stat = stat.value;
+                  }
+
+                  if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+                    ave_stats[stat.value] = artifact_stats[stat.value];
+                    artifact_rates[stat.value] = 0;
+                  }
+                }
+              });
+
+              // add pity
+              ave_stats[pity_stat] += pity_rate;
+              if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
+                ave_stats[pity_stat] = artifact_stats[pity_stat];
+                artifact_rates[pity_stat] = 0;
               }
             }
-          });
-
-          // add pity
-          ave_stats[pity_stat] += pity_rate;
-          if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
-            ave_stats[pity_stat] = artifact_stats[pity_stat];
-            artifact_rates[pity_stat] = 0;
-          }
+            break;
         }
 
         typeStatsRow.append('<td>' + type.label + '</td>');
@@ -334,9 +367,17 @@
         typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
       });
 
+      // let typeStatsRow = $('#grow1_stats');
+      // typeStatsRow.append('<td>(none)</td>');
+      // stats.forEach((stat) => {
+      //   typeStatsRow.append('<td>' + status[1][stat] + '/' + status[1][stat] + '</td>');
+      // });
+      // typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
+
       // get recipe
-        $('#recipe').empty();
-        if (artifactRecipeMap[item.iname]) {
+      $('#recipe').empty();
+      $('#total_mats').empty();
+      if (artifactRecipeMap[item.iname]) {
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
@@ -363,19 +404,18 @@
           $('#recipe').append(tr);
         });
         // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
-      }
 
-      $('#total_mats').empty();
-      let mats_total = getTotalMaterials(item.iname, level);
-      for (mat in mats_total) {
-        let itemName = itemNameMap[mat];
-        let mat_url = mat_link + encodeURIComponent(itemName);
-        let img_url = '/img/items/' + mat + '.png';
-        let tr = $('<tr></tr>');
-        tr.append('<td>' + mats_total[mat] + 'x</td>');
-        // tr.append('<td><img src="' + img_url + '"/></td>');
-        tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
-        $('#total_mats').append(tr);
+        let mats_total = getTotalMaterials(item.iname, level);
+        for (mat in mats_total) {
+          let itemName = itemNameMap[mat];
+          let mat_url = mat_link + encodeURIComponent(itemName);
+          let img_url = '/img/items/' + mat + '.png';
+          let tr = $('<tr></tr>');
+          tr.append('<td>' + mats_total[mat] + 'x</td>');
+          // tr.append('<td><img src="' + img_url + '"/></td>');
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+          $('#total_mats').append(tr);
+        }
       }
 
       $('#content').removeClass('hidden');
@@ -519,11 +559,13 @@
     }
 
     let typeMap = {};
+    // init
     $.getJSON('en/ArtifactGrow.json', (data) => {
       let typeNameMap = {};
       data.infos.forEach((info) => {
         typeNameMap[info.key] = info.value;
       });
+      // 20200422_4c9ea1e3
       $.getJSON('data/ArtifactRandLot.json', (data) => {
         data.items.forEach((item) => {
           typeMap[item.iname] = [];
@@ -550,6 +592,7 @@
     });
 
     let growthMap = {};
+    // init
     $.getJSON('data/Grow.json', (data) => {
       data.items.forEach((item) => {
         growthMap[item.type] = {
@@ -560,6 +603,7 @@
     });
 
     let buffMap = {};
+    // 20200422_4c9ea1e3
     $.getJSON('data/Buff.json', (data) => {
       data.items.forEach((item) => {
         buffMap[item.iname] = item;
@@ -567,6 +611,7 @@
     });
 
     let buffNameList = [];
+    // 20200422_4c9ea1e3 translations
     $.getJSON('en/Buff.json', (data) => {
       // pretty sure this is the right list
       // but needs modifications for now
@@ -636,13 +681,25 @@
     });
 
     let skillMap = {};
+    // 20200429_0d4b0c72
     $.getJSON('data/Skill.json', (data) => {
       data.items.forEach((item) => {
         skillMap[item.iname] = item;
       });
     });
 
+    let skillNameMap = {};
+    // 20200429_0d4b0c72
+    $.getJSON('en/SkillName.json', (data) => {
+      data.infos.forEach((info) => {
+        if (info.value) {
+          skillNameMap[info.key] = info.value;
+        }
+      });
+    });
+
     let artifactNameMap = {};
+    // 20200422_4c9ea1e3 translations
     $.getJSON('en/ArtifactName.json', (data) => {
       data.infos.forEach((info) => {
         artifactNameMap[info.key] = info.value;
@@ -650,6 +707,7 @@
     });
 
     let sealGrowthMap = {};
+    // init
     $.getJSON('data/ArtifactGrowItem.json', (data) => {
       data.items.forEach((item) => {
         let stat = stats[item.grow_up[0].eff_dst];
@@ -658,6 +716,7 @@
     });
 
     let artifactCategoryList = [];
+    // init
     $.getJSON('en/ArtifactCategory.json', (data) => {
       artifactCategoryList = data.infos;
 
@@ -669,10 +728,11 @@
     });
 
     let artifactMap = {};
+    // 	20200422_4c9ea1e3
     $.getJSON('data/Artifact.json', (data) => {
       let artifactList = [];
       data.items.forEach((item) => {
-        if (item.type >= 0 && item.randa && item.randr) {
+        if (item.type >= 0) {
           artifactMap[item.iname] = item;
           artifactMap[item.iname].name = artifactNameMap[item.iname];
 
@@ -693,6 +753,7 @@
     });
 
     let artifactFlavorMap = {};
+    // 20200422_4c9ea1e3 translations
     $.getJSON('en/ArtifactFlvr.json', (data) => {
       data.infos.forEach((info) => {
         artifactFlavorMap[info.key] = info.value;
@@ -701,6 +762,7 @@
 
     // RECIPES
     let artifactRecipeMap = {};
+    // 20200422_4c9ea1e3
     $.getJSON('data/ArtifactRecipe.json', (data) => {
       data.items.forEach((item) => {
         artifactRecipeMap[item.iname] = item;
@@ -708,6 +770,7 @@
     });
 
     let artifactAwakeMap = {};
+    // 20200422_4c9ea1e3
     $.getJSON('data/ArtifactAwake.json', (data) => {
       data.items.forEach((item) => {
         artifactAwakeMap[item.iname] = item;
@@ -715,6 +778,7 @@
     });
 
     let itemNameMap = {};
+    // 20200422_4c9ea1e3 translations
     $.getJSON('en/ItemName.json', (data) => {
       data.infos.forEach((info) => {
         itemNameMap[info.key] = info.value;
