@@ -253,12 +253,12 @@
                 // Elemental Killer
                 case 119:
                   killer_index_offset = 76;
-                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value; + ' ' + buff.val1;
                   break;
                 // Species Killer
                 case 120:
                   killer_index_offset = -8;
-                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value + ' ' + buff.val1;
                   break;
                 // Condition Granted
                 case 123:
@@ -274,10 +274,9 @@
                       break;
                   }
 
+                  buff_text += ' ' + buff.val1
                   break;
               }
-              buff_text += ' ' + buff.val1;
-
               $('#skills').append('<div>' + buff_text + '</div>');
             });
           } else if (skillNameMap[skl]) {
