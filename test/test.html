@@ -274,9 +274,10 @@
                       break;
                   }
 
-                  buff_text += ' ' + buff.val1
                   break;
               }
+              buff_text += ' ' + buff.val1;
+
               $('#skills').append('<div>' + buff_text + '</div>');
             });
           } else if (skillNameMap[skl]) {
