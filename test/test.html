@@ -247,12 +247,16 @@
           if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
               let buff = buffMap[s_buff];
-              let buff_text;
+              let buff_text, killer_index_offset;
 
               switch (buff.type1) {
+                // Elemental Killer
+                case 119:
+                  killer_index_offset = 76;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
                 // Species Killer
                 case 120:
-                  let killer_index_offset = -8;
+                  killer_index_offset = -8;
                   buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
                   break;
                 // Condition Granted
