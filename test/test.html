@@ -245,41 +245,39 @@
       $('#skills').empty();
       if (item_sk) {
         item_sk.forEach((skl) => {
-          if (skillNameMap[skl]) {
-            $('#skills').append('<div>' + skillNameMap[skl] + '</div>');
-          } else {
-            let skill = skillMap[skl];
-            if (skill.s_buffs) {
-              skill.s_buffs.forEach((s_buff) => {
-                let buff = buffMap[s_buff];
-                let buff_text;
+          let skill = skillMap[skl];
+          if (skill.s_buffs) {
+            skill.s_buffs.forEach((s_buff) => {
+              let buff = buffMap[s_buff];
+              let buff_text;
 
-                switch (buff.type1) {
-                  // Species Killer
-                  case 120:
-                    let killer_index_offset = -8;
-                    buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
-                    break;
-                  // Condition Granted
-                  case 123:
-                    let buff2 = buffMap[buff.id1];
-                    buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
-                    break;
-                  default:
-                    buff_text = buffNameList[buff.type1].value;
+              switch (buff.type1) {
+                // Species Killer
+                case 120:
+                  let killer_index_offset = -8;
+                  buff_text = buffNameList[buff.type1 + buff.tag1[0] + killer_index_offset].value;
+                  break;
+                // Condition Granted
+                case 123:
+                  let buff2 = buffMap[buff.id1];
+                  buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
+                  break;
+                default:
+                  buff_text = buffNameList[buff.type1].value;
 
-                    switch (buff.calc1) {
-                      case 3:
-                        buff_text += ' Res';
-                        break;
-                    }
+                  switch (buff.calc1) {
+                    case 3:
+                      buff_text += ' Res';
+                      break;
+                  }
 
-                    buff_text += ' ' + buff.val1
-                    break;
-                }
-                $('#skills').append('<div>' + buff_text + '</div>');
-              });
-            }
+                  buff_text += ' ' + buff.val1
+                  break;
+              }
+              $('#skills').append('<div>' + buff_text + '</div>');
+            });
+          } else if (skillNameMap[skl]) {
+              $('#skills').append('<div>' + skillNameMap[skl] + '</div>');
           }
         });
       }
