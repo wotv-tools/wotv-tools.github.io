@@ -26,6 +26,7 @@ table#stats th:first-child {
 
 .disabled {
   background-color: lightgray;
+  color: gray;
 }
 
 .hidden {
@@ -34,4 +35,8 @@ table#stats th:first-child {
 
 .borderless {
   border: none;
+}
+
+footer {
+  margin-top: 50px;
 }
