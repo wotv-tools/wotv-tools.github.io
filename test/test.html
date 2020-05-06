@@ -24,8 +24,12 @@
   </div>
 
   <div id="inputs">
-    <select id="artifacts" onchange="onArtifactChange()">
+    <select onchange="onArtifactChange()">
       <option disabled selected>-- Select an equipment --</option>
+      <optgroup id="artifacts-weapon"></optgroup>
+      <optgroup id="artifacts-armor"></optgroup>
+      <optgroup id="artifacts-accessory"></optgroup>
+      <optgroup id="artifacts-other"></optgroup>
     </select>
     <select id="level" onchange="onArtifactChange()">
       <option value="10">Lv. 10</option>
@@ -132,7 +136,7 @@
     <h3>Saved Equipment</h3>
     <table id="saved">
       <tr>
-        <th>Weapon</th>
+        <th>Equipment</th>
         <th>Type</th>
         <th>HP</th>
         <th>TP</th>
@@ -297,7 +301,7 @@
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
         let artifact_stats, artifact_rates, ave_stats;
-        switch(type.value) {
+        switch (type.value) {
           case 'ARTIFACT_TRUST':
             artifact_stats = item.status[1];
             ave_stats = item.status[1];
@@ -731,23 +735,57 @@
     // 	20200422_4c9ea1e3
     $.getJSON('data/Artifact.json', (data) => {
       let artifactList = [];
+      let artifactWeaponList = [];
+      let artifactArmorList = [];
+      let artifactAccessoryList = [];
       data.items.forEach((item) => {
         if (item.type >= 0) {
           artifactMap[item.iname] = item;
           artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-          artifactList.push({
+          let artifactListEntry = {
             label: artifactNameMap[item.iname],
             value : item.iname
-          });
+          };
+
+          if (item.cat[0] > 0 && item.cat[0] < 17) {
+            artifactWeaponList.push(artifactListEntry);
+          } else if (item.cat[0] < 22) {
+            artifactArmorList.push(artifactListEntry);
+          } else if (item.cat[0] == 22) {
+            artifactAccessoryList.push(artifactListEntry);
+          } else {
+            artifactList.push(artifactListEntry);
+          }
         }
       });
 
+      artifactWeaponList.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      }).forEach((item) => {
+        if (item.label) {
+          $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
+        }
+      });
+      artifactArmorList.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      }).forEach((item) => {
+        if (item.label) {
+          $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
+        }
+      });
+      artifactAccessoryList.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      }).forEach((item) => {
+        if (item.label) {
+          $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
+        }
+      });
       artifactList.sort((a, b) => {
         return a.label > b.label ? 1 : -1;
       }).forEach((item) => {
         if (item.label) {
-          $('#artifacts').append('<option value="' + item.value +'">' + item.label + '</option>');
+          $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
         }
       });
     });
