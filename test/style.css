@@ -75,7 +75,6 @@ table#stats th.disabled, table#stats th.disabled label {
   cursor: default;
 }
 
-
 table#stats th:first-child {
   cursor: default;
 }
@@ -88,7 +87,6 @@ table#stats tr:hover td, table#saved tr:hover td {
   background-color: lightblue;
   cursor: pointer;
 }
-
 
 .cell table {
   float: left;
