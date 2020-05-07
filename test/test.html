@@ -30,7 +30,7 @@
         <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
         <optgroup id="artifacts-other" label="Others"></optgroup>
       </select>
-      <select id="level" onchange="onArtifactChange()"></select>
+      <select id="level" class="hidden" onchange="onArtifactChange()"></select>
     </div>
 
     <div id="content" class="hidden">
@@ -56,10 +56,7 @@
 
         <table id="stats">
           <tr>
-            <th>
-              <div>Seals</div>
-              <div id="seals_display"></div>
-            </th>
+            <th>Seals</th>
             <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
               <label for="">HP</label><br/>
               <input type="checkbox" disabled />
@@ -305,20 +302,22 @@
       $('#level').empty();
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
-          $('#level').append('<option selected value="1">1</option>');
+          $('#level').append('<option selected value="1">Lv. 1</option>');
           break;
         case 'ARTIFACT_50':
-          $('#level').append('<option value="10">10</option>');
-          $('#level').append('<option value="20">20</option>');
-          $('#level').append('<option selected value="30">30</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option selected value="30">Lv. 30</option>');
           break;
         default:
-        $('#level').append('<option value="10">10</option>');
-        $('#level').append('<option value="20">20</option>');
-        $('#level').append('<option value="30">30</option>');
-        $('#level').append('<option value="40">40</option>');
-        $('#level').append('<option selected value="50">50</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').append('<option value="40">Lv. 40</option>');
+          $('#level').append('<option selected value="50">Lv. 50</option>');
+          break;
       }
+      $('#level').removeClass('hidden');
 
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
@@ -466,7 +465,7 @@
         displayStats();
       }
 
-      $('#seals_display').text(Object.keys(seals).length + '/3');
+      // $('#seals_display').text(Object.keys(seals).length + '/3');
     }
     function getTotalMaterials(iname, lv) {
       let mat_list = {};
