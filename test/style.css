@@ -36,6 +36,10 @@ table#stats th:first-child {
   width: 60px;
 }
 
+footer div {
+  float: left;
+}
+
 .clickable {
   cursor: pointer;
 }
