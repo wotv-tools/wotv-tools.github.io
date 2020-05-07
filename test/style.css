@@ -40,35 +40,11 @@ footer {
   margin: 0 5px;
 }
 
-.cell table {
-  float: left;
-  margin: 0 5px;
-}
-
-.cell::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-#stats th {
-  cursor: pointer;
-}
-
-#stats th:first-child {
-  cursor: default;
-}
-
 table {
   border-collapse: collapse;
 }
 
-tr:hover td {
-  background-color: lightblue;
-  cursor: pointer;
-}
-
-th, td {
+table th, table td {
   border: 1px solid black;
   padding: 5px;
   text-align: center;
@@ -78,16 +54,33 @@ table#info img#image {
   width: 150px;
 }
 
-table#stats {
-  text-align: center;
-}
-
 table#stats th {
+  cursor: pointer;
   width: 45px;
 }
 
 table#stats th:first-child {
   width: 60px;
+}
+
+table#stats th:first-child {
+  cursor: default;
+}
+
+table#stats tr:hover td {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.cell table {
+  float: left;
+  margin: 0 5px;
+}
+
+.cell::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .clickable {
