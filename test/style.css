@@ -62,19 +62,19 @@ table#stats {
   width: 75%;
 }
 
-table#stats th.clickable, table#stats th.clickable label {
+table#seals td img {
+  width: 50px;
+}
+
+table#seals td.clickable, table#seals td.clickable label {
   cursor: pointer;
 }
 
-table#seals th.disabled {
+table#seals td.disabled {
   background-color: lightgray;
 }
 
-table#stats th.disabled, table#stats th.disabled label {
-  cursor: default;
-}
-
-table#stats th:first-child {
+table#seals td.disabled, table#seals td.disabled label {
   cursor: default;
 }
 
