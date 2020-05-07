@@ -37,6 +37,10 @@ footer {
   float: left;
 }
 
+.cell::after {
+  clear: left;
+}
+
 #stats th {
   cursor: pointer;
 }
