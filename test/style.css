@@ -38,7 +38,9 @@ footer {
 }
 
 .cell::after {
-  clear: left;
+  content: "";
+  display: block;
+  clear: both;
 }
 
 #stats th {
