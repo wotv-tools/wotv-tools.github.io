@@ -19,10 +19,6 @@
     This tool calculates the AVERAGE stat gain for an equipment.
   </h1>
 
-  <div id="instructions">
-    Select your equipment, equipment level, and seal(s).
-  </div>
-
   <div id="inputs">
     <select id="artifacts" onchange="onArtifactChange()">
       <option disabled selected>-- Select an equipment --</option>
@@ -120,7 +116,7 @@
       </tr>
     </table>
 
-    <table class="borderless">
+    <table class="borderless" id="recipe_table">
       <tr>
         <td valign="top" class="borderless">
           <h3>Recipe</h3>
@@ -379,6 +375,7 @@
       // typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
 
       // get recipe
+      $('#recipe_table').addClass('hidden');
       $('#recipe').empty();
       $('#total_mats').empty();
       if (artifactRecipeMap[item.iname]) {
@@ -420,6 +417,7 @@
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
         }
+        $('#recipe_table').removeClass('hidden');
       }
 
       $('#content').removeClass('hidden');
