@@ -30,13 +30,7 @@
         <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
         <optgroup id="artifacts-other" label="Others"></optgroup>
       </select>
-      <select id="level" onchange="onArtifactChange()">
-        <option value="10">Lv. 10</option>
-        <option value="20">Lv. 20</option>
-        <option value="30">Lv. 30</option>
-        <option value="40">Lv. 40</option>
-        <option value="50" selected>Lv. 50</option>
-      </select>
+      <select id="level" class="hidden" onchange="onArtifactChange()"></select>
     </div>
 
     <div id="content" class="hidden">
@@ -307,6 +301,24 @@
       $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
 
+      $('#level').empty();
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+          $('#level').append('<option selected value="1">1</option>');
+          break;
+        case 'ARTIFACT_50':
+          $('#level').append('<option value="10">10</option>');
+          $('#level').append('<option value="20">20</option>');
+          $('#level').append('<option selected value="30">30</option>');
+          break;
+        default:
+        $('#level').append('<option value="10">10</option>');
+        $('#level').append('<option value="20">20</option>');
+        $('#level').append('<option value="30">30</option>');
+        $('#level').append('<option value="40">40</option>');
+        $('#level').append('<option selected value="50">50</option>');
+      }
+
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
@@ -327,6 +339,7 @@
                 ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
               }
             });
+
             break;
           default:
             artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
