@@ -78,7 +78,7 @@
             <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
             <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
           </table>
-          
+
           <table id="seals">
             <tr>
               <th colspan="8">Seals</th>
@@ -395,7 +395,11 @@
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value).removeClass('hidden');
-            typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
+            if (seals[stat.value]) {
+              typeStatsRow.append('<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value] + '</td>');
+            } else {
+              typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
+            }
           } else {
             typeStatsRow.append('<td> - </td>');
           }

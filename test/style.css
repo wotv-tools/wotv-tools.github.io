@@ -52,7 +52,7 @@ table th, table td {
 }
 
 table#seals {
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 table#seals img {
