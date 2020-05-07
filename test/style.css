@@ -36,6 +36,10 @@ footer {
   margin: 10px 0;
 }
 
+#inputs select {
+  margin: 0 5px;
+}
+
 .cell table {
   float: left;
   margin: 0 5px;
