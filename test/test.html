@@ -83,35 +83,35 @@
               <th colspan="8">Seals</th>
             </tr>
             <tr id="seal_toggles" class="hidden">
-              <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
+              <th class="stat clickable hidden stat_hp" onclick="toggleSeal('hp')">
                 <label for="">HP<br/><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
+              <th class="stat clickable hidden stat_atk" onclick="toggleSeal('atk')">
                 <label for=""><img src="img/items/IT_AF_SUP_ATK.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
+              <th class="stat clickable hidden stat_def" onclick="toggleSeal('def')">
                 <label for=""><img src="img/items/IT_AF_SUP_DEF.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
+              <th class="stat clickable hidden stat_mag" onclick="toggleSeal('mag')">
                 <label for=""><img src="img/items/IT_AF_SUP_MAG.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
+              <th class="stat clickable hidden stat_mnd" onclick="toggleSeal('mnd')">
                 <label for=""><img src="img/items/IT_AF_SUP_MND.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
+              <th class="stat clickable hidden stat_hit" onclick="toggleSeal('hit')">
                 <label for=""><img src="img/items/IT_AF_SUP_HIT.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
+              <th class="stat clickable hidden stat_avd" onclick="toggleSeal('avd')">
                 <label for=""><img src="img/items/IT_AF_SUP_AVO.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
-              <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
+              <th class="stat clickable hidden stat_crt" onclick="toggleSeal('crt')">
                 <label for=""><img src="img/items/IT_AF_SUP_CRI.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
               </th>
@@ -393,7 +393,7 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value).removeClass('disabled');
+            $('.stat.stat_' + stat.value).removeClass('hidden');
             typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
           } else {
             typeStatsRow.append('<td> - </td>');
@@ -453,8 +453,7 @@
     let seals = {}
     function resetSeals() {
       seals = {};
-      $('.stat').addClass('disabled');
-      $('.stat')
+      $('.stat').addClass('hidden');
       $('.stat input').prop('checked', false);
       $('#seal_toggles').addClass('hidden');
     }
