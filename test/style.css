@@ -3,7 +3,7 @@ body {
 }
 
 body a {
-  color: gray;
+  color: black;
 }
 
 #header {
@@ -12,14 +12,33 @@ body a {
   width: 100%
 }
 
+#header h1 {
+  height: 40px;
+}
+
 #main_content {
   margin: 0 auto;
+  margin-bottom: -20px;
   padding: 10px;
   width: 1000px;
 }
 
+footer {
+  font-weight: bold;
+  height: 20px;
+  text-align: center;
+}
+
 #inputs {
   margin: 10px 0;
+}
+
+#stats th {
+  cursor: pointer;
+}
+
+#stats th:first-child {
+  cursor: default;
 }
 
 th, td {
@@ -42,10 +61,6 @@ table#stats th {
 
 table#stats th:first-child {
   width: 60px;
-}
-
-footer {
-  text-align: center;
 }
 
 .clickable {
