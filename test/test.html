@@ -49,7 +49,7 @@
             <table id="stats">
               <tr>
                 <th>
-                  Seals <span id="seals_display">0/3</span>
+                  Type
                 </th>
                 <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
                   <label for="">HP</label><br/>
@@ -111,8 +111,12 @@
           </td>
         </tr>
         <tr>
-          <td id="type"></td>
+          <td>Rarity</td>
           <td id="rarity"></td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td id="type"></td>
         </tr>
         <tr>
           <td id="skills" colspan="2"></td>
@@ -226,19 +230,19 @@
       $('#rarity').empty();
       switch (item.rare) {
         case 0:
-          $('#rarity').append('<div>N - Rarity</div>');
+          $('#rarity').append('<div>N</div>');
           break;
         case 1:
-          $('#rarity').append('<div>R - Rarity</div>');
+          $('#rarity').append('<div>R</div>');
           break;
         case 2:
-          $('#rarity').append('<div>SR - Rarity</div>');
+          $('#rarity').append('<div>SR</div>');
           break;
         case 3:
-          $('#rarity').append('<div>MR - Rarity</div>');
+          $('#rarity').append('<div>MR</div>');
           break;
         case 4:
-          $('#rarity').append('<div>UR - Rarity</div>');
+          $('#rarity').append('<div>UR</div>');
           break;
       }
 
@@ -447,7 +451,7 @@
         displayStats();
       }
 
-      $('#seals_display').text(Object.keys(seals).length + '/3');
+      // $('#seals_display').text(Object.keys(seals).length + '/3');
     }
     function getTotalMaterials(iname, lv) {
       let mat_list = {};
