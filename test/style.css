@@ -75,6 +75,10 @@ table#stats tr:hover td {
   cursor: pointer;
 }
 
+table#saved {
+  width: 100%;
+}
+
 .cell table {
   float: left;
   margin: 0 5px;
