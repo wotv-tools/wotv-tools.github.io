@@ -62,9 +62,19 @@ table#stats {
   width: 75%;
 }
 
-table#stats th {
+table#stats th, table#stats th label {
   cursor: pointer;
 }
+
+table#stats th.disabled {
+  background-color: lightgray;
+  color: gray;
+}
+
+table#stats th.disabled, table#stats th.disabled label {
+  cursor: default;
+}
+
 
 table#stats th:first-child {
   cursor: default;
@@ -93,11 +103,6 @@ table#stats tr:hover td, table#saved tr:hover td {
 
 .clickable {
   cursor: pointer;
-}
-
-.disabled {
-  background-color: lightgray;
-  color: gray;
 }
 
 .hidden {
