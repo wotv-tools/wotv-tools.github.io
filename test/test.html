@@ -359,7 +359,7 @@
             break;
         }
 
-        typeStatsRow.append('<td>' + (type.label ? type.label : '(none)') + '</td>');
+        typeStatsRow.append('<td>' + (type.label ? type.label : '-') + '</td>');
         stats.forEach((stat) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
