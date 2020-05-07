@@ -1,4 +1,9 @@
-body {
+#header {
+  border-bottom: 1px solid black;
+  width: 100%
+}
+
+#content {
   cursor: default;
   margin: 0 auto;
   padding: 10px;

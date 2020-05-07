@@ -15,140 +15,142 @@
 <title>WotV:FFBE Equipment Calculator</title>
 </head>
 <body>
-  <h1>
-    This tool calculates the AVERAGE stat gain for an equipment.
+  <h1 id="header">
+    Equipment Calculator
   </h1>
 
-  <div id="inputs">
-    <select id="artifacts" onchange="onArtifactChange()">
-      <option disabled selected>-- Select an equipment --</option>
-      <optgroup id="artifacts-weapon" label="Weapons"></optgroup>
-      <optgroup id="artifacts-armor" label="Armors"></optgroup>
-      <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
-      <optgroup id="artifacts-other" label="Others"></optgroup>
-    </select>
-    <select id="level" onchange="onArtifactChange()">
-      <option value="10">Lv. 10</option>
-      <option value="20">Lv. 20</option>
-      <option value="30">Lv. 30</option>
-      <option value="40">Lv. 40</option>
-      <option value="50" selected>Lv. 50</option>
-    </select>
-  </div>
+  <div id="content">
+    <div id="inputs">
+      <select id="artifacts" onchange="onArtifactChange()">
+        <option disabled selected>-- Select an equipment --</option>
+        <optgroup id="artifacts-weapon" label="Weapons"></optgroup>
+        <optgroup id="artifacts-armor" label="Armors"></optgroup>
+        <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
+        <optgroup id="artifacts-other" label="Others"></optgroup>
+      </select>
+      <select id="level" onchange="onArtifactChange()">
+        <option value="10">Lv. 10</option>
+        <option value="20">Lv. 20</option>
+        <option value="30">Lv. 30</option>
+        <option value="40">Lv. 40</option>
+        <option value="50" selected>Lv. 50</option>
+      </select>
+    </div>
 
-  <div id="content" class="hidden">
-    <table id="info" class="borderless">
-      <tr>
-        <td colspan="2">
-          <img id="image" src=""/>
-        </td>
-        <td class="borderless">
-          <table id="stats">
-            <tr>
-              <th>
-                Seals <span id="seals_display">0/3</span>
-              </th>
-              <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
-                <label for="">HP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mp" onclick="toggleSeal('mp')">
-                <label for="">TP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_ap" onclick="toggleSeal('ap')">
-                <label for="">AP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
-                <label for="">ATK</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
-                <label for="">DEF</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
-                <label for="">MAG</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
-                <label for="">SPR</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
-                <label for="">ACC</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_dex" onclick="toggleSeal('dex')">
-                <label for="">DEX</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_spd" onclick="toggleSeal('spd')">
-                <label for="">AGI</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
-                <label for="">EVA</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
-                <label for="">CRIT</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_crta" onclick="toggleSeal('crta')">
-                <label for="">CRIT.A</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-            </tr>
-            <tr id="grow1_stats"></tr>
-            <tr id="grow2_stats"></tr>
-            <tr id="grow3_stats"></tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td id="type"></td>
-        <td id="rarity"></td>
-      </tr>
-      <tr>
-        <td id="skills" colspan="2"></td>
-      </tr>
-    </table>
+    <div id="content" class="hidden">
+      <table id="info" class="borderless">
+        <tr>
+          <td colspan="2">
+            <img id="image" src=""/>
+          </td>
+          <td class="borderless">
+            <table id="stats">
+              <tr>
+                <th>
+                  Seals <span id="seals_display">0/3</span>
+                </th>
+                <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
+                  <label for="">HP</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_mp" onclick="toggleSeal('mp')">
+                  <label for="">TP</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_ap" onclick="toggleSeal('ap')">
+                  <label for="">AP</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
+                  <label for="">ATK</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
+                  <label for="">DEF</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
+                  <label for="">MAG</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
+                  <label for="">SPR</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
+                  <label for="">ACC</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_dex" onclick="toggleSeal('dex')">
+                  <label for="">DEX</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_spd" onclick="toggleSeal('spd')">
+                  <label for="">AGI</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
+                  <label for="">EVA</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
+                  <label for="">CRIT</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+                <th class="stat clickable disabled stat_crta" onclick="toggleSeal('crta')">
+                  <label for="">CRIT.A</label><br/>
+                  <input type="checkbox" disabled />
+                </th>
+              </tr>
+              <tr id="grow1_stats"></tr>
+              <tr id="grow2_stats"></tr>
+              <tr id="grow3_stats"></tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td id="type"></td>
+          <td id="rarity"></td>
+        </tr>
+        <tr>
+          <td id="skills" colspan="2"></td>
+        </tr>
+      </table>
 
-    <table class="borderless" id="recipe_table">
-      <tr>
-        <td valign="top" class="borderless">
-          <h3>Recipe</h3>
-          <table id="recipe"></table>
-        </td>
-        <td valign="top" class="borderless">
-          <h3>Total Materials</h3>
-          <table id="total_mats"></table>
-        </td>
-      </tr>
-    </table>
+      <table class="borderless" id="recipe_table">
+        <tr>
+          <td valign="top" class="borderless">
+            <h3>Recipe</h3>
+            <table id="recipe"></table>
+          </td>
+          <td valign="top" class="borderless">
+            <h3>Total Materials</h3>
+            <table id="total_mats"></table>
+          </td>
+        </tr>
+      </table>
 
-    <h3>Saved Equipment</h3>
-    <table id="saved">
-      <tr>
-        <th>Equipment</th>
-        <th>Type</th>
-        <th>HP</th>
-        <th>TP</th>
-        <th>AP</th>
-        <th>ATK</th>
-        <th>DEF</th>
-        <th>MAG</th>
-        <th>SPR</th>
-        <th>ACC</th>
-        <th>DEX</th>
-        <th>AGI</th>
-        <th>EVA</th>
-        <th>CRIT</th>
-        <th>CRIT.A</th>
-      </tr>
-    </table>
+      <h3>Saved Equipment</h3>
+      <table id="saved">
+        <tr>
+          <th>Equipment</th>
+          <th>Type</th>
+          <th>HP</th>
+          <th>TP</th>
+          <th>AP</th>
+          <th>ATK</th>
+          <th>DEF</th>
+          <th>MAG</th>
+          <th>SPR</th>
+          <th>ACC</th>
+          <th>DEX</th>
+          <th>AGI</th>
+          <th>EVA</th>
+          <th>CRIT</th>
+          <th>CRIT.A</th>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <footer>
