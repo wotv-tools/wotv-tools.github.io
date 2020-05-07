@@ -42,24 +42,13 @@ footer {
 
 table {
   border-collapse: collapse;
+  margin: 0 5px;
 }
 
 table th, table td {
   border: 1px solid black;
   padding: 5px;
   text-align: center;
-}
-
-.cell#info {
-  width: 20%;
-}
-
-.cell#info img#image {
-  width: 100%;
-}
-
-.cell#stats {
-  width: 75%;
 }
 
 table#seals img {
@@ -85,7 +74,19 @@ table#saved {
 
 .grid .cell {
   float: left;
-  margin: 0 5px;
+  margin: 0;
+}
+
+.cell#info {
+  width: 15%;
+}
+
+.cell#info img#image {
+  width: 100%;
+}
+
+.cell#stats {
+  width: 85%;
 }
 
 .grid::after {
