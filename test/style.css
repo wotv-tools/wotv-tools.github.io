@@ -24,9 +24,12 @@ body a {
 }
 
 footer {
+  border-top: 1px solid black;
   font-weight: bold;
   height: 20px;
+  margin-top: 50px;
   text-align: center;
+  width: 100%;
 }
 
 #inputs {
@@ -98,8 +101,4 @@ table#stats th:first-child {
 
 .borderless {
   border: none;
-}
-
-footer {
-  margin-top: 50px;
 }
