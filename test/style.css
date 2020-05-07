@@ -42,6 +42,7 @@ table#stats th:first-child {
 
 footer div {
   float: left;
+  margin: 10px 0;
 }
 
 .clickable {
