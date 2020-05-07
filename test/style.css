@@ -87,12 +87,12 @@ table#stats tr:hover td, table#saved tr:hover td {
   cursor: pointer;
 }
 
-.cell table {
+.grid .cell {
   float: left;
   margin: 0 5px;
 }
 
-.cell::after {
+.grid::after {
   content: "";
   display: block;
   clear: both;
