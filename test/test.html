@@ -71,7 +71,7 @@
             <th>CRIT</th>
             <th>CRIT EVADE</th>
           </tr>
-          <tr>
+          <tr id="seal_toggles" class="hidden">
             <th>Seals</th>
             <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
               <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
@@ -316,6 +316,7 @@
           $('#level').append('<option value="30">Lv. 30</option>');
           $('#level').append('<option value="40">Lv. 40</option>');
           $('#level').append('<option selected value="50">Lv. 50</option>');
+          $('#seal_toggles').removeClass('hidden');
           break;
       }
       $('#level').removeClass('hidden');
@@ -450,6 +451,7 @@
       $('.stat').addClass('disabled');
       $('.stat')
       $('.stat input').prop('checked', false);
+      $('#seal_toggles').addClass('hidden');
     }
     function toggleSeal(stat) {
       if ($('.stat.stat_' + stat).hasClass('disabled')) {
