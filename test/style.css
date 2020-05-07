@@ -33,6 +33,10 @@ footer {
   margin: 10px 0;
 }
 
+#cell table {
+  float: left;
+}
+
 #stats th {
   cursor: pointer;
 }
