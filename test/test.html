@@ -118,9 +118,9 @@
               <input type="checkbox" disabled />
             </th>
           </tr>
-          <tr id="grow1_stats"></tr>
-          <tr id="grow2_stats"></tr>
-          <tr id="grow3_stats"></tr>
+          <tr id="grow1_stats" onclick="save(this)"></tr>
+          <tr id="grow2_stats" onclick="save(this)"></tr>
+          <tr id="grow3_stats" onclick="save(this)"></tr>
         </table>
       </div>
 
@@ -375,7 +375,6 @@
             typeStatsRow.append('<td></td>');
           }
         });
-        typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
       });
 
       // let typeStatsRow = $('#grow1_stats');
@@ -506,7 +505,7 @@
       return mat_list;
     }
     function save(el) {
-      let newEl = $(el).parent('tr').clone();
+      let newEl = $(el).clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
       let item_td = $('#skills').clone();
