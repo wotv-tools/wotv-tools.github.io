@@ -66,9 +66,8 @@ table#stats th.clickable, table#stats th.clickable label {
   cursor: pointer;
 }
 
-table#stats th.disabled {
+table#seals th.disabled {
   background-color: lightgray;
-  color: gray;
 }
 
 table#stats th.disabled, table#stats th.disabled label {

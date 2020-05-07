@@ -56,7 +56,7 @@
 
         <table id="stats">
           <tr>
-            <th></th>
+            <th>Growth Type</th>
             <th>HP</th>
             <th>TP</th>
             <th>AP</th>
@@ -75,13 +75,13 @@
           <tr id="grow2_stats" onclick="save(this)"></tr>
           <tr id="grow3_stats" onclick="save(this)"></tr>
         </table>
-        <table>
+        <table id="seals">
           <tr>
             <th colspan="8">Seals</th>
           </tr>
           <tr id="seal_toggles" class="hidden">
             <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
-              <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
+              <label for="">HP<br/><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
@@ -377,7 +377,7 @@
             break;
         }
 
-        typeStatsRow.append('<td>' + (type.label ? type.label : '-') + '</td>');
+        typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
         stats.forEach((stat) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
