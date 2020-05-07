@@ -62,7 +62,7 @@ table#stats {
   width: 75%;
 }
 
-table#stats th, table#stats th label {
+table#stats th.clickable, table#stats th.clickable label {
   cursor: pointer;
 }
 
@@ -99,10 +99,6 @@ table#stats tr:hover td, table#saved tr:hover td {
   content: "";
   display: block;
   clear: both;
-}
-
-.clickable {
-  cursor: pointer;
 }
 
 .hidden {
