@@ -48,11 +48,11 @@
             </td>
           </tr>
           <tr>
-            <td>Rarity</td>
+            <td><b>Rarity</b></td>
             <td id="rarity"></td>
           </tr>
           <tr>
-            <td>Type</td>
+            <td><b>Type</b></td>
             <td id="type"></td>
           </tr>
           <tr>
@@ -374,7 +374,7 @@
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value).removeClass('disabled');
-            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/<b>' + artifact_stats[stat.value] + '</b></td>');
+            typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
           } else {
             typeStatsRow.append('<td> - </td>');
           }
