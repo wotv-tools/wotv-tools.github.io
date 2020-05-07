@@ -66,10 +66,6 @@ table#seals td img {
   width: 50px;
 }
 
-table#seals td.clickable, table#seals td.clickable label {
-  cursor: pointer;
-}
-
 table#seals td.disabled {
   background-color: lightgray;
 }
@@ -82,7 +78,7 @@ table#saved {
   width: 100%;
 }
 
-.selectable:hover {
+.selectable:hover, .selectable:hover label {
   background-color: lightblue;
   cursor: pointer;
 }
