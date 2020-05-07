@@ -71,14 +71,19 @@
             <th>CRIT</th>
             <th>CRIT EVADE</th>
           </tr>
+          <tr id="grow1_stats" onclick="save(this)"></tr>
+          <tr id="grow2_stats" onclick="save(this)"></tr>
+          <tr id="grow3_stats" onclick="save(this)"></tr>
+        </table>
+        <table>
+          <tr>
+            <th colspan="8">Seals</th>
+          </tr>
           <tr id="seal_toggles" class="hidden">
-            <th>Seals</th>
             <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
               <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat disabled stat_mp"></th>
-            <th class="stat disabled stat_ap"></th>
             <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
               <label for=""><img src="img/items/IT_AF_SUP_ATK.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
@@ -99,8 +104,6 @@
               <label for=""><img src="img/items/IT_AF_SUP_HIT.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat disabled stat_dex"></th>
-            <th class="stat disabled stat_spd"></th>
             <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
               <label for=""><img src="img/items/IT_AF_SUP_AVO.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
@@ -109,11 +112,7 @@
               <label for=""><img src="img/items/IT_AF_SUP_CRI.png"/></label><br/>
               <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat disabled stat_crta"></th>
           </tr>
-          <tr id="grow1_stats" onclick="save(this)"></tr>
-          <tr id="grow2_stats" onclick="save(this)"></tr>
-          <tr id="grow3_stats" onclick="save(this)"></tr>
         </table>
       </div>
 
