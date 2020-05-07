@@ -56,59 +56,60 @@
 
         <table id="stats">
           <tr>
+            <th></th>
+            <th>HP</th>
+            <th>TP</th>
+            <th>AP</th>
+            <th>ATK</th>
+            <th>DEF</th>
+            <th>MAG</th>
+            <th>SPR</th>
+            <th>ACC</th>
+            <th>EVADE</th>
+            <th>AGI</th>
+            <th>DEX</th>
+            <th>CRIT</th>
+            <th>CRIT EVADE</th>
+          </tr>
+          <tr>
             <th>Seals</th>
             <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
-              <label for="">HP</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat clickable disabled stat_mp" onclick="toggleSeal('mp')">
-              <label for="">TP</label><br/>
-              <input type="checkbox" disabled />
-            </th>
-            <th class="stat clickable disabled stat_ap" onclick="toggleSeal('ap')">
-              <label for="">AP</label><br/>
-              <input type="checkbox" disabled />
-            </th>
+            <th class="stat disabled stat_mp"></th>
+            <th class="stat disabled stat_ap"></th>
             <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
-              <label for="">ATK</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_ATK.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
-              <label for="">DEF</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_DEF.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
-              <label for="">MAG</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_MAG.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
-              <label for="">SPR</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_MND.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
-              <label for="">ACC</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_HIT.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat clickable disabled stat_dex" onclick="toggleSeal('dex')">
-              <label for="">DEX</label><br/>
-              <input type="checkbox" disabled />
-            </th>
-            <th class="stat clickable disabled stat_spd" onclick="toggleSeal('spd')">
-              <label for="">AGI</label><br/>
-              <input type="checkbox" disabled />
-            </th>
+            <th class="stat disabled stat_dex"></th>
+            <th class="stat disabled stat_spd"></th>
             <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
-              <label for="">EVA</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_AVO.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
             <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
-              <label for="">CRIT</label><br/>
-              <input type="checkbox" disabled />
+              <label for=""><img src="img/items/IT_AF_SUP_CRI.png"/></label><br/>
+              <input type="checkbox" class="hidden" disabled />
             </th>
-            <th class="stat clickable disabled stat_crta" onclick="toggleSeal('crta')">
-              <label for="">CRIT.A</label><br/>
-              <input type="checkbox" disabled />
-            </th>
+            <th class="stat disabled stat_crta"></th>
           </tr>
           <tr id="grow1_stats" onclick="save(this)"></tr>
           <tr id="grow2_stats" onclick="save(this)"></tr>
