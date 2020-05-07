@@ -70,14 +70,15 @@ table#stats th:first-child {
   cursor: default;
 }
 
-table#stats tr:hover td {
+table#saved {
+  width: 100%;
+}
+
+table#stats tr:hover td, table#saved tr:hover td {
   background-color: lightblue;
   cursor: pointer;
 }
 
-table#saved {
-  width: 100%;
-}
 
 .cell table {
   float: left;
