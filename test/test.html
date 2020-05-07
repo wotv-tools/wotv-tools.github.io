@@ -295,6 +295,9 @@
           }
         });
       }
+      if (!$.trim($('#skills').html())) {
+          $('#skills').append('<div>-</div>');
+      }
 
       // $('#desc').empty();
       // $('#desc').append(artifactFlavorMap[item.iname]);

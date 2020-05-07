@@ -20,7 +20,6 @@ body a {
   margin: 0 auto;
   margin-bottom: -20px;
   padding: 10px;
-  width: 1000px;
 }
 
 footer {
@@ -50,17 +49,20 @@ table th, table td {
   text-align: center;
 }
 
+table#info {
+  width: 20%;
+}
+
 table#info img#image {
-  width: 150px;
+  width: 100%;
+}
+
+table#stats {
+  width: 75%;
 }
 
 table#stats th {
   cursor: pointer;
-  width: 45px;
-}
-
-table#stats th:first-child {
-  width: 60px;
 }
 
 table#stats th:first-child {
