@@ -2,6 +2,10 @@ body {
   cursor: default;
 }
 
+body a {
+  color: gray;
+}
+
 #header {
   border-bottom: 1px solid black;
   text-align: center;
@@ -40,9 +44,8 @@ table#stats th:first-child {
   width: 60px;
 }
 
-footer div {
-  float: left;
-  margin: 10px 0;
+footer {
+  text-align: center;
 }
 
 .clickable {
