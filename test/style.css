@@ -82,7 +82,7 @@ table#saved {
   width: 100%;
 }
 
-table tr.selectable:hover td {
+.selectable:hover {
   background-color: lightblue;
   cursor: pointer;
 }
