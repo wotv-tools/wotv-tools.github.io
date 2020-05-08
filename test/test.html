@@ -211,10 +211,13 @@
       resetSeals();
       updateLevels();
       displayStats();
+      setHash();
     }
     function onLevelChange() {
       displayStats();
+      setHash();
     }
+
     function displayStats() {
       let itemKey = $('#artifacts').val();
       if (!itemKey) {
@@ -877,6 +880,36 @@
         itemNameMap[info.key] = info.value;
       });
     });
+
+    function setHash() {
+      let itemKey = $('#artifacts').val();
+      let level = $('#level').val();
+      if (!itemKey) {
+        return;
+      }
+
+      let item = artifactMap[itemKey];
+      let types = typeMap[item.rtype];
+
+      let unhash = {
+        artifact: itemKey,
+        level: level
+      };
+
+      window.location.hash = atob(unhash);
+    }
+
+    if (window.location.hash) {
+      let unhash = btoa(window.location.hash);
+      let selections = JSON.parse(hash);
+
+      if (selections.artifact) {
+        $('#artifact').val(selections.artifact);
+      }
+      if (selections.level) {
+        $('#level').val(selections.level);
+      }
+    }
   </script>
 </body>
 </html>
