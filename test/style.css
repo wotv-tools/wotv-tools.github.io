@@ -9,6 +9,14 @@ body a {
   color: white;
 }
 
+select {
+  background: #463525;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+}
+
 #header {
   border-bottom: 1px solid #c1b5a6;
   text-align: center;
