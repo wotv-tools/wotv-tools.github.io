@@ -963,8 +963,8 @@
         let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
         if (unhash.artifact) {
-          $('#artifact').val(unhash.artifact);
-          $('#artifact').change();
+          $('#artifacts').val(unhash.artifact);
+          $('#artifacts').change();
         }
         if (unhash.level) {
           $('#level').val(unhash.level);
