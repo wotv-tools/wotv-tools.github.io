@@ -1,14 +1,16 @@
 body {
+  background: #332b2c;
+  color: white;
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body a {
-  color: black;
+  color: white;
 }
 
 #header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #c1b5a6;
   text-align: center;
   width: 100%
 }
@@ -25,7 +27,7 @@ body a {
 }
 
 footer {
-  border-top: 1px solid black;
+  border-top: 1px solid #c1b5a6;
   font-weight: bold;
   height: 20px;
   margin-top: 50px;
@@ -47,7 +49,7 @@ table {
 }
 
 table th, table td {
-  border: 1px solid black;
+  border: 1px solid #c1b5a6;
   padding: 5px;
   text-align: center;
 }
@@ -58,14 +60,6 @@ table#seals {
 
 table#seals img {
   width: 50px;
-}
-
-table#seals td.disabled {
-  background-color: lightgray;
-}
-
-table#seals td.disabled, table#seals td.disabled label {
-  cursor: default;
 }
 
 table#saved {
