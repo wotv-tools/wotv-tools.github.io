@@ -127,7 +127,7 @@
         </div>
       </div>
 
-      <div class="grid">
+      <div id="materials" class="grid hidden">
         <div class="cell">
           <div class="cell_content">
             <table id="recipe"></table>
@@ -397,7 +397,7 @@
       });
 
       // get recipe
-      $('#recipe_table').addClass('hidden');
+      $('#materials').addClass('hidden');
       $('#recipe').empty();
       $('#total_mats').empty();
       if (artifactRecipeMap[item.iname]) {
@@ -438,7 +438,8 @@
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
         }
-        $('#recipe_table').removeClass('hidden');
+
+        $('#materials').removeClass('hidden');
       }
 
       $('#content').removeClass('hidden');
