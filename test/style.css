@@ -9,7 +9,7 @@ body a {
   color: #f7f7f7;
 }
 
-select option {
+optGroup, option {
   background: #463525;
   color: #f7f7f7;
   font-weight: bold;
