@@ -212,6 +212,10 @@
 
     function onArtifactChange() {
       resetSeals();
+      updateLevels();
+      displayStats();
+    }
+    function onLevelChange() {
       displayStats();
     }
     function displayStats() {
@@ -305,32 +309,6 @@
       $('#grow2_stats').empty();
       $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
-
-      $('#level').empty();
-      $('#seals').addClass('hidden');
-      switch (types[0].value) {
-        case 'ARTIFACT_TRUST':
-          $('#level').append('<option value="1">Lv. 1</option>');
-          break;
-        case 'ARTIFACT_50':
-          $('#level').append('<option value="1">Lv. 1</option>');
-          $('#level').append('<option value="10">Lv. 10</option>');
-          $('#level').append('<option value="20">Lv. 20</option>');
-          $('#level').append('<option value="30">Lv. 30</option>');
-          $('#level').val('30');
-          break;
-        default:
-          $('#level').append('<option value="1">Lv. 1</option>');
-          $('#level').append('<option value="10">Lv. 10</option>');
-          $('#level').append('<option value="20">Lv. 20</option>');
-          $('#level').append('<option value="30">Lv. 30</option>');
-          $('#level').append('<option value="40">Lv. 40</option>');
-          $('#level').append('<option value="50">Lv. 50</option>');
-          $('#level').val('50');
-          $('#seals').removeClass('hidden');
-          break;
-      }
-      $('#level').removeClass('hidden');
 
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
@@ -458,6 +436,42 @@
       }
 
       $('#content').removeClass('hidden');
+    }
+
+    function updateLevels() {
+      let itemKey = $('#artifacts').val();
+      if (!itemKey) {
+        return;
+      }
+
+      let item = artifactMap[itemKey];
+      let types = typeMap[item.rtype];
+
+      $('#level').empty();
+      $('#seals').addClass('hidden');
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          break;
+        case 'ARTIFACT_50':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').val('30');
+          break;
+        default:
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').append('<option value="40">Lv. 40</option>');
+          $('#level').append('<option value="50">Lv. 50</option>');
+          $('#level').val('50');
+          $('#seals').removeClass('hidden');
+          break;
+      }
+      $('#level').removeClass('hidden');
     }
 
     let seals = {}
