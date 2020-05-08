@@ -891,12 +891,13 @@
       let item = artifactMap[itemKey];
       let types = typeMap[item.rtype];
 
-      let unhash = {
-        artifact: itemKey,
+      window.location.hash = getHash(itemKey, level);
+    }
+    function getHash(artifact, level) {
+      return btoa(JSON.stringify({
+        artifact: artifact,
         level: level
-      };
-
-      window.location.hash = btoa(unhash);
+      }));
     }
 
     if (window.location.hash) {
