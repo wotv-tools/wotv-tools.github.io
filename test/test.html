@@ -450,6 +450,7 @@
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').val('1');
           break;
         case 'ARTIFACT_50':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -470,6 +471,7 @@
           break;
       }
       $('#level').removeClass('hidden');
+      $('#level').change();
     }
 
     let seals = {}
