@@ -74,7 +74,6 @@ table#saved {
 }
 
 .grid .cell {
-  border: 3px solid black;
   float: left;
   margin: 0;
 }
@@ -109,6 +108,10 @@ table#saved {
 
 .cell#stats {
   margin-left: 5px;
+}
+
+.border {
+  border: 3px solid black;
 }
 
 .grid::after {

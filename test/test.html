@@ -36,88 +36,92 @@
     <div id="content" class="hidden">
       <div class="grid">
         <div class="cell" id="info">
-          <div id="item_image">
-            <img src=""/>
+          <div class="border">
+            <div id="item_image">
+              <img src=""/>
+            </div>
+            <table>
+              <tr>
+                <td><b>Rarity</b></td>
+                <td id="rarity"></td>
+              </tr>
+              <tr>
+                <td><b>Type</b></td>
+                <td id="type"></td>
+              </tr>
+              <tr>
+                <td id="skills" colspan="2"></td>
+              </tr>
+            </table>
           </div>
-          <table>
-            <tr>
-              <td><b>Rarity</b></td>
-              <td id="rarity"></td>
-            </tr>
-            <tr>
-              <td><b>Type</b></td>
-              <td id="type"></td>
-            </tr>
-            <tr>
-              <td id="skills" colspan="2"></td>
-            </tr>
-          </table>
         </div>
 
         <div class="cell" id="stats">
-          <table>
-            <tr>
-              <th colspan="14">Average Stat Growth</th>
-            <tr>
-              <th>Growth Type</th>
-              <th>HP</th>
-              <th>TP</th>
-              <th>AP</th>
-              <th>ATK</th>
-              <th>DEF</th>
-              <th>MAG</th>
-              <th>SPR</th>
-              <th>ACC</th>
-              <th>EVADE</th>
-              <th>AGI</th>
-              <th>DEX</th>
-              <th>CRIT</th>
-              <th>CRIT EVADE</th>
-            </tr>
-            <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
-            <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
-            <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
-          </table>
+          <div class="border">
+            <table>
+              <tr>
+                <th colspan="14">Average Stat Growth</th>
+              <tr>
+                <th>Growth Type</th>
+                <th>HP</th>
+                <th>TP</th>
+                <th>AP</th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>MAG</th>
+                <th>SPR</th>
+                <th>ACC</th>
+                <th>EVADE</th>
+                <th>AGI</th>
+                <th>DEX</th>
+                <th>CRIT</th>
+                <th>CRIT EVADE</th>
+              </tr>
+              <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
+              <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
+              <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
+            </table>
 
-          <table id="seals" class="hidden">
-            <tr>
-              <th colspan="8">Seals <span id="seals_display">[x,x,x]</span></th>
-            </tr>
-            <tr>
-              <th class="stat selectable stat_0" onclick="toggleSeal(0)">
-                <label for="">HP<br/><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_3" onclick="toggleSeal(3)">
-                <label for="">ATK<br/><img src="img/items/IT_AF_SUP_ATK.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_4" onclick="toggleSeal(4)">
-                <label for="">DEF<br/><img src="img/items/IT_AF_SUP_DEF.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_5" onclick="toggleSeal(5)">
-                <label for="">MAG<br/><img src="img/items/IT_AF_SUP_MAG.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_6" onclick="toggleSeal(6)">
-                <label for="">SPR<br/><img src="img/items/IT_AF_SUP_MND.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_7" onclick="toggleSeal(7)">
-                <label for="">ACC<br/><img src="img/items/IT_AF_SUP_HIT.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_10" onclick="toggleSeal(10)">
-                <label for="">EVADE<br/><img src="img/items/IT_AF_SUP_AVO.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-              <th class="stat selectable stat_11" onclick="toggleSeal(11)">
-                <label for="">CRIT<br/><img src="img/items/IT_AF_SUP_CRI.png"/></label><br/>
-                <input type="checkbox" class="hidden" disabled />
-              </th>
-            </tr>
-          </table>
+            <table id="seals" class="hidden">
+              <tr>
+                <th colspan="8">Seals <span id="seals_display">[x,x,x]</span></th>
+              </tr>
+              <tr>
+                <th class="stat selectable stat_0" onclick="toggleSeal(0)">
+                  <label for="">HP<br/><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_3" onclick="toggleSeal(3)">
+                  <label for="">ATK<br/><img src="img/items/IT_AF_SUP_ATK.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_4" onclick="toggleSeal(4)">
+                  <label for="">DEF<br/><img src="img/items/IT_AF_SUP_DEF.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_5" onclick="toggleSeal(5)">
+                  <label for="">MAG<br/><img src="img/items/IT_AF_SUP_MAG.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_6" onclick="toggleSeal(6)">
+                  <label for="">SPR<br/><img src="img/items/IT_AF_SUP_MND.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_7" onclick="toggleSeal(7)">
+                  <label for="">ACC<br/><img src="img/items/IT_AF_SUP_HIT.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_10" onclick="toggleSeal(10)">
+                  <label for="">EVADE<br/><img src="img/items/IT_AF_SUP_AVO.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+                <th class="stat selectable stat_11" onclick="toggleSeal(11)">
+                  <label for="">CRIT<br/><img src="img/items/IT_AF_SUP_CRI.png"/></label><br/>
+                  <input type="checkbox" class="hidden" disabled />
+                </th>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
 
