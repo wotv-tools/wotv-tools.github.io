@@ -31,6 +31,7 @@
         <optgroup id="artifacts-other" label="Others"></optgroup>
       </select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
+      <span>Click a row below to save!</span>
     </div>
 
     <div id="content" class="hidden">
@@ -551,6 +552,10 @@
       return mat_list;
     }
     function save(el) {
+      if ($('#saved .selectable').length >= 10) {
+        return;
+      }
+
       let newEl = $(el).clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
