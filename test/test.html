@@ -81,7 +81,7 @@
 
           <table id="seals" class="hidden">
             <tr>
-              <th colspan="8">Seals</th>
+              <th colspan="8">Seals <div id="seals_display">0/3</div></th>
             </tr>
             <tr>
               <th class="stat selectable hidden stat_hp" onclick="toggleSeal('hp')">
@@ -482,10 +482,6 @@
       $('#seals').addClass('hidden');
     }
     function toggleSeal(stat) {
-      if ($('.stat.stat_' + stat).hasClass('disabled')) {
-        return;
-      }
-
       if (seals[stat] == 1) {
         $('.stat.stat_' + stat + ' input').prop('checked', false);
         delete seals[stat];
@@ -496,7 +492,7 @@
         displayStats();
       }
 
-      // $('#seals_display').text(Object.keys(seals).length + '/3');
+      $('#seals_display').text(Object.keys(seals).length + '/3');
     }
     function getTotalMaterials(iname, lv) {
       let mat_list = {};
