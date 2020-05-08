@@ -902,7 +902,7 @@
 
     if (window.location.hash) {
       let unhash = atob(window.location.hash.substr(1));
-      let selections = JSON.parse(hash);
+      let selections = JSON.parse(unhash);
 
       if (selections.artifact) {
         $('#artifact').val(selections.artifact);
