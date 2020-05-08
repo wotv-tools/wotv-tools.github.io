@@ -98,6 +98,9 @@ table#saved {
 .cell#info img#image {
   width: 100%;
 }
+.cell#info img.weapon {
+  background-image: radial-gradient(circle, purple, transparent);
+}
 
 .cell#stats {
   width: 85%;
