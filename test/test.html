@@ -212,7 +212,6 @@
     }
     function onLevelChange() {
       displayStats();
-      setHash();
     }
 
     function displayStats() {
@@ -960,11 +959,6 @@
       let hash = {
         saved: []
       };
-      let itemKey = $('#artifacts').val();
-      if (itemKey) {
-        hash.artifact = artifactMap[itemKey];
-        hash.level = $('#level').val();
-      }
 
       $('#saved').find('tr.selectable').each((index, el) => {
         hash.saved.push(el.outerHTML);
