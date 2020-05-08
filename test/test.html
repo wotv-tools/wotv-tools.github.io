@@ -130,8 +130,9 @@
         </div>
       </div>
 
-      <div class="grid">
-        <h3>Saved Equipment</h3>
+      <div class="grid hidden">
+        <h3>Saved Equipment <span onclick="copyLink">Copy</span></h3>
+        <textarea class="hidden" id="copy_txt"></textarea>
         <table id="saved">
           <tr>
             <th>Equipment</th>
@@ -563,11 +564,26 @@
       newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
       $('#saved').append(newEl);
+      $('#saved').parent('div.grid').removeClass('hidden');
 
       setHash();
     }
+    function copyLink() {
+      let copyTxt = $('#copy_txt');
+      copyTxt.val(window.location);
+      copyTxt.focus();
+      copyTxt.setSelectionRange(0, copyTxt.value.length);
+
+      if (document.execCommand('copy')) {
+        alert('Saved to clipboard!');
+      }
+    }
     function unsave(el) {
       $(el).remove();
+
+      if ($('#saved .selectable').size() == 0) {
+        $('#saved').parent('div.grid').addClass('hidden');
+      }
 
       setHash();
     }
