@@ -141,11 +141,11 @@
       </div>
     </div>
 
-    <div class="grid hidden">
+    <div id="saved" class="grid hidden">
       <div class="cell">
         <div class="cell_content">
           <textarea class="hidden" id="copy_txt"></textarea>
-          <table id="saved">
+          <table>
             <tr>
               <th colspan="15">Saved Equipment <span onclick="copyLink">Copy</span></th>
             <tr>
@@ -598,8 +598,8 @@
       newEl.attr('id', null);
       newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
-      $('#saved').append(newEl);
-      $('#saved').parent('div.grid').removeClass('hidden');
+      $('#saved table').append(newEl);
+      $('#saved').removeClass('hidden');
 
       setHash();
     }
@@ -617,7 +617,7 @@
       $(el).remove();
 
       if ($('#saved .selectable').length == 0) {
-        $('#saved').parent('div.grid').addClass('hidden');
+        $('#saved').addClass('hidden');
       }
 
       setHash();
@@ -1030,11 +1030,11 @@
 
         if (unhash.saved) {
           unhash.saved.forEach((data) => {
-            $('#saved').append('<tr class="selectable" onclick="unsave(this)"><td>' + data.join('</td><td>') + '</td></tr>');
+            $('#saved table').append('<tr class="selectable" onclick="unsave(this)"><td>' + data.join('</td><td>') + '</td></tr>');
           });
 
           if ($('#saved .selectable').length > 0) {
-            $('#saved').parent('div.grid').removeClass('hidden');
+            $('#saved').removeClass('hidden');
           }
         }
       }
