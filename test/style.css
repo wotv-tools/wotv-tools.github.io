@@ -39,6 +39,7 @@ footer {
 
 table {
   border-collapse: collapse;
+  border-style: hidden;
   margin: 5px;
 }
 
@@ -50,19 +51,6 @@ table th, table td {
   border: 3px solid black;
   padding: 5px;
   text-align: center;
-}
-
-table tr:first-child td:first-child {
-    border-top-left-radius: 20px;
-}
-table tr:first-child td:last-child {
-    border-top-right-radius: 20px;
-}
-table tr:last-child td:first-child {
-    border-bottom-left-radius: 20px;
-}
-table tr:last-child td:last-child {
-    border-bottom-right-radius: 20px;
 }
 
 table#seals {
@@ -83,6 +71,7 @@ table#saved {
 }
 
 .grid .cell {
+  border: 3px solid black;
   float: left;
   margin: 0;
 }
@@ -94,6 +83,7 @@ table#saved {
 #item_image {
   border: 3px solid black;
   border-radius: 20px;
+  margin: 5px;
 }
 #item_image.weapon {
   background-image: radial-gradient(purple, transparent);
