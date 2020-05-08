@@ -292,10 +292,10 @@
                   buff_text += ' ' + buff.val1
                   break;
               }
-              $('#skills').append('<div>' + buff_text + '</div>');
+              $('#skills').append('<div class="skill_desc">' + buff_text + '</div>');
             });
           } else if (skillNameMap[skl]) {
-              $('#skills').append('<div>' + skillNameMap[skl] + '</div>');
+              $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
           }
         });
       }
