@@ -98,7 +98,7 @@ table#saved {
   width: 100%;
 }
 
-#item_image {
+.equipment {
   background-color: #000000;
   border: 3px solid #D3D3D3;
   border-bottom-color: #778899;
@@ -106,16 +106,16 @@ table#saved {
   border-radius: 20px;
   margin: 5px;
 }
-#item_image.weapon {
+.equipment.weapon {
   background-image: radial-gradient(#6A0DAD, transparent);
 }
-#item_image.armor {
+.equipment.armor {
   background-image: radial-gradient(#0000FF, transparent);
 }
-#item_image.accessory {
+.equipment.accessory {
   background-image: radial-gradient(#00FF00, transparent);
 }
-#item_image img {
+.equipment img {
   width: 100%;
 }
 

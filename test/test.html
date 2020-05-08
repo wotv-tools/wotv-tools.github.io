@@ -37,7 +37,7 @@
       <div class="grid">
         <div class="cell" id="info">
           <div class="cell_content">
-            <div id="item_image">
+            <div id="item_image" class="equipment">
               <img src=""/>
             </div>
             <table>
@@ -408,6 +408,7 @@
 
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
+          let item;
           let itemName = 'UNKNOWN';
           let img_url;
           let mat_url;
@@ -417,7 +418,7 @@
 
           switch (material.type) {
             case 0:
-              let item = itemMap[material.id];
+              item = itemMap[material.id];
               itemName = itemNameMap[material.id];
 
               if (item.icon) {
@@ -431,10 +432,20 @@
               all_mats.push(itemName);
               break;
             case 1:
+              item = artifactMap[material.id]
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
-              img_url = 'img/equipment/' + artifactMap[material.id].asset + '.png';
+              img_url = 'img/equipment/' + item.asset + '.png';
               mat_url = '#' + getHash(material.id, material.lv);
-              tr.append('<td><img src="' + img_url + '"/></td>');
+
+              let type;
+              if (item.cat[0] > 0 && item.cat[0] < 17) {
+                type = 'weapon';
+              } else if (item.cat[0] < 22) {
+                type = 'armor';
+              } else if (item.cat[0] == 22) {
+                type = 'accessory';
+              }
+              tr.append('<td><img class="equipment ' + type + '" src="' + img_url + '"/></td>');
               break;
           }
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
