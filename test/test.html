@@ -515,7 +515,7 @@
       $('#level').removeClass('hidden');
       $('#level').change();
 
-      $('#item_image').removeClass();
+      $('#item_image').removeClass().addClass('equipment');
       if (item.cat[0] > 0 && item.cat[0] < 17) {
         $('#item_image').addClass('weapon');
       } else if (item.cat[0] < 22) {
