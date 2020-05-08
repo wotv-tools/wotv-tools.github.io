@@ -88,6 +88,10 @@ table#saved {
   width: 100%;
 }
 
+.cell#stats {
+  width: 85%;
+}
+
 #item_image {
   border: 3px solid black;
   border-radius: 20px;
