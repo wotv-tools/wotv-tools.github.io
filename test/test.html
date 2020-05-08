@@ -991,6 +991,10 @@
           unhash.saved.forEach((str) => {
             $('#saved').append(str);
           });
+
+          if ($('#saved selectable').size() > 0) {
+            $('#saved').parent('div.grid').removeClass('hidden');
+          }
         }
       }
     });
