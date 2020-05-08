@@ -618,268 +618,326 @@
       return artifact_rates;
     }
 
+    let promiseList = [];
+
     let typeMap = {};
-    // init
-    $.getJSON('en/ArtifactGrow.json', (data) => {
-      let typeNameMap = {};
-      data.infos.forEach((info) => {
-        typeNameMap[info.key] = info.value;
-      });
-      // 20200422_4c9ea1e3
-      $.getJSON('data/ArtifactRandLot.json', (data) => {
-        data.items.forEach((item) => {
-          typeMap[item.iname] = [];
-          if (item.lot[0].grow1) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow1],
-              value: item.lot[0].grow1
-            });
-          }
-          if (item.lot[0].grow2) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow2],
-              value: item.lot[0].grow2
-            });
-          }
-          if (item.lot[0].grow3) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow3],
-              value: item.lot[0].grow3
-            });
-          }
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactGrow.json', (data) => {
+        let typeNameMap = {};
+        data.infos.forEach((info) => {
+          typeNameMap[info.key] = info.value;
+        });
+        // 20200422_4c9ea1e3
+        $.getJSON('data/ArtifactRandLot.json', (data) => {
+          data.items.forEach((item) => {
+            typeMap[item.iname] = [];
+            if (item.lot[0].grow1) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow1],
+                value: item.lot[0].grow1
+              });
+            }
+            if (item.lot[0].grow2) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow2],
+                value: item.lot[0].grow2
+              });
+            }
+            if (item.lot[0].grow3) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow3],
+                value: item.lot[0].grow3
+              });
+            }
+          });
+
+          resolve();
         });
       });
-    });
+    }));
 
     let growthMap = {};
-    // init
-    $.getJSON('data/Grow.json', (data) => {
-      data.items.forEach((item) => {
-        growthMap[item.type] = {
-          curve: item.curve,
-          rstatus : item.rstatus
-        }
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/Grow.json', (data) => {
+        data.items.forEach((item) => {
+          growthMap[item.type] = {
+            curve: item.curve,
+            rstatus : item.rstatus
+          }
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let buffMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/Buff.json', (data) => {
-      data.items.forEach((item) => {
-        buffMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/Buff.json', (data) => {
+        data.items.forEach((item) => {
+          buffMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let buffNameList = [];
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/Buff.json', (data) => {
-      // pretty sure this is the right list
-      // but needs modifications for now
-      buffNameList = data.infos;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/Buff.json', (data) => {
+        // pretty sure this is the right list
+        // but needs modifications for now
+        buffNameList = data.infos;
 
-      // modifications
-      // remove first 7
-      for (let i = 0; i < 7; i++) {
-        buffNameList.splice(0,1);
-      }
-      // insert 16 dummy
-      for (let i = 0; i < 16; i++) {
-        buffNameList.splice(5,0,null);
-      }
-      // insert 12 dummy
-      for (let i = 0; i < 11; i++) {
-        buffNameList.splice(30,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(51,0,null);
-      }
-      // insert 4 dummy
-      for (let i = 0; i < 4; i++) {
-        buffNameList.splice(66,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(71,0,null);
-      }
-      // insert 1 dummy
-      for (let i = 0; i < 1; i++) {
-        buffNameList.splice(94,0,null);
-      }
-      // insert 1 dummy
-      for (let i = 0; i < 1; i++) {
-        buffNameList.splice(118,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(124,0,null);
-      }
-      // insert 4 dummy
-      for (let i = 0; i < 4; i++) {
-        buffNameList.splice(135,0,null);
-      }
-      // insert 8 dummy
-      for (let i = 0; i < 8; i++) {
-        buffNameList.splice(143,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(160,0,null);
-      }
-      // insert 7 dummy
-      for (let i = 0; i < 7; i++) {
-        buffNameList.splice(173,0,null);
-      }
-      // remove 22 Debuff Res
-      for (let i = 0; i < 22; i++) {
-        buffNameList.splice(183,1);
-      }
-      // insert 6 dummy
-      for (let i = 0; i < 6; i++) {
-        buffNameList.splice(184,0,null);
-      }
+        // modifications
+        // remove first 7
+        for (let i = 0; i < 7; i++) {
+          buffNameList.splice(0,1);
+        }
+        // insert 16 dummy
+        for (let i = 0; i < 16; i++) {
+          buffNameList.splice(5,0,null);
+        }
+        // insert 12 dummy
+        for (let i = 0; i < 11; i++) {
+          buffNameList.splice(30,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(51,0,null);
+        }
+        // insert 4 dummy
+        for (let i = 0; i < 4; i++) {
+          buffNameList.splice(66,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(71,0,null);
+        }
+        // insert 1 dummy
+        for (let i = 0; i < 1; i++) {
+          buffNameList.splice(94,0,null);
+        }
+        // insert 1 dummy
+        for (let i = 0; i < 1; i++) {
+          buffNameList.splice(118,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(124,0,null);
+        }
+        // insert 4 dummy
+        for (let i = 0; i < 4; i++) {
+          buffNameList.splice(135,0,null);
+        }
+        // insert 8 dummy
+        for (let i = 0; i < 8; i++) {
+          buffNameList.splice(143,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(160,0,null);
+        }
+        // insert 7 dummy
+        for (let i = 0; i < 7; i++) {
+          buffNameList.splice(173,0,null);
+        }
+        // remove 22 Debuff Res
+        for (let i = 0; i < 22; i++) {
+          buffNameList.splice(183,1);
+        }
+        // insert 6 dummy
+        for (let i = 0; i < 6; i++) {
+          buffNameList.splice(184,0,null);
+        }
+
+        resolve();
+      });
     });
 
     let skillMap = {};
-    // 20200429_0d4b0c72
-    $.getJSON('data/Skill.json', (data) => {
-      data.items.forEach((item) => {
-        skillMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200429_0d4b0c72
+      $.getJSON('data/Skill.json', (data) => {
+        data.items.forEach((item) => {
+          skillMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let skillNameMap = {};
-    // 20200429_0d4b0c72
-    $.getJSON('en/SkillName.json', (data) => {
-      data.infos.forEach((info) => {
-        if (info.value) {
-          skillNameMap[info.key] = info.value;
-        }
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200429_0d4b0c72
+      $.getJSON('en/SkillName.json', (data) => {
+        data.infos.forEach((info) => {
+          if (info.value) {
+            skillNameMap[info.key] = info.value;
+          }
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactNameMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ArtifactName.json', (data) => {
-      data.infos.forEach((info) => {
-        artifactNameMap[info.key] = info.value;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ArtifactName.json', (data) => {
+        data.infos.forEach((info) => {
+          artifactNameMap[info.key] = info.value;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let sealGrowthMap = {};
-    // init
-    $.getJSON('data/ArtifactGrowItem.json', (data) => {
-      data.items.forEach((item) => {
-        let stat = stats[item.grow_up[0].eff_dst];
-        sealGrowthMap[stat.value] = item.grow_up[0].val;
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/ArtifactGrowItem.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up[0].eff_dst];
+          sealGrowthMap[stat.value] = item.grow_up[0].val;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactCategoryList = [];
-    // init
-    $.getJSON('en/ArtifactCategory.json', (data) => {
-      artifactCategoryList = data.infos;
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactCategory.json', (data) => {
+        artifactCategoryList = data.infos;
 
-      // for some reason doesn't match exactly
-      artifactCategoryList.splice(4,1); // remove LARGESWORD
-      artifactCategoryList.splice(6,1); // remove ROD
-      artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
-      artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+        // for some reason doesn't match exactly
+        artifactCategoryList.splice(4,1); // remove LARGESWORD
+        artifactCategoryList.splice(6,1); // remove ROD
+        artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+        artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+
+        resolve();
+      });
     });
 
     let artifactMap = {};
-    // 	20200422_4c9ea1e3
-    $.getJSON('data/Artifact.json', (data) => {
-      let artifactList = [];
-      let artifactWeaponList = [];
-      let artifactArmorList = [];
-      let artifactAccessoryList = [];
-      data.items.forEach((item) => {
-        if (item.type >= 0) {
-          artifactMap[item.iname] = item;
-          artifactMap[item.iname].name = artifactNameMap[item.iname];
+    promiseList.push(new Promise((resolve, reject) => {
+      // 	20200422_4c9ea1e3
+      $.getJSON('data/Artifact.json', (data) => {
+        let artifactList = [];
+        let artifactWeaponList = [];
+        let artifactArmorList = [];
+        let artifactAccessoryList = [];
+        data.items.forEach((item) => {
+          if (item.type >= 0) {
+            artifactMap[item.iname] = item;
+            artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-          let artifactListEntry = {
-            label: artifactNameMap[item.iname],
-            value : item.iname
-          };
+            let artifactListEntry = {
+              label: artifactNameMap[item.iname],
+              value : item.iname
+            };
 
-          if (item.cat[0] > 0 && item.cat[0] < 17) {
-            artifactWeaponList.push(artifactListEntry);
-          } else if (item.cat[0] < 22) {
-            artifactArmorList.push(artifactListEntry);
-          } else if (item.cat[0] == 22) {
-            artifactAccessoryList.push(artifactListEntry);
-          } else {
-            artifactList.push(artifactListEntry);
+            if (item.cat[0] > 0 && item.cat[0] < 17) {
+              artifactWeaponList.push(artifactListEntry);
+            } else if (item.cat[0] < 22) {
+              artifactArmorList.push(artifactListEntry);
+            } else if (item.cat[0] == 22) {
+              artifactAccessoryList.push(artifactListEntry);
+            } else {
+              artifactList.push(artifactListEntry);
+            }
           }
-        }
-      });
+        });
 
-      artifactWeaponList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactArmorList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactAccessoryList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
+        artifactWeaponList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactArmorList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactAccessoryList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
 
-      $('#artifacts').focus();
-    });
+        $('#artifacts').focus();
+
+        resolve();
+      });
+    }));
 
     let artifactFlavorMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ArtifactFlvr.json', (data) => {
-      data.infos.forEach((info) => {
-        artifactFlavorMap[info.key] = info.value;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ArtifactFlvr.json', (data) => {
+        data.infos.forEach((info) => {
+          artifactFlavorMap[info.key] = info.value;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     // RECIPES
     let artifactRecipeMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/ArtifactRecipe.json', (data) => {
-      data.items.forEach((item) => {
-        artifactRecipeMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/ArtifactRecipe.json', (data) => {
+        data.items.forEach((item) => {
+          artifactRecipeMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactAwakeMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/ArtifactAwake.json', (data) => {
-      data.items.forEach((item) => {
-        artifactAwakeMap[item.iname] = item;
-      })
-    });
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/ArtifactAwake.json', (data) => {
+        data.items.forEach((item) => {
+          artifactAwakeMap[item.iname] = item;
+        });
+
+        resolve();
+      });
+    }));
 
     let itemNameMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ItemName.json', (data) => {
-      data.infos.forEach((info) => {
-        itemNameMap[info.key] = info.value;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ItemName.json', (data) => {
+        data.infos.forEach((info) => {
+          itemNameMap[info.key] = info.value;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     function setHash() {
       let itemKey = $('#artifacts').val();
@@ -900,19 +958,21 @@
       }));
     }
 
-    if (window.location.hash) {
-      let unhash = atob(window.location.hash.substr(1));
-      let selections = JSON.parse(unhash);
+    Promise.all(promiseList).then(() => {
+      if (window.location.hash) {
+        let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
-      if (selections.artifact) {
-        $('#artifact').val(selections.artifact);
-        $('#artifact').change();
+        if (unhash.artifact) {
+          $('#artifact').val(unhash.artifact);
+          $('#artifact').change().then(() => {
+            if (unhash.level) {
+              $('#level').val(unhash.level);
+              $('#level').change();
+            }
+          });
+        }
       }
-      if (selections.level) {
-        $('#level').val(selections.level);
-        $('#level').change();
-      }
-    }
+    });
   </script>
 </body>
 </html>
