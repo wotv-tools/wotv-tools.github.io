@@ -83,13 +83,6 @@ table#saved {
   width: 100%;
 }
 
-.cell#growth {
-  width: 85%;
-}
-.cell#growth #stats {
-  width: 100%;
-}
-
 #item_image {
   background-color: black;
   border: 3px solid lightgray;
@@ -109,6 +102,25 @@ table#saved {
 }
 #item_image img {
   width: 100%;
+}
+
+#skills {
+  font-size: smaller;
+}
+
+.cell#growth {
+  width: 85%;
+}
+.cell#growth #stats {
+  width: 100%;
+}
+
+.cell#growth #stats td {
+  font-size: smaller;
+}
+
+.cell#growth #stats td:first-child {
+  font-size: medium;
 }
 
 .cell_content {
