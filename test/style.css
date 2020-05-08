@@ -86,8 +86,11 @@ table#saved {
   width: 100%;
 }
 
-.cell#stats {
+.cell#growth {
   width: 85%;
+}
+.cell#growth #stats {
+  width: 100%;
 }
 
 #item_image {
