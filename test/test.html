@@ -960,11 +960,16 @@
         saved: []
       };
 
-      $('#saved').find('tr.selectable').each((index, el) => {
-        hash.saved.push(el.innerHTML.replace(/(^<td>)|(<\/td>$)/g,'').split('</td><td>'));
-      });
+      let savedEl = $('#saved .selectable');
+      if (savedEl.length > 0) {
+        savedEl.each((index, el) => {
+          hash.saved.push(el.innerHTML.replace(/(^<td>)|(<\/td>$)/g,'').split('</td><td>'));
+        });
 
-      window.location.hash = btoa(JSON.stringify(hash));
+        window.location.hash = btoa(JSON.stringify(hash));
+      } else {
+        window.location.hash = '';
+      }
     }
 
     function getHash(artifact, level) {
