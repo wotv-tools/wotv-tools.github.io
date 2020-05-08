@@ -66,6 +66,9 @@ table th, table td {
 #seals {
   display: inline-block;
 }
+#seals.hidden {
+  display: none;
+}
 
 #seals img {
   width: 50px;
