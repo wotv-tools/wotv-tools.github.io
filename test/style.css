@@ -100,7 +100,7 @@ table#saved {
 
 .equipment {
   background-color: #000000;
-  border: 3px solid #D3D3D3;
+  border: 1px solid #D3D3D3;
   border-bottom-color: #778899;
   border-right-color: #778899;
   border-radius: 20px;
@@ -117,6 +117,10 @@ table#saved {
 }
 .equipment img {
   width: 100%;
+}
+
+#item_image .equipment {
+  border-size: 3px;
 }
 
 .skill_desc {

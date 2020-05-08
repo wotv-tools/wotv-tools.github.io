@@ -404,7 +404,7 @@
       $('#recipe').empty();
       $('#total_mats').empty();
       if (artifactRecipeMap[item.iname]) {
-        $('#recipe').append('<tr><th colspan="2">Recipe</th></tr>');
+        $('#recipe').append('<tr><th colspan="3">Recipe</th></tr>');
 
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
