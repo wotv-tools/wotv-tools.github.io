@@ -104,7 +104,7 @@ table#saved {
 #item_image.accessory {
   background-image: radial-gradient(green, transparent);
 }
-#item_image img#image {
+#item_image img {
   width: 100%;
 }
 
