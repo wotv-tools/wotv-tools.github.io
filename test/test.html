@@ -989,7 +989,7 @@
 
         if (unhash.saved) {
           unhash.saved.forEach((data) => {
-            $('#saved').append('<tr class="selectable" onclick="unsave(this)"><td>' + data.join('<td></td>') + '</td></tr>');
+            $('#saved').append('<tr class="selectable" onclick="unsave(this)"><td>' + data.join('</td><td>') + '</td></tr>');
           });
 
           if ($('#saved .selectable').length > 0) {
