@@ -1,12 +1,12 @@
 body {
-  background: saddlebrown;
-  color: white;
+  background: #333333;
+  color: #FFFFFF;
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 #header {
-  border-bottom: 3px solid lightgray;
+  border-bottom: 3px solid #D3D3D3;
   text-align: center;
   width: 100%
 }
@@ -23,7 +23,7 @@ body {
 }
 
 footer {
-  border-top: 3px solid lightslategray;
+  border-top: 3px solid #778899;
   font-weight: bold;
   height: 20px;
   margin-top: 50px;
@@ -40,13 +40,13 @@ footer {
 }
 
 table {
-  background-color: black;
+  background-color: #000000;
   border-collapse: collapse;
   border-style: hidden;
 }
 
 table th, table td {
-  border: 3px solid lightgray;
+  border: 3px solid #D3D3D3;
   padding: 5px;
   text-align: center;
 }
@@ -78,27 +78,27 @@ table#saved {
 }
 
 .cell#info table {
-  border-top: 3px solid lightgray;
+  border-top: 3px solid #D3D3D3;
   margin: 5px 0 0 0;
   width: 100%;
 }
 
 #item_image {
-  background-color: black;
-  border: 3px solid lightgray;
-  border-bottom-color: lightslategray;
-  border-right-color: lightslategray;
+  background-color: #000000;
+  border: 3px solid #D3D3D3;
+  border-bottom-color: #778899;
+  border-right-color: #778899;
   border-radius: 20px;
   margin: 5px;
 }
 #item_image.weapon {
-  background-image: radial-gradient(purple, transparent);
+  background-image: radial-gradient(#6A0DAD, transparent);
 }
 #item_image.armor {
-  background-image: radial-gradient(blue, transparent);
+  background-image: radial-gradient(#0000FF, transparent);
 }
 #item_image.accessory {
-  background-image: radial-gradient(green, transparent);
+  background-image: radial-gradient(#00FF00, transparent);
 }
 #item_image img {
   width: 100%;
@@ -112,7 +112,7 @@ table#saved {
   width: 85%;
 }
 .cell#growth #stats {
-  border-bottom: 3px solid lightslategray;
+  border-bottom: 3px solid #778899;
   width: 100%;
 }
 
@@ -125,10 +125,10 @@ table#saved {
 }
 
 .cell_content {
-  background-image: linear-gradient(135deg, black, transparent);
-  border: 3px solid lightgray;
-  border-bottom-color: lightslategray;
-  border-right-color: lightslategray;
+  background-image: linear-gradient(135deg, #000000, transparent);
+  border: 3px solid #D3D3D3;
+  border-bottom-color: #778899;
+  border-right-color: #778899;
   margin: 5px;
 }
 
