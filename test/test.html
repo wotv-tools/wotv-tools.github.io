@@ -36,12 +36,10 @@
     <div id="content" class="hidden">
       <div class="grid">
         <div class="cell" id="info">
-          <table class="borderless">
-            <tr>
-              <td colspan="2" id="item_image">
-                <img id="image" src=""/>
-              </td>
-            </tr>
+          <div id="item_image">
+            <img src=""/>
+          </div>
+          <table>
             <tr>
               <td><b>Rarity</b></td>
               <td id="rarity"></td>
@@ -227,7 +225,7 @@
       let level = $('#level').val();
       let item_sk = item['skl' + (level/10)];
 
-      $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
+      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
       $('#type').empty();
       item.cat.forEach((cat) => {
