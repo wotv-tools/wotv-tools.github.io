@@ -896,11 +896,11 @@
         level: level
       };
 
-      window.location.hash = atob(unhash);
+      window.location.hash = btoa(unhash);
     }
 
     if (window.location.hash) {
-      let unhash = btoa(window.location.hash);
+      let unhash = atob(window.location.hash);
       let selections = JSON.parse(hash);
 
       if (selections.artifact) {
