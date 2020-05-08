@@ -209,7 +209,7 @@
 
     function onArtifactChange() {
       resetSeals();
-      updateLevels();
+      setItemInfo();
     }
     function onLevelChange() {
       displayStats();
@@ -434,7 +434,7 @@
       $('#content').removeClass('hidden');
     }
 
-    function updateLevels() {
+    function setItemInfo() {
       let itemKey = $('#artifacts').val();
       if (!itemKey) {
         return;
