@@ -30,7 +30,7 @@
         <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
         <optgroup id="artifacts-other" label="Others"></optgroup>
       </select>
-      <select id="level" class="hidden" onchange="onArtifactChange()"></select>
+      <select id="level" class="hidden" onchange="onLevelChange()"></select>
     </div>
 
     <div id="content" class="hidden">
@@ -210,8 +210,6 @@
     function onArtifactChange() {
       resetSeals();
       updateLevels();
-      displayStats();
-      setHash();
     }
     function onLevelChange() {
       displayStats();
