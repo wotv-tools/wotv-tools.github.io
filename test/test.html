@@ -964,12 +964,11 @@
 
         if (unhash.artifact) {
           $('#artifact').val(unhash.artifact);
-          $('#artifact').change().then(() => {
-            if (unhash.level) {
-              $('#level').val(unhash.level);
-              $('#level').change();
-            }
-          });
+          $('#artifact').change();
+        }
+        if (unhash.level) {
+          $('#level').val(unhash.level);
+          $('#level').change();
         }
       }
     });
