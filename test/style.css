@@ -1,4 +1,4 @@
-body {
+body, select, optGroup, option {
   background: #333333;
   color: #FFFFFF;
   cursor: default;
