@@ -12,6 +12,7 @@ body a {
 select option {
   background: #463525;
   color: white;
+  font-weight: bold;
 }
 
 #header {
