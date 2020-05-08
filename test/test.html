@@ -992,7 +992,7 @@
             $('#saved').append('<tr class="selectable" onclick="unsave(this)">' + str + '</tr>');
           });
 
-          if ($('#saved selectable').size() > 0) {
+          if ($('#saved .selectable').size() > 0) {
             $('#saved').parent('div.grid').removeClass('hidden');
           }
         }
