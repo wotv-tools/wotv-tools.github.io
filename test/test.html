@@ -79,11 +79,11 @@
             <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
           </table>
 
-          <table id="seals">
+          <table id="seals" class="hidden">
             <tr>
               <th colspan="8">Seals</th>
             </tr>
-            <tr id="seal_toggles" class="hidden">
+            <tr>
               <th class="stat selectable hidden stat_hp" onclick="toggleSeal('hp')">
                 <label for="">HP<br/><img src="img/items/IT_AF_SUP_HP.png"/></label><br/>
                 <input type="checkbox" class="hidden" disabled />
@@ -307,6 +307,7 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
+      $('#seals').addClass('hidden');
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -324,7 +325,7 @@
           $('#level').append('<option value="40">Lv. 40</option>');
           $('#level').append('<option value="50">Lv. 50</option>');
           $('#level').val('50');
-          $('#seal_toggles').removeClass('hidden');
+          $('#seals').removeClass('hidden');
           break;
       }
       $('#level').removeClass('hidden');
@@ -462,7 +463,7 @@
       seals = {};
       $('.stat').addClass('hidden');
       $('.stat input').prop('checked', false);
-      $('#seal_toggles').addClass('hidden');
+      $('#seals').addClass('hidden');
     }
     function toggleSeal(stat) {
       if ($('.stat.stat_' + stat).hasClass('disabled')) {
