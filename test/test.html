@@ -961,7 +961,7 @@
       };
 
       $('#saved').find('tr.selectable').each((index, el) => {
-        hash.saved.push(el.outerHTML);
+        hash.saved.push(el.innerHTML.replace(/<td>/g,'').split('</td>'));
       });
 
       window.location.hash = btoa(JSON.stringify(hash));
@@ -989,7 +989,7 @@
 
         if (unhash.saved) {
           unhash.saved.forEach((str) => {
-            $('#saved').append(str);
+            $('#saved').append('<tr class="selectable" onclick="unsave(this)">' + str + '</tr>');
           });
 
           if ($('#saved selectable').size() > 0) {
