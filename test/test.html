@@ -423,10 +423,10 @@
 
               if (item.icon) {
                 img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
-                tr.append('<td><img class="recipe" src="' + img_url + '"/></td>');
+                tr.append('<td><div class="material recipe"><img src="' + img_url + '"/></div></td>');
               } else {
                 img_url = 'img/items/' + material.id + '.png';
-                tr.append('<td><img src="' + img_url + '"/></td>');
+                tr.append('<td><div class="material"><img src="' + img_url + '"/></div></td>');
               }
               mat_url = mat_link + encodeURIComponent(itemName);
               all_mats.push(itemName);
@@ -445,7 +445,7 @@
               } else if (item.cat[0] == 22) {
                 type = 'accessory';
               }
-              tr.append('<td><img class="equipment ' + type + '" src="' + img_url + '"/></td>');
+              tr.append('<td><div class="equipment ' + type + '"><img src="' + img_url + '"/></div></td>');
               break;
           }
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');

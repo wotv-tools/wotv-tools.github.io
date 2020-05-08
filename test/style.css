@@ -142,6 +142,10 @@ table#saved {
   width: 50px;
 }
 
+#materials .material {
+  border-radius: 50%;
+}
+
 .cell_content {
   background-image: linear-gradient(135deg, #000000, transparent);
   border: 3px solid #D3D3D3;
