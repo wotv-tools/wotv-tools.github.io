@@ -1,17 +1,17 @@
 body {
   background: #463525;
-  color: white;
+  color: #f7f7f7;
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body a {
-  color: white;
+  color: #f7f7f7;
 }
 
 select option {
   background: #463525;
-  color: white;
+  color: #f7f7f7;
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@ footer {
 }
 
 #inputs select {
-  border-color: white;
+  border-color: #f7f7f7;
   border-style: solid;
   border-width: 1px;
   margin: 0 5px;
