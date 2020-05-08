@@ -395,7 +395,7 @@
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
-          let img_url = '#';
+          let mat_url;
           let tr = $('<tr></tr>');
 
           tr.append('<td>' + material.num + 'x</td>');
@@ -403,21 +403,17 @@
           switch (material.type) {
             case 0:
               itemName = itemNameMap[material.id];
-              let mat_url = mat_link + encodeURIComponent(itemName);
-              img_url = '/img/items/' + material.id + '.png';
+              mat_url = mat_link + encodeURIComponent(itemName);
               all_mats.push(itemName);
-              tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
               break;
             case 1:
+              mat_url = '#' + getHash(material.id, material.lv);
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
-              img_url = '/img/equipment/' + material.id + '.png';
-              tr.append('<td>' + itemName + '</td>');
               break;
           }
-          // tr.append('<td><img src="' + img_url + '"/></td>');
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });
-        // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
 
         let mats_total = getTotalMaterials(item.iname, level);
         for (mat in mats_total) {
