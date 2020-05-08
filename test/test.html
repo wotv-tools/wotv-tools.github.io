@@ -423,8 +423,9 @@
               all_mats.push(itemName);
               break;
             case 1:
-              mat_url = '#' + getHash(material.id, material.lv);
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
+              img_url = 'img/equipment/' + material.id + '.png';
+              mat_url = '#' + getHash(material.id, material.lv);
               break;
           }
           tr.append('<td><img src="' + img_url + '"/></td>');
