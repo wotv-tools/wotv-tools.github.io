@@ -52,8 +52,12 @@ table th, table td {
   text-align: center;
 }
 
-table th.paddingless, table td.paddingless {
-  padding: 0;
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
 
 table#seals {
@@ -82,17 +86,21 @@ table#saved {
   width: 15%;
 }
 
-#item_image img#image {
-  width: 100%;
+#item_image {
+  border: 3px solid black;
+  border-radius: 20px;
 }
-#item_image img.weapon {
+#item_image.weapon {
   background-image: radial-gradient(purple, transparent);
 }
-#item_image img.armor {
+#item_image.armor {
   background-image: radial-gradient(blue, transparent);
 }
-#item_image img.accessory {
+#item_image.accessory {
   background-image: radial-gradient(green, transparent);
+}
+#item_image img#image {
+  width: 100%;
 }
 
 .cell#stats {

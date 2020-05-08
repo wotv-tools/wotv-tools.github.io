@@ -478,13 +478,13 @@
       $('#level').removeClass('hidden');
       $('#level').change();
 
-      $('#item_image img').removeClass();
+      $('#item_image').removeClass();
       if (item.cat[0] > 0 && item.cat[0] < 17) {
-        $('#item_image img').addClass('weapon');
+        $('#item_image').addClass('weapon');
       } else if (item.cat[0] < 22) {
-        $('#item_image img').addClass('armor');
+        $('#item_image').addClass('armor');
       } else if (item.cat[0] == 22) {
-        $('#item_image img').addClass('accessory');
+        $('#item_image').addClass('accessory');
       }
     }
 
