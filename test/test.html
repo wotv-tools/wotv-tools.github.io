@@ -465,6 +465,13 @@
           $('#level').append('<option value="40">Lv. 40</option>');
           $('#level').append('<option value="50">Lv. 50</option>');
           $('#level').val('50');
+
+          stats.forEach((stat, i) => {
+            if (item.status[1][stat.value] != null) {
+              $('#seals .stat_' + i).removeClass('hidden');
+            }
+          });
+
           $('#seals').removeClass('hidden');
           break;
       }
@@ -475,9 +482,9 @@
     let seals = {}
     function resetSeals() {
       seals = {};
+      $('#seals').addClass('hidden');
       $('.stat').addClass('hidden');
       $('.stat input').prop('checked', false);
-      $('#seals').addClass('hidden');
     }
     function toggleSeal(stat_index) {
       if (seals[stat_index] == 1) {
