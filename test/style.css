@@ -107,7 +107,9 @@ table#saved {
 }
 
 .border {
-  border: 3px solid black;
+  border: 3px solid lightgray;
+  border-bottom-color: lightslategray;
+  border-right-color: lightslategray;
   margin: 5px;
 }
 
