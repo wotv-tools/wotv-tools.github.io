@@ -563,9 +563,13 @@
       newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
       $('#saved').append(newEl);
+
+      setHash();
     }
     function unsave(el) {
       $(el).remove();
+
+      setHash();
     }
 
     function getArtifactStats(curve, base) {
@@ -937,17 +941,22 @@
     }));
 
     function setHash() {
+      let hash = {
+        saved: []
+      };
       let itemKey = $('#artifacts').val();
-      let level = $('#level').val();
-      if (!itemKey) {
-        return;
+      if (itemKey) {
+        hash.artifact = artifactMap[itemKey];
+        hash.level = $('#level').val();
       }
 
-      let item = artifactMap[itemKey];
-      let types = typeMap[item.rtype];
+      $('#saved').find('tr.selectable').each((index, el) => {
+        hash.saved.push(el.outerHTML);
+      });
 
-      window.location.hash = getHash(itemKey, level);
+      window.location.hash = btoa(JSON.stringify(hash));
     }
+
     function getHash(artifact, level) {
       return btoa(JSON.stringify({
         artifact: artifact,
@@ -966,6 +975,12 @@
         if (unhash.level) {
           $('#level').val(unhash.level);
           $('#level').change();
+        }
+
+        if (unhash.saved) {
+          unhash.saved.forEach((str) => {
+            $('#saved').append(str);
+          });
         }
       }
     });
