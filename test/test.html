@@ -167,7 +167,6 @@
             </tr>
           </table>
         </div>
-      <div class="tips">Click a row above to remove it from your saved list!</div>
     </div>
   </div>
 
@@ -410,6 +409,7 @@
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
           let itemName = 'UNKNOWN';
+          let img_url;
           let mat_url;
           let tr = $('<tr></tr>');
 
@@ -418,6 +418,7 @@
           switch (material.type) {
             case 0:
               itemName = itemNameMap[material.id];
+              img_url = 'img/items/' + material.id;
               mat_url = mat_link + encodeURIComponent(itemName);
               all_mats.push(itemName);
               break;
@@ -426,6 +427,7 @@
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
               break;
           }
+          tr.append('<td><img src="' + img_url + '"/></td>');
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });

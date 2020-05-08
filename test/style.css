@@ -138,6 +138,10 @@ table#saved {
   font-size: medium;
 }
 
+.cell#materials img {
+  width: 20px;
+}
+
 .cell_content {
   background-image: linear-gradient(135deg, #000000, transparent);
   border: 3px solid #D3D3D3;
