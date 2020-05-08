@@ -106,12 +106,9 @@ table#saved {
   width: 100%;
 }
 
-.cell#stats {
-  margin-left: 5px;
-}
-
 .border {
   border: 3px solid black;
+  margin: 5px;
 }
 
 .grid::after {
