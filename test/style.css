@@ -1,4 +1,6 @@
 body {
+  background: #463525;
+  color: #f7f7f7;
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -40,6 +42,7 @@ footer {
 table {
   border-collapse: collapse;
   border-style: hidden;
+  display: block;
   margin: 5px;
 }
 
@@ -80,6 +83,12 @@ table#saved {
   width: 15%;
 }
 
+.cell#info table {
+  border-top: 3px solid black;
+  margin: 5px 0 0 0;
+  width: 100%;
+}
+
 #item_image {
   border: 3px solid black;
   border-radius: 20px;
@@ -99,7 +108,7 @@ table#saved {
 }
 
 .cell#stats {
-  width: 85%;
+  margin-left: 5px;
 }
 
 .grid::after {
