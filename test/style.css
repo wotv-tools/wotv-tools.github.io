@@ -63,10 +63,6 @@ table th, table td {
   text-align: center;
 }
 
-table#seals {
-  margin: 5px auto;
-}
-
 table#seals img {
   width: 50px;
 }
