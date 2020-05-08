@@ -31,7 +31,7 @@
         <optgroup id="artifacts-other" label="Others"></optgroup>
       </select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
-      <span>Click a row below to save!</span>
+      <span class="tips hidden">Click a row below to save!</span>
     </div>
 
     <div id="content" class="hidden">
@@ -59,6 +59,8 @@
 
         <div class="cell" id="stats">
           <table>
+            <tr>
+              <th colspan="14">Average Stat Growth</th>
             <tr>
               <th>Growth Type</th>
               <th>HP</th>
@@ -154,6 +156,7 @@
           <th>CRIT.A</th>
         </tr>
       </table>
+      <div class="tips">Click a row above to remove it from your saved list!</div>
     </div>
   </div>
 
