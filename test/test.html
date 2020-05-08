@@ -899,7 +899,7 @@
     }
 
     if (window.location.hash) {
-      let unhash = atob(window.location.hash);
+      let unhash = atob(window.location.hash.substr(1));
       let selections = JSON.parse(hash);
 
       if (selections.artifact) {
