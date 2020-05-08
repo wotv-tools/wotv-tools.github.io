@@ -961,7 +961,7 @@
       };
 
       $('#saved').find('tr.selectable').each((index, el) => {
-        hash.saved.push(el.innerHTML.replace(/<td>/g,'').split('</td>'));
+        hash.saved.push(el.innerHTML.replace(/(^<td>|</td>$)/g,'').split('</td><td>'));
       });
 
       window.location.hash = btoa(JSON.stringify(hash));
