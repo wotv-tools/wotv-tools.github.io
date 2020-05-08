@@ -64,7 +64,7 @@ table#saved {
 }
 
 .selectable:hover, .selectable:hover label {
-  background-color: darkblue;
+  background-color: #00008B;
   cursor: pointer;
 }
 
