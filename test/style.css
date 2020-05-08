@@ -112,6 +112,7 @@ table#saved {
   width: 85%;
 }
 .cell#growth #stats {
+  border-bottom: 3px solid lightslategray;
   width: 100%;
 }
 
