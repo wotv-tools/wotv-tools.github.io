@@ -42,7 +42,6 @@ footer {
 table {
   border-collapse: collapse;
   border-style: hidden;
-  display: block;
 }
 
 table th {
@@ -92,7 +91,10 @@ table#saved {
 }
 
 #item_image {
-  border: 3px solid black;
+  background-color: black;
+  border: 3px solid lightgray;
+  border-bottom-color: lightslategray;
+  border-right-color: lightslategray;
   border-radius: 20px;
   margin: 5px;
 }
