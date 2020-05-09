@@ -236,7 +236,7 @@
 
       let item = artifactMap[itemKey];
       let level = $('#level').val();
-      let item_sk = item['skl' + (level/10)];
+      let item_sk = item['skl' + Math.ceil(level/10)];
 
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
