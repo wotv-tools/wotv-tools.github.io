@@ -120,7 +120,7 @@ table#saved {
 }
 
 #item_image {
-  border-size: 3px;
+  border-width: 3px;
 }
 
 .skill_desc {
