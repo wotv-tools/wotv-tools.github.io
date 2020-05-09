@@ -34,6 +34,14 @@ img {
   width: 50px;
 }
 
+#header #support_link {
+  float: right;
+}
+#header #support_link::after {
+  clear: both;
+  content: '';
+}
+
 #main_content {
   margin: 0 auto;
   margin-bottom: 20px;
