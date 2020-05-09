@@ -208,6 +208,7 @@ table th, table td {
 
 .tips {
   float: right;
+  position: relative;
 }
 .tips::after {
   clear: both;
@@ -217,17 +218,23 @@ table th, table td {
 
 .speech_bubble {
   background: #DDDDDD;
-  border-radius: .4em;
+  border-radius: 10px;
   color: #222222;
-  float: left;
   font-weight: bold;
-  padding: 10px;
-  position: relative;
+  height: 40px;
+  padding: 5px 60px 5px 10px;
 }
 
 .speech_bubble::after {
   background-image: url('img/units/LAPSmont.png');
   background-repeat: no-repeat;
-  background-size:
+  background-size: 100px 100px;
   content: '';
+  display: block;
+  float: right;
+  height: 100px;
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  width: 100px;
 }
