@@ -16,6 +16,11 @@ select, optGroup, option {
   border-bottom-color: #3D3D3D;
 }
 
+#header #css_toggle #light {
+  display: none;
+}
+
+
 footer {
   background-color: #DDDDDD;
   border-top-color: #776655;

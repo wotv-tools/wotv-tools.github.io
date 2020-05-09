@@ -34,10 +34,6 @@ img {
   width: 50px;
 }
 
-#header #css_toggle #dark {
-  display: none;
-}
-
 #main_content {
   margin: 0 auto;
   margin-bottom: 20px;
