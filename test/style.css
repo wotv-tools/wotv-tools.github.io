@@ -142,13 +142,10 @@ table#saved {
   font-size: medium;
 }
 
-#materials {
-  width: 50px;
-}
-
 #materials .material {
   background-image: radial-gradient(closest-side,brown, transparent);
   border-radius: 50%;
+  width: 50px;
 }
 
 .cell_content {
