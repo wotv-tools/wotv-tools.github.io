@@ -171,6 +171,7 @@ table#saved {
 #materials .material.recipe::before {
   color: #FFFFFF;
   content: "RECIPE";
+  position: absolute;
   text-align: center;
 }
 
