@@ -72,7 +72,7 @@ table th, table td {
   text-align: center;
 }
 
-.hidden {
+.hidden, .dismissed {
   display: none;
 }
 
