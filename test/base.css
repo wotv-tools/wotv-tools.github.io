@@ -196,6 +196,7 @@ table th, table td {
 .tips {
   float: right;
   position: relative;
+  width: 100%;
 }
 .tips::after {
   clear: both;
