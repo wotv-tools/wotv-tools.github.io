@@ -188,7 +188,7 @@ table th, table td {
   position: relative;
 }
 #materials .material.recipe::before {
-  color: #DDDDDD;
+  color: #222222;
   content: "RECIPE";
   font-size: 10px;
   position: absolute;
@@ -220,7 +220,7 @@ table th, table td {
 .speech_bubble {
   background: #DDDDDD;
   border-radius: 10px;
-  color: #EEEEEE;
+  color: #111111;
   font-weight: bold;
   height: 40px;
   padding: 5px 60px 5px 10px;
