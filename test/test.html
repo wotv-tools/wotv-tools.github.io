@@ -385,7 +385,7 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value).removeClass('hidden');
+            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
             if (seals[i]) {
               typeStatsRow.append('<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value] + '</td>');
             } else {
@@ -514,7 +514,7 @@
 
           stats.forEach((stat, i) => {
             if (item.status[1][stat.value] != null) {
-              $('#seals .stat_' + i).removeClass('hidden');
+              $('#seals .stat_' + i + ' img').removeClass('hidden');
             }
           });
 
@@ -538,7 +538,7 @@
     function resetSeals() {
       seals = {};
       $('#seals').addClass('hidden');
-      $('.stat').addClass('hidden');
+      $('.stat img').addClass('hidden');
       $('.stat input').prop('checked', false);
     }
     function toggleSeal(stat_index) {
