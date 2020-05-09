@@ -45,6 +45,10 @@ img {
   content: '';
 }
 #header #support_link a {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px 10px 5px 5px
   text-decoration: none;
 }
 #header #support_link img {

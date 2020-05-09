@@ -20,6 +20,10 @@ select, optGroup, option {
   display: none;
 }
 
+#header #support_link a {
+  border-color: #D3D3D3;
+}
+
 footer {
   background-color: #222222;
   border-top-color: #778899;
