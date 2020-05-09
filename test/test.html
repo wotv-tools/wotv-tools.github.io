@@ -414,7 +414,6 @@
           let mat_url;
           let tr = $('<tr></tr>');
           let td = $('<td></td>');
-          tr.append(td);
 
           switch (material.type) {
             case 0:
@@ -449,19 +448,30 @@
               break;
           }
           td.append('<div>' + material.num + 'x</div>');
+          tr.append(td);
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });
 
-        $('#total_mats').append('<tr><th colspan="3">Total Materials</th></tr>');
+        $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats_total = getTotalMaterials(item.iname, level);
         for (mat in mats_total) {
+          let item = itemMap[mat];
           let itemName = itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
           let img_url = '/img/items/' + mat + '.png';
           let tr = $('<tr></tr>');
-          tr.append('<td>' + mats_total[mat] + 'x</td>');
-          tr.append('<td><div class="material"><img src="' + img_url + '"/></div></td>');
+          let td = $('<td></td>');
+
+          if (item.icon) {
+            img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          } else {
+            img_url = 'img/items/' + material.id + '.png';
+            td.append('<div class="material"><img src="' + img_url + '"/></div>');
+          }
+          td.append('<div>' + mats_total[mat] + 'x</div>');
+          tr.append(td);
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
         }
