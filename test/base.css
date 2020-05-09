@@ -36,6 +36,7 @@ img {
 
 #header #support_link {
   float: right;
+  margin-right: 25px;
 }
 #header #support_link::after {
   clear: both;
