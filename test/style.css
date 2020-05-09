@@ -171,10 +171,10 @@ table#saved {
 #materials .material.recipe::before {
   color: #FFFFFF;
   content: "RECIPE";
-  font-size: small;
+  font-size: 10px;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 20px;
   width: 50px;
 }
 
