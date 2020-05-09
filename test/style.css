@@ -40,9 +40,11 @@ img {
 
 footer {
   border-top: 3px solid #778899;
+  bottom: 0;
   font-weight: bold;
   height: 20px;
   margin-top: 50px;
+  position: absolute;
   text-align: center;
   width: 100%;
 }
