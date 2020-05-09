@@ -507,17 +507,18 @@
               item = artifactMap[material.id]
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
               img_url = 'img/equipment/' + item.asset + '.png';
-              mat_url = '#' + getHash(material.id, material.lv);
 
-              let type;
+              let category;
               if (item.cat[0] > 0 && item.cat[0] < 17) {
-                type = 'weapon';
+                category = 'weapon';
               } else if (item.cat[0] < 22) {
-                type = 'armor';
+                category = 'armor';
               } else if (item.cat[0] == 22) {
-                type = 'accessory';
+                category = 'accessory';
               }
-              td.append('<div class="equipment ' + type + '"><img src="' + img_url + '"/></div>');
+              mat_url = '#' + getHash(material.id, category, material.lv);
+
+              td.append('<div class="equipment ' + category + '"><img src="' + img_url + '"/></div>');
               break;
           }
           td.append('<div>' + material.num + 'x</div>');
@@ -1099,9 +1100,10 @@
       }
     }
 
-    function getHash(artifact, level) {
+    function getHash(artifact, category, level) {
       return btoa(JSON.stringify({
         artifact: artifact,
+        category: category,
         level: level
       }));
     }
@@ -1110,13 +1112,19 @@
       if (window.location.hash) {
         let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
-        if (unhash.artifact) {
-          $('#artifacts').val(unhash.artifact);
-          $('#artifacts').change();
-        }
-        if (unhash.level) {
-          $('#level').val(unhash.level);
-          $('#level').change();
+        if (unhash.category) {
+          $('#category').val(unhash.category);
+          $('#category').change();
+
+          if (unhash.artifact) {
+            $('#artifacts').val(unhash.artifact);
+            $('#artifacts').change();
+
+            if (unhash.level) {
+              $('#level').val(unhash.level);
+              $('#level').change();
+            }
+          }
         }
 
         if (unhash.saved) {
