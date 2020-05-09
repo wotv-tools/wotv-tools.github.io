@@ -17,6 +17,10 @@ select, optGroup, option {
   font-weight: bold;
 }
 
+img {
+  width: 100%;
+}
+
 #header {
   border-bottom: 3px solid #D3D3D3;
   text-align: center;
@@ -70,7 +74,7 @@ table th, table td {
   display: none;
 }
 
-#seals img {
+#seals th {
   width: 50px;
 }
 
@@ -114,9 +118,6 @@ table#saved {
 }
 .equipment.accessory {
   background-image: radial-gradient(closest-side,#00FF00, transparent);
-}
-.equipment img {
-  width: 100%;
 }
 
 #item_image {
