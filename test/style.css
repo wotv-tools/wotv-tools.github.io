@@ -177,17 +177,18 @@ table#saved {
 
 #materials .material .recipe {
   background-color: #F66969;
-  border-radius: 20px 0 0 20px;
+  border-radius: 10px 0 0 10px;
+  position: relative;
 }
 #materials .material .recipe::before {
   background-color: transparent;
-  border-top-left-radius: 20px;
-  bottom: -25px;
-  box-shadow: 0 -20px 0 0 #F66969;
+  border-top-left-radius: 10px;
+  bottom: -15px;
+  box-shadow: 0 -15px 0 0 #F66969;
   content: "";
-  height: 25px;
+  height: 15px;
   position: absolute;
-  width: 20px;
+  width: 10px;
 }
 
 .cell_content {
