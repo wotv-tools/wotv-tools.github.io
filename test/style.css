@@ -41,6 +41,9 @@ img {
 }
 
 footer {
+  position: relative;
+}
+footer div {
   background-color: #222222;
   border-top: 3px solid #778899;
   bottom: 0;
