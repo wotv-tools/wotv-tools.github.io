@@ -145,11 +145,10 @@ table#saved {
 #materials .material {
   background-image: radial-gradient(closest-side,brown, transparent);
   border-radius: 50%;
-  width: 50px;
 }
 
-#materials .material img {
-  width: 100%;
+#materials .material, #materials .equipment {
+  width: 50px;
 }
 
 .cell_content {
