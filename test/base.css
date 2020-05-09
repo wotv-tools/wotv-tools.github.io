@@ -23,6 +23,7 @@ img {
   border-bottom-width: 3px;
   font-size: larger;
   line-height: 50px;
+  position: relative;
   text-align: center;
   width: 100%
 }
