@@ -148,6 +148,11 @@ table#saved {
   border-radius: 50%;
 }
 
+#materials .equipment {
+  margin: 0;
+  padding: 3px;
+}
+
 #materials .material, #materials .equipment {
   width: 50px;
 }
