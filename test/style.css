@@ -107,13 +107,13 @@ table#saved {
   margin: 5px;
 }
 .equipment.weapon {
-  background-image: radial-gradient(#6A0DAD, transparent);
+  background-image: radial-gradient(closest-side,#6A0DAD, transparent);
 }
 .equipment.armor {
-  background-image: radial-gradient(#0000FF, transparent);
+  background-image: radial-gradient(closest-side,#0000FF, transparent);
 }
 .equipment.accessory {
-  background-image: radial-gradient(#00FF00, transparent);
+  background-image: radial-gradient(closest-side,#00FF00, transparent);
 }
 .equipment img {
   width: 100%;
@@ -147,7 +147,7 @@ table#saved {
 }
 
 #materials .material {
-  background-image: radial-gradient(brown, transparent);
+  background-image: radial-gradient(closest-side,brown, transparent);
   border-radius: 50%;
 }
 
