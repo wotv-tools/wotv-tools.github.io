@@ -1,0 +1,90 @@
+body {
+  background: #DDDDDD;
+  color: #222222;
+}
+
+a {
+  color: #222222;
+}
+
+select, optGroup, option {
+  background: #DDDDDD;
+  color: #222222;
+}
+
+#header {
+  border-bottom-color: #3D3D3D;
+}
+
+#header #css_toggle #light {
+  display: none;
+}
+
+#header #support_link a {
+  border-color: #3D3D3D;
+}
+
+footer {
+  background-color: #DDDDDD;
+  border-top-color: #776655;
+}
+
+table {
+  background-color: #EEEEEE;
+}
+
+table th, table td {
+  border-color: #3D3D3D;
+}
+
+.selectable:hover, .selectable:hover label {
+  background-color: #FFFF74;
+}
+
+.cell_content {
+  background-image: linear-gradient(135deg, #EEEEEE, transparent);
+  border-color: #3D3D3D;
+  border-bottom-color: #776655;
+  border-right-color: #776655;
+}
+
+.cell#info table {
+  border-top-color: #3D3D3D;
+}
+
+#item_image {
+  background-color: #EEEEEE;
+  border-color: #3D3D3D;
+  border-bottom-color: #776655;
+  border-right-color: #776655;
+}
+
+#seals label:hover {
+  background-image: radial-gradient(#00AA00, transparent);
+}
+#seals .seal_on label {
+  background-image: radial-gradient(#00AA00, transparent);
+}
+#seals .seal_on label:hover {
+  background-image: radial-gradient(#AA0000, transparent);
+}
+
+#materials .material.recipe::before {
+  color: #222222;
+  text-shadow: -1px -1px 0 #EEEEEE,
+    -1px 1px 0 #EEEEEE,
+    1px -1px 0 #EEEEEE,
+    1px 1px 0 #EEEEEE;
+}
+
+.speech_bubble {
+  background: #EEEEEE;
+  border: 1px solid #111111;
+  color: #111111;
+  padding: 5px 60px 5px 10px;
+}
+
+.speech_bubble::after {
+  background-image: url('img/units/LAPSmont.png');
+  right: -25px;
+}

@@ -2,7 +2,22 @@
 <html>
 <head>
 <script src="jquery-3.5.0.min.js" type="text/javascript"></script>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="base.css" rel="stylesheet" type="text/css">
+<link id="theme" href="dark.css" rel="stylesheet" type="text/css">
+<script>
+  if (window.localStorage.getItem('light')) {
+    $('head #theme').attr('href', 'light.css');
+  }
+  function toggleCSS() {
+    if (window.localStorage.getItem('light')) {
+      window.localStorage.removeItem('light');
+      $('head #theme').attr('href', 'dark.css');
+    } else {
+      window.localStorage.setItem('light', true);
+      $('head #theme').attr('href', 'light.css');
+    }
+  }
+</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164908860-1"></script>
 <script>
@@ -16,23 +31,36 @@
 </head>
 <body>
   <div id="header">
-    <h1>
-      Equipment Calculator
-    </h1>
+    Equipment Calculator
+    <div id="css_toggle" onclick="toggleCSS()">
+      <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
+      <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
+    </div>
+    <div id="support_link">
+      <a target="_blank" href="https://www.buymeacoffee.com/sairenkao">
+        <img src="img/items/IT_LP_WW_01.png" title="Buy me visiore"/>
+        <span>Buy me visiore</span>
+      </a>
+    </div>
   </div>
 
   <div id="main_content">
     <div id="inputs">
-      <select id="artifacts" onchange="onArtifactChange()">
-        <option disabled selected>-- Select an equipment --</option>
+      <select id="category" onchange="onCategoryChange()">
+        <option disabled selected>-- Select an category --</option>
+        <option value="weapon">Weapon</option>
+        <option value="armor">Armor</option>
+        <option value="accessory">Accessory</option>
+      </select>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
         <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
         <optgroup id="artifacts-armor" label="Armor"></optgroup>
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
-      <div class="tips" onclick="hide(this)">
-        <div class="speech_bubble">Choose an equipment from the dropdown on the left!</div>
-      </div>
+    </div>
+    <div id="start_tip" class="tips" onclick="dismiss(this)">
+      <div class="speech_bubble">To get started, choose an equipment from the input above! If you wish to learn from my brother, click on the Soul Prism at the top at anytime.</div>
     </div>
 
     <div id="content" class="hidden">
@@ -83,7 +111,7 @@
               <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
-              <tr style="height:10px;"></tr>
+              <tr id="grow_seal_div" style="height:10px;"></tr>
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
@@ -126,8 +154,11 @@
               </tr>
             </table>
           </div>
-          <div class="tips" onclick="hide(this)">
-            <div class="speech_bubble">Click on the seals below the table to see how the average changes with seals. If you like what you see, you can click on the entry to save it down below!</div>
+          <div id="seals_tip" class="tips hidden" onclick="dismiss(this)">
+            <div class="speech_bubble">Click on the seals above to see how the average changes with seals! Seals are applied every level until the stat is maxed.</div>
+          </div>
+          <div id="save_tip" class="tips hidden" onclick="dismiss(this)">
+            <div class="speech_bubble">If you like what you see, you can click on the entry to save it down below!</div>
           </div>
         </div>
       </div>
@@ -155,7 +186,7 @@
               <th colspan="15">Saved Equipment</th>
             <tr>
               <th>Equipment</th>
-              <th>Type</th>
+              <th>Growth<br/>Type</th>
               <th>HP</th>
               <th>TP</th>
               <th>AP</th>
@@ -164,16 +195,16 @@
               <th>MAG</th>
               <th>SPR</th>
               <th>ACC</th>
-              <th>AGI</th>
               <th>DEX</th>
-              <th>EVA</th>
+              <th>AGI</th>
+              <th>EVADE</th>
               <th>CRIT</th>
-              <th>CRIT.A</th>
+              <th>CRIT<br/>EVADE</th>
             </tr>
           </table>
         </div>
-        <div class="tips" onclick="hide(this)">
-          <div class="speech_bubble">You can remove any unwanted entries by clicking on them!</div>
+        <div class="tips hidden" onclick="dismiss(this)">
+          <div class="speech_bubble">You can remove any unwanted entries by clicking on them! Once you are ready, you can share the link above.</div>
         </div>
       </div>
     </div>
@@ -225,16 +256,40 @@
       label: "CRIT",
       value: "crt"
     }, {
-      label: "CRIT.A",
+      label: "CRIT EVADE",
       value: "crta"
     }];
 
-    function hide(el) {
-      $(el).addClass('hidden');
+    function dismiss(el) {
+      $(el).addClass('dismissed');
     }
 
+    function onCategoryChange() {
+      let category = $('#category').val();
+
+      $('#artifacts').empty();
+      switch (category) {
+        case 'weapon':
+          artifactWeaponList.forEach((weapon) => {
+            $('#artifacts').append('<option value="' + weapon.value + '">' + weapon.label + '</option>');
+          });
+          break;
+        case 'armor':
+          artifactArmorList.forEach((armor) => {
+            $('#artifacts').append('<option value="' + armor.value + '">' + armor.label + '</option>');
+          });
+          break;
+        case 'accessory':
+          artifactAccessoryList.forEach((accessory) => {
+            $('#artifacts').append('<option value="' + accessory.value + '">' + accessory.label + '</option>');
+          });
+          break;
+      }
+
+      $('#artifacts').removeClass('hidden');
+    }
     function onArtifactChange() {
-      $('#inputs .tips').addClass('hidden');
+      $('#start_tip').addClass('dismissed');
       resetSeals();
       setItemInfo();
     }
@@ -452,17 +507,18 @@
               item = artifactMap[material.id]
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
               img_url = 'img/equipment/' + item.asset + '.png';
-              mat_url = '#' + getHash(material.id, material.lv);
 
-              let type;
+              let category;
               if (item.cat[0] > 0 && item.cat[0] < 17) {
-                type = 'weapon';
+                category = 'weapon';
               } else if (item.cat[0] < 22) {
-                type = 'armor';
+                category = 'armor';
               } else if (item.cat[0] == 22) {
-                type = 'accessory';
+                category = 'accessory';
               }
-              td.append('<div class="equipment ' + type + '"><img src="' + img_url + '"/></div>');
+              mat_url = '#' + getHash(material.id, category, material.lv);
+
+              td.append('<div class="equipment ' + category + '"><img src="' + img_url + '"/></div>');
               break;
           }
           td.append('<div>' + material.num + 'x</div>');
@@ -510,11 +566,14 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
+      $('#grow_seal_div').addClass('hidden');
       $('#seals').addClass('hidden');
+      $('#seals_tip').addClass('hidden');
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
           $('#level').val('1');
+          $('#save_tip').removeClass('hidden');
           break;
         case 'ARTIFACT_50':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -522,6 +581,7 @@
           $('#level').append('<option value="20">Lv. 20</option>');
           $('#level').append('<option value="30">Lv. 30</option>');
           $('#level').val('30');
+          $('#save_tip').removeClass('hidden');
           break;
         default:
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -538,6 +598,9 @@
             }
           });
 
+          $('#seals_tip').removeClass('hidden');
+          $('#save_tip').addClass('hidden');
+          $('#grow_seal_div').removeClass('hidden');
           $('#seals').removeClass('hidden');
           break;
       }
@@ -562,7 +625,8 @@
       $('.stat input').prop('checked', false);
     }
     function toggleSeal(stat_index) {
-      $('#growth .tips').addClass('hidden');
+      $('#seals_tip').addClass('dismissed');
+      $('#save_tip').removeClass('hidden');
 
       if (seals[stat_index] == 1) {
         $('.stat.stat_' + stat_index).removeClass('seal_on');
@@ -654,21 +718,11 @@
       newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
       $('#saved table').append(newEl);
+      $('#saved .tips').removeClass('hidden');
       $('#saved').removeClass('hidden');
-
-      $('#growth .tips').addClass('hidden');
+      $('#growth .tips').addClass('dismissed');
 
       setHash();
-    }
-    function copyLink() {
-      let copyTxt = $('#copy_txt');
-      copyTxt.val(window.location);
-      copyTxt.focus();
-      copyTxt.setSelectionRange(0, copyTxt.value.length);
-
-      if (document.execCommand('copy')) {
-        alert('Saved to clipboard!');
-      }
     }
     function unsave(el) {
       $(el).remove();
@@ -677,7 +731,7 @@
         $('#saved').addClass('hidden');
       }
 
-      $('#saved .tips').addClass('hidden');
+      $('#saved .tips').addClass('dismissed');
 
       setHash();
     }
@@ -937,66 +991,45 @@
     }));
 
     let artifactMap = {};
+    let artifactWeaponList = [];
+    let artifactArmorList = [];
+    let artifactAccessoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 	20200422_4c9ea1e3
       $.getJSON('data/Artifact.json', (data) => {
-        let artifactList = [];
-        let artifactWeaponList = [];
-        let artifactArmorList = [];
-        let artifactAccessoryList = [];
         data.items.forEach((item) => {
           if (item.type >= 0) {
             artifactMap[item.iname] = item;
             artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-            let artifactListEntry = {
-              label: artifactNameMap[item.iname],
-              value : item.iname
-            };
+            if (artifactNameMap[item.iname]) {
+              let artifactListEntry = {
+                label: artifactNameMap[item.iname],
+                value : item.iname
+              };
 
-            if (item.cat[0] > 0 && item.cat[0] < 17) {
-              artifactWeaponList.push(artifactListEntry);
-            } else if (item.cat[0] < 22) {
-              artifactArmorList.push(artifactListEntry);
-            } else if (item.cat[0] == 22) {
-              artifactAccessoryList.push(artifactListEntry);
-            // } else {
-            //   artifactList.push(artifactListEntry);
+              if (item.cat[0] > 0 && item.cat[0] < 17) {
+                artifactWeaponList.push(artifactListEntry);
+              } else if (item.cat[0] < 22) {
+                artifactArmorList.push(artifactListEntry);
+              } else if (item.cat[0] == 22) {
+                artifactAccessoryList.push(artifactListEntry);
+              }
             }
           }
         });
 
         artifactWeaponList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
         artifactArmorList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
         artifactAccessoryList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
-        });
-        artifactList.sort((a, b) => {
-          return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
 
-        $('#artifacts').focus();
-
+        $('#category').focus();
         resolve();
       });
     }));
@@ -1067,9 +1100,10 @@
       }
     }
 
-    function getHash(artifact, level) {
+    function getHash(artifact, category, level) {
       return btoa(JSON.stringify({
         artifact: artifact,
+        category: category,
         level: level
       }));
     }
@@ -1078,13 +1112,19 @@
       if (window.location.hash) {
         let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
-        if (unhash.artifact) {
-          $('#artifacts').val(unhash.artifact);
-          $('#artifacts').change();
-        }
-        if (unhash.level) {
-          $('#level').val(unhash.level);
-          $('#level').change();
+        if (unhash.category) {
+          $('#category').val(unhash.category);
+          $('#category').change();
+
+          if (unhash.artifact) {
+            $('#artifacts').val(unhash.artifact);
+            $('#artifacts').change();
+
+            if (unhash.level) {
+              $('#level').val(unhash.level);
+              $('#level').change();
+            }
+          }
         }
 
         if (unhash.saved) {

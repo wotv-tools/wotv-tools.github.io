@@ -1,6 +1,4 @@
 body {
-  background: #222222;
-  color: #EEEEEE;
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -8,13 +6,10 @@ body {
 }
 
 a {
-  color: #EEEEEE;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 select, optGroup, option {
-  background: #222222;
-  color: #EEEEEE;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -24,13 +19,41 @@ img {
 }
 
 #header {
-  border-bottom: 3px solid #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  font-size: larger;
+  line-height: 50px;
+  position: relative;
   text-align: center;
   width: 100%
 }
 
-#header h1 {
-  height: 40px;
+#header #css_toggle {
+  display: inline-block;
+  height: 50px;
+  vertical-align: middle;
+  width: 50px;
+}
+
+#header #support_link {
+  position: absolute;
+  right: 25px;
+  top: 0;
+}
+#header #support_link::after {
+  clear: both;
+  content: '';
+}
+#header #support_link a {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px 10px 5px 5px;
+  text-decoration: none;
+}
+#header #support_link img {
+  vertical-align: middle;
+  width: 25px;
 }
 
 #main_content {
@@ -41,8 +64,8 @@ img {
 }
 
 footer {
-  background-color: #222222;
-  border-top: 3px solid #778899;
+  border-top-style: solid;
+  border-top-width: 3px;
   bottom: 0;
   font-weight: bold;
   height: 20px;
@@ -61,23 +84,22 @@ footer {
 }
 
 table {
-  background-color: #111111;
   border-collapse: collapse;
   border-style: hidden;
 }
 
 table th, table td {
-  border: 3px solid #D3D3D3;
+  border-style: solid;
+  border-width: 3px;
   padding: 5px;
   text-align: center;
 }
 
-.hidden {
+.hidden, .dismissed {
   display: none;
 }
 
 .selectable:hover, .selectable:hover label {
-  background-color: #00008B;
   cursor: pointer;
 }
 
@@ -93,10 +115,8 @@ table th, table td {
 }
 
 .cell_content {
-  background-image: linear-gradient(135deg, #111111, transparent);
-  border: 3px solid #D3D3D3;
-  border-bottom-color: #778899;
-  border-right-color: #778899;
+  border-style: solid;
+  border-width: 3px;
   margin: 5px;
 }
 
@@ -105,7 +125,8 @@ table th, table td {
 }
 
 .cell#info table {
-  border-top: 3px solid #D3D3D3;
+  border-top-style: solid;
+  border-top-width: 3px;
   margin: 5px 0 0 0;
   width: 100%;
 }
@@ -115,10 +136,8 @@ table th, table td {
 }
 
 #item_image {
-  background-color: #111111;
-  border: 1px solid #D3D3D3;
-  border-bottom-color: #778899;
-  border-right-color: #778899;
+  border-style: solid;
+  border-width: 1px;
   border-radius: 20px;
   margin: 5px;
 }
@@ -163,16 +182,6 @@ table th, table td {
   padding: 0;
 }
 
-#seals label:hover {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label:hover {
-  background-image: radial-gradient(#FF0000, transparent);
-}
-
 #seals img {
   height: 50px;
   margin: 0 auto;
@@ -188,7 +197,6 @@ table th, table td {
   position: relative;
 }
 #materials .material.recipe::before {
-  color: #DDDDDD;
   content: "RECIPE";
   font-size: 10px;
   position: absolute;
@@ -210,6 +218,7 @@ table th, table td {
 .tips {
   float: right;
   position: relative;
+  width: 100%;
 }
 .tips::after {
   clear: both;
@@ -218,24 +227,18 @@ table th, table td {
 }
 
 .speech_bubble {
-  background: #DDDDDD;
   border-radius: 10px;
-  color: #222222;
   font-weight: bold;
   height: 40px;
-  padding: 5px 60px 5px 10px;
 }
 
 .speech_bubble::after {
-  background-image: url('img/units/LAPSmont.png');
   background-repeat: no-repeat;
   background-size: 100px 100px;
   content: '';
   display: block;
-  float: right;
   height: 100px;
   position: absolute;
-  right: -25px;
   top: -25px;
   width: 100px;
 }
