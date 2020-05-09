@@ -172,21 +172,35 @@ table#saved {
 #materials .material, #materials .equipment {
   height: 50px;
   margin: 0 auto;
+  position: relative;
   width: 50px;
 }
 
 #materials .material .recipe {
   background-color: #F66969;
-  border-radius: 10px 0 0 10px;
-  position: relative;
+  border-radius: 10px 0 10px 0;
+  height: 30px;
+  margin: 10px;
+  position: absolute;
+  width: 30px;
 }
 #materials .material .recipe::before {
   background-color: transparent;
   border-top-left-radius: 10px;
-  bottom: -15px;
-  box-shadow: 0 -15px 0 0 #F66969;
+  bottom: -20px;
+  box-shadow: 0 -10px 0 0 #F66969;
   content: "";
-  height: 15px;
+  height: 20px;
+  position: absolute;
+  width: 10px;
+}
+#materials .material .recipe::after {
+  background-color: transparent;
+  border-top-left-radius: 10px;
+  bottom: -20px;
+  box-shadow: 0 -10px 0 0 #F66969;
+  content: "";
+  height: 20px;
   position: absolute;
   width: 10px;
 }
