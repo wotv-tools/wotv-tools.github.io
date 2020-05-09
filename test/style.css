@@ -210,6 +210,7 @@ table th, table td {
 	background: #DDDDDD;
 	border-radius: .4em;
   color: #222222;
+  font-weight: bold;
   padding: 10px;
   position: relative;
 }
