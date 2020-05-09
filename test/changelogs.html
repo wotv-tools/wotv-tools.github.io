@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <link href="base.css" rel="stylesheet" type="text/css">
+  <link id="theme" href="dark.css" rel="stylesheet" type="text/css">
+  <script>
+    if (window.localStorage.getItem('light')) {
+      $('head #theme').attr('href', 'light.css');
+    }
+    function toggleCSS() {
+      if (window.localStorage.getItem('light')) {
+        window.localStorage.removeItem('light');
+        $('head #theme').attr('href', 'dark.css');
+      } else {
+        window.localStorage.setItem('light', true);
+        $('head #theme').attr('href', 'light.css');
+      }
+    }
+  </script>  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164908860-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,9 +29,11 @@
 </head>
 <body>
   <div id="header">
-    <h1>
-      Change Logs
-    </h1>
+    Change Logs
+    <div id="css_toggle" onclick="toggleCSS()">
+      <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
+      <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
+    </div>
   </div>
   <div id="main_content">
     <h3>2020-05-08</h3>

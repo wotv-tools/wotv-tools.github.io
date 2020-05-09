@@ -8,6 +8,15 @@
   if (window.localStorage.getItem('light')) {
     $('head #theme').attr('href', 'light.css');
   }
+  function toggleCSS() {
+    if (window.localStorage.getItem('light')) {
+      window.localStorage.removeItem('light');
+      $('head #theme').attr('href', 'dark.css');
+    } else {
+      window.localStorage.setItem('light', true);
+      $('head #theme').attr('href', 'light.css');
+    }
+  }
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164908860-1"></script>
@@ -241,16 +250,6 @@
       label: "CRIT EVADE",
       value: "crta"
     }];
-
-    function toggleCSS() {
-      if (window.localStorage.getItem('light')) {
-        window.localStorage.removeItem('light');
-        $('head #theme').attr('href', 'dark.css');
-      } else {
-        window.localStorage.setItem('light', true);
-        $('head #theme').attr('href', 'light.css');
-      }
-    }
 
     function dismiss(el) {
       $(el).addClass('dismissed');
