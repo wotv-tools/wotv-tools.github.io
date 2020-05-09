@@ -160,16 +160,6 @@ table th, table td {
   padding: 0;
 }
 
-#seals label:hover {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label:hover {
-  background-image: radial-gradient(#FF0000, transparent);
-}
-
 #seals img {
   height: 50px;
   margin: 0 auto;
