@@ -207,9 +207,10 @@ table th, table td {
 }
 
 .speech_bubble {
-	position: relative;
 	background: #00aabb;
 	border-radius: .4em;
+  padding: 10px;
+  position: relative;
 }
 
 .speech_bubble:after {
