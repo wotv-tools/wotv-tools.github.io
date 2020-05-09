@@ -217,19 +217,15 @@ table th, table td {
   border-radius: 10px;
   font-weight: bold;
   height: 40px;
-  padding: 5px 60px 5px 10px;
 }
 
 .speech_bubble::after {
-  background-image: url('img/units/LAPSmont.png');
   background-repeat: no-repeat;
   background-size: 100px 100px;
   content: '';
   display: block;
-  float: right;
   height: 100px;
   position: absolute;
-  right: -25px;
   top: -25px;
   width: 100px;
 }

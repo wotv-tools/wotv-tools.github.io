@@ -63,8 +63,10 @@ table th, table td {
 .speech_bubble {
   background: #DDDDDD;
   color: #222222;
+  padding: 5px 10px 5px 60px;
 }
 
 .speech_bubble::after {
   background-image: url('img/units/LAPSstrn.png');
+  left: -25px;
 }
