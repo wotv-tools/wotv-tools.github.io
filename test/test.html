@@ -183,7 +183,7 @@
             </tr>
           </table>
         </div>
-        <div class="tips" onclick="dismiss(this)">
+        <div class="tips hidden" onclick="dismiss(this)">
           <div class="speech_bubble">You can remove any unwanted entries by clicking on them!</div>
         </div>
       </div>
@@ -683,6 +683,7 @@
       newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
       $('#saved table').append(newEl);
+      $('#saved .tips').removeClass('hidden');
       $('#saved').removeClass('hidden');
       $('#growth .tips').addClass('dismissed');
 
