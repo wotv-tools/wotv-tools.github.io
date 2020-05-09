@@ -29,8 +29,13 @@ img {
   width: 100%
 }
 
-#header h1 {
-  height: 40px;
+#header #css_toggle {
+  height: 30px;
+  width: 30px;
+}
+
+#header #css_toggle #light {
+  display: none;
 }
 
 #main_content {

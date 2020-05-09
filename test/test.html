@@ -21,9 +21,13 @@
 </head>
 <body>
   <div id="header">
-    <h1>
+    <div>
       Equipment Calculator
-    </h1>
+      <div id="css_toggle" onclick="toggleCSS()">
+        <img id="light" src="img/items/IT_UN_AW_SHINE.png"/>
+        <img id="dark" src="img/items/IT_UN_AW_DARK.png"/>
+      </div>
+    </div>
   </div>
 
   <div id="main_content">
@@ -233,9 +237,19 @@
       label: "CRIT",
       value: "crt"
     }, {
-      label: "CRIT.A",
+      label: "CRIT EVADE",
       value: "crta"
     }];
+
+    function toggleCSS() {
+      if (window.localStorage.getItem('light')) {
+        window.localStorage.removeItem('light');
+        $('head link').attr('href', 'dark.css');
+      } else {
+        window.localStorage.setItem('light', true);
+        $('head link').attr('href', 'dark.css');
+      }
+    }
 
     function dismiss(el) {
       $(el).addClass('dismiss');
