@@ -534,11 +534,12 @@
       $('#level').empty();
       $('#grow_seal_div').addClass('hidden');
       $('#seals').addClass('hidden');
+      $('#seals_tip').addClass('hidden');
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
           $('#level').val('1');
-          $('#save_tips').removeClass('hidden');
+          $('#save_tip').removeClass('hidden');
           break;
         case 'ARTIFACT_50':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -546,7 +547,7 @@
           $('#level').append('<option value="20">Lv. 20</option>');
           $('#level').append('<option value="30">Lv. 30</option>');
           $('#level').val('30');
-          $('#save_tips').removeClass('hidden');
+          $('#save_tip').removeClass('hidden');
           break;
         default:
           $('#level').append('<option value="1">Lv. 1</option>');
