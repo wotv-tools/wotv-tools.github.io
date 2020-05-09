@@ -171,8 +171,11 @@ table#saved {
 #materials .material.recipe::before {
   color: #FFFFFF;
   content: "RECIPE";
+  font-size: small;
   position: absolute;
   text-align: center;
+  top: 25px;
+  width: 50px;
 }
 
 #materials .equipment {
