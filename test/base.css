@@ -41,8 +41,11 @@ img {
   clear: both;
   content: '';
 }
+#header #support_link a {
+  text-decoration: none;
+}
 #header #support_link img {
-  width: 50px;
+  width: 25px;
 }
 
 #main_content {
