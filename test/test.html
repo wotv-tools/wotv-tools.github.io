@@ -24,8 +24,8 @@
   <div id="header">
     Equipment Calculator
     <div id="css_toggle" onclick="toggleCSS()">
-      <img id="light" src="img/items/IT_UN_AW_SHINE.png"/>
-      <img id="dark" src="img/items/IT_UN_AW_DARK.png"/>
+      <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
+      <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
     </div>
   </div>
 
@@ -183,7 +183,7 @@
             </tr>
           </table>
         </div>
-        <div class="tips hidden" onclick="dismiss(this)">
+        <div class="tips" onclick="dismiss(this)">
           <div class="speech_bubble">You can remove any unwanted entries by clicking on them!</div>
         </div>
       </div>
@@ -684,20 +684,9 @@
       newEl.prepend(item_td);
       $('#saved table').append(newEl);
       $('#saved').removeClass('hidden');
-
       $('#growth .tips').addClass('dismissed');
 
       setHash();
-    }
-    function copyLink() {
-      let copyTxt = $('#copy_txt');
-      copyTxt.val(window.location);
-      copyTxt.focus();
-      copyTxt.setSelectionRange(0, copyTxt.value.length);
-
-      if (document.execCommand('copy')) {
-        alert('Saved to clipboard!');
-      }
     }
     function unsave(el) {
       $(el).remove();
