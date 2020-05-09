@@ -1,42 +1,244 @@
-th, td {
-  border: 1px solid black;
+body {
+  background: #222222;
+  color: #EEEEEE;
+  cursor: default;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #EEEEEE;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+select, optGroup, option {
+  background: #222222;
+  color: #EEEEEE;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+img {
+  width: 100%;
+}
+
+#header {
+  border-bottom: 3px solid #D3D3D3;
+  text-align: center;
+  width: 100%
+}
+
+#header h1 {
+  height: 40px;
+}
+
+#main_content {
+  margin: 0 auto;
+  margin-bottom: -20px;
+  padding: 10px;
+  max-width: 1000px;
+}
+
+footer {
+  border-top: 3px solid #778899;
+  bottom: 0;
+  font-weight: bold;
+  height: 20px;
+  margin-top: 50px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+#inputs {
+  margin: 10px 0;
+}
+
+#inputs select {
+  margin: 0 5px;
+}
+
+table {
+  background-color: #111111;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+table th, table td {
+  border: 3px solid #D3D3D3;
   padding: 5px;
   text-align: center;
-}
-
-table#info img#image {
-  width: 150px;
-}
-
-table#stats {
-  text-align: center;
-}
-
-table#stats th {
-  width: 45px;
-}
-
-table#stats th:first-child {
-  width: 60px;
-}
-
-.clickable {
-  cursor: pointer;
-}
-
-.disabled {
-  background-color: lightgray;
-  color: gray;
 }
 
 .hidden {
   display: none;
 }
 
-.borderless {
-  border: none;
+.selectable:hover, .selectable:hover label {
+  background-color: #00008B;
+  cursor: pointer;
 }
 
-footer {
-  margin-top: 50px;
+.grid::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.grid .cell {
+  float: left;
+  margin: 0;
+}
+
+.cell_content {
+  background-image: linear-gradient(135deg, #111111, transparent);
+  border: 3px solid #D3D3D3;
+  border-bottom-color: #778899;
+  border-right-color: #778899;
+  margin: 5px;
+}
+
+.cell#info {
+  width: 20%;
+}
+
+.cell#info table {
+  border-top: 3px solid #D3D3D3;
+  margin: 5px 0 0 0;
+  width: 100%;
+}
+
+.cell#info table td:first-child {
+  width: 40%;
+}
+
+#item_image {
+  background-color: #111111;
+  border: 1px solid #D3D3D3;
+  border-bottom-color: #778899;
+  border-right-color: #778899;
+  border-radius: 20px;
+  margin: 5px;
+}
+.equipment.weapon {
+  background-image: radial-gradient(closest-side,#6A0DAD, transparent);
+}
+.equipment.armor {
+  background-image: radial-gradient(closest-side,#0000FF, transparent);
+}
+.equipment.accessory {
+  background-image: radial-gradient(closest-side,#00FF00, transparent);
+}
+
+#item_image {
+  border-width: 3px;
+}
+
+.skill_desc {
+  font-size: smaller;
+}
+
+.cell#growth {
+  width: 80%;
+}
+.cell#growth #stats {
+  width: 100%;
+}
+
+.cell#growth #stats td {
+  font-size: smaller;
+}
+
+.cell#growth #stats td:first-child {
+  font-size: medium;
+}
+
+#seals.hidden {
+  display: none;
+}
+
+#seals td {
+  padding: 0;
+}
+
+#seals label:hover {
+  background-image: radial-gradient(#00FF00, transparent);
+}
+#seals .seal_on label {
+  background-image: radial-gradient(#00FF00, transparent);
+}
+#seals .seal_on label:hover {
+  background-image: radial-gradient(#FF0000, transparent);
+}
+
+#seals img {
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
+#materials .material {
+  background-image: radial-gradient(closest-side, #FF0000, transparent);
+  border-radius: 50%;
+}
+
+#materials .material.recipe {
+  position: relative;
+}
+#materials .material.recipe::before {
+  color: #DDDDDD;
+  content: "RECIPE";
+  font-size: 10px;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  width: 50px;
+}
+
+#materials .equipment {
+  padding: 3px;
+}
+
+#materials .material, #materials .equipment {
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
+#saved .cell, #saved table {
+  width: 100%;
+}
+
+.tips {
+  float: right;
+  position: relative;
+}
+.tips::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.speech_bubble {
+  background: #DDDDDD;
+  border-radius: 10px;
+  color: #222222;
+  font-weight: bold;
+  height: 40px;
+  padding: 5px 60px 5px 10px;
+}
+
+.speech_bubble::after {
+  background-image: url('img/units/LAPSmont.png');
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  content: '';
+  display: block;
+  float: right;
+  height: 100px;
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  width: 100px;
 }

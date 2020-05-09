@@ -15,150 +15,175 @@
 <title>WotV:FFBE Equipment Calculator</title>
 </head>
 <body>
-  <h1>
-    This tool calculates the AVERAGE stat gain for an equipment.
-  </h1>
-
-  <div id="instructions">
-    Select your equipment, equipment level, and seal(s).
+  <div id="header">
+    <h1>
+      Equipment Calculator
+    </h1>
   </div>
 
-  <div id="inputs">
-    <select id="artifacts" onchange="onArtifactChange()">
-      <option disabled selected>-- Select an equipment --</option>
-      <optgroup id="artifacts-weapon" label="Weapons"></optgroup>
-      <optgroup id="artifacts-armor" label="Armors"></optgroup>
-      <optgroup id="artifacts-accessory" label="Accessories"></optgroup>
-      <optgroup id="artifacts-other" label="Others"></optgroup>
-    </select>
-    <select id="level" onchange="onArtifactChange()">
-      <option value="10">Lv. 10</option>
-      <option value="20">Lv. 20</option>
-      <option value="30">Lv. 30</option>
-      <option value="40">Lv. 40</option>
-      <option value="50" selected>Lv. 50</option>
-    </select>
-  </div>
+  <div id="main_content">
+    <div id="inputs">
+      <select id="artifacts" onchange="onArtifactChange()">
+        <option disabled selected>-- Select an equipment --</option>
+        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
+        <optgroup id="artifacts-armor" label="Armor"></optgroup>
+        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
+      </select>
+      <select id="level" class="hidden" onchange="onLevelChange()"></select>
+      <div class="tips" onclick="hide(this)">
+        <div class="speech_bubble">Choose an equipment from the dropdown on the left!</div>
+      </div>
+    </div>
 
-  <div id="content" class="hidden">
-    <table id="info" class="borderless">
-      <tr>
-        <td colspan="2">
-          <img id="image" src=""/>
-        </td>
-        <td class="borderless">
-          <table id="stats">
+    <div id="content" class="hidden">
+      <div class="grid">
+        <div class="cell" id="info">
+          <div class="cell_content">
+            <div id="item_image" class="equipment">
+              <img src=""/>
+            </div>
+            <table>
+              <tr>
+                <td><b>Rarity</b></td>
+                <td id="rarity"></td>
+              </tr>
+              <tr>
+                <td><b>Type</b></td>
+                <td id="type"></td>
+              </tr>
+              <tr>
+                <td id="skills" colspan="2"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="cell" id="growth">
+          <div class="cell_content">
+            <table id="stats">
+              <tr>
+                <th colspan="14">Average Stat Growth</th>
+              </tr>
+              <tr>
+                <th>Growth<br/>Type</th>
+                <th>HP</th>
+                <th>TP</th>
+                <th>AP</th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>MAG</th>
+                <th>SPR</th>
+                <th>ACC</th>
+                <th>EVADE</th>
+                <th>AGI</th>
+                <th>DEX</th>
+                <th>CRIT</th>
+                <th>CRIT<br/>EVADE</th>
+              </tr>
+              <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
+              <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
+              <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
+              <tr style="height:10px;"></tr>
+              <tr id="seals" class="hidden">
+                <th>Seals</th>
+                <td class="stat stat_0" onclick="toggleSeal(0)">
+                  <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_3" onclick="toggleSeal(3)">
+                  <label for=""><img src="img/items/IT_AF_SUP_ATK.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td class="stat stat_4" onclick="toggleSeal(4)">
+                  <label for=""><img src="img/items/IT_AF_SUP_DEF.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td class="stat stat_5" onclick="toggleSeal(5)">
+                  <label for=""><img src="img/items/IT_AF_SUP_MAG.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td class="stat stat_6" onclick="toggleSeal(6)">
+                  <label for=""><img src="img/items/IT_AF_SUP_MND.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td class="stat stat_7" onclick="toggleSeal(7)">
+                  <label for=""><img src="img/items/IT_AF_SUP_HIT.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_10" onclick="toggleSeal(10)">
+                  <label for=""><img src="img/items/IT_AF_SUP_AVO.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td class="stat stat_11" onclick="toggleSeal(11)">
+                  <label for=""><img src="img/items/IT_AF_SUP_CRI.png"/></label>
+                  <input type="checkbox" class="hidden" disabled />
+                </td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div class="tips" onclick="hide(this)">
+            <div class="speech_bubble">Click on the seals below the table to see how the average changes with seals. If you like what you see, you can click on the entry to save it down below!</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="materials" class="grid hidden">
+        <div class="cell">
+          <div class="cell_content">
+            <table id="recipe"></table>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell_content">
+            <table id="total_mats"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="saved" class="grid hidden">
+      <div class="cell">
+        <div class="cell_content">
+          <textarea class="hidden" id="copy_txt"></textarea>
+          <table>
             <tr>
-              <th>
-                Seals <span id="seals_display">0/3</span>
-              </th>
-              <th class="stat clickable disabled stat_hp" onclick="toggleSeal('hp')">
-                <label for="">HP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mp" onclick="toggleSeal('mp')">
-                <label for="">TP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_ap" onclick="toggleSeal('ap')">
-                <label for="">AP</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_atk" onclick="toggleSeal('atk')">
-                <label for="">ATK</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_def" onclick="toggleSeal('def')">
-                <label for="">DEF</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mag" onclick="toggleSeal('mag')">
-                <label for="">MAG</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_mnd" onclick="toggleSeal('mnd')">
-                <label for="">SPR</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_hit" onclick="toggleSeal('hit')">
-                <label for="">ACC</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_dex" onclick="toggleSeal('dex')">
-                <label for="">DEX</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_spd" onclick="toggleSeal('spd')">
-                <label for="">AGI</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_avd" onclick="toggleSeal('avd')">
-                <label for="">EVA</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_crt" onclick="toggleSeal('crt')">
-                <label for="">CRIT</label><br/>
-                <input type="checkbox" disabled />
-              </th>
-              <th class="stat clickable disabled stat_crta" onclick="toggleSeal('crta')">
-                <label for="">CRIT.A</label><br/>
-                <input type="checkbox" disabled />
-              </th>
+              <th colspan="15">Saved Equipment</th>
+            <tr>
+              <th>Equipment</th>
+              <th>Type</th>
+              <th>HP</th>
+              <th>TP</th>
+              <th>AP</th>
+              <th>ATK</th>
+              <th>DEF</th>
+              <th>MAG</th>
+              <th>SPR</th>
+              <th>ACC</th>
+              <th>AGI</th>
+              <th>DEX</th>
+              <th>EVA</th>
+              <th>CRIT</th>
+              <th>CRIT.A</th>
             </tr>
-            <tr id="grow1_stats"></tr>
-            <tr id="grow2_stats"></tr>
-            <tr id="grow3_stats"></tr>
           </table>
-        </td>
-      </tr>
-      <tr>
-        <td id="type"></td>
-        <td id="rarity"></td>
-      </tr>
-      <tr>
-        <td id="skills" colspan="2"></td>
-      </tr>
-    </table>
-
-    <table class="borderless">
-      <tr>
-        <td valign="top" class="borderless">
-          <h3>Recipe</h3>
-          <table id="recipe"></table>
-        </td>
-        <td valign="top" class="borderless">
-          <h3>Total Materials</h3>
-          <table id="total_mats"></table>
-        </td>
-      </tr>
-    </table>
-
-    <h3>Saved Equipment</h3>
-    <table id="saved">
-      <tr>
-        <th>Equipment</th>
-        <th>Type</th>
-        <th>HP</th>
-        <th>TP</th>
-        <th>AP</th>
-        <th>ATK</th>
-        <th>DEF</th>
-        <th>MAG</th>
-        <th>SPR</th>
-        <th>ACC</th>
-        <th>DEX</th>
-        <th>AGI</th>
-        <th>EVA</th>
-        <th>CRIT</th>
-        <th>CRIT.A</th>
-      </tr>
-    </table>
+        </div>
+        <div class="tips" onclick="hide(this)">
+          <div class="speech_bubble">You can remove any unwanted entries by clicking on them!</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <div><a target="_blank" href="changelogs.html">Change Logs</a> - 2020-05-05</div>
-    <div>Please report issues <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">here</a>.</div>
-    <div>All data taken from <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">https://github.com/shalzuth/wotv-ffbe-dump</a></div>
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-08)</a> |
+    <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
+    <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
+    <a target="_blank" href="legal.html">Legal</a>
   </footer>
 
   <script>
@@ -204,10 +229,19 @@
       value: "crta"
     }];
 
+    function hide(el) {
+      $(el).addClass('hidden');
+    }
+
     function onArtifactChange() {
+      $('#inputs .tips').addClass('hidden');
       resetSeals();
+      setItemInfo();
+    }
+    function onLevelChange() {
       displayStats();
     }
+
     function displayStats() {
       let itemKey = $('#artifacts').val();
       if (!itemKey) {
@@ -216,9 +250,9 @@
 
       let item = artifactMap[itemKey];
       let level = $('#level').val();
-      let item_sk = item['skl' + (level/10)];
+      let item_sk = item['skl' + Math.ceil(level/10)];
 
-      $('#image').attr('src', 'img/equipment/' + item.asset + '.png');
+      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
       $('#type').empty();
       item.cat.forEach((cat) => {
@@ -228,19 +262,19 @@
       $('#rarity').empty();
       switch (item.rare) {
         case 0:
-          $('#rarity').append('<div>N - Rarity</div>');
+          $('#rarity').append('<div>N</div>');
           break;
         case 1:
-          $('#rarity').append('<div>R - Rarity</div>');
+          $('#rarity').append('<div>R</div>');
           break;
         case 2:
-          $('#rarity').append('<div>SR - Rarity</div>');
+          $('#rarity').append('<div>SR</div>');
           break;
         case 3:
-          $('#rarity').append('<div>MR - Rarity</div>');
+          $('#rarity').append('<div>MR</div>');
           break;
         case 4:
-          $('#rarity').append('<div>UR - Rarity</div>');
+          $('#rarity').append('<div>UR</div>');
           break;
       }
 
@@ -281,12 +315,15 @@
                   buff_text += ' ' + buff.val1
                   break;
               }
-              $('#skills').append('<div>' + buff_text + '</div>');
+              $('#skills').append('<div class="skill_desc">' + buff_text + '</div>');
             });
           } else if (skillNameMap[skl]) {
-              $('#skills').append('<div>' + skillNameMap[skl] + '</div>');
+              $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
           }
         });
+      }
+      if (!$.trim($('#skills').html())) {
+          $('#skills').append('<div>-</div>');
       }
 
       // $('#desc').empty();
@@ -301,6 +338,7 @@
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
         let artifact_stats, artifact_rates, ave_stats;
+
         switch (type.value) {
           case 'ARTIFACT_TRUST':
             artifact_stats = item.status[1];
@@ -316,6 +354,7 @@
                 ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
               }
             });
+
             break;
           default:
             artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
@@ -352,8 +391,8 @@
             break;
         }
 
-        typeStatsRow.append('<td>' + type.label + '</td>');
-        stats.forEach((stat) => {
+        typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
+        stats.forEach((stat, i) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
             artifact_rates[stat.value] = 0;
@@ -362,92 +401,190 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value).removeClass('disabled');
-            typeStatsRow.append('<td>' + ave_stats[stat.value] + '/' + artifact_stats[stat.value] + '</td>');
+            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
+            if (seals[i]) {
+              typeStatsRow.append('<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value] + '</td>');
+            } else {
+              typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
+            }
           } else {
-            typeStatsRow.append('<td></td>');
+            typeStatsRow.append('<td> - </td>');
           }
         });
-        typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
       });
 
-      // let typeStatsRow = $('#grow1_stats');
-      // typeStatsRow.append('<td>(none)</td>');
-      // stats.forEach((stat) => {
-      //   typeStatsRow.append('<td>' + status[1][stat] + '/' + status[1][stat] + '</td>');
-      // });
-      // typeStatsRow.append('<td class="clickable" onclick="save(this)">Save</td>');
-
       // get recipe
+      $('#materials').addClass('hidden');
       $('#recipe').empty();
       $('#total_mats').empty();
       if (artifactRecipeMap[item.iname]) {
+        $('#recipe').append('<tr><th colspan="2">Recipe</th></tr>');
+
         let all_mats = [];
         artifactRecipeMap[item.iname].craft.forEach((material) => {
+          let item;
           let itemName = 'UNKNOWN';
-          let img_url = '#';
+          let img_url;
+          let mat_url;
           let tr = $('<tr></tr>');
-
-          tr.append('<td>' + material.num + 'x</td>');
+          let td = $('<td></td>');
 
           switch (material.type) {
             case 0:
+              item = itemMap[material.id];
               itemName = itemNameMap[material.id];
-              let mat_url = mat_link + encodeURIComponent(itemName);
-              img_url = '/img/items/' + material.id + '.png';
+
+              if (item.icon) {
+                img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+                td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+              } else {
+                img_url = 'img/items/' + material.id + '.png';
+                td.append('<div class="material"><img src="' + img_url + '"/></div>');
+              }
+              mat_url = mat_link + encodeURIComponent(itemName);
               all_mats.push(itemName);
-              tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
               break;
             case 1:
+              item = artifactMap[material.id]
               itemName = artifactNameMap[material.id] + ' Lv. ' + material.lv;
-              img_url = '/img/equipment/' + material.id + '.png';
-              tr.append('<td>' + itemName + '</td>');
+              img_url = 'img/equipment/' + item.asset + '.png';
+              mat_url = '#' + getHash(material.id, material.lv);
+
+              let type;
+              if (item.cat[0] > 0 && item.cat[0] < 17) {
+                type = 'weapon';
+              } else if (item.cat[0] < 22) {
+                type = 'armor';
+              } else if (item.cat[0] == 22) {
+                type = 'accessory';
+              }
+              td.append('<div class="equipment ' + type + '"><img src="' + img_url + '"/></div>');
               break;
           }
-          // tr.append('<td><img src="' + img_url + '"/></td>');
+          td.append('<div>' + material.num + 'x</div>');
+          tr.append(td);
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#recipe').append(tr);
         });
-        // $('#all_mat_link').append('<a target="_blank" href="' + mat_link + all_mats.join(',') +'">All Materials</a>');
 
+        $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats_total = getTotalMaterials(item.iname, level);
         for (mat in mats_total) {
+          let item = itemMap[mat];
           let itemName = itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
           let img_url = '/img/items/' + mat + '.png';
           let tr = $('<tr></tr>');
-          tr.append('<td>' + mats_total[mat] + 'x</td>');
-          // tr.append('<td><img src="' + img_url + '"/></td>');
+          let td = $('<td></td>');
+
+          if (item.icon) {
+            img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          } else {
+            img_url = 'img/items/' + mat + '.png';
+            td.append('<div class="material"><img src="' + img_url + '"/></div>');
+          }
+          td.append('<div>' + mats_total[mat] + 'x</div>');
+          tr.append(td);
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
         }
+
+        $('#materials').removeClass('hidden');
       }
 
       $('#content').removeClass('hidden');
     }
 
-    let seals = {}
-    function resetSeals() {
-      seals = {};
-      $('.stat').addClass('disabled');
-      $('.stat')
-      $('.stat input').prop('checked', false);
-    }
-    function toggleSeal(stat) {
-      if ($('.stat.stat_' + stat).hasClass('disabled')) {
+    function setItemInfo() {
+      let itemKey = $('#artifacts').val();
+      if (!itemKey) {
         return;
       }
 
-      if (seals[stat] == 1) {
-        $('.stat.stat_' + stat + ' input').prop('checked', false);
-        delete seals[stat];
+      let item = artifactMap[itemKey];
+      let types = typeMap[item.rtype];
+
+      $('#level').empty();
+      $('#seals').addClass('hidden');
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').val('1');
+          break;
+        case 'ARTIFACT_50':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').val('30');
+          break;
+        default:
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').append('<option value="40">Lv. 40</option>');
+          $('#level').append('<option value="50">Lv. 50</option>');
+          $('#level').val('50');
+
+          stats.forEach((stat, i) => {
+            if (item.status[1][stat.value] != null) {
+              $('#seals .stat_' + i + ' img').removeClass('hidden');
+            }
+          });
+
+          $('#seals').removeClass('hidden');
+          break;
+      }
+      $('#level').removeClass('hidden');
+      $('#level').change();
+
+      $('#item_image').removeClass().addClass('equipment');
+      if (item.cat[0] > 0 && item.cat[0] < 17) {
+        $('#item_image').addClass('weapon');
+      } else if (item.cat[0] < 22) {
+        $('#item_image').addClass('armor');
+      } else if (item.cat[0] == 22) {
+        $('#item_image').addClass('accessory');
+      }
+    }
+
+    let seals = {}
+    function resetSeals() {
+      seals = {};
+      $('#seals').addClass('hidden');
+      $('.stat img').addClass('hidden');
+      $('.stat input').prop('checked', false);
+    }
+    function toggleSeal(stat_index) {
+      $('#growth .tips').addClass('hidden');
+
+      if (seals[stat_index] == 1) {
+        $('.stat.stat_' + stat_index).removeClass('seal_on');
+        $('.stat.stat_' + stat_index + ' input').prop('checked', false);
+        delete seals[stat_index];
         displayStats();
       } else if (Object.keys(seals).length < 3) {
-        seals[stat] = 1;
-        $('.stat.stat_' + stat + ' input').prop('checked', true);
+        seals[stat_index] = 1;
+        $('.stat.stat_' + stat_index).addClass('seal_on');
+        $('.stat.stat_' + stat_index + ' input').prop('checked', true);
         displayStats();
       }
 
-      $('#seals_display').text(Object.keys(seals).length + '/3');
+      $('#seals_display').empty();
+      let seal_txt = [];
+      for (key in seals) {
+        if (seals[key]) {
+          seal_txt.push(stats[key].label);
+        }
+      }
+
+      for (let i = seal_txt.length; i < 3; i++) {
+        seal_txt.push('x');
+      }
+
+      $('#seals_display').text('(' + seal_txt.join(', ') + ')');
     }
     function getTotalMaterials(iname, lv) {
       let mat_list = {};
@@ -497,7 +634,11 @@
       return mat_list;
     }
     function save(el) {
-      let newEl = $(el).parent('tr').clone();
+      if ($('#saved .selectable').length >= 10) {
+        return;
+      }
+
+      let newEl = $(el).clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
       let item_td = $('#skills').clone();
@@ -506,13 +647,33 @@
       item_td.prepend('<div><b>' + item.name + '</b></div>');
 
       newEl.attr('id', null);
+      newEl.attr('onclick', "unsave(this)");
       newEl.prepend(item_td);
-      newEl.children().last().remove();
-      newEl.append('<td class="clickable" onclick="unsave(this)">X</td>');
-      $('#saved').append(newEl);
+      $('#saved table').append(newEl);
+      $('#saved').removeClass('hidden');
+
+      setHash();
+    }
+    function copyLink() {
+      let copyTxt = $('#copy_txt');
+      copyTxt.val(window.location);
+      copyTxt.focus();
+      copyTxt.setSelectionRange(0, copyTxt.value.length);
+
+      if (document.execCommand('copy')) {
+        alert('Saved to clipboard!');
+      }
     }
     function unsave(el) {
-      $(el).parent('tr').remove();
+      $(el).remove();
+
+      if ($('#saved .selectable').length == 0) {
+        $('#saved').addClass('hidden');
+      }
+
+      $('#saved .tips').addClass('hidden');
+
+      setHash();
     }
 
     function getArtifactStats(curve, base) {
@@ -541,7 +702,7 @@
     function getArtifactRates(adjust, base) {
       let artifact_rates = {};
 
-      stats.forEach((stat) => {
+      stats.forEach((stat, i) => {
         if (base[stat.value]) {
           if (adjust[stat.value]) {
             artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
@@ -549,7 +710,7 @@
             artifact_rates[stat.value] = base[stat.value];
           }
 
-          if (seals[stat.value] && sealGrowthMap[stat.value]) {
+          if (seals[i] && sealGrowthMap[stat.value]) {
             artifact_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
@@ -562,265 +723,374 @@
       return artifact_rates;
     }
 
+    let promiseList = [];
+
     let typeMap = {};
-    // init
-    $.getJSON('en/ArtifactGrow.json', (data) => {
-      let typeNameMap = {};
-      data.infos.forEach((info) => {
-        typeNameMap[info.key] = info.value;
-      });
-      // 20200422_4c9ea1e3
-      $.getJSON('data/ArtifactRandLot.json', (data) => {
-        data.items.forEach((item) => {
-          typeMap[item.iname] = [];
-          if (item.lot[0].grow1) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow1],
-              value: item.lot[0].grow1
-            });
-          }
-          if (item.lot[0].grow2) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow2],
-              value: item.lot[0].grow2
-            });
-          }
-          if (item.lot[0].grow3) {
-            typeMap[item.iname].push({
-              label: typeNameMap[item.lot[0].grow3],
-              value: item.lot[0].grow3
-            });
-          }
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactGrow.json', (data) => {
+        let typeNameMap = {};
+        data.infos.forEach((info) => {
+          typeNameMap[info.key] = info.value;
+        });
+        // 20200422_4c9ea1e3
+        $.getJSON('data/ArtifactRandLot.json', (data) => {
+          data.items.forEach((item) => {
+            typeMap[item.iname] = [];
+            if (item.lot[0].grow1) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow1],
+                value: item.lot[0].grow1
+              });
+            }
+            if (item.lot[0].grow2) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow2],
+                value: item.lot[0].grow2
+              });
+            }
+            if (item.lot[0].grow3) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow3],
+                value: item.lot[0].grow3
+              });
+            }
+          });
+
+          resolve();
         });
       });
-    });
+    }));
 
     let growthMap = {};
-    // init
-    $.getJSON('data/Grow.json', (data) => {
-      data.items.forEach((item) => {
-        growthMap[item.type] = {
-          curve: item.curve,
-          rstatus : item.rstatus
-        }
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/Grow.json', (data) => {
+        data.items.forEach((item) => {
+          growthMap[item.type] = {
+            curve: item.curve,
+            rstatus : item.rstatus
+          }
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let buffMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/Buff.json', (data) => {
-      data.items.forEach((item) => {
-        buffMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/Buff.json', (data) => {
+        data.items.forEach((item) => {
+          buffMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let buffNameList = [];
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/Buff.json', (data) => {
-      // pretty sure this is the right list
-      // but needs modifications for now
-      buffNameList = data.infos;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/Buff.json', (data) => {
+        // pretty sure this is the right list
+        // but needs modifications for now
+        buffNameList = data.infos;
 
-      // modifications
-      // remove first 7
-      for (let i = 0; i < 7; i++) {
-        buffNameList.splice(0,1);
-      }
-      // insert 16 dummy
-      for (let i = 0; i < 16; i++) {
-        buffNameList.splice(5,0,null);
-      }
-      // insert 12 dummy
-      for (let i = 0; i < 11; i++) {
-        buffNameList.splice(30,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(51,0,null);
-      }
-      // insert 4 dummy
-      for (let i = 0; i < 4; i++) {
-        buffNameList.splice(66,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(71,0,null);
-      }
-      // insert 1 dummy
-      for (let i = 0; i < 1; i++) {
-        buffNameList.splice(94,0,null);
-      }
-      // insert 1 dummy
-      for (let i = 0; i < 1; i++) {
-        buffNameList.splice(118,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(124,0,null);
-      }
-      // insert 4 dummy
-      for (let i = 0; i < 4; i++) {
-        buffNameList.splice(135,0,null);
-      }
-      // insert 8 dummy
-      for (let i = 0; i < 8; i++) {
-        buffNameList.splice(143,0,null);
-      }
-      // insert 10 dummy
-      for (let i = 0; i < 10; i++) {
-        buffNameList.splice(160,0,null);
-      }
-      // insert 7 dummy
-      for (let i = 0; i < 7; i++) {
-        buffNameList.splice(173,0,null);
-      }
-      // remove 22 Debuff Res
-      for (let i = 0; i < 22; i++) {
-        buffNameList.splice(183,1);
-      }
-      // insert 6 dummy
-      for (let i = 0; i < 6; i++) {
-        buffNameList.splice(184,0,null);
-      }
-    });
+        // modifications
+        // remove first 7
+        for (let i = 0; i < 7; i++) {
+          buffNameList.splice(0,1);
+        }
+        // insert 16 dummy
+        for (let i = 0; i < 16; i++) {
+          buffNameList.splice(5,0,null);
+        }
+        // insert 12 dummy
+        for (let i = 0; i < 11; i++) {
+          buffNameList.splice(30,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(51,0,null);
+        }
+        // insert 4 dummy
+        for (let i = 0; i < 4; i++) {
+          buffNameList.splice(66,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(71,0,null);
+        }
+        // insert 1 dummy
+        for (let i = 0; i < 1; i++) {
+          buffNameList.splice(94,0,null);
+        }
+        // insert 1 dummy
+        for (let i = 0; i < 1; i++) {
+          buffNameList.splice(118,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(124,0,null);
+        }
+        // insert 4 dummy
+        for (let i = 0; i < 4; i++) {
+          buffNameList.splice(135,0,null);
+        }
+        // insert 8 dummy
+        for (let i = 0; i < 8; i++) {
+          buffNameList.splice(143,0,null);
+        }
+        // insert 10 dummy
+        for (let i = 0; i < 10; i++) {
+          buffNameList.splice(160,0,null);
+        }
+        // insert 7 dummy
+        for (let i = 0; i < 7; i++) {
+          buffNameList.splice(173,0,null);
+        }
+        // remove 22 Debuff Res
+        for (let i = 0; i < 22; i++) {
+          buffNameList.splice(183,1);
+        }
+        // insert 6 dummy
+        for (let i = 0; i < 6; i++) {
+          buffNameList.splice(184,0,null);
+        }
+
+        resolve();
+      });
+    }));
 
     let skillMap = {};
-    // 20200429_0d4b0c72
-    $.getJSON('data/Skill.json', (data) => {
-      data.items.forEach((item) => {
-        skillMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200429_0d4b0c72
+      $.getJSON('data/Skill.json', (data) => {
+        data.items.forEach((item) => {
+          skillMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let skillNameMap = {};
-    // 20200429_0d4b0c72
-    $.getJSON('en/SkillName.json', (data) => {
-      data.infos.forEach((info) => {
-        if (info.value) {
-          skillNameMap[info.key] = info.value;
-        }
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200429_0d4b0c72
+      $.getJSON('en/SkillName.json', (data) => {
+        data.infos.forEach((info) => {
+          if (info.value) {
+            skillNameMap[info.key] = info.value;
+          }
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactNameMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ArtifactName.json', (data) => {
-      data.infos.forEach((info) => {
-        artifactNameMap[info.key] = info.value;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ArtifactName.json', (data) => {
+        data.infos.forEach((info) => {
+          artifactNameMap[info.key] = info.value;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let sealGrowthMap = {};
-    // init
-    $.getJSON('data/ArtifactGrowItem.json', (data) => {
-      data.items.forEach((item) => {
-        let stat = stats[item.grow_up[0].eff_dst];
-        sealGrowthMap[stat.value] = item.grow_up[0].val;
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/ArtifactGrowItem.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up[0].eff_dst];
+          sealGrowthMap[stat.value] = item.grow_up[0].val;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactCategoryList = [];
-    // init
-    $.getJSON('en/ArtifactCategory.json', (data) => {
-      artifactCategoryList = data.infos;
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactCategory.json', (data) => {
+        artifactCategoryList = data.infos;
 
-      // for some reason doesn't match exactly
-      artifactCategoryList.splice(4,1); // remove LARGESWORD
-      artifactCategoryList.splice(6,1); // remove ROD
-      artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
-      artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
-    });
+        // for some reason doesn't match exactly
+        artifactCategoryList.splice(4,1); // remove LARGESWORD
+        artifactCategoryList.splice(6,1); // remove ROD
+        artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+        artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+
+        resolve();
+      });
+    }));
 
     let artifactMap = {};
-    // 	20200422_4c9ea1e3
-    $.getJSON('data/Artifact.json', (data) => {
-      let artifactList = [];
-      let artifactWeaponList = [];
-      let artifactArmorList = [];
-      let artifactAccessoryList = [];
-      data.items.forEach((item) => {
-        if (item.type >= 0) {
-          artifactMap[item.iname] = item;
-          artifactMap[item.iname].name = artifactNameMap[item.iname];
+    promiseList.push(new Promise((resolve, reject) => {
+      // 	20200422_4c9ea1e3
+      $.getJSON('data/Artifact.json', (data) => {
+        let artifactList = [];
+        let artifactWeaponList = [];
+        let artifactArmorList = [];
+        let artifactAccessoryList = [];
+        data.items.forEach((item) => {
+          if (item.type >= 0) {
+            artifactMap[item.iname] = item;
+            artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-          let artifactListEntry = {
-            label: artifactNameMap[item.iname],
-            value : item.iname
-          };
+            let artifactListEntry = {
+              label: artifactNameMap[item.iname],
+              value : item.iname
+            };
 
-          if (item.cat[0] > 0 && item.cat[0] < 17) {
-            artifactWeaponList.push(artifactListEntry);
-          } else if (item.cat[0] < 22) {
-            artifactArmorList.push(artifactListEntry);
-          } else if (item.cat[0] == 22) {
-            artifactAccessoryList.push(artifactListEntry);
-          } else {
-            artifactList.push(artifactListEntry);
+            if (item.cat[0] > 0 && item.cat[0] < 17) {
+              artifactWeaponList.push(artifactListEntry);
+            } else if (item.cat[0] < 22) {
+              artifactArmorList.push(artifactListEntry);
+            } else if (item.cat[0] == 22) {
+              artifactAccessoryList.push(artifactListEntry);
+            // } else {
+            //   artifactList.push(artifactListEntry);
+            }
           }
-        }
-      });
+        });
 
-      artifactWeaponList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactArmorList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactAccessoryList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-      artifactList.sort((a, b) => {
-        return a.label > b.label ? 1 : -1;
-      }).forEach((item) => {
-        if (item.label) {
-          $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
-        }
-      });
-    });
+        artifactWeaponList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactArmorList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactAccessoryList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
+        artifactList.sort((a, b) => {
+          return a.label > b.label ? 1 : -1;
+        }).forEach((item) => {
+          if (item.label) {
+            $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
+          }
+        });
 
-    let artifactFlavorMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ArtifactFlvr.json', (data) => {
-      data.infos.forEach((info) => {
-        artifactFlavorMap[info.key] = info.value;
+        $('#artifacts').focus();
+
+        resolve();
       });
-    });
+    }));
 
     // RECIPES
     let artifactRecipeMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/ArtifactRecipe.json', (data) => {
-      data.items.forEach((item) => {
-        artifactRecipeMap[item.iname] = item;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/ArtifactRecipe.json', (data) => {
+        data.items.forEach((item) => {
+          artifactRecipeMap[item.iname] = item;
+        });
+
+        resolve();
       });
-    });
+    }));
 
     let artifactAwakeMap = {};
-    // 20200422_4c9ea1e3
-    $.getJSON('data/ArtifactAwake.json', (data) => {
-      data.items.forEach((item) => {
-        artifactAwakeMap[item.iname] = item;
-      })
-    });
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3
+      $.getJSON('data/ArtifactAwake.json', (data) => {
+        data.items.forEach((item) => {
+          artifactAwakeMap[item.iname] = item;
+        });
+
+        resolve();
+      });
+    }));
+
+    let itemMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200506_199950f7
+      $.getJSON('data/Item.json', (data) => {
+        data.items.forEach((item) => {
+          itemMap[item.iname] = item;
+        });
+
+        resolve();
+      });
+    }));
 
     let itemNameMap = {};
-    // 20200422_4c9ea1e3 translations
-    $.getJSON('en/ItemName.json', (data) => {
-      data.infos.forEach((info) => {
-        itemNameMap[info.key] = info.value;
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ItemName.json', (data) => {
+        data.infos.forEach((info) => {
+          itemNameMap[info.key] = info.value;
+        });
+
+        resolve();
       });
+    }));
+
+    function setHash() {
+      let hash = {
+        saved: []
+      };
+
+      let savedEl = $('#saved .selectable');
+      if (savedEl.length > 0) {
+        savedEl.each((index, el) => {
+          hash.saved.push(el.innerHTML.replace(/(^<td>)|(<\/td>$)/g,'').split('</td><td>'));
+        });
+
+        window.location.hash = btoa(JSON.stringify(hash));
+      } else {
+        window.location.hash = '';
+      }
+    }
+
+    function getHash(artifact, level) {
+      return btoa(JSON.stringify({
+        artifact: artifact,
+        level: level
+      }));
+    }
+
+    Promise.all(promiseList).then(() => {
+      if (window.location.hash) {
+        let unhash = JSON.parse(atob(window.location.hash.substr(1)));
+
+        if (unhash.artifact) {
+          $('#artifacts').val(unhash.artifact);
+          $('#artifacts').change();
+        }
+        if (unhash.level) {
+          $('#level').val(unhash.level);
+          $('#level').change();
+        }
+
+        if (unhash.saved) {
+          unhash.saved.forEach((data) => {
+            $('#saved table').append('<tr class="selectable" onclick="unsave(this)"><td>' + data.join('</td><td>') + '</td></tr>');
+          });
+
+          if ($('#saved .selectable').length > 0) {
+            $('#saved').removeClass('hidden');
+          }
+        }
+      }
     });
   </script>
 </body>

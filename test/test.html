@@ -1022,7 +1022,7 @@
 
     let itemMap = {};
     promiseList.push(new Promise((resolve, reject) => {
-      //
+      // 20200506_199950f7
       $.getJSON('data/Item.json', (data) => {
         data.items.forEach((item) => {
           itemMap[item.iname] = item;
