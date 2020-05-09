@@ -46,6 +46,7 @@ img {
   text-decoration: none;
 }
 #header #support_link img {
+  vertical-align: middle;
   width: 25px;
 }
 
