@@ -47,7 +47,7 @@ footer {
   font-weight: bold;
   height: 20px;
   margin-top: 50px;
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
 }
