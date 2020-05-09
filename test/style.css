@@ -67,32 +67,8 @@ table th, table td {
   text-align: center;
 }
 
-#seals.hidden {
+.hidden {
   display: none;
-}
-
-#seals td {
-  padding: 0;
-}
-
-#seals label:hover {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label {
-  background-image: radial-gradient(#00FF00, transparent);
-}
-#seals .seal_on label:hover {
-  background-image: radial-gradient(#FF0000, transparent);
-}
-
-#seals img {
-  height: 50px;
-  margin: 0 auto;
-  width: 50px;
-}
-
-table#saved {
-  width: 100%;
 }
 
 .selectable:hover, .selectable:hover label {
@@ -100,9 +76,23 @@ table#saved {
   cursor: pointer;
 }
 
+.grid::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .grid .cell {
   float: left;
   margin: 0;
+}
+
+.cell_content {
+  background-image: linear-gradient(135deg, #111111, transparent);
+  border: 3px solid #D3D3D3;
+  border-bottom-color: #778899;
+  border-right-color: #778899;
+  margin: 5px;
 }
 
 .cell#info {
@@ -160,6 +150,30 @@ table#saved {
   font-size: medium;
 }
 
+#seals.hidden {
+  display: none;
+}
+
+#seals td {
+  padding: 0;
+}
+
+#seals label:hover {
+  background-image: radial-gradient(#00FF00, transparent);
+}
+#seals .seal_on label {
+  background-image: radial-gradient(#00FF00, transparent);
+}
+#seals .seal_on label:hover {
+  background-image: radial-gradient(#FF0000, transparent);
+}
+
+#seals img {
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
 #materials .material {
   background-image: radial-gradient(closest-side, #FF0000, transparent);
   border-radius: 50%;
@@ -188,22 +202,6 @@ table#saved {
   width: 50px;
 }
 
-
-
-.cell_content {
-  background-image: linear-gradient(135deg, #111111, transparent);
-  border: 3px solid #D3D3D3;
-  border-bottom-color: #778899;
-  border-right-color: #778899;
-  margin: 5px;
-}
-
-.grid::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.hidden {
-  display: none;
+#saved table {
+  width: 100%;
 }
