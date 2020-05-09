@@ -557,6 +557,8 @@
       $('.stat input').prop('checked', false);
     }
     function toggleSeal(stat_index) {
+      $('#growth .tips').addClass('hidden');
+
       if (seals[stat_index] == 1) {
         $('.stat.stat_' + stat_index).removeClass('seal_on');
         $('.stat.stat_' + stat_index + ' input').prop('checked', false);
