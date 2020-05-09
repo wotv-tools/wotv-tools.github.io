@@ -38,7 +38,7 @@ img {
 #header #support_link {
   position: absolute;
   right: 25px;
-  top: 0px;
+  top: 0;
 }
 #header #support_link::after {
   clear: both;
