@@ -102,6 +102,10 @@ table#saved {
   width: 100%;
 }
 
+.cell#info table td:first-child {
+  width: 40%;
+}
+
 #item_image {
   background-color: #000000;
   border: 1px solid #D3D3D3;
