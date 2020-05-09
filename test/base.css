@@ -41,6 +41,9 @@ img {
   clear: both;
   content: '';
 }
+#header #support_link img {
+  width: 50px;
+}
 
 #main_content {
   margin: 0 auto;
