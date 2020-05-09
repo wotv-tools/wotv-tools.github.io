@@ -569,7 +569,8 @@
       $('.stat input').prop('checked', false);
     }
     function toggleSeal(stat_index) {
-      $('#seals .tips').addClass('dismissed');
+      $('#seals_tip').addClass('dismissed');
+      $('#save_tip').removeClass('hidden');
 
       if (seals[stat_index] == 1) {
         $('.stat.stat_' + stat_index).removeClass('seal_on');
