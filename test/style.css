@@ -225,17 +225,8 @@ table th, table td {
   position: relative;
 }
 
-.speech_bubble:after {
+.speech_bubble::after {
+  background-image: url('img/units/LAPSchcb.png');
+  background-repeat: no-repeat;
   content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border: 1em solid transparent;
-  border-left-color: #DDDDDD;
-  border-right: 0;
-  border-bottom: 0;
-  margin-top: -.5em;
-  margin-right: -1em;
 }
