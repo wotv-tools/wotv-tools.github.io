@@ -75,10 +75,20 @@ table th, table td {
   padding: 0;
 }
 
+#seals label:hover {
+  background-image: radial-gradient(green, transparent);
+}
+#seals .seal_on label {
+  background-image: radial-gradient(green, transparent);
+}
+#seals .seal_on label:hover {
+  background-image: radial-gradient(red, transparent);
+}
+
 #seals img {
-  height: 20px;
+  height: 50px;
   margin: 0 auto;
-  width: 20px;
+  width: 50px;
 }
 
 table#saved {

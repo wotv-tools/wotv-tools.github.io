@@ -81,7 +81,7 @@
               <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="seals" class="hidden">
-                <td></td>
+                <td>Seals</td>
                 <td class="stat selectable stat_0" onclick="toggleSeal(0)">
                   <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
@@ -543,11 +543,13 @@
     }
     function toggleSeal(stat_index) {
       if (seals[stat_index] == 1) {
+        $('.stat.stat_' + stat_index).removeClass('seal_on');
         $('.stat.stat_' + stat_index + ' input').prop('checked', false);
         delete seals[stat_index];
         displayStats();
       } else if (Object.keys(seals).length < 3) {
         seals[stat_index] = 1;
+        $('.stat.stat_' + stat_index).addClass('seal_on');
         $('.stat.stat_' + stat_index + ' input').prop('checked', true);
         displayStats();
       }
