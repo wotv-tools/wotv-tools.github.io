@@ -71,6 +71,16 @@ table th, table td {
   display: none;
 }
 
+#seals td {
+  padding: 0;
+}
+
+#seals img {
+  height: 20px;
+  margin: 0 auto;
+  width: 20px;
+}
+
 table#saved {
   width: 100%;
 }
