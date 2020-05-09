@@ -77,9 +77,9 @@ table th, table td {
 }
 
 .grid::after {
+  clear: both;
   content: "";
   display: block;
-  clear: both;
 }
 
 .grid .cell {
@@ -206,10 +206,20 @@ table th, table td {
   width: 100%;
 }
 
+.tips {
+  float: right;
+}
+.tips::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
 .speech_bubble {
   background: #DDDDDD;
   border-radius: .4em;
   color: #222222;
+  float: left;
   font-weight: bold;
   padding: 10px;
   position: relative;
