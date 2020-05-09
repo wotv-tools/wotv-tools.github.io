@@ -30,7 +30,7 @@
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
-      <div class="tips">
+      <div class="tips" onclick="hide(this)">
         <div class="speech_bubble">Choose a weapon from the dropdown on the left!</div>
       </div>
     </div>
@@ -221,6 +221,10 @@
       label: "CRIT.A",
       value: "crta"
     }];
+
+    function hide(el) {
+      $(el).addClass('hidden');
+    }
 
     function onArtifactChange() {
       resetSeals();
