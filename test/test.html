@@ -40,8 +40,13 @@
 
   <div id="main_content">
     <div id="inputs">
-      <select id="artifacts" onchange="onArtifactChange()">
-        <option disabled selected>-- Select an equipment --</option>
+      <select id="category" onchange="onCategoryChange()">
+        <option disabled selected>-- Select an category --</option>
+        <option value="weapon">Weapon</option>
+        <option value="armor">Armor</option>
+        <option value="accessory">Accessory</option>
+      </select>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
         <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
         <optgroup id="artifacts-armor" label="Armor"></optgroup>
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
@@ -144,7 +149,7 @@
             </table>
           </div>
           <div id="seals_tip" class="tips hidden" onclick="dismiss(this)">
-            <div class="speech_bubble">Click on the seals above to see how the average changes with seals. Seals are applied every level until the stat is maxed.</div>
+            <div class="speech_bubble">Click on the seals above to see how the average changes with seals! Seals are applied every level until the stat is maxed.</div>
           </div>
           <div id="save_tip" class="tips hidden" onclick="dismiss(this)">
             <div class="speech_bubble">If you like what you see, you can click on the entry to save it down below!</div>
@@ -193,7 +198,7 @@
           </table>
         </div>
         <div class="tips hidden" onclick="dismiss(this)">
-          <div class="speech_bubble">You can remove any unwanted entries by clicking on them! Once you are ready, you can share the link above</div>
+          <div class="speech_bubble">You can remove any unwanted entries by clicking on them! Once you are ready, you can share the link above.</div>
         </div>
       </div>
     </div>
@@ -253,6 +258,30 @@
       $(el).addClass('dismissed');
     }
 
+    function onCategoryChange() {
+      let category = $('#category').val();
+
+      $('#artifacts').empty();
+      switch (category) {
+        case 'weapon':
+          artifactWeaponList.forEach((weapon) => {
+            $('#artifacts').append('<option value="' + weapon.value + '">' + weapon.label + '</option>');
+          });
+          break;
+        case 'armor':
+          artifactArmorList.forEach((armor) => {
+            $('#artifacts').append('<option value="' + armor.value + '">' + armor.label + '</option>');
+          });
+          break;
+        case 'accessory':
+          artifactAccessoryList.forEach((accessory) => {
+            $('#artifacts').append('<option value="' + accessory.value + '">' + accessory.label + '</option>');
+          });
+          break;
+      }
+
+      $('#artifacts').removeClass('hidden');
+    }
     function onArtifactChange() {
       $('#start_tip').addClass('dismissed');
       resetSeals();
@@ -955,13 +984,12 @@
     }));
 
     let artifactMap = {};
+    let artifactWeaponList = [];
+    let artifactArmorList = [];
+    let artifactAccessoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 	20200422_4c9ea1e3
       $.getJSON('data/Artifact.json', (data) => {
-        let artifactList = [];
-        let artifactWeaponList = [];
-        let artifactArmorList = [];
-        let artifactAccessoryList = [];
         data.items.forEach((item) => {
           if (item.type >= 0) {
             artifactMap[item.iname] = item;
@@ -978,43 +1006,21 @@
               artifactArmorList.push(artifactListEntry);
             } else if (item.cat[0] == 22) {
               artifactAccessoryList.push(artifactListEntry);
-            // } else {
-            //   artifactList.push(artifactListEntry);
             }
           }
         });
 
         artifactWeaponList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-weapon').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
         artifactArmorList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-armor').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
         artifactAccessoryList.sort((a, b) => {
           return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-accessory').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
-        });
-        artifactList.sort((a, b) => {
-          return a.label > b.label ? 1 : -1;
-        }).forEach((item) => {
-          if (item.label) {
-            $('#artifacts-other').append('<option value="' + item.value +'">' + item.label + '</option>');
-          }
         });
 
-        $('#artifacts').focus();
-
+        $('#category').focus();
         resolve();
       });
     }));
