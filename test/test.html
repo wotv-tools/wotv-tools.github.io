@@ -127,7 +127,7 @@
             </table>
           </div>
           <div class="tips" onclick="hide(this)">
-            <div class="speech_bubble">Click on the seals below the table to see how the average changes with seals. When you are ready, click on a row to save it down below!</div>
+            <div class="speech_bubble">Click on the seals below the table to see how the average changes with seals. If you like what you see, you can click on the entry to save it down below!</div>
           </div>
         </div>
       </div>
@@ -171,6 +171,9 @@
               <th>CRIT.A</th>
             </tr>
           </table>
+        </div>
+        <div class="tips" onclick="hide(this)">
+          <div class="speech_bubble">You can remove any unwanted entries by clicking on them!</div>
         </div>
     </div>
   </div>
@@ -664,6 +667,8 @@
       if ($('#saved .selectable').length == 0) {
         $('#saved').addClass('hidden');
       }
+
+      $('#saved .tips').addClass('hidden');
 
       setHash();
     }
