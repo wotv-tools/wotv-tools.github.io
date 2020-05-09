@@ -67,15 +67,8 @@ table th, table td {
   text-align: center;
 }
 
-#seals {
-  display: inline-block;
-}
 #seals.hidden {
   display: none;
-}
-
-#seals th {
-  width: 50px;
 }
 
 table#saved {
