@@ -207,8 +207,8 @@ table th, table td {
 }
 
 .speech_bubble {
-	background: #DDDDDD;
-	border-radius: .4em;
+  background: #DDDDDD;
+  border-radius: .4em;
   color: #222222;
   font-weight: bold;
   padding: 10px;
