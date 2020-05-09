@@ -1,171 +1,54 @@
 body {
   background: #DDDDDD;
   color: #222222;
-  cursor: default;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 a {
   color: #222222;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 select, optGroup, option {
   background: #DDDDDD;
   color: #222222;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
-
-img {
-  width: 100%;
 }
 
 #header {
-  border-bottom: 3px solid #3D3D3D;
-  text-align: center;
-  width: 100%
-}
-
-#header #css_toggle {
-  height: 30px;
-  width: 30px;
-}
-
-#header #css_toggle #light {
-  display: none;
-}
-
-#main_content {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 10px;
-  max-width: 1000px;
+  border-bottom-color: #3D3D3D;
 }
 
 footer {
   background-color: #DDDDDD;
-  border-top: 3px solid #776655;
-  bottom: 0;
-  font-weight: bold;
-  height: 20px;
-  margin-top: 50px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-}
-
-#inputs {
-  margin: 10px 0;
-}
-
-#inputs select {
-  margin: 0 5px;
+  border-top-color: #776655;
 }
 
 table {
   background-color: #EEEEEE;
-  border-collapse: collapse;
-  border-style: hidden;
 }
 
 table th, table td {
-  border: 3px solid #3D3D3D;
-  padding: 5px;
-  text-align: center;
-}
-
-.hidden, .dismissed {
-  display: none;
+  border-color: #3D3D3D;
 }
 
 .selectable:hover, .selectable:hover label {
   background-color: #00008B;
-  cursor: pointer;
-}
-
-.grid::after {
-  clear: both;
-  content: "";
-  display: block;
-}
-
-.grid .cell {
-  float: left;
-  margin: 0;
 }
 
 .cell_content {
   background-image: linear-gradient(135deg, #EEEEEE, transparent);
-  border: 3px solid #3D3D3D;
+  border-color: #3D3D3D;
   border-bottom-color: #776655;
   border-right-color: #776655;
-  margin: 5px;
-}
-
-.cell#info {
-  width: 20%;
 }
 
 .cell#info table {
-  border-top: 3px solid #3D3D3D;
-  margin: 5px 0 0 0;
-  width: 100%;
-}
-
-.cell#info table td:first-child {
-  width: 40%;
+  border-top-color: #3D3D3D;
 }
 
 #item_image {
   background-color: #EEEEEE;
-  border: 1px solid #3D3D3D;
+  border-color: #3D3D3D;
   border-bottom-color: #776655;
   border-right-color: #776655;
-  border-radius: 20px;
-  margin: 5px;
-}
-.equipment.weapon {
-  background-image: radial-gradient(closest-side,#6A0DAD, transparent);
-}
-.equipment.armor {
-  background-image: radial-gradient(closest-side,#0000FF, transparent);
-}
-.equipment.accessory {
-  background-image: radial-gradient(closest-side,#00FF00, transparent);
-}
-
-#item_image {
-  border-width: 3px;
-}
-
-.skill_desc {
-  font-size: smaller;
-}
-
-.cell#growth {
-  width: 80%;
-}
-.cell#growth #stats {
-  width: 100%;
-}
-
-.cell#growth #stats td {
-  font-size: smaller;
-}
-
-.cell#growth #stats td:first-child {
-  font-size: medium;
-}
-
-#seals.hidden {
-  display: none;
-}
-
-#seals td {
-  padding: 0;
 }
 
 #seals label:hover {
@@ -178,70 +61,20 @@ table th, table td {
   background-image: radial-gradient(#FF0000, transparent);
 }
 
-#seals img {
-  height: 50px;
-  margin: 0 auto;
-  width: 50px;
-}
-
 #materials .material {
   background-image: radial-gradient(closest-side, #FF0000, transparent);
-  border-radius: 50%;
 }
 
-#materials .material.recipe {
-  position: relative;
-}
 #materials .material.recipe::before {
   color: #222222;
-  content: "RECIPE";
-  font-size: 10px;
-  position: absolute;
-  text-align: center;
-  top: 20px;
-  width: 50px;
-}
-
-#materials .material, #materials .equipment {
-  height: 50px;
-  margin: 0 auto;
-  width: 50px;
-}
-
-#saved .cell, #saved table {
-  width: 100%;
-}
-
-.tips {
-  float: right;
-  position: relative;
-}
-.tips::after {
-  clear: both;
-  content: '';
-  display: block;
 }
 
 .speech_bubble {
   background: #DDDDDD;
   border: 1px solid #111111;
-  border-radius: 10px;
   color: #111111;
-  font-weight: bold;
-  height: 40px;
-  padding: 5px 60px 5px 10px;
 }
 
 .speech_bubble::after {
   background-image: url('img/units/LAPSmont.png');
-  background-repeat: no-repeat;
-  background-size: 100px 100px;
-  content: '';
-  display: block;
-  float: right;
-  height: 100px;
-  position: absolute;
-  right: -25px;
-  top: -25px;
-  width: 100px;
 }
