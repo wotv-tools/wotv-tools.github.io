@@ -102,7 +102,7 @@ table#saved {
   width: 100%;
 }
 
-.equipment {
+#item_image {
   background-color: #000000;
   border: 1px solid #D3D3D3;
   border-bottom-color: #778899;
@@ -149,11 +149,11 @@ table#saved {
 }
 
 #materials .equipment {
-  margin: 0;
   padding: 3px;
 }
 
 #materials .material, #materials .equipment {
+  margin: 0 auto;
   width: 50px;
 }
 
