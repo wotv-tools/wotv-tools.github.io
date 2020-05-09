@@ -57,6 +57,10 @@ table th, table td {
 
 #materials .material.recipe::before {
   color: #DDDDDD;
+  text-shadow: -1px -1px 0 #111111,
+    -1px 1px 0 #111111,
+    1px -1px 0 #111111,
+    1px 1px 0 #111111;
 }
 
 
