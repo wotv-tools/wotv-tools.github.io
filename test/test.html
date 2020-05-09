@@ -40,18 +40,16 @@
 
   <div id="main_content">
     <div id="inputs">
-      <div>
-        <select id="artifacts" onchange="onArtifactChange()">
-          <option disabled selected>-- Select an equipment --</option>
-          <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
-          <optgroup id="artifacts-armor" label="Armor"></optgroup>
-          <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
-        </select>
-        <select id="level" class="hidden" onchange="onLevelChange()"></select>
-      </div>
-      <div class="tips" onclick="dismiss(this)">
-        <div class="speech_bubble">Choose an equipment from the dropdown on the left!</div>
-      </div>
+      <select id="artifacts" onchange="onArtifactChange()">
+        <option disabled selected>-- Select an equipment --</option>
+        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
+        <optgroup id="artifacts-armor" label="Armor"></optgroup>
+        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
+      </select>
+      <select id="level" class="hidden" onchange="onLevelChange()"></select>
+    </div>
+    <div id="start_tip" class="tips" onclick="dismiss(this)">
+      <div class="speech_bubble">Choose an equipment from the input above!</div>
     </div>
 
     <div id="content" class="hidden">
@@ -256,7 +254,7 @@
     }
 
     function onArtifactChange() {
-      $('#inputs .tips').addClass('dismissed');
+      $('#start_tip').addClass('dismissed');
       resetSeals();
       setItemInfo();
     }
