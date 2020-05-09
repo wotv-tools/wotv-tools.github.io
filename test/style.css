@@ -226,7 +226,8 @@ table th, table td {
 }
 
 .speech_bubble::after {
-  background-image: url('img/units/LAPSchcb.png');
+  background-image: url('img/units/LAPSmont.png');
   background-repeat: no-repeat;
+  background-size:
   content: '';
 }
