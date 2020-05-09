@@ -219,6 +219,7 @@ table th, table td {
 
 .speech_bubble {
   background: #DDDDDD;
+  border: 1px solid #111111;
   border-radius: 10px;
   color: #111111;
   font-weight: bold;
