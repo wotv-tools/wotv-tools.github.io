@@ -1001,17 +1001,19 @@
             artifactMap[item.iname] = item;
             artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-            let artifactListEntry = {
-              label: artifactNameMap[item.iname],
-              value : item.iname
-            };
+            if (artifactNameMap[item.iname]) {
+              let artifactListEntry = {
+                label: artifactNameMap[item.iname],
+                value : item.iname
+              };
 
-            if (item.cat[0] > 0 && item.cat[0] < 17) {
-              artifactWeaponList.push(artifactListEntry);
-            } else if (item.cat[0] < 22) {
-              artifactArmorList.push(artifactListEntry);
-            } else if (item.cat[0] == 22) {
-              artifactAccessoryList.push(artifactListEntry);
+              if (item.cat[0] > 0 && item.cat[0] < 17) {
+                artifactWeaponList.push(artifactListEntry);
+              } else if (item.cat[0] < 22) {
+                artifactArmorList.push(artifactListEntry);
+              } else if (item.cat[0] == 22) {
+                artifactAccessoryList.push(artifactListEntry);
+              }
             }
           }
         });
