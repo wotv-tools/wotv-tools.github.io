@@ -161,7 +161,7 @@ table#saved {
 }
 
 #materials .material {
-  background-image: radial-gradient(closest-side,brown, transparent);
+  background-image: radial-gradient(closest-side, #FF0000, transparent);
   border-radius: 50%;
 }
 
