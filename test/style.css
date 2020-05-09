@@ -197,10 +197,6 @@ table th, table td {
   width: 50px;
 }
 
-#materials .equipment {
-  padding: 3px;
-}
-
 #materials .material, #materials .equipment {
   height: 50px;
   margin: 0 auto;
