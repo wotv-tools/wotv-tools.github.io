@@ -212,7 +212,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-20)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-21)</a> |
     <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -356,7 +356,7 @@
                     break;
                   // Species Killer
                   case 120:
-                    killer_index_offset = -8;
+                    killer_index_offset = 0;
                     buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
                     break;
                   // Condition Granted
@@ -909,8 +909,8 @@
         for (let i = 0; i < 10; i++) {
           buffNameList.splice(160,0,null);
         }
-        // insert 7 dummy
-        for (let i = 0; i < 7; i++) {
+        // insert 6 dummy
+        for (let i = 0; i < 6; i++) {
           buffNameList.splice(173,0,null);
         }
         // remove 22 Debuff Res
