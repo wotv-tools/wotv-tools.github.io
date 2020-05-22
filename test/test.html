@@ -339,7 +339,7 @@
       if (item_sk) {
         item_sk.forEach((skl) => {
           let skill = skillMap[skl];
-          if (skillNameMap[skl]) {
+          if (skill.grow == 'SKILL_DEFAULT' && skillNameMap[skl]) {
               $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
           } else if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
