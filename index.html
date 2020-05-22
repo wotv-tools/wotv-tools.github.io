@@ -212,7 +212,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-21)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-22)</a> |
     <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -339,7 +339,7 @@
       if (item_sk) {
         item_sk.forEach((skl) => {
           let skill = skillMap[skl];
-          if (skillNameMap[skl]) {
+          if (skill.grow == 'SKILL_DEFAULT' && skillNameMap[skl]) {
               $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
           } else if (skill.s_buffs) {
             skill.s_buffs.forEach((s_buff) => {
