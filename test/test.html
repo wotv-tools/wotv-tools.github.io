@@ -973,7 +973,14 @@
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
 
         artifactCategoryList.forEach((cat, i) => {
-          $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+          switch(cat.value) {
+            case 'None':
+            case ',':
+              break;
+            default:
+              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              break;
+          }
         });
 
         resolve();
