@@ -973,9 +973,9 @@
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
 
         artifactCategoryList.forEach((cat, i) => {
-          switch(cat.value) {
-            case 'None':
-            case ',':
+          switch(cat.key) {
+            case 'NONE':
+            case 'SEPARATOR':
               break;
             default:
               $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
