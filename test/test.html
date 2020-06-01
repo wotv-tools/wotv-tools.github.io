@@ -583,8 +583,8 @@
 
           $('#grow_amt').append('<td>Max Grow/Level</td>');
           stats.forEach((stat, i) => {
-            if (item.status[1][stat.value]) {
-              $('#grow_amt').append('<td>+' + item.status[1][stat.value] + '</td>');
+            if (item.randa[0][stat.value][stat.value]) {
+              $('#grow_amt').append('<td>+' + item.randa[0][stat.value][stat.value] + '</td>');
               $('#seals .stat_' + i + ' img').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
