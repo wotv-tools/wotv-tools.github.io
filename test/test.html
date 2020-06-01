@@ -105,12 +105,12 @@
                 <th>CRIT</th>
                 <th>CRIT<br/>EVADE</th>
               </tr>
-              <tr id="grow_amt"></tr>
-              <tr style="height:10px;"></tr>
+              <tr id="grow_amt" class="hidden"></tr>
+              <tr class="grow_div"></tr>
               <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
-              <tr id="grow_seal_div" style="height:10px;"></tr>
+              <tr class="grow_div"></tr>
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
@@ -375,17 +375,24 @@
       // $('#desc').empty();
       // $('#desc').append(artifactFlavorMap[item.iname]);
 
-      $('#grow_amt').empty();
-      $('#grow_amt').append('<td>Max Growth per Level</td>');
-      stats.forEach((stat) => {
-        $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
-      });
-
-
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
       $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
+
+      $('#grow_amt').empty();
+      $('#grow_amt').addClass('hidden');
+
+      if (types[0] == 'ARTIFACT_50') {
+        $('#grow_amt').append('<td>Max Growth per Level</td>');
+        stats.forEach((stat) => {
+          if (isNaN(item.status[0][stat.value])) {
+            $('#grow_amt').append('<td>-</td>');
+          } else {
+            $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
+          }
+        });
+      }
 
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
@@ -560,7 +567,7 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
-      $('#grow_seal_div').addClass('hidden');
+      $('#grow_div').addClass('hidden');
       $('#seals').addClass('hidden');
       $('#seals_tip').addClass('hidden');
       switch (types[0].value) {
@@ -594,7 +601,7 @@
 
           $('#seals_tip').removeClass('hidden');
           $('#save_tip').addClass('hidden');
-          $('#grow_seal_div').removeClass('hidden');
+          $('#grow_div').removeClass('hidden');
           $('#seals').removeClass('hidden');
           break;
       }
