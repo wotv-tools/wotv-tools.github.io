@@ -86,11 +86,12 @@
         <div class="cell" id="growth">
           <div class="cell_content">
             <table id="stats">
+              <tr id="grow_amt" class="hidden"></tr>
               <tr>
                 <th colspan="14">Average Stat Growth</th>
               </tr>
               <tr>
-                <th></th>
+                <th>Growth<br/>Type</th>
                 <th>HP</th>
                 <th>TP</th>
                 <th>AP</th>
@@ -105,8 +106,6 @@
                 <th>CRIT</th>
                 <th>CRIT<br/>EVADE</th>
               </tr>
-              <tr id="grow_amt" class="hidden"></tr>
-              <tr class="grow_div"></tr>
               <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
