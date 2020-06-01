@@ -105,6 +105,8 @@
                 <th>CRIT</th>
                 <th>CRIT<br/>EVADE</th>
               </tr>
+              <tr id="grow_amt"></tr>
+              <tr style="height:10px;"></tr>
               <tr id="grow1_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow2_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
@@ -372,6 +374,13 @@
 
       // $('#desc').empty();
       // $('#desc').append(artifactFlavorMap[item.iname]);
+
+      $('#grow_amt').empty();
+      $('#grow_amt').append('<td>Max Growth per Level</td>');
+      stats.forEach((stat) => {
+        $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
+      });
+
 
       $('#grow1_stats').empty();
       $('#grow2_stats').empty();
