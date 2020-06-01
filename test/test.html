@@ -185,7 +185,7 @@
               <th colspan="15">Saved Equipment</th>
             <tr>
               <th>Equipment</th>
-              <th>Growth<br/>Type</th>
+              <th></th>
               <th>HP</th>
               <th>TP</th>
               <th>AP</th>
@@ -583,10 +583,10 @@
 
           $('#grow_amt').append('<td>Max Growth per Level</td>');
           stats.forEach((stat) => {
-            if (isNaN(item.status[0][stat.value])) {
-              $('#grow_amt').append('<td>-</td>');
+            if (item.status[0][stat.value]) {
+              $('#grow_amt').append('<td>+' + item.status[0][stat.value] + '</td>');
             } else {
-              $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
+              $('#grow_amt').append('<td>-</td>');
             }
           });
 
