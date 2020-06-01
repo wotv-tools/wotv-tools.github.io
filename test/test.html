@@ -380,20 +380,6 @@
       $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
 
-      $('#grow_amt').empty();
-      $('#grow_amt').addClass('hidden');
-
-      if (types[0] == 'ARTIFACT_50') {
-        $('#grow_amt').append('<td>Max Growth per Level</td>');
-        stats.forEach((stat) => {
-          if (isNaN(item.status[0][stat.value])) {
-            $('#grow_amt').append('<td>-</td>');
-          } else {
-            $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
-          }
-        });
-      }
-
       types.forEach((type, i) => {
         let typeGrowth = growthMap[type.value];
         let typeStatsRow = $('#grow' + (i+1) + '_stats');
@@ -567,6 +553,8 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
+      $('#grow_amt').empty();
+      $('#grow_amt').addClass('hidden');
       $('#grow_div').addClass('hidden');
       $('#seals').addClass('hidden');
       $('#seals_tip').addClass('hidden');
@@ -593,12 +581,22 @@
           $('#level').append('<option value="50">Lv. 50</option>');
           $('#level').val('50');
 
+          $('#grow_amt').append('<td>Max Growth per Level</td>');
+          stats.forEach((stat) => {
+            if (isNaN(item.status[0][stat.value])) {
+              $('#grow_amt').append('<td>-</td>');
+            } else {
+              $('#grow_amt').append('<td>' + item.status[0][stat.value] + '</td>');
+            }
+          });
+
           stats.forEach((stat, i) => {
             if (item.status[1][stat.value] != null) {
               $('#seals .stat_' + i + ' img').removeClass('hidden');
             }
           });
 
+          $('#grow_amt').removeClass('hidden');
           $('#seals_tip').removeClass('hidden');
           $('#save_tip').addClass('hidden');
           $('#grow_div').removeClass('hidden');
