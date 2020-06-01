@@ -581,7 +581,7 @@
           $('#level').append('<option value="50">Lv. 50</option>');
           $('#level').val('50');
 
-          $('#grow_amt').append('<td>Max Growth per Level</td>');
+          $('#grow_amt').append('<td>Max Grow/Level</td>');
           stats.forEach((stat) => {
             if (item.status[1][stat.value]) {
               $('#grow_amt').append('<td>+' + item.status[1][stat.value] + '</td>');
