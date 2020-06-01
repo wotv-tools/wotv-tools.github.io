@@ -582,7 +582,7 @@
           $('#level').val('50');
 
           $('#grow_amt').append('<td>Max Grow/Level</td>');
-          stats.forEach((stat) => {
+          stats.forEach((stat, i) => {
             if (item.status[1][stat.value]) {
               $('#grow_amt').append('<td>+' + item.status[1][stat.value] + '</td>');
               $('#seals .stat_' + i + ' img').removeClass('hidden');
