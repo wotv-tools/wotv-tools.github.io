@@ -90,7 +90,7 @@
                 <th colspan="14">Average Stat Growth</th>
               </tr>
               <tr>
-                <th>Growth<br/>Type</th>
+                <th></th>
                 <th>HP</th>
                 <th>TP</th>
                 <th>AP</th>
@@ -581,7 +581,7 @@
           $('#level').append('<option value="50">Lv. 50</option>');
           $('#level').val('50');
 
-          $('#grow_amt').append('<td>Max Grow/Level</td>');
+          $('#grow_amt').append('<td>Growth</td>');
           stats.forEach((stat, i) => {
             if (item.randa[0][stat.value][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value][stat.value] + '</td>');
