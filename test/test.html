@@ -110,6 +110,7 @@
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow_div" class="hidden"></tr>
               <tr id="grow_amt" class="hidden"></tr>
+              <tr id="grow_rate" class="hidden"></tr>
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
@@ -496,11 +497,13 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
-      $('#grow_amt').empty();
-      $('#grow_amt').addClass('hidden');
       $('#grow_div').addClass('hidden');
+      $('#grow_amt').addClass('hidden');
       $('#seals').addClass('hidden');
       $('#seals_tip').addClass('hidden');
+
+      $('#grow_amt').empty();
+      $('#grow_rate').empty();
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -528,13 +531,20 @@
           stats.forEach((stat, i) => {
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
+              if (seals[i] && sealGrowthMap[stat.value]) {
+                $('#grow_rate').append('<td>' + (item.randr[0][stat.value] + sealGrowthMap[stat.value]) + '%</td>');
+              } else {
+                $('#grow_rate').append('<td>' + item.randr[0][stat.value] + '%</td>');
+              }
               $('#seals .stat_' + i + ' img').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
+              $('#grow_rate').append('<td>-</td>');
             }
           });
 
           $('#grow_amt').removeClass('hidden');
+          $('#grow_rate').removeClass('hidden');
           $('#seals_tip').removeClass('hidden');
           $('#save_tip').addClass('hidden');
           $('#grow_div').removeClass('hidden');
