@@ -447,10 +447,10 @@
             let tdEl = '';
             if (seals[i]) {
               tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value]
-                + '<br/><span><b>' + artifact_rates[stat.value] + '</b></span></td>';
+                + '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
             } else {
               tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value]
-                + '<br/><span><b>' + artifact_rates[stat.value] + '</b></span></td>';
+                + '<br/><span>' + artifact_rates[stat.value] + '%</span></td>';
             }
 
             typeStatsRow.append(tdEl);
