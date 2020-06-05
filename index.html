@@ -428,10 +428,11 @@
                 artifact_rates[pity_stat] = 0;
               }
             }
-            break;
 
             // reset. get base artifact rates
             artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
+
+            break;
         }
 
         typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
