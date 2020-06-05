@@ -528,6 +528,7 @@
           $('#level').val('50');
 
           $('#grow_amt').append('<th>Growth</th>');
+          $('#grow_rate').append('<th>Chance</th>');
           stats.forEach((stat, i) => {
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
