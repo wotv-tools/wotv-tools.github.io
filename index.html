@@ -110,7 +110,6 @@
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow_div" class="hidden"></tr>
               <tr id="grow_amt" class="hidden"></tr>
-              <tr id="grow_rate" class="hidden"></tr>
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
@@ -430,6 +429,9 @@
               }
             }
             break;
+
+            // reset. get base artifact rates
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         }
 
         typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
@@ -443,41 +445,25 @@
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
             $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
+            let tdEl = '';
             if (seals[i]) {
-              typeStatsRow.append('<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value] + '</td>');
+              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              }
             } else {
-              typeStatsRow.append('<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value] + '</td>');
+              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              }
             }
+
+            typeStatsRow.append(tdEl);
           } else {
             typeStatsRow.append('<td> - </td>');
           }
         });
       });
-
-      // display growth rate
-      $('#grow_rate').addClass('hidden');
-      $('#grow_rate').empty();
-
-      switch (types[0].value) {
-        case 'ARTIFACT_TRUST':
-        case 'ARTIFACT_50':
-          break;
-        default:
-          $('#grow_rate').append('<th>Chance</th>');
-          stats.forEach((stat, i) => {
-            if (item.randa[0][stat.value]) {
-              if (seals[i] && sealGrowthMap[stat.value]) {
-                $('#grow_rate').append('<td>' + (item.randr[0][stat.value] + sealGrowthMap[stat.value]) + '%</td>');
-              } else {
-                $('#grow_rate').append('<td>' + item.randr[0][stat.value] + '%</td>');
-              }
-            } else {
-              $('#grow_rate').append('<td>-</td>');
-            }
-          });
-          $('#grow_rate').removeClass('hidden');
-          break;
-      }
 
       // get recipe
       $('#materials').addClass('hidden');
