@@ -454,6 +454,31 @@
         });
       });
 
+      // display growth rate
+      $('#grow_rate').addClass('hidden');
+      $('#grow_rate').empty();
+
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+        case 'ARTIFACT_50':
+          break;
+        default:
+          $('#grow_rate').append('<th>Chance</th>');
+          stats.forEach((stat, i) => {
+            if (item.randa[0][stat.value]) {
+              if (seals[i] && sealGrowthMap[stat.value]) {
+                $('#grow_rate').append('<td>' + (item.randr[0][stat.value] + sealGrowthMap[stat.value]) + '%</td>');
+              } else {
+                $('#grow_rate').append('<td>' + item.randr[0][stat.value] + '%</td>');
+              }
+            } else {
+              $('#grow_rate').append('<td>-</td>');
+            }
+          });
+          $('#grow_rate').removeClass('hidden');
+          break;
+      }
+
       // get recipe
       $('#materials').addClass('hidden');
       $('#total_mats').empty();
@@ -503,7 +528,6 @@
       $('#seals_tip').addClass('hidden');
 
       $('#grow_amt').empty();
-      $('#grow_rate').empty();
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
@@ -528,24 +552,16 @@
           $('#level').val('50');
 
           $('#grow_amt').append('<th>Growth</th>');
-          $('#grow_rate').append('<th>Chance</th>');
           stats.forEach((stat, i) => {
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
-              if (seals[i] && sealGrowthMap[stat.value]) {
-                $('#grow_rate').append('<td>' + (item.randr[0][stat.value] + sealGrowthMap[stat.value]) + '%</td>');
-              } else {
-                $('#grow_rate').append('<td>' + item.randr[0][stat.value] + '%</td>');
-              }
               $('#seals .stat_' + i + ' img').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
-              $('#grow_rate').append('<td>-</td>');
             }
           });
 
           $('#grow_amt').removeClass('hidden');
-          $('#grow_rate').removeClass('hidden');
           $('#seals_tip').removeClass('hidden');
           $('#save_tip').addClass('hidden');
           $('#grow_div').removeClass('hidden');
