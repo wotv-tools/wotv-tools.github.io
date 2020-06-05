@@ -110,6 +110,7 @@
               <tr id="grow3_stats" class="selectable" onclick="save(this)"></tr>
               <tr id="grow_div" class="hidden"></tr>
               <tr id="grow_amt" class="hidden"></tr>
+              <tr id="grow_rate" class="hidden"></tr>
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
@@ -205,7 +206,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-05-27)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-04)</a> |
     <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -453,6 +454,31 @@
         });
       });
 
+      // display growth rate
+      $('#grow_rate').addClass('hidden');
+      $('#grow_rate').empty();
+
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+        case 'ARTIFACT_50':
+          break;
+        default:
+          $('#grow_rate').append('<th>Chance</th>');
+          stats.forEach((stat, i) => {
+            if (item.randa[0][stat.value]) {
+              if (seals[i] && sealGrowthMap[stat.value]) {
+                $('#grow_rate').append('<td>' + (item.randr[0][stat.value] + sealGrowthMap[stat.value]) + '%</td>');
+              } else {
+                $('#grow_rate').append('<td>' + item.randr[0][stat.value] + '%</td>');
+              }
+            } else {
+              $('#grow_rate').append('<td>-</td>');
+            }
+          });
+          $('#grow_rate').removeClass('hidden');
+          break;
+      }
+
       // get recipe
       $('#materials').addClass('hidden');
       $('#total_mats').empty();
@@ -496,11 +522,12 @@
       let types = typeMap[item.rtype];
 
       $('#level').empty();
-      $('#grow_amt').empty();
-      $('#grow_amt').addClass('hidden');
       $('#grow_div').addClass('hidden');
+      $('#grow_amt').addClass('hidden');
       $('#seals').addClass('hidden');
       $('#seals_tip').addClass('hidden');
+
+      $('#grow_amt').empty();
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
           $('#level').append('<option value="1">Lv. 1</option>');
