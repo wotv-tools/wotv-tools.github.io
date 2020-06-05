@@ -446,11 +446,13 @@
             $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
             let tdEl = '';
             if (seals[i]) {
-              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
+              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value]
+                + '<br/><span><b>' + artifact_rates[stat.value] + '</b></span></td>';
             } else {
-              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value];
+              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value]
+                + '<br/><span><b>' + artifact_rates[stat.value] + '</b></span></td>';
             }
-            tdEl += '<br/><span>' + artifact_rates[stat.value] + '</span></td>';
+
             typeStatsRow.append(tdEl);
           } else {
             typeStatsRow.append('<td> - </td>');
