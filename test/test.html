@@ -429,11 +429,12 @@
               }
             }
             break;
+
+            // reset. get base artifact rates
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         }
 
         typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
-        // reset. get base artifact rates
-        artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         stats.forEach((stat, i) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
@@ -446,11 +447,15 @@
             $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
             let tdEl = '';
             if (seals[i]) {
-              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value]
-                + '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              }
             } else {
-              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value]
-                + '<br/><span>' + artifact_rates[stat.value] + '%</span></td>';
+              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              }
             }
 
             typeStatsRow.append(tdEl);
