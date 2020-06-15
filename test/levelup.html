@@ -168,7 +168,7 @@
       setItemInfo();
     }
     function onTypeChange() {
-
+      displayStats();
     }
 
     function displayStats() {
@@ -180,8 +180,6 @@
       let item = artifactMap[itemKey];
       let level = $('#level').val();
       let item_sk = item['skl' + Math.ceil(level/10)];
-
-      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
       $('#types').empty();
       let types = typeMap[item.rtype];
@@ -216,6 +214,7 @@
           break;
       }
 
+      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
       $('#item_image').removeClass().addClass('equipment');
       if (item.cat[0] > 0 && item.cat[0] < 17) {
         $('#item_image').addClass('weapon');
@@ -224,6 +223,7 @@
       } else if (item.cat[0] == 22) {
         $('#item_image').addClass('accessory');
       }
+      $('#content').removeClass('hidden');
     }
 
     function getArtifactStats(curve, base) {
