@@ -93,6 +93,7 @@
                 <th>CRIT<br/>EVADE</th>
               </tr>
               <tr id="cur_stats"></tr>
+              <tr id="max_stats"></tr>
             </table>
             <div id="next_step"></div>
           </div>
@@ -210,14 +211,15 @@
       }
 
       $('#cur_stats').empty();
+      $('#max_stats').empty();
       let levelCell = $('<td></td>')
       let levelSelect = $('<select id="levels" onchange="calcNextLevel()"></select>');
       for (let i = 1; i <= max_level; i++) {
         levelSelect.append('<option value="' + i + '">' + i + '</option>');
       }
       levelCell.append(levelSelect);
-      levelCell.append('<br/>' + max_level);
       $('#cur_stats').append(levelCell);
+      $('#max_stats').append('<td>' + max_level + '</td>');
 
       let item = artifactMap[itemKey];
       let typeGrowth = growthMap[type.value];
@@ -230,11 +232,11 @@
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
-          statCell.append('<br/>' + artifact_stats[stat.value]);
         } else {
           statCell.text('-');
         }
         $('#cur_stats').append(statCell);
+        $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
       });
 
       calcNextLevel();
