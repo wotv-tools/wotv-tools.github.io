@@ -211,11 +211,15 @@
       let item = artifactMap[itemKey];
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
-        let statSelect = $('<select></select>');
-        for (let i = item.status[0][stat.value]; i <= item.status[1][stat.value]; i++) {
-          statSelect.append('<option value="' + i + '">' + i + '</option>');
+        if (!isNaN(item.status[1][stat.value])) {
+          let statSelect = $('<select></select>');
+          for (let i = item.status[0][stat.value]; i <= item.status[1][stat.value]; i++) {
+            statSelect.append('<option value="' + i + '">' + i + '</option>');
+          }
+          statCell.append(statSelect);
+        } else {
+          statCell.text('-');
         }
-        statCell.append(statSelect);
         $('#cur_stats').append(statCell);
       });
     }
