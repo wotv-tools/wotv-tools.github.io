@@ -180,8 +180,6 @@
       }
 
       let item = artifactMap[itemKey];
-      let types = typeMap[item.rtype];
-
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
       $('#item_image').removeClass().addClass('equipment');
       if (item.cat[0] > 0 && item.cat[0] < 17) {
