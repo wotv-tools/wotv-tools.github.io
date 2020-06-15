@@ -73,10 +73,11 @@
           </div>
         </div>
 
-        <div class="cell">
+        <div class="cell" id="grow">
           <div class="cell_content">
             <table id="stats">
               <tr>
+                <th></th>
                 <th>Level</th>
                 <th>HP</th>
                 <th>TP</th>
@@ -213,6 +214,9 @@
 
       $('#cur_stats').empty();
       $('#max_stats').empty();
+
+      $('#cur_stats').append('<td>Current</td>');
+      $('#max_stats').append('<td>Max</td>');
       let levelCell = $('<td></td>')
       let levelSelect = $('<select id="levels" onchange="calcNextLevel()"></select>');
       for (let i = 1; i <= max_level; i++) {
