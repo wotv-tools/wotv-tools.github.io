@@ -96,6 +96,7 @@
               </tr>
               <tr id="cur_stats"></tr>
             </table>
+            <div id="next_step"></div>
           </div>
         </div>
       </div>
@@ -236,6 +237,11 @@
       }
 
       let item = artifactMap[itemKey];
+
+      let level = $('#levels').val();
+      let levels_left = max_level - level;
+      let tar_level = level;
+
       let non_hp_stats_left = 0;
       let hp_stats_left = 0;
       stats.foreach((stat) => {
@@ -247,8 +253,20 @@
         }
       });
 
-      if (hp_stats_left <= 150) {
-        if (non_hp_stats_left)
+      let hp_from_hammers = 150;
+      if (hp_stats_left <= hp_from_hammers) {
+        if (non_hp_stats_left < levels_left) {
+          tar_level = max_level - non_hp_stats_left;
+          $('#next_step').text('Level this item up until level ' + tar_level + ' and update your stats.');
+        } else if (non_hp_stats_left == levels_left) {
+          $('#next_step').text('Max out the HP stat using HP hammers and update your stats.');
+        }
+      } else if (hp_stats_left == 0) {
+        if (non_hp_stats_left <= levels_left) {
+          $('#next_step').text('Level this item up until level ' + max_level + '.');
+        }
+      } else {
+        $('#next_step').text('Level this item up until the HP stat is at least ' + (item.status[1]['hp'] - hp_from_hammers) + ' and update your stats.');
       }
     }
 
@@ -386,8 +404,9 @@
       });
     }));
 
+    let max_level = 50;
     Promise.all(promiseList).then(() => {
-      for (let i = 1; i <= 50; i++) {
+      for (let i = 1; i <= max_level; i++) {
         $('#levels').append('<option value="' + i + '">' + i + '</option>');
       }
     });
