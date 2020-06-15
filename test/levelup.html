@@ -75,11 +75,9 @@
 
         <div class="cell" id="growth">
           <div class="cell_content">
-            <div>
-              Current Level: <select id="levels"></select>
-            </div>
             <table id="stats">
               <tr>
+                <th>Level</th>
                 <th>HP</th>
                 <th>TP</th>
                 <th>AP</th>
@@ -211,6 +209,13 @@
       }
 
       $('#cur_stats').empty();
+      let levelCell = $('<td></td>')
+      let levelSelect = $('<select id="levels" onchange="calcNextLevel()"></select>');
+      for (let i = 1; i <= max_level; i++) {
+        levelSelect.append('<option value="' + i + '">' + i + '</option>');
+      }
+      levelCell.append(levelSelect);
+      $('#cur_stats').append(levelCell);
 
       let item = artifactMap[itemKey];
       stats.forEach((stat) => {
@@ -406,11 +411,8 @@
       });
     }));
 
-    let max_level = 50;
     Promise.all(promiseList).then(() => {
-      for (let i = 1; i <= max_level; i++) {
-        $('#levels').append('<option value="' + i + '">' + i + '</option>');
-      }
+
     });
   </script>
 </body>
