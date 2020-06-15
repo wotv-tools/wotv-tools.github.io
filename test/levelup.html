@@ -219,7 +219,18 @@
       $('#cur_stats').empty();
 
       let item = artifactMap[itemKey];
-
+      switch (type) {
+        case 'ARTIFACT_TRUST':
+          stats.forEach((stat) => {
+            $('#cur_stats').append('<td>' + item.status[0][stat] + '/' + item.status[1][stat] + '</td>');
+          });
+          break;
+        case 'ARTIFACT_50':
+          stats.forEach((stat) => {
+            $('#cur_stats').append('<td>' + item.status[0][stat] + '/' + item.status[1][stat] + '</td>');
+          });
+          break;
+        default
     }
 
     function getArtifactStats(curve, base) {
@@ -311,19 +322,6 @@
       });
     }));
 
-    let sealGrowthMap = {};
-    promiseList.push(new Promise((resolve, reject) => {
-      // init
-      $.getJSON('data/ArtifactGrowItem.json', (data) => {
-        data.items.forEach((item) => {
-          let stat = stats[item.grow_up[0].eff_dst];
-          sealGrowthMap[stat.value] = item.grow_up[0].val;
-        });
-
-        resolve();
-      });
-    }));
-
     let artifactCategoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // init
@@ -361,7 +359,7 @@
       // 	20200422_4c9ea1e3
       $.getJSON('data/Artifact.json', (data) => {
         data.items.forEach((item) => {
-          if (item.type >= 0) {
+          if (item.type >= 0 && item.rtype != 'AF_LOT_50' && item.rtype != 'AF_LOT_TRUST') {
             artifactMap[item.iname] = item;
             artifactMap[item.iname].name = artifactNameMap[item.iname];
 
