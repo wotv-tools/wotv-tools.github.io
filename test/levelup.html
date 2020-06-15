@@ -288,10 +288,13 @@
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value])) {
           let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
-          if (stat.value == 'hp') {
-            hp_stats_left += stat_left;
-          } else if {
-            non_hp_stats_left += stat_left;
+          switch (stat.value) {
+            case 'hp':
+              hp_stats_left += stat_left;
+              break;
+            default:
+              non_hp_stats_left += stat_left;
+              break;
           }
         }
       });
