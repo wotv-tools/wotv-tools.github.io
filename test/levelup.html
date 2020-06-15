@@ -446,10 +446,14 @@
           }
         });
 
-        artifactListByCat.forEach((artifactList) => {
-          artifactList.sort((a, b) => {
-            return a.label > b.label ? 1 : -1;
-          });
+        artifactListByCat.forEach((artifactList, index, list) => {
+          if (artifactList.length == 0) {
+            list.splice(index, 1);
+          } else {
+            artifactList.sort((a, b) => {
+              return a.label > b.label ? 1 : -1;
+            });
+          }
         });
 
         $('#category').focus();
