@@ -194,7 +194,16 @@
       $('#types').empty();
       let types = typeMap[item.rtype];
       types.forEach((type, i) => {
-        $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
+        switch (type.value) {
+          case 'ARTIFACT_TRUST':
+            $('#types').append('<option value="' + type.value + '">TMR</option>');
+            break;
+          case 'ARTIFACT_50':
+            $('#types').append('<option value="' + type.value + '">None</option>');
+          default:
+            $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
+            break;
+        }
       });
     }
 
