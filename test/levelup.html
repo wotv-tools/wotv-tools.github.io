@@ -271,7 +271,7 @@
       }
 
       let item = artifactMap[itemKey];
-      let typeGrowth = growthMap[type.value];
+      let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
 
       let level = $('#levels').val();
