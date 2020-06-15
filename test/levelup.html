@@ -195,17 +195,7 @@
       $('#types').empty();
       let types = typeMap[item.rtype];
       types.forEach((type, i) => {
-        switch (type.value) {
-          case 'ARTIFACT_TRUST':
-            $('#types').append('<option value="' + type.value + '">TMR</option>');
-            break;
-          case 'ARTIFACT_50':
-            $('#types').append('<option value="' + type.value + '">None</option>');
-            break;
-          default:
-            $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
-            break;
-        }
+        $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
       });
     }
 
@@ -219,18 +209,9 @@
       $('#cur_stats').empty();
 
       let item = artifactMap[itemKey];
-      switch (type) {
-        case 'ARTIFACT_TRUST':
-          stats.forEach((stat) => {
-            $('#cur_stats').append('<td>' + item.status[0][stat] + '/' + item.status[1][stat] + '</td>');
-          });
-          break;
-        case 'ARTIFACT_50':
-          stats.forEach((stat) => {
-            $('#cur_stats').append('<td>' + item.status[0][stat] + '/' + item.status[1][stat] + '</td>');
-          });
-          break;
-        default
+      stats.forEach((stat) => {
+        let statSelect = $('<select></select>');
+      });
     }
 
     function getArtifactStats(curve, base) {
