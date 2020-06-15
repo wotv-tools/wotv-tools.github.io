@@ -401,21 +401,6 @@
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
 
-        artifactCategoryList.forEach((cat, i) => {
-          switch(cat.key) {
-            case 'NONE':
-            case 'HAMMER':
-            case 'INSTRUMENT':
-            case 'WHIP':
-            case 'THROWING':
-            case 'SEPARATOR':
-              break;
-            default:
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
-              break;
-          }
-        });
-
         resolve();
       });
     }));
@@ -446,23 +431,35 @@
           }
         });
 
-        artifactListByCat.forEach((artifactList, index, list) => {
-          if (artifactList.length == 0) {
-            list.splice(index, 1);
-          } else {
-            artifactList.sort((a, b) => {
-              return a.label > b.label ? 1 : -1;
-            });
-          }
+        artifactListByCat.forEach((artifactList) => {
+          artifactList.sort((a, b) => {
+            return a.label > b.label ? 1 : -1;
+          });
         });
 
-        $('#category').focus();
         resolve();
       });
     }));
 
     Promise.all(promiseList).then(() => {
+      artifactCategoryList.forEach((cat, i) => {
+        switch(cat.key) {
+          case 'NONE':
+          case 'HAMMER':
+          case 'INSTRUMENT':
+          case 'WHIP':
+          case 'THROWING':
+          case 'SEPARATOR':
+            break;
+          default:
+            if (artifactListByCat[i].length > 0) {
+              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+            }
+            break;
+        }
+      });
 
+      $('#category').focus();
     });
   </script>
 </body>

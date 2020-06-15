@@ -56,7 +56,7 @@
       </select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
     </div>
-    <div id="start_tip" class="tips" onclick="dismiss(this)">
+    <div id="start_tip" class="tips">
       <div class="speech_bubble">Welcome! This tool calculates the average stat gain for equipment. To get started, choose an equipment from the inputs above! If you wish to learn from my brother, click on the Awakening Prism at the top at anytime.</div>
     </div>
 
@@ -152,10 +152,10 @@
               </tr>
             </table>
           </div>
-          <div id="seals_tip" class="tips hidden" onclick="dismiss(this)">
+          <div id="seals_tip" class="tips hidden">
             <div class="speech_bubble">Click on the seals above to see how the average changes with seals! Seals are applied every level until the stat is maxed.</div>
           </div>
-          <div id="save_tip" class="tips hidden" onclick="dismiss(this)">
+          <div id="save_tip" class="tips hidden">
             <div class="speech_bubble">If you like what you see, you can click on the entry to save it down below!</div>
           </div>
         </div>
@@ -196,7 +196,7 @@
             </tr>
           </table>
         </div>
-        <div class="tips hidden" onclick="dismiss(this)">
+        <div class="tips hidden">
           <div class="speech_bubble">You can remove any unwanted entries by clicking on them! Once you are ready, you can share the link above.</div>
         </div>
       </div>
@@ -253,10 +253,6 @@
       label: "CRIT EVADE",
       value: "crta"
     }];
-
-    function dismiss(el) {
-      $(el).addClass('dismissed');
-    }
 
     function onCategoryChange() {
       let category = $('#category').val();
@@ -938,21 +934,6 @@
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
 
-        artifactCategoryList.forEach((cat, i) => {
-          switch(cat.key) {
-            case 'NONE':
-            case 'HAMMER':
-            case 'INSTRUMENT':
-            case 'WHIP':
-            case 'THROWING':
-            case 'SEPARATOR':
-              break;
-            default:
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
-              break;
-          }
-        });
-
         resolve();
       });
     }));
@@ -984,13 +965,12 @@
           }
         });
 
-        artifactListByCat.forEach((artifactList) => {
+        artifactListByCat.forEach((artifactList, index, list) => {
           artifactList.sort((a, b) => {
             return a.label > b.label ? 1 : -1;
           });
         });
 
-        $('#category').focus();
         resolve();
       });
     }));
@@ -1070,6 +1050,21 @@
     }
 
     Promise.all(promiseList).then(() => {
+      artifactCategoryList.forEach((cat, i) => {
+        switch(cat.key) {
+          case 'NONE':
+          case 'HAMMER':
+          case 'INSTRUMENT':
+          case 'WHIP':
+          case 'THROWING':
+          case 'SEPARATOR':
+            break;
+          default:
+            $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+            break;
+        }
+      });
+
       if (window.location.hash) {
         let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
@@ -1098,6 +1093,8 @@
           }
         }
       }
+
+      $('#category').focus();
     });
   </script>
 </body>
