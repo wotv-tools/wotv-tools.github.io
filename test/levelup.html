@@ -167,6 +167,7 @@
     }
     function onArtifactChange() {
       setItemInfo();
+      $('#types').change();
     }
     function onTypeChange() {
       $('#start_tip').addClass('dismissed');
@@ -200,6 +201,7 @@
             break;
           case 'ARTIFACT_50':
             $('#types').append('<option value="' + type.value + '">None</option>');
+            break;
           default:
             $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
             break;
