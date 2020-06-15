@@ -210,7 +210,13 @@
 
       let item = artifactMap[itemKey];
       stats.forEach((stat) => {
+        let statCell = $('<td></td>');
         let statSelect = $('<select></select>');
+        for (let i = item.status[0][stat]; i <= item.status[1][stat]; i++) {
+          statSelect.append('<option value="' + i + '">' + i + '</option>');
+        }
+        statCell.append(statSelect);
+        $('#cur_stats').append(statCell);
       });
     }
 
@@ -337,7 +343,6 @@
     let artifactMap = {};
     let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
-      // 	20200422_4c9ea1e3
       $.getJSON('data/Artifact.json', (data) => {
         data.items.forEach((item) => {
           if (item.type >= 0 && item.rtype != 'AF_LOT_50' && item.rtype != 'AF_LOT_TRUST') {
