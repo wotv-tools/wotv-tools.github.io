@@ -91,6 +91,7 @@
                 <th>CRIT</th>
                 <th>CRIT<br/>EVADE</th>
               </tr>
+              <tr id="cur_stats"></tr>
             </table>
           </div>
         </div>
@@ -164,36 +165,11 @@
       $('#artifacts').change();
     }
     function onArtifactChange() {
-      $('#start_tip').addClass('dismissed');
       setItemInfo();
     }
     function onTypeChange() {
+      $('#start_tip').addClass('dismissed');
       displayStats();
-    }
-
-    function displayStats() {
-      let itemKey = $('#artifacts').val();
-      if (!itemKey) {
-        return;
-      }
-
-      let item = artifactMap[itemKey];
-      let level = $('#level').val();
-      let item_sk = item['skl' + Math.ceil(level/10)];
-
-      $('#types').empty();
-      let types = typeMap[item.rtype];
-      types.forEach((type, i) => {
-        switch (type.value) {
-          case 'ARTIFACT_TRUST':
-            break;
-          case 'ARTIFACT_50':
-            break;
-          default:
-            $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
-            break;
-        }
-      });
     }
 
     function setItemInfo() {
@@ -205,15 +181,6 @@
       let item = artifactMap[itemKey];
       let types = typeMap[item.rtype];
 
-      switch (types[0].value) {
-        case 'ARTIFACT_TRUST':
-          break;
-        case 'ARTIFACT_50':
-          break;
-        default:
-          break;
-      }
-
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
       $('#item_image').removeClass().addClass('equipment');
       if (item.cat[0] > 0 && item.cat[0] < 17) {
@@ -224,6 +191,25 @@
         $('#item_image').addClass('accessory');
       }
       $('#content').removeClass('hidden');
+
+      $('#types').empty();
+      let types = typeMap[item.rtype];
+      types.forEach((type, i) => {
+        $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
+      });
+    }
+
+    function displayStats() {
+      let itemKey = $('#artifacts').val();
+      let type = $('#types').val();
+      if (!itemKey || !type) {
+        return;
+      }
+
+      $('#cur_stats').empty();
+
+      let item = artifactMap[itemKey];
+
     }
 
     function getArtifactStats(curve, base) {
@@ -247,30 +233,6 @@
       });
 
       return artifact_stats;
-    }
-
-    function getArtifactRates(adjust, base) {
-      let artifact_rates = {};
-
-      stats.forEach((stat, i) => {
-        if (base[stat.value]) {
-          if (adjust[stat.value]) {
-            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
-          } else {
-            artifact_rates[stat.value] = base[stat.value];
-          }
-
-          if (seals[i] && sealGrowthMap[stat.value]) {
-            artifact_rates[stat.value] += sealGrowthMap[stat.value];
-          }
-
-          if (artifact_rates[stat.value] < 0) {
-            artifact_rates[stat.value] = 0;
-          }
-        }
-      });
-
-      return artifact_rates;
     }
 
     let promiseList = [];
