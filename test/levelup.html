@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-3.5.0.min.js" type="text/javascript"></script>
+<link href="base.css" rel="stylesheet" type="text/css">
+<link id="theme" href="dark.css" rel="stylesheet" type="text/css">
+<script>
+  if (window.localStorage.getItem('light')) {
+    $('head #theme').attr('href', 'light.css');
+  }
+  function toggleCSS() {
+    if (window.localStorage.getItem('light')) {
+      window.localStorage.removeItem('light');
+      $('head #theme').attr('href', 'dark.css');
+    } else {
+      window.localStorage.setItem('light', true);
+      $('head #theme').attr('href', 'light.css');
+    }
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164908860-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164908860-1');
+</script>
+<title>WotV:FFBE Equipment Calculator</title>
+</head>
+<body>
+  <div id="header">
+    Equipment Calculator
+    <div id="css_toggle" onclick="toggleCSS()">
+      <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
+      <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
+    </div>
+    <div id="support_link">
+      <a target="_blank" href="https://www.buymeacoffee.com/sairenkao">
+        <img src="img/items/IT_LP_WW_01.png" title="Buy me visiore"/>
+        <span>Buy me visiore</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="main_content">
+    <div id="inputs">
+      <select id="category" onchange="onCategoryChange()">
+        <option disabled selected>-- Select an category --</option>
+      </select>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
+        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
+        <optgroup id="artifacts-armor" label="Armor"></optgroup>
+        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
+      </select>
+    </div>
+    <div id="start_tip" class="tips" onclick="dismiss(this)">
+      <div class="speech_bubble">
+        <p>Welcome! This tool calculates the average stat gain for equipment. To get started, choose an equipment from the inputs above!</p>
+        <p>If you wish to learn from my brother, click on the Awakening Prism at the top at anytime.</p>
+      </div>
+    </div>
+
+    <div id="content" class="hidden">
+      <div class="grid">
+        <div class="cell" id="info">
+          <div class="cell_content">
+            <div id="item_image" class="equipment">
+              <img src=""/>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell" id="growth">
+          <div class="cell_content">
+            <table id="stats">
+              <tr>
+                <th>HP</th>
+                <th>TP</th>
+                <th>AP</th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>MAG</th>
+                <th>SPR</th>
+                <th>ACC</th>
+                <th>DEX</th>
+                <th>AGI</th>
+                <th>EVADE</th>
+                <th>CRIT</th>
+                <th>CRIT<br/>EVADE</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-10)</a> |
+    <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
+    <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
+    <a target="_blank" href="legal.html">Legal</a>
+  </footer>
+
+  <script>
+    let stats = [{
+      label: "HP",
+      value: "hp"
+    }, {
+      label: "TP",
+      value: "mp"
+    }, {
+      label: "AP",
+      value: "ap"
+    }, {
+      label: "ATK",
+      value: "atk"
+    }, {
+      label: "DEF",
+      value: "def"
+    }, {
+      label: "MAG",
+      value: "mag"
+    }, {
+      label: "SPR",
+      value: "mnd"
+    }, {
+      label: "ACC",
+      value: "hit"
+    }, {
+      label: "DEX",
+      value: "dex"
+    }, {
+      label: "AGI",
+      value: "spd"
+    }, {
+      label: "EVA",
+      value: "avd"
+    }, {
+      label: "CRIT",
+      value: "crt"
+    }, {
+      label: "CRIT EVADE",
+      value: "crta"
+    }];
+
+    function dismiss(el) {
+      $(el).addClass('dismissed');
+    }
+
+    function onCategoryChange() {
+      let category = $('#category').val();
+
+      $('#artifacts').empty();
+      artifactListByCat[category].forEach((artifact) => {
+        $('#artifacts').append('<option value="' + artifact.value + '">' + artifact.label + '</option>');
+      });
+
+      $('#artifacts').removeClass('hidden');
+      $('#artifacts').change();
+    }
+    function onArtifactChange() {
+      $('#start_tip').addClass('dismissed');
+      setItemInfo();
+    }
+
+    function displayStats() {
+      let itemKey = $('#artifacts').val();
+      if (!itemKey) {
+        return;
+      }
+
+      let item = artifactMap[itemKey];
+      let level = $('#level').val();
+      let item_sk = item['skl' + Math.ceil(level/10)];
+
+      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
+
+      $('#type').empty();
+      item.cat.forEach((cat) => {
+        $('#type').append('<div>' + artifactCategoryList[cat].value + '</div>');
+      });
+
+      $('#grow1_stats').empty();
+      $('#grow2_stats').empty();
+      $('#grow3_stats').empty();
+      let types = typeMap[item.rtype];
+
+      types.forEach((type, i) => {
+        let typeGrowth = growthMap[type.value];
+        let typeStatsRow = $('#grow' + (i+1) + '_stats');
+        let artifact_stats, artifact_rates, ave_stats;
+
+        switch (type.value) {
+          case 'ARTIFACT_TRUST':
+            artifact_stats = item.status[1];
+            ave_stats = item.status[1];
+            break;
+          case 'ARTIFACT_50':
+            artifact_stats = item.status[1];
+            ave_stats = Object.assign({}, item.status[0]);
+
+            stats.forEach((stat) => {
+              if (!isNaN(artifact_stats[stat.value])) {
+                // guessing growth for no rstatus growth
+                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
+              }
+            });
+
+            break;
+          default:
+            artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
+            ave_stats = Object.assign({}, item.status[0]);
+
+            for (let i = 1; i < level; i++) {
+              let pity_rate = 1;
+              let pity_stat;
+
+              stats.forEach((stat) => {
+                if (!isNaN(artifact_stats[stat.value])) {
+                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
+                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+
+                  if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
+                      pity_stat = stat.value;
+                  }
+
+                  if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+                    ave_stats[stat.value] = artifact_stats[stat.value];
+                    artifact_rates[stat.value] = 0;
+                  }
+                }
+              });
+
+              // add pity
+              ave_stats[pity_stat] += pity_rate;
+              if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
+                ave_stats[pity_stat] = artifact_stats[pity_stat];
+                artifact_rates[pity_stat] = 0;
+              }
+            }
+
+            // reset. get base artifact rates
+            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
+
+            break;
+        }
+
+        typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
+        stats.forEach((stat, i) => {
+          if (ave_stats[stat.value] > artifact_stats[stat.value]) {
+            ave_stats[stat.value] = artifact_stats[stat.value];
+            artifact_rates[stat.value] = 0;
+          } else {
+            ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
+          }
+
+          if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
+            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
+            let tdEl = '';
+            if (seals[i]) {
+              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
+              }
+            } else {
+              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value];
+              if (artifact_rates) {
+                tdEl += '<br/><span>' + artifact_rates[stat.value] + '%</span></td>';
+              }
+            }
+
+            typeStatsRow.append(tdEl);
+          } else {
+            typeStatsRow.append('<td> - </td>');
+          }
+        });
+      });
+
+    function setItemInfo() {
+      let itemKey = $('#artifacts').val();
+      if (!itemKey) {
+        return;
+      }
+
+      let item = artifactMap[itemKey];
+      let types = typeMap[item.rtype];
+
+      $('#level').empty();
+      $('#grow_div').addClass('hidden');
+      $('#grow_amt').addClass('hidden');
+      $('#seals').addClass('hidden');
+      $('#seals_tip').addClass('hidden');
+
+      $('#grow_amt').empty();
+      switch (types[0].value) {
+        case 'ARTIFACT_TRUST':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').val('1');
+          $('#save_tip').removeClass('hidden');
+          break;
+        case 'ARTIFACT_50':
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').val('30');
+          $('#save_tip').removeClass('hidden');
+          break;
+        default:
+          $('#level').append('<option value="1">Lv. 1</option>');
+          $('#level').append('<option value="10">Lv. 10</option>');
+          $('#level').append('<option value="20">Lv. 20</option>');
+          $('#level').append('<option value="30">Lv. 30</option>');
+          $('#level').append('<option value="40">Lv. 40</option>');
+          $('#level').append('<option value="50">Lv. 50</option>');
+          $('#level').val('50');
+
+          $('#grow_amt').append('<th>Growth</th>');
+          stats.forEach((stat, i) => {
+            if (item.randa[0][stat.value]) {
+              $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
+              $('#seals .stat_' + i + ' img').removeClass('hidden');
+            } else {
+              $('#grow_amt').append('<td>-</td>');
+            }
+          });
+
+          $('#grow_amt').removeClass('hidden');
+          $('#seals_tip').removeClass('hidden');
+          $('#save_tip').addClass('hidden');
+          $('#grow_div').removeClass('hidden');
+          $('#seals').removeClass('hidden');
+          break;
+      }
+      $('#level').removeClass('hidden');
+      $('#level').change();
+
+      $('#item_image').removeClass().addClass('equipment');
+      if (item.cat[0] > 0 && item.cat[0] < 17) {
+        $('#item_image').addClass('weapon');
+      } else if (item.cat[0] < 22) {
+        $('#item_image').addClass('armor');
+      } else if (item.cat[0] == 22) {
+        $('#item_image').addClass('accessory');
+      }
+    }
+
+    function getArtifactStats(curve, base) {
+      let artifact_stats = {};
+
+      stats.forEach((stat) => {
+        if (base[stat.value]) {
+          if (curve[stat.value]) {
+            artifact_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+
+            let isNeg = artifact_stats[stat.value] < 0;
+
+            artifact_stats[stat.value] = Math.floor(Math.abs(artifact_stats[stat.value]));
+            if (isNeg) {
+              artifact_stats[stat.value] *= -1;
+            }
+          } else {
+            artifact_stats[stat.value] = base[stat.value];
+          }
+        }
+      });
+
+      return artifact_stats;
+    }
+
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
+
+      stats.forEach((stat, i) => {
+        if (base[stat.value]) {
+          if (adjust[stat.value]) {
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
+          } else {
+            artifact_rates[stat.value] = base[stat.value];
+          }
+
+          if (seals[i] && sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
+          }
+        }
+      });
+
+      return artifact_rates;
+    }
+
+    let promiseList = [];
+
+    let typeMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactGrow.json', (data) => {
+        let typeNameMap = {};
+        data.infos.forEach((info) => {
+          typeNameMap[info.key] = info.value;
+        });
+        // 20200422_4c9ea1e3
+        $.getJSON('data/ArtifactRandLot.json', (data) => {
+          data.items.forEach((item) => {
+            typeMap[item.iname] = [];
+            if (item.lot[0].grow1) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow1],
+                value: item.lot[0].grow1
+              });
+            }
+            if (item.lot[0].grow2) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow2],
+                value: item.lot[0].grow2
+              });
+            }
+            if (item.lot[0].grow3) {
+              typeMap[item.iname].push({
+                label: typeNameMap[item.lot[0].grow3],
+                value: item.lot[0].grow3
+              });
+            }
+          });
+
+          resolve();
+        });
+      });
+    }));
+
+    let growthMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/Grow.json', (data) => {
+        data.items.forEach((item) => {
+          growthMap[item.type] = {
+            curve: item.curve,
+            rstatus : item.rstatus
+          }
+        });
+
+        resolve();
+      });
+    }));
+
+    let artifactNameMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // 20200422_4c9ea1e3 translations
+      $.getJSON('en/ArtifactName.json', (data) => {
+        data.infos.forEach((info) => {
+          artifactNameMap[info.key] = info.value;
+        });
+
+        resolve();
+      });
+    }));
+
+    let sealGrowthMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/ArtifactGrowItem.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up[0].eff_dst];
+          sealGrowthMap[stat.value] = item.grow_up[0].val;
+        });
+
+        resolve();
+      });
+    }));
+
+    let artifactCategoryList = [];
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('en/ArtifactCategory.json', (data) => {
+        artifactCategoryList = data.infos;
+
+        // for some reason doesn't match exactly
+        artifactCategoryList.splice(4,1); // remove LARGESWORD
+        artifactCategoryList.splice(6,1); // remove ROD
+        artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
+        artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+
+        artifactCategoryList.forEach((cat, i) => {
+          switch(cat.key) {
+            case 'NONE':
+            case 'HAMMER':
+            case 'INSTRUMENT':
+            case 'WHIP':
+            case 'THROWING':
+            case 'SEPARATOR':
+              break;
+            default:
+              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              break;
+          }
+        });
+
+        resolve();
+      });
+    }));
+
+    let artifactMap = {};
+    let artifactListByCat = [];
+    promiseList.push(new Promise((resolve, reject) => {
+      // 	20200422_4c9ea1e3
+      $.getJSON('data/Artifact.json', (data) => {
+        data.items.forEach((item) => {
+          if (item.type >= 0) {
+            artifactMap[item.iname] = item;
+            artifactMap[item.iname].name = artifactNameMap[item.iname];
+
+            if (artifactNameMap[item.iname]) {
+              let artifactListEntry = {
+                label: artifactNameMap[item.iname],
+                value : item.iname
+              };
+
+              item.cat.forEach((cat) => {
+                if (artifactListByCat[cat] == null) {
+                  artifactListByCat[cat] = [];
+                }
+
+                artifactListByCat[cat].push(artifactListEntry);
+              });
+            }
+          }
+        });
+
+        artifactListByCat.forEach((artifactList) => {
+          artifactList.sort((a, b) => {
+            return a.label > b.label ? 1 : -1;
+          });
+        });
+
+        $('#category').focus();
+        resolve();
+      });
+    }));
+
+    Promise.all(promiseList).then(() => {
+
+    });
+  </script>
+</body>
+</html>
