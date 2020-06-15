@@ -57,8 +57,8 @@
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
-        <p>Welcome! This tool calculates the average stat gain for equipment. To get started, choose an equipment from the inputs above!</p>
-        <p>If you wish to learn from my brother, click on the Awakening Prism at the top at anytime.</p>
+        <p>Welcome! Update this help text later.</p>
+        <p>If you wish to work with my brother, click on the Awakening Prism at the top at anytime.</p>
       </div>
     </div>
 
@@ -166,6 +166,9 @@
       $('#start_tip').addClass('dismissed');
       setItemInfo();
     }
+    function onTypeChange() {
+
+    }
 
     function displayStats() {
       let itemKey = $('#artifacts').val();
@@ -179,14 +182,6 @@
 
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
-      $('#type').empty();
-      item.cat.forEach((cat) => {
-        $('#type').append('<div>' + artifactCategoryList[cat].value + '</div>');
-      });
-
-      $('#grow1_stats').empty();
-      $('#grow2_stats').empty();
-      $('#grow3_stats').empty();
       let types = typeMap[item.rtype];
 
       types.forEach((type, i) => {
@@ -280,6 +275,7 @@
           }
         });
       });
+    }
 
     function setItemInfo() {
       let itemKey = $('#artifacts').val();
@@ -290,55 +286,14 @@
       let item = artifactMap[itemKey];
       let types = typeMap[item.rtype];
 
-      $('#level').empty();
-      $('#grow_div').addClass('hidden');
-      $('#grow_amt').addClass('hidden');
-      $('#seals').addClass('hidden');
-      $('#seals_tip').addClass('hidden');
-
-      $('#grow_amt').empty();
       switch (types[0].value) {
         case 'ARTIFACT_TRUST':
-          $('#level').append('<option value="1">Lv. 1</option>');
-          $('#level').val('1');
-          $('#save_tip').removeClass('hidden');
           break;
         case 'ARTIFACT_50':
-          $('#level').append('<option value="1">Lv. 1</option>');
-          $('#level').append('<option value="10">Lv. 10</option>');
-          $('#level').append('<option value="20">Lv. 20</option>');
-          $('#level').append('<option value="30">Lv. 30</option>');
-          $('#level').val('30');
-          $('#save_tip').removeClass('hidden');
           break;
         default:
-          $('#level').append('<option value="1">Lv. 1</option>');
-          $('#level').append('<option value="10">Lv. 10</option>');
-          $('#level').append('<option value="20">Lv. 20</option>');
-          $('#level').append('<option value="30">Lv. 30</option>');
-          $('#level').append('<option value="40">Lv. 40</option>');
-          $('#level').append('<option value="50">Lv. 50</option>');
-          $('#level').val('50');
-
-          $('#grow_amt').append('<th>Growth</th>');
-          stats.forEach((stat, i) => {
-            if (item.randa[0][stat.value]) {
-              $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
-              $('#seals .stat_' + i + ' img').removeClass('hidden');
-            } else {
-              $('#grow_amt').append('<td>-</td>');
-            }
-          });
-
-          $('#grow_amt').removeClass('hidden');
-          $('#seals_tip').removeClass('hidden');
-          $('#save_tip').addClass('hidden');
-          $('#grow_div').removeClass('hidden');
-          $('#seals').removeClass('hidden');
           break;
       }
-      $('#level').removeClass('hidden');
-      $('#level').change();
 
       $('#item_image').removeClass().addClass('equipment');
       if (item.cat[0] > 0 && item.cat[0] < 17) {
