@@ -54,6 +54,8 @@
         <optgroup id="artifacts-armor" label="Armor"></optgroup>
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
+      <select id="types" class="hidden" onchange="onTypeChange()">
+      </select>
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
@@ -182,98 +184,18 @@
 
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
 
+      $('#types').empty();
       let types = typeMap[item.rtype];
-
       types.forEach((type, i) => {
-        let typeGrowth = growthMap[type.value];
-        let typeStatsRow = $('#grow' + (i+1) + '_stats');
-        let artifact_stats, artifact_rates, ave_stats;
-
         switch (type.value) {
           case 'ARTIFACT_TRUST':
-            artifact_stats = item.status[1];
-            ave_stats = item.status[1];
             break;
           case 'ARTIFACT_50':
-            artifact_stats = item.status[1];
-            ave_stats = Object.assign({}, item.status[0]);
-
-            stats.forEach((stat) => {
-              if (!isNaN(artifact_stats[stat.value])) {
-                // guessing growth for no rstatus growth
-                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
-              }
-            });
-
             break;
           default:
-            artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1]);
-            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
-            ave_stats = Object.assign({}, item.status[0]);
-
-            for (let i = 1; i < level; i++) {
-              let pity_rate = 1;
-              let pity_stat;
-
-              stats.forEach((stat) => {
-                if (!isNaN(artifact_stats[stat.value])) {
-                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
-                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
-
-                  if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
-                      pity_stat = stat.value;
-                  }
-
-                  if (ave_stats[stat.value] > artifact_stats[stat.value]) {
-                    ave_stats[stat.value] = artifact_stats[stat.value];
-                    artifact_rates[stat.value] = 0;
-                  }
-                }
-              });
-
-              // add pity
-              ave_stats[pity_stat] += pity_rate;
-              if (ave_stats[pity_stat] > artifact_stats[pity_stat]) {
-                ave_stats[pity_stat] = artifact_stats[pity_stat];
-                artifact_rates[pity_stat] = 0;
-              }
-            }
-
-            // reset. get base artifact rates
-            artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
-
+            $('#types').append('<option value="' + type.value + '">' + type.label + '</option>');
             break;
         }
-
-        typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
-        stats.forEach((stat, i) => {
-          if (ave_stats[stat.value] > artifact_stats[stat.value]) {
-            ave_stats[stat.value] = artifact_stats[stat.value];
-            artifact_rates[stat.value] = 0;
-          } else {
-            ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
-          }
-
-          if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
-            let tdEl = '';
-            if (seals[i]) {
-              tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
-              if (artifact_rates) {
-                tdEl += '<br/><span><b>' + artifact_rates[stat.value] + '%</b></span></td>';
-              }
-            } else {
-              tdEl = '<td>' + ave_stats[stat.value] + ' / ' + artifact_stats[stat.value];
-              if (artifact_rates) {
-                tdEl += '<br/><span>' + artifact_rates[stat.value] + '%</span></td>';
-              }
-            }
-
-            typeStatsRow.append(tdEl);
-          } else {
-            typeStatsRow.append('<td> - </td>');
-          }
-        });
       });
     }
 
