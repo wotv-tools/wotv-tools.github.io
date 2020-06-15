@@ -75,6 +75,9 @@
 
         <div class="cell" id="growth">
           <div class="cell_content">
+            <div>
+              Current Level: <select id="levels"></select>
+            </div>
             <table id="stats">
               <tr>
                 <th>HP</th>
@@ -212,7 +215,7 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(item.status[1][stat.value])) {
-          let statSelect = $('<select class="stat"></select>');
+          let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="calcNextLevel()"></select>');
           for (let i = item.status[0][stat.value]; i <= item.status[1][stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
@@ -225,27 +228,28 @@
       });
     }
 
-    function getArtifactStats(curve, base) {
-      let artifact_stats = {};
+    function calcNextLevel() {
+      let itemKey = $('#artifacts').val();
+      let type = $('#types').val();
+      if (!itemKey || !type) {
+        return;
+      }
 
-      stats.forEach((stat) => {
-        if (base[stat.value]) {
-          if (curve[stat.value]) {
-            artifact_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
-
-            let isNeg = artifact_stats[stat.value] < 0;
-
-            artifact_stats[stat.value] = Math.floor(Math.abs(artifact_stats[stat.value]));
-            if (isNeg) {
-              artifact_stats[stat.value] *= -1;
-            }
-          } else {
-            artifact_stats[stat.value] = base[stat.value];
-          }
+      let item = artifactMap[itemKey];
+      let non_hp_stats_left = 0;
+      let hp_stats_left = 0;
+      stats.foreach((stat) => {
+        let stat_left = item.status[1][stat.value] - $('.stat.stat_' + stat.value).val();
+        if (stat.value == 'hp') {
+          hp_stats_left += stat_left;
+        } else {
+          non_hp_stats_left += stat_left;
         }
       });
 
-      return artifact_stats;
+      if (hp_stats_left <= 150) {
+        if (non_hp_stats_left)
+      }
     }
 
     let promiseList = [];
@@ -383,7 +387,9 @@
     }));
 
     Promise.all(promiseList).then(() => {
-
+      for (let i = 1; i <= 50; i++) {
+        $('#levels').append('<option value="' + i + '">' + i + '</option>');
+      }
     });
   </script>
 </body>
