@@ -227,6 +227,8 @@
         }
         $('#cur_stats').append(statCell);
       });
+
+      calcNextLevel();
     }
 
     function calcNextLevel() {
@@ -244,7 +246,7 @@
 
       let non_hp_stats_left = 0;
       let hp_stats_left = 0;
-      stats.foreach((stat) => {
+      stats.forEach((stat) => {
         let stat_left = item.status[1][stat.value] - $('.stat.stat_' + stat.value).val();
         if (stat.value == 'hp') {
           hp_stats_left += stat_left;
