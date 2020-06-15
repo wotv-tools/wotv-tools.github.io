@@ -232,11 +232,12 @@
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
+          $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
           statCell.text('-');
+          $('#max_stats').append('<td>-</td>');
         }
         $('#cur_stats').append(statCell);
-        $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
       });
 
       calcNextLevel();
