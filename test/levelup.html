@@ -271,6 +271,8 @@
       }
 
       let item = artifactMap[itemKey];
+      let typeGrowth = growthMap[type.value];
+      let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
 
       let level = $('#levels').val();
       let levels_left = max_level - level;
@@ -279,7 +281,7 @@
       let non_hp_stats_left = 0;
       let hp_stats_left = 0;
       stats.forEach((stat) => {
-        let stat_left = item.status[1][stat.value] - $('.stat.stat_' + stat.value).val();
+        let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
         if (stat.value == 'hp') {
           hp_stats_left += stat_left;
         } else {
@@ -302,7 +304,7 @@
           $('#next_step').text('Level this item up until level ' + max_level + '.');
         }
       } else {
-        $('#next_step').text('Level this item up until the HP stat is at least ' + (item.status[1]['hp'] - hp_from_hammers) + ' and update your stats.');
+        $('#next_step').text('Level this item up until the HP stat is at least ' + (artifact_stats['hp'] - hp_from_hammers) + ' and update your stats.');
       }
     }
 
