@@ -220,15 +220,17 @@
       $('#cur_stats').append(levelCell);
 
       let item = artifactMap[itemKey];
+      let typeGrowth = growthMap[type.value];
+      let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
-        if (!isNaN(item.status[1][stat.value])) {
+        if (!isNaN(artifact_stats[stat.value])) {
           let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="calcNextLevel()"></select>');
-          for (let i = item.status[0][stat.value]; i <= item.status[1][stat.value]; i++) {
+          for (let i = item.status[0][stat.value]; i <= artifact_stats[stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
-          statCell.append('<br/>' + item.status[1][stat.value]);
+          statCell.append('<br/>' + artifact_stats[stat.value]);
         } else {
           statCell.text('-');
         }
@@ -236,6 +238,29 @@
       });
 
       calcNextLevel();
+    }
+
+    function getArtifactStats(curve, base) {
+      let artifact_stats = {};
+
+      stats.forEach((stat) => {
+        if (base[stat.value]) {
+          if (curve[stat.value]) {
+            artifact_stats[stat.value] = (100 + curve[stat.value]) / 100 * base[stat.value];
+
+            let isNeg = artifact_stats[stat.value] < 0;
+
+            artifact_stats[stat.value] = Math.floor(Math.abs(artifact_stats[stat.value]));
+            if (isNeg) {
+              artifact_stats[stat.value] *= -1;
+            }
+          } else {
+            artifact_stats[stat.value] = base[stat.value];
+          }
+        }
+      });
+
+      return artifact_stats;
     }
 
     function calcNextLevel() {
