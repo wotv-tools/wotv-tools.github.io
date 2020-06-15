@@ -212,11 +212,12 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(item.status[1][stat.value])) {
-          let statSelect = $('<select></select>');
+          let statSelect = $('<select class="stat"></select>');
           for (let i = item.status[0][stat.value]; i <= item.status[1][stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
+          statCell.append('/' + item.status[1][stat.value]);
         } else {
           statCell.text('-');
         }
