@@ -216,6 +216,7 @@
         levelSelect.append('<option value="' + i + '">' + i + '</option>');
       }
       levelCell.append(levelSelect);
+      levelCell.append('<br/>' + max_level);
       $('#cur_stats').append(levelCell);
 
       let item = artifactMap[itemKey];
@@ -227,7 +228,7 @@
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
-          statCell.append(' / ' + item.status[1][stat.value]);
+          statCell.append('<br/>' + item.status[1][stat.value]);
         } else {
           statCell.text('-');
         }
