@@ -55,7 +55,7 @@
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
       <select id="types" class="hidden" onchange="onTypeChange()"></select>
-      <button id="advice_btn" onclick="calcNextLevel()" class="hidden">Ask for advice</button>
+      <button onclick="calcAdvice()">Check Advice</button>
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
@@ -94,8 +94,8 @@
               <tr id="max_stats"></tr>
             </table>
           </div>
-          <div class="tips">
-            <div class="speech_bubble" id="next_step"></div>
+          <div id="next_step" class="tips hidden">
+            <div class="speech_bubble"></div>
           </div>
         </div>
       </div>
@@ -166,7 +166,6 @@
 
       $('#artifacts').removeClass('hidden');
       $('#types').removeClass('hidden');
-      $('#advice_btn').removeClass('hidden');
       $('#artifacts').change();
     }
     function onArtifactChange() {
@@ -218,7 +217,7 @@
       $('#max_stats').append('<td>Max</td>');
 
       let levelCell = $('<td></td>');
-      let levelSelect = $('<select id="levels"></select>');
+      let levelSelect = $('<select id="levels" onchange="hideAdvice()"></select>');
       for (let i = 1; i <= max_level; i++) {
         levelSelect.append('<option value="' + i + '">' + i + '</option>');
       }
@@ -227,7 +226,7 @@
       $('#max_stats').append('<td>' + max_level + '</td>');
 
       let hammerCell = $('<td></td>');
-      let hammerSelect = $('<select id="hammers"></select>');
+      let hammerSelect = $('<select id="hammers" onchange="hideAdvice()"></select>');
       for (let i = 0; i <= item.hnum; i++) {
         hammerSelect.append('<option value="' + i + '">' + i + '</option>');
       }
@@ -240,7 +239,7 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(artifact_stats[stat.value])) {
-          let statSelect = $('<select class="stat stat_' + stat.value + '"></select>');
+          let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="hideAdvice()"></select>');
           for (let i = item.status[0][stat.value]; i <= artifact_stats[stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
@@ -279,7 +278,11 @@
       return artifact_stats;
     }
 
-    function calcNextLevel() {
+    function hideAdvice() {
+      $('#next_step').addClass('hidden');
+    }
+
+    function calcAdvice() {
       let itemKey = $('#artifacts').val();
       let type = $('#types').val();
       if (!itemKey || !type) {
@@ -326,7 +329,7 @@
       let text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
       if (levels_left == 0) {
         if (stats_left == 0) {
-          $('#next_step').text('Congratulations!');
+          $('#next_step .speech_bubble').text('Congratulations!');
         } else {
           text = 'You did the best you could.';
           if (hammers_left > 0) {
@@ -361,7 +364,7 @@
           }
         }
       }
-      $('#next_step').text(text);
+      $('#next_step .speech_bubble').text(text);
       $('#next_step').removeClass('hidden');
     }
 
