@@ -290,6 +290,8 @@
 
       let level = $('#levels').val();
       let levels_left = max_level - level;
+      let hammers = $('#hammers').val();
+      let hammers_left = item.hnum - hammers;
 
       let non_hp_stats_left = 0;
       let hp_stats_left = 0;
@@ -307,7 +309,7 @@
         }
       });
 
-      let hp_from_hammers = 150;
+      let hp_from_hammers = 15 * hammers_left;
       if (levels_left == 0) {
         if (hp_stats_left == 0 && non_hp_stats_left == 0) {
           $('#next_step').text('Congratulations!');
