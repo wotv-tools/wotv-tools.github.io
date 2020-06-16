@@ -94,7 +94,6 @@
               <tr id="max_stats"></tr>
             </table>
           </div>
-          <button onclick="calcNextLevel()">Ask for advice</button>
           <div class="tips">
             <div class="speech_bubble" id="next_step"></div>
           </div>
@@ -252,8 +251,6 @@
         }
         $('#cur_stats').append(statCell);
       });
-
-      $('#next_step').addClass('hidden');
     }
 
     function getArtifactStats(curve, base) {
@@ -362,7 +359,6 @@
         }
       }
       $('#next_step').text(text);
-      $('#next_step').removeClass('hidden');
     }
 
     let promiseList = [];
