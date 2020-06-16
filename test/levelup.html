@@ -92,7 +92,7 @@
               </tr>
               <tr id="cur_stats"></tr>
               <tr id="max_stats"></tr>
-              <tr id="want_max"></tr>
+              <tr id="imp_stats"></tr>
             </table>
           </div>
           <div id="next_step" class="tips hidden">
@@ -251,7 +251,7 @@
           }
           statCell.append(statSelect);
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
-          $('#imp_stats').append('<td><input type="checkbox" class="imp_stat" checked="true" /></td>')
+          $('#imp_stats').append('<td><input type="checkbox" class="imp_stat" checked="true" onchange="hideAdvice()" /></td>')
         } else {
           statCell.text('-');
           $('#max_stats').append('<td>-</td>');
