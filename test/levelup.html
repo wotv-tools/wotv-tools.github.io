@@ -98,6 +98,7 @@
             <div class="speech_bubble" id="next_step"></div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 
@@ -314,7 +315,11 @@
         if (hp_stats_left == 0 && non_hp_stats_left == 0) {
           $('#next_step').text('Congratulations!');
         } else {
-          $('#next_step').text('You did the best you could.');
+          let text = 'You did the best you could.';
+          if (hammers_left > 0) {
+            text += ' You still have ' + hammers_left + ' to use!';
+          }
+          $('#next_step').text(text);
         }
       } else {
         if (hp_stats_left == 0) {
