@@ -94,6 +94,7 @@
               <tr id="max_stats"></tr>
             </table>
           </div>
+          <button onclick="calcNextLevel()">Ask for advice</button>
           <div class="tips">
             <div class="speech_bubble" id="next_step"></div>
           </div>
@@ -217,7 +218,7 @@
       $('#max_stats').append('<td>Max</td>');
 
       let levelCell = $('<td></td>');
-      let levelSelect = $('<select id="levels" onchange="calcNextLevel()"></select>');
+      let levelSelect = $('<select id="levels"></select>');
       for (let i = 1; i <= max_level; i++) {
         levelSelect.append('<option value="' + i + '">' + i + '</option>');
       }
@@ -226,7 +227,7 @@
       $('#max_stats').append('<td>' + max_level + '</td>');
 
       let hammerCell = $('<td></td>');
-      let hammerSelect = $('<select id="hammers" onchange="calcNextLevel()"></select>');
+      let hammerSelect = $('<select id="hammers"></select>');
       for (let i = 0; i <= item.hnum; i++) {
         hammerSelect.append('<option value="' + i + '">' + i + '</option>');
       }
@@ -239,7 +240,7 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(artifact_stats[stat.value])) {
-          let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="calcNextLevel()"></select>');
+          let statSelect = $('<select class="stat stat_' + stat.value + '"></select>');
           for (let i = item.status[0][stat.value]; i <= artifact_stats[stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
@@ -252,7 +253,7 @@
         $('#cur_stats').append(statCell);
       });
 
-      calcNextLevel();
+      $('#next_step').addClass('hidden');
     }
 
     function getArtifactStats(curve, base) {
@@ -361,6 +362,7 @@
         }
       }
       $('#next_step').text(text);
+      $('#next_step').removeClass('hidden');
     }
 
     let promiseList = [];
