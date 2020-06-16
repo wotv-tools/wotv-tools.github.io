@@ -311,7 +311,7 @@
       });
 
       let hp_from_hammers = 15 * hammers_left;
-      let text = '';
+      let text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
       if (levels_left == 0) {
         if (hp_stats_left == 0 && non_hp_stats_left == 0) {
           $('#next_step').text('Congratulations!');
@@ -327,16 +327,12 @@
             text = 'Congratulations!';
           } else if (non_hp_stats_left <= levels_left) {
             text = 'No special instructions. Just level this item up normally until you have max stats.';
-          } else {
-            text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
           }
         } else if (hp_stats_left <= hp_from_hammers) {
           if (non_hp_stats_left < levels_left) {
             text = 'Level this item up until level ' + (max_level - non_hp_stats_left) + ' and update your stats.';
           } else if (non_hp_stats_left == levels_left) {
             text = 'Max out the HP stat using HP hammers and update your stats.';
-          } else {
-            text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
           }
         } else {
           let tar_hp = artifact_stats['hp'] - hp_from_hammers;
