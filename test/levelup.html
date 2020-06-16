@@ -484,7 +484,7 @@
       $.getJSON('data/ArtifactHummer.json', (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up.eff_dst];
-          hammerMap[stat.value] = item..grow_up.val;
+          hammerMap[stat.value] = item.grow_up.val;
         });
 
         resolve();
