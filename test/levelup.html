@@ -240,7 +240,7 @@
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
-        if (!isNaN(artifact_stats[stat.value])) {
+        if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="hideAdvice()"></select>');
           for (let i = item.status[0][stat.value]; i <= artifact_stats[stat.value]; i++) {
             statSelect.append('<option value="' + i + '">' + i + '</option>');
@@ -306,7 +306,7 @@
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
-        if (!isNaN(artifact_stats[stat.value])) {
+        if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let cur_stat = parseInt($('#cur_stats .stat_' + stat.value).val());
           let max_stat = artifact_stats[stat.value];
           let best_stat = cur_stat + (levels_left * item.randa[0][stat.value]) + (hammers_left * hammerMap[stat.value]);
@@ -347,7 +347,7 @@
       };
 
       stats.forEach((stat) => {
-        if (!isNaN(artifact_stats[stat.value])) {
+        if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
           switch (stat.value) {
             case 'hp':
@@ -406,7 +406,7 @@
           let hammer_to_use;
 
           stats.forEach((stat) => {
-            if (!isNaN(stats_left[stat.value])) {
+            if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
               if (stats_left[stat.value] <= stats_from_hammers[stat.value]) {
                 let stat_tar_level = max_level - (stats_left.total - stats_left[stat.value]);
                 if (stat_tar_level > tar_level) {
