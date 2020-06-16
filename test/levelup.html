@@ -336,41 +336,38 @@
         mag: 3 * hammers_left
       };
       let text = 'No special instructions at the moment. Check again after leveling this item up.';
-      if (levels_left == 0) {
-        if (stats_left.total == 0) {
-          text = 'Congratulations!';
-        } else {
-          if (hammers_left > 0) {
-            let hammers = {
-              total: 0
-            };
-            stats.forEach((stat) => {
-              switch (stat.value) {
-                case 'hp':
-                  hammers.hp = Math.ceil(stats_left.hp / 15);
-                  break;
-                case 'atk':
-                case 'mag':
-                  hammers[stat.value] = Math.ceil(stats_left[stat.value] / 3);
-                  break;
-                default:
-                  hammers[stat.value] = stats_left[stat.value];
-                  break;
-              }
-              hammers.total += hammers[stat.value];
-            });
-            
-            if (hammers.total <= hammers_left) {
-              text = 'You can max out your remainig stats using hammers.';
-            } else {
-              text = 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
+
+      if (stats_left.total == 0) {
+        text = 'Congratulations!';
+      } else if (levels_left == 0) {
+        if (hammers_left > 0) {
+          let hammers = {
+            total: 0
+          };
+          stats.forEach((stat) => {
+            switch (stat.value) {
+              case 'hp':
+                hammers.hp = Math.ceil(stats_left.hp / 15);
+                break;
+              case 'atk':
+              case 'mag':
+                hammers[stat.value] = Math.ceil(stats_left[stat.value] / 3);
+                break;
+              default:
+                hammers[stat.value] = stats_left[stat.value];
+                break;
             }
+            hammers.total += hammers[stat.value];
+          });
+
+          if (hammers.total <= hammers_left) {
+            text = 'You can max out your remainig stats using hammers.';
+          } else {
+            text = 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
           }
         }
       } else {
-        if (stats_left.total == 0) {
-          text = 'Congratulations!';
-        } else if (stats_left.total <= levels_left) {
+        if (stats_left.total <= levels_left) {
           text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
         } else {
           let tar_level = 1;
