@@ -254,7 +254,8 @@
         $('#cur_stats').append(statCell);
       });
 
-      $('#next_step').addClass('hidden');
+      hideAdvice();
+
       $('#advice').removeClass('hidden');
     }
 
@@ -315,7 +316,6 @@
         }
       });
       $('#best_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
-
 
       $('#next_step').addClass('hidden');
     }
