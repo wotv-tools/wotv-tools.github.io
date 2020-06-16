@@ -307,7 +307,7 @@
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value])) {
-          let cur_stat = $('#cur_stats .stat_' + stat.value).val();
+          let cur_stat = parseInt($('#cur_stats .stat_' + stat.value).val());
           let max_stat = artifact_stats[stat.value];
           let best_stat = cur_stat + (levels_left * item.randa[0][stat.value]) + (hammers_left * hammerMap[stat.value]);
           $('#best_stats').append('<td>' + best_stat + '</td>');
