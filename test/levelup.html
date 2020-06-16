@@ -55,7 +55,7 @@
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
       <select id="types" class="hidden" onchange="onTypeChange()"></select>
-      <button onclick="calcAdvice()">Check Advice</button>
+      <button id="advice" class="hidden" onclick="calcAdvice()">Check Advice</button>
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
@@ -255,6 +255,7 @@
       });
 
       $('#next_step').addClass('hidden');
+      $('#advice').removeClass('hidden');
     }
 
     function getArtifactStats(curve, base) {
