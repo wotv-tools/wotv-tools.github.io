@@ -91,8 +91,9 @@
                 <th>CRIT<br/>EVADE</th>
               </tr>
               <tr id="cur_stats"></tr>
-              <tr id="max_stats"></tr>
               <tr id="imp_stats"></tr>
+              <tr id="max_stats"></tr>
+              <tr id="max_poss"></tr>
             </table>
           </div>
           <div id="next_step" class="tips hidden">
@@ -213,12 +214,12 @@
       let item = artifactMap[itemKey];
 
       $('#cur_stats').empty();
-      $('#max_stats').empty();
       $('#imp_stats').empty();
+      $('#max_stats').empty();
 
       $('#cur_stats').append('<td>Current</td>');
-      $('#max_stats').append('<td>Max</td>');
       $('#imp_stats').append('<td>Important</td>');
+      $('#max_stats').append('<td>Max</td>');
 
       let levelCell = $('<td></td>');
       let levelSelect = $('<select id="levels" onchange="hideAdvice()"></select>');
@@ -227,8 +228,8 @@
       }
       levelCell.append(levelSelect);
       $('#cur_stats').append(levelCell);
-      $('#max_stats').append('<td>' + max_level + '</td>');
       $('#imp_stats').append('<td></td>');
+      $('#max_stats').append('<td>' + max_level + '</td>');
 
       let hammerCell = $('<td></td>');
       let hammerSelect = $('<select id="hammers" onchange="hideAdvice()"></select>');
@@ -237,8 +238,8 @@
       }
       hammerCell.append(hammerSelect);
       $('#cur_stats').append(hammerCell);
-      $('#max_stats').append('<td>' + item.hnum + '</td>');
       $('#imp_stats').append('<td></td>');
+      $('#max_stats').append('<td>' + item.hnum + '</td>');
 
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
@@ -250,12 +251,12 @@
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
-          $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
           $('#imp_stats').append('<td><input type="checkbox" class="imp_stat" checked="true" onchange="hideAdvice()" /></td>')
+          $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
           statCell.text('-');
-          $('#max_stats').append('<td>-</td>');
           $('#imp_stats').append('<td>-</td>');
+          $('#max_stats').append('<td>-</td>');
         }
         $('#cur_stats').append(statCell);
       });
