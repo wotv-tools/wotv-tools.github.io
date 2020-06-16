@@ -91,9 +91,8 @@
                 <th>CRIT<br/>EVADE</th>
               </tr>
               <tr id="cur_stats"></tr>
-              <tr id="imp_stats"></tr>
               <tr id="max_stats"></tr>
-              <tr id="max_poss"></tr>
+              <tr id="best_stats"></tr>
             </table>
           </div>
           <div id="next_step" class="tips hidden">
@@ -214,11 +213,9 @@
       let item = artifactMap[itemKey];
 
       $('#cur_stats').empty();
-      $('#imp_stats').empty();
       $('#max_stats').empty();
 
       $('#cur_stats').append('<td>Current</td>');
-      $('#imp_stats').append('<td>Important</td>');
       $('#max_stats').append('<td>Max</td>');
 
       let levelCell = $('<td></td>');
@@ -228,7 +225,6 @@
       }
       levelCell.append(levelSelect);
       $('#cur_stats').append(levelCell);
-      $('#imp_stats').append('<td></td>');
       $('#max_stats').append('<td>' + max_level + '</td>');
 
       let hammerCell = $('<td></td>');
@@ -238,7 +234,6 @@
       }
       hammerCell.append(hammerSelect);
       $('#cur_stats').append(hammerCell);
-      $('#imp_stats').append('<td></td>');
       $('#max_stats').append('<td>' + item.hnum + '</td>');
 
       let typeGrowth = growthMap[type];
@@ -251,11 +246,9 @@
             statSelect.append('<option value="' + i + '">' + i + '</option>');
           }
           statCell.append(statSelect);
-          $('#imp_stats').append('<td><input type="checkbox" class="imp_stat" checked="true" onchange="hideAdvice()" /></td>')
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
           statCell.text('-');
-          $('#imp_stats').append('<td>-</td>');
           $('#max_stats').append('<td>-</td>');
         }
         $('#cur_stats').append(statCell);
@@ -288,6 +281,41 @@
     }
 
     function hideAdvice() {
+      let itemKey = $('#artifacts').val();
+      let type = $('#types').val();
+
+      if (!itemKey || !type) {
+        return;
+      }
+
+      let item = artifactMap[itemKey];
+      let level = $('#levels').val();
+      let levels_left = max_level - level;
+      let hammers = $('#hammers').val();
+      let hammers_left = item.hnum - hammers;
+
+      $('#best_stats').empty();
+      $('#best_stats').append('<td>Best</td>');
+      $('#best_stats').append('<td>' + max_level + '</td>');
+
+      let best_hammers = $('<td></td>');
+      $('#best_stats').append(best_hammers);
+
+      let typeGrowth = growthMap[type];
+      let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
+      stats.forEach((stat) => {
+        if (!isNaN(artifact_stats[stat.value])) {
+          let cur_stat = $('#cur_stats .stat_' + stat.value).val();
+          let max_stat = artifact_stats[stat.value];
+          let best_stat = cur_stat + (levels_left * item.randa[stat.value]) + (hammers_left * hammerMap[stat.value]);
+          $('#best_stats').append('<td>' + best_stat + '</td>');
+        } else {
+          $('#best_stats').append('<td>-</td>');
+        }
+      });
+      $('#best_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
+
+
       $('#next_step').addClass('hidden');
     }
 
@@ -450,6 +478,18 @@
       });
     }));
 
+    let hammerMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      $.getJSON('data/ArtifactHummer.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up.eff_dst];
+          hammerMap[stat.value] = item..grow_up.val;
+        });
+
+        resolve();
+      });
+    }));
+
     let artifactNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
@@ -464,7 +504,6 @@
 
     let artifactCategoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
-      // init
       $.getJSON('en/ArtifactCategory.json', (data) => {
         artifactCategoryList = data.infos;
 
