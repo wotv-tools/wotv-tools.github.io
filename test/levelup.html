@@ -452,7 +452,7 @@
           case 'SEPARATOR':
             break;
           default:
-            if (artifactListByCat[i].length > 0) {
+            if (artifactListByCat[i]) {
               $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
             }
             break;

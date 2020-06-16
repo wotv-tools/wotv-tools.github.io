@@ -1060,7 +1060,9 @@
           case 'SEPARATOR':
             break;
           default:
-            $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+            if (artifactListByCat[i]) {
+              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+            }
             break;
         }
       });
