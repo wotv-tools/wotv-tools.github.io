@@ -92,6 +92,7 @@
               </tr>
               <tr id="cur_stats"></tr>
               <tr id="max_stats"></tr>
+              <tr id="want_max"></tr>
             </table>
           </div>
           <div id="next_step" class="tips hidden">
@@ -213,8 +214,11 @@
 
       $('#cur_stats').empty();
       $('#max_stats').empty();
+      $('#imp_stats').empty();
+
       $('#cur_stats').append('<td>Current</td>');
       $('#max_stats').append('<td>Max</td>');
+      $('#imp_stats').append('<td>Important</td>');
 
       let levelCell = $('<td></td>');
       let levelSelect = $('<select id="levels" onchange="hideAdvice()"></select>');
@@ -224,6 +228,7 @@
       levelCell.append(levelSelect);
       $('#cur_stats').append(levelCell);
       $('#max_stats').append('<td>' + max_level + '</td>');
+      $('#imp_stats').append('<td></td>');
 
       let hammerCell = $('<td></td>');
       let hammerSelect = $('<select id="hammers" onchange="hideAdvice()"></select>');
@@ -233,6 +238,7 @@
       hammerCell.append(hammerSelect);
       $('#cur_stats').append(hammerCell);
       $('#max_stats').append('<td>' + item.hnum + '</td>');
+      $('#imp_stats').append('<td></td>');
 
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
@@ -245,9 +251,11 @@
           }
           statCell.append(statSelect);
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
+          $('#imp_stats').append('<td><input type="checkbox" class="imp_stat" checked="true" /></td>')
         } else {
           statCell.text('-');
           $('#max_stats').append('<td>-</td>');
+          $('#imp_stats').append('<td>-</td>');
         }
         $('#cur_stats').append(statCell);
       });
@@ -329,7 +337,7 @@
       let text = 'No special instructions at the moment. Check again after leveling this item up.';
       if (levels_left == 0) {
         if (stats_left == 0) {
-          $('#next_step .speech_bubble').text('Congratulations!');
+          text = 'Congratulations!';
         } else {
           text = 'You did the best you could.';
           if (hammers_left > 0) {
@@ -340,7 +348,7 @@
         if (stats_left == 0) {
           text = 'Congratulations!';
         } else if (stats_left <= levels_left) {
-          text = 'No special instructions. Just level this item up normally until you have max stats.';
+          text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
         } else {
           let tar_level = 1;
           let hammer_to_use;
