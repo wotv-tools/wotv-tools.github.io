@@ -151,7 +151,7 @@ table th, table td {
   background-image: radial-gradient(closest-side,#00FF00, transparent);
 }
 
-#item_image {
+.cell#info #item_image {
   border-width: 3px;
 }
 
