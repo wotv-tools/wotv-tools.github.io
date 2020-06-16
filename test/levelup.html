@@ -54,8 +54,8 @@
         <optgroup id="artifacts-armor" label="Armor"></optgroup>
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
-      <select id="types" class="hidden" onchange="onTypeChange()">
-      </select>
+      <select id="types" class="hidden" onchange="onTypeChange()"></select>
+      <button id="advice_btn" onclick="calcNextLevel()" class="hidden">Ask for advice</button>
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
@@ -94,7 +94,6 @@
               <tr id="max_stats"></tr>
             </table>
           </div>
-          <button onclick="calcNextLevel()">Ask for advice</button>
           <div class="tips">
             <div class="speech_bubble" id="next_step"></div>
           </div>
@@ -167,6 +166,7 @@
 
       $('#artifacts').removeClass('hidden');
       $('#types').removeClass('hidden');
+      $('#advice_btn').removeClass('hidden');
       $('#artifacts').change();
     }
     function onArtifactChange() {
