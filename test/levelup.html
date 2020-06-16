@@ -403,26 +403,32 @@
               return;
             }
 
-            if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value] && hammerMap[stat.value] > 1) {
-              while (hammers_used < hammers_left && stats_left_after_hammer[stat.value] > 0) {
-                let remove_stat = hammerMap[stat.value];
+            if (!isNaN(artifact_stats[stat.value])
+                && artifact_stats[stat.value] > item.status[0][stat.value]
+                && hammerMap[stat.value] > 1) {
+              if (hammers_used < hammers_left
+                  && stats_left_after_hammer[stat.value] > 0) {
+                while (hammers_used < hammers_left
+                    && stats_left_after_hammer[stat.value] > 0) {
+                  let remove_stat = hammerMap[stat.value];
 
-                if (stats_left_after_hammer[stat.value] < remove_stat) {
-                  remove_stat = stats_left_after_hammer[stat.value];
+                  if (stats_left_after_hammer[stat.value] < remove_stat) {
+                    remove_stat = stats_left_after_hammer[stat.value];
+                  }
+
+                  stats_left_after_hammer[stat.value] -= remove_stat;
+                  stats_left_after_hammer.total -= remove_stat;
+
+                  hammers_used++;
+
+                  if (stats_left_after_hammer.total <= levels_left) {
+                    break;
+                  }
                 }
 
-                stats_left_after_hammer[stat.value] -= remove_stat;
-                stats_left_after_hammer.total -= remove_stat;
-
-                hammers_used++;
-
-                if (stats_left_after_hammer.total <= levels_left) {
-                  break;
+                if (hammer_text != null) {
+                  hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
                 }
-              }
-
-              if (stats_left_after_hammer.total <= levels_left) {
-                hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
               }
             }
           });
