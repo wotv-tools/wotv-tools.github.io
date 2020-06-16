@@ -175,7 +175,6 @@
     function onTypeChange() {
       $('#start_tip').addClass('dismissed');
       displayStats();
-      setHash();
     }
 
     function setItemInfo() {
@@ -312,51 +311,43 @@
       });
 
       let hp_from_hammers = 15 * hammers_left;
+      let text = '';
       if (levels_left == 0) {
         if (hp_stats_left == 0 && non_hp_stats_left == 0) {
           $('#next_step').text('Congratulations!');
         } else {
-          let text = 'You did the best you could.';
+          text = 'You did the best you could.';
           if (hammers_left > 0) {
             text += ' You still have ' + hammers_left + ' to use!';
           }
-          $('#next_step').text(text);
         }
       } else {
         if (hp_stats_left == 0) {
           if (non_hp_stats_left == 0) {
-            $('#next_step').text('Congratulations!');
+            text = 'Congratulations!');
           } else if (non_hp_stats_left <= levels_left) {
-            $('#next_step').text('No special instructions. Just level this item up normally until you have max stats.');
+            text = 'No special instructions. Just level this item up normally until you have max stats.';
           } else {
-            $('#next_step').text('No special instructions. Just level this item up normally and update your stats.');
+            text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
           }
         } else if (hp_stats_left <= hp_from_hammers) {
           if (non_hp_stats_left < levels_left) {
-            $('#next_step').text('Level this item up until level ' + (max_level - non_hp_stats_left) + ' and update your stats.');
+            text = 'Level this item up until level ' + (max_level - non_hp_stats_left) + ' and update your stats.';
           } else if (non_hp_stats_left == levels_left) {
-            $('#next_step').text('Max out the HP stat using HP hammers and update your stats.');
+            text = 'Max out the HP stat using HP hammers and update your stats.');
           } else {
-            $('#next_step').text('No special instructions. Just level this item up normally and update your stats.');
+            text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
           }
         } else {
-          $('#next_step').text('Level this item up until the HP stat is at least ' + (artifact_stats['hp'] - hp_from_hammers) + ' and update your stats.');
+          let tar_hp = artifact_stats['hp'] - hp_from_hammers;
+          let hp_to_tar_hp = tar_hp - $('.stat_hp').val();
+          text = 'Level this item up until the HP stat is at least ' + tar_hp + ' and update your stats.';
+          if (hp_to_tar_hp > levels_left) {
+            text += ' Please note that you may not reach ' + tar_hp + ' HP before level ' + max_level;
+          }
         }
       }
-    }
-
-    function setHash() {
-      let hash = {
-        cat: $('#category').val(),
-        item: $('#artifacts').val(),
-        type: $('#types').val()
-      };
-
-      if (hash.cat && hash.item && hash.type) {
-        window.location.hash = btoa(JSON.stringify(hash));
-      } else {
-        window.location.hash = '';
-      }
+      $('#next_step').text(text);
     }
 
     let promiseList = [];
