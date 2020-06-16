@@ -175,6 +175,7 @@
     function onTypeChange() {
       $('#start_tip').addClass('dismissed');
       displayStats();
+      setHash();
     }
 
     function setItemInfo() {
@@ -341,6 +342,20 @@
         } else {
           $('#next_step').text('Level this item up until the HP stat is at least ' + (artifact_stats['hp'] - hp_from_hammers) + ' and update your stats.');
         }
+      }
+    }
+
+    function setHash() {
+      let hash = {
+        cat: $('#category').val(),
+        item: $('#artifacts').val(),
+        type: $('#types').val()
+      };
+
+      if (hash.cat && hash.item && hash.type) {
+        window.location.hash = btoa(JSON.stringify(hash));
+      } else {
+        window.location.hash = '';
       }
     }
 
