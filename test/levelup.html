@@ -394,14 +394,18 @@
         if (stats_left.total <= levels_left) {
           text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
         } else {
-          let hammers_used = hammers_left;
+          let hammers_used = 0;
+          let hammer_text;
           let stats_left_after_hammer = Object.assign({}, stats_left);
 
           stats.forEach((stat) => {
+            if (stats_left_after_hammer.total <= levels_left) {
+              return;
+            }
+
             if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value] && hammerMap[stat.value] > 1) {
-              while (hammers_used > 0 && stats_left_after_hammer[stat.value] > 0) {
+              while (hammers_used < hammers_left && stats_left_after_hammer[stat.value] > 0) {
                 let remove_stat = hammerMap[stat.value];
-                --hammers_used;
 
                 if (stats_left_after_hammer[stat.value] < remove_stat) {
                   remove_stat = stats_left_after_hammer[stat.value];
@@ -410,6 +414,15 @@
                 stats_left_after_hammer[stat.value] -= remove_stat;
                 stats_left_after_hammer.total -= remove_stat;
 
+                hammers_used++;
+
+                if (stats_left_after_hammer.total <= levels_left) {
+                  break;
+                }
+              }
+
+              if (stats_left_after_hammer.total <= levels_left) {
+                hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
               }
             }
           });
@@ -418,8 +431,8 @@
 
           if (level < tar_level) {
             text = 'Level this item up until level ' + tar_level + ' and update your stats.';
-          } else if (level == tar_level && hammers_used != null) {
-            text = 'Max out the ' + hammers_used + ' stat using hammers and update your stats.';
+          } else if (level == tar_level && hammers_used != hammers_left) {
+            text = hammer_text;
           }
         }
       }
