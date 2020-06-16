@@ -294,26 +294,37 @@
       let hammers = $('#hammers').val();
       let hammers_left = item.hnum - hammers;
 
-      let non_hp_stats_left = 0;
-      let hp_stats_left = 0;
+      let stats_left = {
+        total: 0,
+        hp: 0,
+        atk: 0,
+        mag: 0
+      };
+
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value])) {
           let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
           switch (stat.value) {
             case 'hp':
-              hp_stats_left += stat_left;
+            case 'atk':
+            case 'mag':
+              stats_left[stat.value] += stat_left;
               break;
             default:
-              non_hp_stats_left += stat_left;
               break;
           }
+          stats_left.total += stat_left;
         }
       });
 
-      let hp_from_hammers = 15 * hammers_left;
+      let stats_from_hammers = {
+        hp: 15 * hammers_left,
+        atk: 3 * hammers_left,
+        mag: 3 * hammers_left
+      };
       let text = 'No special instructions at the moment. Just level this item up normally and update your stats.';
       if (levels_left == 0) {
-        if (hp_stats_left == 0 && non_hp_stats_left == 0) {
+        if (stats_left == 0) {
           $('#next_step').text('Congratulations!');
         } else {
           text = 'You did the best you could.';
@@ -322,24 +333,30 @@
           }
         }
       } else {
-        if (hp_stats_left == 0) {
-          if (non_hp_stats_left == 0) {
-            text = 'Congratulations!';
-          } else if (non_hp_stats_left <= levels_left) {
-            text = 'No special instructions. Just level this item up normally until you have max stats.';
-          }
-        } else if (hp_stats_left <= hp_from_hammers) {
-          if (non_hp_stats_left < levels_left) {
-            text = 'Level this item up until level ' + (max_level - non_hp_stats_left) + ' and update your stats.';
-          } else if (non_hp_stats_left == levels_left) {
-            text = 'Max out the HP stat using HP hammers and update your stats.';
-          }
+        if (stats_left == 0) {
+          text = 'Congratulations!';
+        } else if (stats_left <= levels_left) {
+          text = 'No special instructions. Just level this item up normally until you have max stats.';
         } else {
-          let tar_hp = artifact_stats['hp'] - hp_from_hammers;
-          let hp_to_tar_hp = tar_hp - $('.stat_hp').val();
-          text = 'Level this item up until the HP stat is at least ' + tar_hp + ' and update your stats.';
-          if (hp_to_tar_hp > levels_left) {
-            text += ' Please note that you may not reach ' + tar_hp + ' HP before level ' + max_level;
+          let tar_level = max_level;
+          let hammer_to_use;
+
+          stats.forEach((stat) => {
+            if (!isNaN(stats_left[stat.value])) {
+              if (stats_left[stat.value] <= stats_from_hammers[stat.value]) {
+                let stat_tar_level = max_level - (stats_left.total - stats_left[stat.value]);
+                if (stat_tar_level < tar_level) {
+                  tar_level = stat_tar_level;
+                  hammer_to_use = stat.label;
+                }
+              }
+            }
+          });
+
+          if (level < tar_level) {
+            text = 'Level this iteum up until level ' + tar_level + ' and update your stats.');
+          } else if (level == tar_level && hammer_to_use != null) {
+            text = 'Max out the ' + hammer_to_use + ' stat using hammers and update your stats.';
           }
         }
       }
