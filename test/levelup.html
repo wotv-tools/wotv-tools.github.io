@@ -298,10 +298,8 @@
 
       $('#best_stats').empty();
       $('#best_stats').append('<td>Best</td>');
-      $('#best_stats').append('<td>' + max_level + '</td>');
-
-      let best_hammers = $('<td></td>');
-      $('#best_stats').append(best_hammers);
+      $('#best_stats').append('<td></td>');
+      $('#best_stats').append('<td></td>');
 
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
