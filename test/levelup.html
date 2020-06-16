@@ -310,6 +310,9 @@
           let cur_stat = parseInt($('#cur_stats .stat_' + stat.value).val());
           let max_stat = artifact_stats[stat.value];
           let best_stat = cur_stat + (levels_left * item.randa[0][stat.value]) + (hammers_left * hammerMap[stat.value]);
+          if (best_stat > max_stat) {
+            best_stat = max_stat;
+          }
           $('#best_stats').append('<td>' + best_stat + '</td>');
         } else {
           $('#best_stats').append('<td>-</td>');
