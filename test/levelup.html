@@ -79,6 +79,7 @@
               <tr>
                 <th></th>
                 <th>Level</th>
+                <th>Hammers</th>
                 <th>HP</th>
                 <th>TP</th>
                 <th>AP</th>
@@ -211,13 +212,14 @@
       if (!itemKey || !type) {
         return;
       }
+      let item = artifactMap[itemKey];
 
       $('#cur_stats').empty();
       $('#max_stats').empty();
-
       $('#cur_stats').append('<td>Current</td>');
       $('#max_stats').append('<td>Max</td>');
-      let levelCell = $('<td></td>')
+
+      let levelCell = $('<td></td>');
       let levelSelect = $('<select id="levels" onchange="calcNextLevel()"></select>');
       for (let i = 1; i <= max_level; i++) {
         levelSelect.append('<option value="' + i + '">' + i + '</option>');
@@ -226,7 +228,15 @@
       $('#cur_stats').append(levelCell);
       $('#max_stats').append('<td>' + max_level + '</td>');
 
-      let item = artifactMap[itemKey];
+      let hammerCell = $('<td></td>');
+      let hammerSelect = $('<select id="hammers" onchange="calcNextLevel()"></select>');
+      for (let i = 0; i <= item.hnum; i++) {
+        hammerSelect.append('<option value="' + i + '">' + i + '</option>');
+      }
+      hammerCell.append(hammerSelect);
+      $('#cur_stats').append(hammerCell);
+      $('#max_stats').append('<td>' + item.hnum + '</td>');
+
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
