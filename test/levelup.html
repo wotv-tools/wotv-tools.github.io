@@ -338,14 +338,14 @@
         } else if (stats_left <= levels_left) {
           text = 'No special instructions. Just level this item up normally until you have max stats.';
         } else {
-          let tar_level = max_level;
+          let tar_level = 1;
           let hammer_to_use;
 
           stats.forEach((stat) => {
             if (!isNaN(stats_left[stat.value])) {
               if (stats_left[stat.value] <= stats_from_hammers[stat.value]) {
                 let stat_tar_level = max_level - (stats_left.total - stats_left[stat.value]);
-                if (stat_tar_level < tar_level) {
+                if (stat_tar_level > tar_level) {
                   tar_level = stat_tar_level;
                   hammer_to_use = stat.label;
                 }
