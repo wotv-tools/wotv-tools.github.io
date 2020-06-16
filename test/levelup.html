@@ -316,7 +316,7 @@
           $('#best_stats').append('<td>-</td>');
         }
       });
-      
+
       $('#next_step').addClass('hidden');
     }
 
@@ -394,14 +394,14 @@
         if (stats_left.total <= levels_left) {
           text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
         } else {
-          let hammer_to_use = hammers_left;
+          let hammers_used = hammers_left;
           let stats_left_after_hammer = Object.assign({}, stats_left);
 
           stats.forEach((stat) => {
             if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value] && hammerMap[stat.value] > 1) {
-              while (hammer_to_use > 0 && stats_left_after_hammer[stat.value] > 0) {
+              while (hammers_used > 0 && stats_left_after_hammer[stat.value] > 0) {
                 let remove_stat = hammerMap[stat.value];
-                --hammer_to_use;
+                --hammers_used;
 
                 if (stats_left_after_hammer[stat.value] < remove_stat) {
                   remove_stat = stats_left_after_hammer[stat.value];
@@ -418,8 +418,8 @@
 
           if (level < tar_level) {
             text = 'Level this item up until level ' + tar_level + ' and update your stats.';
-          } else if (level == tar_level && hammer_to_use != null) {
-            text = 'Max out the ' + hammer_to_use + ' stat using hammers and update your stats.';
+          } else if (level == tar_level && hammers_used != null) {
+            text = 'Max out the ' + hammers_used + ' stat using hammers and update your stats.';
           }
         }
       }
