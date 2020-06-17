@@ -380,6 +380,9 @@
                       let buff2 = buffMap[buff[['id' + buff_index]]];
                       buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
                       break;
+                    case 134:
+                      buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0]].value + ' ' + buff['val' + buff_index];
+                      break;
                     default:
                       buff_text = buffNameList[buff['type' + buff_index]].value;
 
