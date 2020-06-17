@@ -92,6 +92,7 @@
                 <th>CRIT<br/>EVADE</th>
               </tr>
               <tr id="cur_stats"></tr>
+              <tr id="growth_amt"></tr>
               <tr id="best_stats"></tr>
               <tr id="max_stats"></tr>
             </table>
@@ -214,15 +215,19 @@
       let item = artifactMap[itemKey];
 
       $('#cur_stats').empty();
+      $('#growth_amt').empty();
       $('#max_stats').empty();
 
       $('#cur_stats').append('<td>Current</td>');
+      $('#growth_amt').append('<td></td>');
       $('#max_stats').append('<td>Max</td>');
 
       $('#cur_stats').append('<td><input id="levels" onchange="hideAdvice()" type="number" min="1" max="50" value="1" /></td>');
+      $('#growth_amt').append('<td></td>');
       $('#max_stats').append('<td>' + max_level + '</td>');
 
       $('#cur_stats').append('<td><input id="hammers" onchange="hideAdvice()" type="number" min="0" max="' + item.hnum + '" value="0" /></td>');
+      $('#growth_amt').append('<td></td>');
       $('#max_stats').append('<td>' + item.hnum + '</td>');
 
       let typeGrowth = growthMap[type];
@@ -231,9 +236,11 @@
         let statCell = $('<td></td>');
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           statCell.append('<input class="stat stat_' + stat.value + '" onchange="hideAdvice()" type="number" min="' + item.status[0][stat.value] + '" value="' + item.status[0][stat.value] + '"/>');
+          $('#growth_amt').append('<td>' + item.randa[stat.value] + '</td>');
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
           statCell.text('-');
+          $('#growth_amt').append('<td>-</td>');
           $('#max_stats').append('<td>-</td>');
         }
         $('#cur_stats').append(statCell);
