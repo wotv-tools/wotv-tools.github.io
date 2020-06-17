@@ -283,9 +283,9 @@
       }
 
       let item = artifactMap[itemKey];
-      let level = $('#levels').val();
+      let level = parseInt($('#levels').val());
       let levels_left = max_level - level;
-      let hammers = $('#hammers').val();
+      let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
 
       $('#best_stats').empty();
@@ -329,9 +329,9 @@
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
 
-      let level = $('#levels').val();
+      let level = parseInt($('#levels').val());
       let levels_left = max_level - level;
-      let hammers = $('#hammers').val();
+      let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
 
       let stats_left = Object.assign({}, artifact_stats);
@@ -339,7 +339,7 @@
 
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
-          let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
+          let stat_left = artifact_stats[stat.value] - parseInt($('.stat.stat_' + stat.value).val());
           stats_left[stat.value] = stat_left;
           stats_left.total += stat_left;
         }
