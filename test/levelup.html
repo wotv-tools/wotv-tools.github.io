@@ -371,7 +371,7 @@
           });
 
           if (hammers.total <= hammers_left) {
-            text = 'You can max out your remainig stats using hammers.';
+            text = 'You can max out your remaining stats using hammers.';
           } else {
             text = 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
           }
@@ -380,7 +380,6 @@
         text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         let hammers_used = 0;
-        let hammer_text;
         let stats_left_after_hammer = Object.assign({}, stats_left);
 
         stats.forEach((stat) => {
@@ -408,15 +407,21 @@
               }
 
               if (hammer_text == null && stats_left_after_hammer[stat.value] == 0) {
-                hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
+                text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
+              } else {
+                let tar_level = level + stats_left_after_hammer[stat.value];
+
+                if (tar_level < max_level) {
+                  text = 'Level this item up until level ' + tar_level + ' and update your stats.';
+                } else {
+                  text = 'I have no more advice to give for this item.';
+                }
               }
             }
           }
         });
 
-        if (level == (max_level - stats_left_after_hammer.total)) {
-          text = hammer_text;
-        } else {
+        if (level != (max_level - stats_left_after_hammer.total)) {
           let tar_level = level;
 
           while (stats_left_after_hammer.total > 0 && tar_level < max_level) {
