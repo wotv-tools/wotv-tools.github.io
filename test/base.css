@@ -230,6 +230,7 @@ table th, table td {
 
 .tips {
   float: right;
+  margin: 5px 0;
   position: relative;
   width: 100%;
 }
