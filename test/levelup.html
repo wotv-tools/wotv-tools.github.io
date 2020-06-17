@@ -45,7 +45,11 @@
   </div>
 
   <div id="main_content">
-    <div id="inputs">
+    <div id="start_tip" class="tips">
+      <div class="speech_bubble speech_ramada">
+        Welcome! This tool will TRY to calculate if you can max all the stats on your item. DISCLAIMER: This tool is still a Work In Progress and may give bad advice! Use at your own risk.
+      </div>
+    </div><div id="inputs">
       <select id="category" onchange="onCategoryChange()">
         <option disabled selected>-- Select an category --</option>
       </select>
@@ -56,11 +60,6 @@
       </select>
       <select id="types" class="hidden" onchange="onTypeChange()"></select>
       <button id="advice" class="hidden" onclick="calcAdvice()">Check Advice</button>
-    </div>
-    <div id="start_tip" class="tips" onclick="dismiss(this)">
-      <div class="speech_bubble">
-        Welcome! This tool will TRY to calculate if you can max all the stats on your item. If you wish to work with my brother, click on the Awakening Prism at the top at anytime.
-      </div>
     </div>
 
     <div id="content" class="hidden">
