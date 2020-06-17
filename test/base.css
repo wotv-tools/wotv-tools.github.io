@@ -175,6 +175,7 @@ table th, table td {
 }
 
 #stats td input {
+  text-align: center;
   width: 80%;
 }
 
