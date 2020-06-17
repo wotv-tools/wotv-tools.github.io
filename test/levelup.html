@@ -326,17 +326,13 @@
       let hammers = $('#hammers').val();
       let hammers_left = item.hnum - hammers;
 
-      let stats_left = {
-        total: 0,
-        hp: 0,
-        atk: 0,
-        mag: 0
-      };
+      let stats_left = Object.assign({}, artifact_stats);
+      stats_left.total = 0;
 
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let stat_left = artifact_stats[stat.value] - $('.stat.stat_' + stat.value).val();
-          stats_left[stat.value] += stat_left;
+          stats_left[stat.value] = stat_left;
           stats_left.total += stat_left;
         }
       });
