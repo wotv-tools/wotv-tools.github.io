@@ -406,11 +406,11 @@
           }
         });
 
-        let tar_level = max_level - stats_left_after_hammer.total;
-
-        if (level == tar_level) {
+        if (level == (max_level - stats_left_after_hammer.total)) {
           text = hammer_text;
         } else {
+          let tar_level = level;
+
           while (stats_left_after_hammer.total > 0 && tar_level < max_level) {
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])
