@@ -316,45 +316,87 @@
           let skill = skillMap[skl];
           if (skill.grow == 'SKILL_DEFAULT' && skillNameMap[skl]) {
               $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
-          } else if (skill.s_buffs) {
-            skill.s_buffs.forEach((s_buff) => {
-              let buff = buffMap[s_buff];
-              let buff_text, killer_index_offset;
+          } else {
+            if (skill.s_buffs) {
+              skill.s_buffs.forEach((s_buff) => {
+                let buff = buffMap[s_buff];
+                let buff_text, killer_index_offset;
 
-              let buff_index = 1;
-              while (buff['type' + buff_index] && buff_index <= 9) {
-                switch (buff['type' + buff_index]) {
-                  // Elemental Killer
-                  case 119:
-                    killer_index_offset = 83;
-                    buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
-                    break;
-                  // Species Killer
-                  case 120:
-                    killer_index_offset = 0;
-                    buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
-                    break;
-                  // Condition Granted
-                  case 123:
-                    let buff2 = buffMap[buff[['id' + buff_index]]];
-                    buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
-                    break;
-                  default:
-                    buff_text = buffNameList[buff['type' + buff_index]].value;
+                let buff_index = 1;
+                while (buff['type' + buff_index] && buff_index <= 9) {
+                  switch (buff['type' + buff_index]) {
+                    // Elemental Killer
+                    case 119:
+                      killer_index_offset = 83;
+                      buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+                      break;
+                    // Species Killer
+                    case 120:
+                      killer_index_offset = 0;
+                      buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+                      break;
+                    // Condition Granted
+                    case 123:
+                      let buff2 = buffMap[buff[['id' + buff_index]]];
+                      buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
+                      break;
+                    default:
+                      buff_text = buffNameList[buff['type' + buff_index]].value;
 
-                    switch (buff['calc' + buff_index]) {
-                      case 3:
-                        buff_text += ' Res';
-                        break;
-                    }
+                      switch (buff['calc' + buff_index]) {
+                        case 3:
+                          buff_text += ' Res';
+                          break;
+                      }
 
-                    buff_text += ' ' + buff['val' + buff_index]
-                    break;
+                      buff_text += ' ' + buff['val' + buff_index]
+                      break;
+                  }
+                  $('#skills').append('<div class="skill_desc">' + buff_text + '</div>');
+                  buff_index++;
                 }
-                $('#skills').append('<div class="skill_desc">' + buff_text + '</div>');
-                buff_index++;
-              }
-            });
+              });
+            }
+            if (skill.t_buffs) {
+              skill.t_buffs.forEach((t_buff) => {
+                let buff = buffMap[t_buff];
+                let buff_text, killer_index_offset;
+
+                let buff_index = 1;
+                while (buff['type' + buff_index] && buff_index <= 9) {
+                  switch (buff['type' + buff_index]) {
+                    // Elemental Killer
+                    case 119:
+                      killer_index_offset = 83;
+                      buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+                      break;
+                    // Species Killer
+                    case 120:
+                      killer_index_offset = 0;
+                      buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+                      break;
+                    // Condition Granted
+                    case 123:
+                      let buff2 = buffMap[buff[['id' + buff_index]]];
+                      buff_text = buffNameList[buff2.type1].value + ' Granted (' + buff2.turn + ' turns, ' + buff2.rate + '%)';
+                      break;
+                    default:
+                      buff_text = buffNameList[buff['type' + buff_index]].value;
+
+                      switch (buff['calc' + buff_index]) {
+                        case 3:
+                          buff_text += ' Res';
+                          break;
+                      }
+
+                      buff_text += ' ' + buff['val' + buff_index]
+                      break;
+                  }
+                  $('#skills').append('<div class="skill_desc">' + buff_text + '</div>');
+                  buff_index++;
+                }
+              });
+            }
           }
         });
       }
