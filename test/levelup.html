@@ -427,7 +427,11 @@
             tar_level++;
           }
 
-          text = 'Level this item up until level ' + tar_level + ' and update your stats.';
+          if (tar_level < max_level) {
+            text = 'Level this item up until level ' + tar_level + ' and update your stats.';
+          } else {
+            text = 'I have no more advice to give for this item.';
+          }
         }
       }
       $('#next_step .speech_bubble').text(text);
