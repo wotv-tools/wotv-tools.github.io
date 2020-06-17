@@ -291,6 +291,12 @@
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let cur_stat = parseInt($('#cur_stats .stat_' + stat.value).val());
+          if (cur_stat < item.status[0][stat.value]) {
+            cur_stat = item.status[0][stat.value];
+          }
+          if (cur_stat > item.status[1][stat.value]) {
+            cur_stat = item.status[1][stat.value];
+          }
           let max_stat = artifact_stats[stat.value];
           let best_stat = cur_stat + (levels_left * item.randa[0][stat.value]) + (hammers_left * hammerMap[stat.value]);
           if (best_stat > max_stat) {
