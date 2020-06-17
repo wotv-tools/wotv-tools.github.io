@@ -400,7 +400,7 @@
                 hammers_used++;
               }
 
-              if (hammer_text == null) {
+              if (hammer_text == null && stats_left_after_hammer[stat.value] == 0) {
                 hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
               }
             }
