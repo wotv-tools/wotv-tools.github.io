@@ -59,7 +59,7 @@
     </div>
     <div id="start_tip" class="tips" onclick="dismiss(this)">
       <div class="speech_bubble">
-        Welcome! This tool will try to give you advice on how to proceed with leveling your equipment. If you wish to work with my brother, click on the Awakening Prism at the top at anytime.
+        Welcome! This tool will TRY to calculate if you can max all the stats on your item. If you wish to work with my brother, click on the Awakening Prism at the top at anytime.
       </div>
     </div>
 
@@ -218,22 +218,10 @@
       $('#cur_stats').append('<td>Current</td>');
       $('#max_stats').append('<td>Max</td>');
 
-      let levelCell = $('<td></td>');
-      let levelSelect = $('<select id="levels" onchange="hideAdvice()"></select>');
-      for (let i = 1; i <= max_level; i++) {
-        levelSelect.append('<option value="' + i + '">' + i + '</option>');
-      }
-      levelCell.append(levelSelect);
-      $('#cur_stats').append(levelCell);
+      $('#cur_stats').append('<td><input id="levels" onchange="hideAdvice()" type="number" min="1" max="50"/></td>');
       $('#max_stats').append('<td>' + max_level + '</td>');
 
-      let hammerCell = $('<td></td>');
-      let hammerSelect = $('<select id="hammers" onchange="hideAdvice()"></select>');
-      for (let i = 0; i <= item.hnum; i++) {
-        hammerSelect.append('<option value="' + i + '">' + i + '</option>');
-      }
-      hammerCell.append(hammerSelect);
-      $('#cur_stats').append(hammerCell);
+      $('#cur_stats').append('<td><input id="hammers" onchange="hideAdvice()" type="number" min="0" max="' + item.hnum + '"/></td>');
       $('#max_stats').append('<td>' + item.hnum + '</td>');
 
       let typeGrowth = growthMap[type];
@@ -241,10 +229,7 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
-          let statSelect = $('<select class="stat stat_' + stat.value + '" onchange="hideAdvice()"></select>');
-          for (let i = item.status[0][stat.value]; i <= artifact_stats[stat.value]; i++) {
-            statSelect.append('<option value="' + i + '">' + i + '</option>');
-          }
+          let statSelect = $('<input class="stat stat_' + stat.value + '" onchange="hideAdvice()" type="number" min=""/>');
           statCell.append(statSelect);
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
@@ -420,10 +405,6 @@
                   stats_left_after_hammer.total -= remove_stat;
 
                   hammers_used++;
-
-                  if (stats_left_after_hammer.total <= levels_left) {
-                    break;
-                  }
                 }
 
                 if (hammer_text == null) {
