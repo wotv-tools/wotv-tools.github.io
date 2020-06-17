@@ -229,7 +229,7 @@
       stats.forEach((stat) => {
         let statCell = $('<td></td>');
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
-          let statSelect = $('<input class="stat stat_' + stat.value + '" onchange="hideAdvice()" type="number" min=""/>');
+          let statSelect = $('<input class="stat stat_' + stat.value + '" onchange="hideAdvice()" type="number" min="" value="' + item.status[0][stat.value] + '"/>');
           statCell.append(statSelect);
           $('#max_stats').append('<td>' + artifact_stats[stat.value] + '</td>');
         } else {
