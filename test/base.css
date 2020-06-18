@@ -243,7 +243,7 @@ table th, table td {
 .speech_bubble {
   border-radius: 10px;
   font-weight: bold;
-  height: 40px;
+  min-height: 40px;
 }
 
 .speech_bubble::after {
