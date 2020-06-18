@@ -409,6 +409,7 @@
         if (tar_level == level) {
           for (let stat of stats) {
             if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] == 0) {
+              $('#details').text('I have calculated that using after ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.');
               return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
             }
           }
