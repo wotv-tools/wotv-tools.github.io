@@ -389,7 +389,7 @@
 
         for (var stat of stats) {
           if (stats_left_after_hammer.total <= levels_left) {
-            return;
+            break;
           }
 
           if (!isNaN(artifact_stats[stat.value])
