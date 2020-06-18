@@ -422,10 +422,10 @@
             }
           }
 
-          let level_left_after_pity = max_level - level;
-          let stats_left_after_pity = Object.assign({}, stats_left);
+          let level_left_after_perf = max_level - level;
+          let stats_left_after_perf = Object.assign({}, stats_left);
 
-          while (level_left_after_pity > 0 && stats_left_after_perf.total > 0) {
+          while (level_left_after_perf > 0 && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
