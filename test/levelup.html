@@ -407,11 +407,11 @@
         }
         let tar_level = level + (levels_left - stats_left_after_hammer.total);
         if (tar_level == level) {
-          stats.forEach((stat) => {
+          for (let stat of stats) {
             if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] == 0) {
               return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
             }
-          });
+          }
         } else if (tar_level > level) {
           return 'Level up the item until Level ' + tar_level + '.';
         } else {
