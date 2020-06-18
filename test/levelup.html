@@ -277,6 +277,30 @@
       return artifact_stats;
     }
 
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
+
+      stats.forEach((stat, i) => {
+        if (base[stat.value]) {
+          if (adjust[stat.value]) {
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
+          } else {
+            artifact_rates[stat.value] = base[stat.value];
+          }
+
+          if (seals[i] && sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
+          }
+        }
+      });
+
+      return artifact_rates;
+    }
+
     function hideAdvice() {
       let itemKey = $('#artifacts').val();
       let type = $('#types').val();
@@ -374,6 +398,7 @@
         $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.');
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
+        let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         let stats_left_after_hammer = Object.assign({}, stats_left);
         let hammers_used = {
           total: 0
@@ -386,18 +411,18 @@
         while (hammers_used.total < hammers_left && stats_left_after_hammer.total > levels_left) {
           let best_hammer = {
             amt: 0,
+            rate: 1,
             stat_key:''
           };
 
           stats.forEach((stat) => {
             if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 1) {
               let stat_amt = Math.min(stats_left_after_hammer[stat.value], hammerMap[stat.value]);
-              if (stat_amt > best_hammer.amt
-              //    || (stat_amt == best_hammer.amt && stats_left_after_hammer[stat.value] < best_hammer.stat_left)
-              ) {
+              let stat_rate = artifact_rates[stat.value];
+              if (stat_amt > best_hammer.amt && stat_rate < best_hammer.rate) {
                 best_hammer.amt = stat_amt;
+                best_hammer.rate = stat_rate;
                 best_hammer.stat_key = stat.value;
-                // best_hammer.stat_left = stats_left_after_hammer[stat.value]
               }
             }
           });
@@ -441,14 +466,10 @@
 
           $('#details').text('I have calculated that you still have at least' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
           return 'Level up the item until Level ' + new_tar_level + '.';
-          // TODO: Calculate min number of levels possible before stats_left_after_hammer > levels_left
-          // TODO: How to handle split between ATK and MAG as both hammers are +3? How to handle future hammers?
-
         } else if (tar_level > level) {
           $('#details').text('I have calculated that you still have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
           return 'Level up the item until Level ' + tar_level + '.';
         } else {
-          // calculate how many perfect levels needed to get back on track
           let level_left_after_perf = max_level - level;
           let stats_left_after_perf = Object.assign({}, stats_left);
 
@@ -468,69 +489,6 @@
           return 'If this message shows up, I probably messed up the calculations.';
         }
       }
-      //   let hammers_used = {
-      //     total: 0
-      //   };
-      //   let hammer_text;
-      //   let stats_left_after_hammer = Object.assign({}, stats_left);
-      //
-      //   for (let stat of stats) {
-      //     if (stats_left_after_hammer.total <= levels_left) {
-      //       break;
-      //     }
-      //
-      //     if (!isNaN(artifact_stats[stat.value])
-      //         && artifact_stats[stat.value] > item.status[0][stat.value]
-      //         && hammerMap[stat.value] > 1) {
-      //       if (hammers_used < hammers_left
-      //           && stats_left_after_hammer[stat.value] > 0) {
-      //         while (hammers_used < hammers_left
-      //             && stats_left_after_hammer[stat.value] > 0) {
-      //           let remove_stat = hammerMap[stat.value];
-      //
-      //           if (stats_left_after_hammer[stat.value] < remove_stat) {
-      //             remove_stat = stats_left_after_hammer[stat.value];
-      //           }
-      //
-      //           stats_left_after_hammer[stat.value] -= remove_stat;
-      //           stats_left_after_hammer.total -= remove_stat;
-      //
-      //           hammers_used++;
-      //         }
-      //
-      //         if (hammer_text != null) {
-      //           hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
-      //         }
-      //       }
-      //     }
-      //   }
-      //
-      //   if (level <= (max_level - stats_left_after_hammer.total)) {
-      //     let tar_level = level;
-      //
-      //     while (stats_left_after_hammer.total > 0 && tar_level < max_level) {
-      //       stats.forEach((stat) => {
-      //         if (!isNaN(artifact_stats[stat.value])
-      //             && artifact_stats[stat.value] > item.status[0][stat.value]) {
-      //           if (item.randa[0][stat.value] > stats_left_after_hammer[stat.value]) {
-      //             stats_left_after_hammer.total -= stats_left_after_hammer[stat.value];
-      //             stats_left_after_hammer[stat.value] = 0;
-      //           } else {
-      //             stats_left_after_hammer.total -= item.randa[0][stat.value];
-      //             stats_left_after_hammer[stat.value] -= item.randa[0][stat.value];
-      //           }
-      //         }
-      //       });
-      //       tar_level++;
-      //     }
-      //
-      //     if (tar_level < max_level) {
-      //       return 'Level this item up until level ' + tar_level + ' and update your stats.';
-      //     } else {
-      //       return 'I have no more advice to give for this item.';
-      //     }
-      //   }
-      // }
     }
 
     let promiseList = [];
