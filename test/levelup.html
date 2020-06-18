@@ -98,10 +98,10 @@
             </table>
           </div>
           <div id="next_step" class="tips hidden">
-            <div class="speech_bubble"></div>
-          </div>
-          <div id="details" class="tips hidden">
-            <div class="speech_bubble"></div>
+            <div class="speech_bubble">
+              <div id="advice"></div>
+              <div id="details"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -319,7 +319,7 @@
     function getAdvice() {
       let text = calcAdvice();
 
-      $('#next_step .speech_bubble').text(text);
+      $('#next_step .speech_bubble #advice').text(text);
       $('#next_step').removeClass('hidden');
       $('#details').removeClass('hidden');
     }
