@@ -422,6 +422,33 @@
             }
           }
 
+          let level_left_after_pity = max_level - level;
+          let stats_left_after_pity = Object.assign({}, stats_left);
+
+          while (level_left_after_pity > 0 && stats_left_after_perf.total > 0) {
+            stats.forEach((stat) => {
+              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
+                stats_left_after_perf[stat.value] -= amt_perf;
+                stats_left_after_perf.total -= amt_perf;
+              }
+            });
+
+            level_left_after_perf--;
+          }
+
+          let new_tar_level = max_level - level_left_after_perf;
+
+          $('#details').text('I have calculated that you still have at least' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
+          return 'Level up the item until Level ' + new_tar_level + '.';
+          // TODO: Calculate min number of levels possible before stats_left_after_hammer > levels_left
+          // TODO: How to handle split between ATK and MAG as both hammers are +3? How to handle future hammers?
+
+        } else if (tar_level > level) {
+          $('#details').text('I have calculated that you still have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
+          return 'Level up the item until Level ' + tar_level + '.';
+        } else {
+          // calculate how many perfect levels needed to get back on track
           let level_left_after_perf = max_level - level;
           let stats_left_after_perf = Object.assign({}, stats_left);
 
@@ -438,16 +465,6 @@
           }
 
           let new_tar_level = max_level - level_left_after_perf;
-
-          $('#details').text('I have calculated that you still have ' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
-          return 'Level up the item until Level ' + new_tar_level + '.';
-          // TODO: Calculate min number of levels possible before stats_left_after_hammer > levels_left
-          // TODO: How to handle split between ATK and MAG as both hammers are +3? How to handle future hammers?
-
-        } else if (tar_level > level) {
-          $('#details').text('I have calculated that you still have ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
-          return 'Level up the item until Level ' + tar_level + '.';
-        } else {
           return 'If this message shows up, I probably messed up the calculations.';
         }
       }
