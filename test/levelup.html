@@ -371,7 +371,7 @@
           return 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
         }
       } else if (stats_left.total <= levels_left) {
-        $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.');
+        $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.');
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         let stats_left_after_hammer = Object.assign({}, stats_left);
@@ -409,7 +409,7 @@
         if (tar_level == level) {
           for (let stat of stats) {
             if (hammers_used[stat.value] > 0 && stats_left_after_hammer[stat.value] == 0) {
-              let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.';
+              let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.';
               if (hammers_used[stat.value] < hammers_used.total) {
                 details_txt += ' I suggest only using ' + stat.label + ' hammer(s) now because we need to max out the ' + stat.label + ' stat. Other hammers can be used later or not needed at all if your stat increases are good.';
               }
