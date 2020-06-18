@@ -420,7 +420,7 @@
           }
 
           let level_left_after_perf = max_level - level;
-          let stats_left_after_perf = Object.assign({}, stats_left);
+          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
 
           while (level_left_after_perf > 0 && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
@@ -436,7 +436,7 @@
 
           let new_tar_level = max_level - level_left_after_perf;
 
-          $('#details').text('I have calculated that you still have at least' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
+          $('#details').text('I have calculated that you still have at least ' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
           return 'Level up the item until Level ' + new_tar_level + '.';
         } else if (tar_level > level) {
           $('#details').text('I have calculated that you still have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
