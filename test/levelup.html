@@ -355,16 +355,16 @@
         $('#details').text('Your item has max stats.');
         return 'Congratulations!';
       } else if (levels_left == 0) {
-        let hammers = {
+        let hammers_used = {
           total: 0
         };
         stats.forEach((stat) => {
           hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
-          hammers.total += hammers[stat.value];
+          hammers_used.total += hammers[stat.value];
         });
 
-        if (hammers.total <= hammers_left) {
-          $('#details').text('You are out of level ups, but I have calculated that you can use ' + hammers.total + ' hammer(s) to max out the rest of your stats.');
+        if (hammers_used.total <= hammers_left) {
+          $('#details').text('You are out of level ups, but I have calculated that you can use ' + hammers_used.total + ' hammer(s) to max out the rest of your stats.');
           return 'You can max out your remaining stats using hammers.';
         } else {
           $('#details').text('You are out of level ups. You have ' + hammers_left + ' hammer(s) left, but it seems like you will not max your stats.');
