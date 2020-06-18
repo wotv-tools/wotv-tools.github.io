@@ -277,30 +277,6 @@
       return artifact_stats;
     }
 
-    function getArtifactRates(adjust, base) {
-      let artifact_rates = {};
-
-      stats.forEach((stat, i) => {
-        if (base[stat.value]) {
-          if (adjust[stat.value]) {
-            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
-          } else {
-            artifact_rates[stat.value] = base[stat.value];
-          }
-
-          if (seals[i] && sealGrowthMap[stat.value]) {
-            artifact_rates[stat.value] += sealGrowthMap[stat.value];
-          }
-
-          if (artifact_rates[stat.value] < 0) {
-            artifact_rates[stat.value] = 0;
-          }
-        }
-      });
-
-      return artifact_rates;
-    }
-
     function hideAdvice() {
       let itemKey = $('#artifacts').val();
       let type = $('#types').val();
@@ -398,7 +374,6 @@
         $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.');
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
-        let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
         let stats_left_after_hammer = Object.assign({}, stats_left);
         let hammers_used = {
           total: 0
@@ -411,17 +386,14 @@
         while (hammers_used.total < hammers_left && stats_left_after_hammer.total > levels_left) {
           let best_hammer = {
             amt: 0,
-            rate: 100,
             stat_key:''
           };
 
           stats.forEach((stat) => {
             if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 1) {
               let stat_amt = Math.min(stats_left_after_hammer[stat.value], hammerMap[stat.value]);
-              let stat_rate = artifact_rates[stat.value];
-              if (stat_amt > best_hammer.amt && stat_rate < best_hammer.rate) {
+              if (stat_amt > best_hammer.amt) {
                 best_hammer.amt = stat_amt;
-                best_hammer.rate = stat_rate;
                 best_hammer.stat_key = stat.value;
               }
             }
