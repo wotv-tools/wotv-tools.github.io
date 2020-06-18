@@ -383,7 +383,7 @@
             hammers_used[stat.value] = 0;
           }
         });
-        while (hammers.total < hammers_left && stats_left_after_hammer.total > levels_left) {
+        while (hammers_used.total < hammers_left && stats_left_after_hammer.total > levels_left) {
           let best_hammer = {
             amt: 0,
             stat_key:''
