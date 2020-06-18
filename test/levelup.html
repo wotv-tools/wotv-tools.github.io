@@ -61,7 +61,7 @@
         <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
       </select>
       <select id="types" class="hidden" onchange="onTypeChange()"></select>
-      <button id="advice" class="hidden" onclick="calcAdvice()">Check Advice</button>
+      <button id="advice" class="hidden" onclick="getAdvice()">Check Advice</button>
     </div>
 
     <div id="content" class="hidden">
@@ -318,14 +318,14 @@
       $('#next_step').addClass('hidden');
     }
 
-    function calcAdvice() {
-      let text = getAdvice();
+    function getAdvice() {
+      let text = calcAdvice();
 
       $('#next_step .speech_bubble').text(text);
       $('#next_step').removeClass('hidden');
     }
 
-    function getAdvice() {
+    function calcAdvice() {
       let itemKey = $('#artifacts').val();
       let type = $('#types').val();
       if (!itemKey || !type) {
