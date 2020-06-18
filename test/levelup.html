@@ -93,11 +93,14 @@
               </tr>
               <tr id="cur_stats"></tr>
               <tr id="growth_amt"></tr>
-              <tr id="best_stats"></tr>
+              <tr id="left_stats"></tr>
               <tr id="max_stats"></tr>
             </table>
           </div>
           <div id="next_step" class="tips hidden">
+            <div class="speech_bubble"></div>
+          </div>
+          <div id="details" class="tips hidden">
             <div class="speech_bubble"></div>
           </div>
         </div>
@@ -288,34 +291,24 @@
       let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
 
-      $('#best_stats').empty();
-      $('#best_stats').append('<td>Best</td>');
-      $('#best_stats').append('<td></td>');
-      $('#best_stats').append('<td></td>');
+      $('#left_stats').empty();
+      $('#left_stats').append('<td>Left</td>');
+      $('#left_stats').append('<td></td>');
+      $('#left_stats').append('<td></td>');
 
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
           let cur_stat = parseInt($('#cur_stats .stat_' + stat.value).val());
-          if (cur_stat < item.status[0][stat.value]) {
-            cur_stat = item.status[0][stat.value];
-          }
-          if (cur_stat > item.status[1][stat.value]) {
-            cur_stat = item.status[1][stat.value];
-          }
-          let max_stat = artifact_stats[stat.value];
-          let best_stat = cur_stat + (levels_left * item.randa[0][stat.value]) + (hammers_left * hammerMap[stat.value]);
-          if (best_stat > max_stat) {
-            best_stat = max_stat;
-          }
-          $('#best_stats').append('<td>' + best_stat + '</td>');
+          $('#left_stats').append('<td>' + (artifact_stats[stat.value] - cur_stat) + '</td>');
         } else {
-          $('#best_stats').append('<td>-</td>');
+          $('#left_stats').append('<td>-</td>');
         }
       });
 
       $('#next_step').addClass('hidden');
+      $('#details').addClass('hidden');
     }
 
     function getAdvice() {
@@ -323,6 +316,7 @@
 
       $('#next_step .speech_bubble').text(text);
       $('#next_step').removeClass('hidden');
+      $('#details').removeClass('hidden');
     }
 
     function calcAdvice() {
@@ -353,6 +347,7 @@
       });
 
       if (stats_left.total == 0) {
+        $('#details').text('Your item has max stats.');
         return 'Congratulations!';
       } else if (levels_left == 0) {
         if (hammers_left > 0) {
@@ -376,12 +371,15 @@
           });
 
           if (hammers.total <= hammers_left) {
+            $('#details').text('You are out of level ups, but you still have some hammers. I have calculated that you have enough hammers to max out the rest of your stats.');
             return 'You can max out your remaining stats using hammers.';
           } else {
-            text = 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
+            $('#details').text('You are out of level ups and hammers and it seems like you do not have max stats.');
+            return 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
           }
         }
       } else if (stats_left.total <= levels_left) {
+        $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.');
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         let hammers_used = 0;
@@ -411,8 +409,8 @@
                 hammers_used++;
               }
 
-              if (stats_left_after_hammer[stat.value] == 0) {
-                return 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
+              if (hammer_text != null) {
+                hammer_text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
               }
             }
           }
