@@ -409,13 +409,17 @@
         if (tar_level == level) {
           for (let stat of stats) {
             if (hammers_used[stat.value] > 0 && stats_left_after_hammer[stat.value] == 0) {
-              $('#details').text('I have calculated that using after ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.');
+              let details_txt = 'I have calculated that using after ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by level up.';
+              if (hammers_used[stat.value] < hammers_used.total) {
+                details_txt += ' I suggest using ' + stat.label + ' hammer(s) now because we need to max out the stat. Other hammers can be used later or not needed at all if your stat increases are good.';
+              }
+              $('#details').text(details_txt);
               return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
             }
           }
-          return 'Need to calc here';
+
         } else if (tar_level > level) {
-          $('#details').text('I have calculated that you still have a few more levels to try to get better stat increases and save hammers.');
+          $('#details').text('I have calculated that you still have ' + (tar_leve - level) + ' more level(s) to try to get better stat increases and save hammers.');
           return 'Level up the item until Level ' + tar_level + '.';
         } else {
           return 'If this messaage shows up, I probably messed up the calculations.';
