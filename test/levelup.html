@@ -413,7 +413,7 @@
           }
         });
 
-        if (level != (max_level - stats_left_after_hammer.total)) {
+        if (level <= (max_level - stats_left_after_hammer.total)) {
           let tar_level = level;
 
           while (stats_left_after_hammer.total > 0 && tar_level < max_level) {
