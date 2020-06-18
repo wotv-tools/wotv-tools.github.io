@@ -387,7 +387,7 @@
         let hammers_used = 0;
         let stats_left_after_hammer = Object.assign({}, stats_left);
 
-        for (var stat of stats) {
+        for (let stat of stats) {
           if (stats_left_after_hammer.total <= levels_left) {
             break;
           }
