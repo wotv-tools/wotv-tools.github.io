@@ -319,6 +319,13 @@
     }
 
     function calcAdvice() {
+      let text = getAdvice();
+
+      $('#next_step .speech_bubble').text(text);
+      $('#next_step').removeClass('hidden');
+    }
+
+    function getAdvice() {
       let itemKey = $('#artifacts').val();
       let type = $('#types').val();
       if (!itemKey || !type) {
@@ -345,10 +352,8 @@
         }
       });
 
-      let text;
-
       if (stats_left.total == 0) {
-        text = 'Congratulations!';
+        return 'Congratulations!';
       } else if (levels_left == 0) {
         if (hammers_left > 0) {
           let hammers = {
@@ -371,13 +376,13 @@
           });
 
           if (hammers.total <= hammers_left) {
-            text = 'You can max out your remaining stats using hammers.';
+            return 'You can max out your remaining stats using hammers.';
           } else {
             text = 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
           }
         }
       } else if (stats_left.total <= levels_left) {
-        text = 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
+        return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         let hammers_used = 0;
         let stats_left_after_hammer = Object.assign({}, stats_left);
@@ -407,7 +412,7 @@
               }
 
               if (text == null && stats_left_after_hammer[stat.value] == 0) {
-                text = 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
+                return 'Use ' + hammers_used + ' ' + stat.label + ' Hammers and update your stats.';
               }
             }
           }
@@ -433,14 +438,13 @@
           }
 
           if (tar_level < max_level) {
-            text = 'Level this item up until level ' + tar_level + ' and update your stats.';
+            return 'Level this item up until level ' + tar_level + ' and update your stats.';
           } else {
-            text = 'I have no more advice to give for this item.';
+            return 'I have no more advice to give for this item.';
           }
         }
       }
-      $('#next_step .speech_bubble').text(text);
-      $('#next_step').removeClass('hidden');
+
     }
 
     let promiseList = [];
