@@ -388,12 +388,16 @@
             amt: 0,
             stat_key:''
           };
+
           stats.forEach((stat) => {
             if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 1) {
               let stat_amt = Math.min(stats_left_after_hammer[stat.value], hammerMap[stat.value]);
-              if (stat_amt > best_hammer.amt) {
+              if (stat_amt > best_hammer.amt
+              //    || (stat_amt == best_hammer.amt && stats_left_after_hammer[stat.value] < best_hammer.stat_left)
+              ) {
                 best_hammer.amt = stat_amt;
                 best_hammer.stat_key = stat.value;
+                // best_hammer.stat_left = stats_left_after_hammer[stat.value]
               }
             }
           });
@@ -417,6 +421,26 @@
               return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
             }
           }
+
+          let tar_level_after_perf = level;
+          let stats_left_after_perf = Object.assign({}, stats_left);
+
+          while (tar_level_after_perf < max_level && stats_left_after_perf.total < tar_level_after_perf) {
+            stats.forEach((stat) => {
+              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
+                stats_left_after_perf[stat.value] -= amt_perf;
+                stats_left_after_perf.total -= amt_perf;
+              }
+            });
+
+            tar_level_after_perf++;
+          }
+
+          $('#details').text('I have calculated that you still have ' + (tar_leve - level) + ' more level(s) to try to get better stat increases and save hammers.');
+          return 'Level up the item until Level ' + tar_level_after_perf + '.';
+          // TODO: Calculate min number of levels possible before stats_left_after_hammer > levels_left
+          // TODO: How to handle split between ATK and MAG as both hammers are +3? How to handle future hammers?
 
         } else if (tar_level > level) {
           $('#details').text('I have calculated that you still have ' + (tar_leve - level) + ' more level(s) to try to get better stat increases and save hammers.');
