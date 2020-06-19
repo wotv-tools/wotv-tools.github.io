@@ -99,7 +99,7 @@
           </div>
           <div id="next_step" class="tips hidden">
             <div class="speech_bubble">
-              <div id="advice_text"><b></b></div>
+              <div id="advice_text"></div>
               <div id="details"></div>
             </div>
           </div>
@@ -319,7 +319,7 @@
     function getAdvice() {
       let text = calcAdvice();
 
-      $('#next_step .speech_bubble #advice_text b').text(text);
+      $('#next_step .speech_bubble #advice_text').text(text);
       $('#next_step').removeClass('hidden');
       $('#details').removeClass('hidden');
     }

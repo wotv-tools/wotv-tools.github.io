@@ -256,3 +256,7 @@ table th, table td {
   top: -25px;
   width: 100px;
 }
+
+.speech_bubble #advice {
+  font-weight: bolder;
+}
