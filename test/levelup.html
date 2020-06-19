@@ -387,7 +387,7 @@
             hammers_used[stat.value] = 0;
           }
         });
-        // keep going until we either run out of hammers or we're maxed
+        // keep going until we either run out of hammers or stats
         while (hammers_used.total < hammers_left && stats_left_after_hammer.total > 0) {
           // always use the most efficient hammer (most stats removed)
           let best_hammer = {
@@ -414,51 +414,29 @@
         }
 
         let tar_level = max_level - stats_left_after_hammer.total;
-        // we have no leeway to try to do better
+
+        // see if hammers can be used at the end
         if (tar_level == level) {
-          // if we need to max a stat, do it now
           for (let stat of stats) {
-            if (hammers_used[stat.value] > 0 && stats_left_after_hammer[stat.value] == 0) {
-              let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.';
-              if (hammers_used[stat.value] < hammers_used.total) {
-                details_txt += ' I suggest only using ' + stat.label + ' hammer(s) now because we need to max out the ' + stat.label + ' stat. Other hammers can be used later or not needed at all if your stat increases are good.';
+            if (hammers_used[stat.value] > 0) {
+              if (stats_left_after_hammer[stat.value] == 0) {
+                let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.';
+                if (hammers_used[stat.value] < hammers_used.total) {
+                  details_txt += ' I suggest only using ' + stat.label + ' hammer(s) now because we need to max out the ' + stat.label + ' stat. Other hammers can be used later or not needed at all if your stat increases are good.';
+                }
+                $('#details').text(details_txt);
+                return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
+              } else {
+                tar_level = Math.min(tar_level, stats_left_after_hammer[stat.value]);
               }
-              $('#details').text(details_txt);
-              return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
             }
           }
-
-          // find out min number of levels we can use until we can max a stat with hammers
-          // assume best rolls in every stat
-          let level_left_after_perf = max_level - level;
-          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
-
-          while (level_left_after_perf > 0 && stats_left_after_perf.total > 0) {
-            stats.forEach((stat) => {
-              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
-                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
-                stats_left_after_perf[stat.value] -= amt_perf;
-                stats_left_after_perf.total -= amt_perf;
-              }
-            });
-
-            level_left_after_perf--;
-          }
-
-          let new_tar_level = max_level - level_left_after_perf;
-
-          $('#details').text('I have calculated that you still have at least ' + (new_tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
-          return 'Level up the item until Level ' + new_tar_level + '.';
         }
-        // we have some leeway to try to do better before needing hammers
-        else if (tar_level > level) {
+
+        if (tar_level > level) {
           $('#details').text('I have calculated that you still have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
           return 'Level up the item until Level ' + tar_level + '.';
-        }
-        // we can't calculate a way to get to safety with hammers
-        else {
-          // find out min number of levels we need before we can get to safety with hammers
-          // assume best rolls in every stat
+        } else {
           let level_left_after_perf = max_level - level;
           let stats_left_after_perf = Object.assign({}, stats_left);
 
@@ -474,8 +452,9 @@
             level_left_after_perf--;
           }
 
-          let new_tar_level = max_level - level_left_after_perf;
-          return 'Level up the item until Level ' + new_tar_level + '.';
+          tar_level = max_level - level_left_after_perf;
+          $('#details').text('I have calculated that you need at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases.');
+          return 'Level up the item until Level ' + tar_level + '.';
         }
       }
     }
