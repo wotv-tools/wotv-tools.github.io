@@ -417,7 +417,7 @@
         let pity_tar_level = max_level;
 
         // see if hammers can be used at the end
-        if (tar_level == level) {
+        if (tar_level >= level) {
           for (let stat of stats) {
             if (hammers_used[stat.value] > 0) {
               if (stats_left_after_hammer[stat.value] == 0) {
@@ -432,9 +432,7 @@
               }
             }
           }
-        }
 
-        if (tar_level > level) {
           let perf_tar_level = level;
           let stats_left_after_perf = Object.assign({}, stats_left);
 
