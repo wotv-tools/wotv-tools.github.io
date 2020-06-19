@@ -452,7 +452,7 @@
 
           tar_level = Math.min(tar_level, perf_tar_level);
 
-          $('#details').text('I have calculated that you have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers.');
+          $('#details').text('I have calculated that you have at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases and save hammers. This is the lower number between number of perfect level ups to get max stats and number of pity level ups to stay within range of max stats.');
           return 'Level up the item until Level ' + tar_level + '.';
         } else {
           let level_left_after_perf = max_level - level;
