@@ -257,6 +257,6 @@ table th, table td {
   width: 100px;
 }
 
-.speech_bubble #advice {
+.speech_bubble #advice_text {
   font-weight: bolder;
 }
