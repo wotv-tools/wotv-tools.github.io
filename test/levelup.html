@@ -417,6 +417,7 @@
 
         // see if hammers can be used at the end
         if (tar_level == level) {
+          tar_level = max_level;
           for (let stat of stats) {
             if (hammers_used[stat.value] > 0) {
               if (stats_left_after_hammer[stat.value] == 0) {
@@ -427,7 +428,7 @@
                 $('#details').text(details_txt);
                 return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
               } else {
-                tar_level = Math.min(tar_level, stats_left_after_hammer[stat.value]);
+                tar_level = Math.min(tar_level, level + stats_left_after_hammer[stat.value]);
               }
             }
           }
