@@ -428,13 +428,17 @@
                 }
                 $('#details').text(details_txt);
                 return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
+              } else {
+                pity_level_ups = Math.min(pity_level_ups, stats_left_after_perf[stat.value]);
               }
             }
           }
+
+          tar_level += pity_level_ups;
         }
 
         if (tar_level >= level) {
-          // find how many level ups we can safely do
+          // find how many perfect level ups we need
           let perf_level_ups = 0;
           let stats_left_after_perf = Object.assign({}, stats_left);
           while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
@@ -449,18 +453,14 @@
             perf_level_ups++;
           }
 
-          let pity_level_ups = max_level;
-          stats.forEach((stat) => {
-            if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 0) {
-              pity_level_ups = Math.min(pity_level_ups, stats_left_after_hammer[stat.value]);
-            }
-          });
+          let level_ups = level - tar_level;
+          let min_level_ups = Math.min(perf_level_ups, level_ups);
 
-          let min_level_ups = Math.min(perf_level_ups, pity_level_ups);
+          tar_level = level + min_level_ups;
 
           $('#details').text('I have calculated that you have at least ' + min_level_ups + ' more level(s) to try to get better stat increases and save hammers.'
-            + ' This is the lower number between number of perfect level ups to get max stats (' + perf_level_ups + ') and number of pity level ups (' + pity_level_ups + ') to stay within range of max stats.');
-          return 'Level up the item until Level ' + (level + min_level_ups) + '.';
+            + ' This is the lower number between number of perfect level ups to get max stats (' + perf_level_ups + ') and number of pity level ups (' + level_ups + ') to stay within range of max stats.');
+          return 'Level up the item until Level ' + (tar_level) + '.';
         } else {
           let level_left_after_perf = max_level - level;
           let stats_left_after_perf = Object.assign({}, stats_left);
