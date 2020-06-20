@@ -414,10 +414,11 @@
         }
 
         let tar_level = max_level - stats_left_after_hammer.total;
-        let pity_level_ups = 0;
 
         // see if hammers can be used at the end
         if (tar_level == level) {
+          let pity_level_ups = max_level;
+
           for (let stat of stats) {
             if (hammers_used[stat.value] > 0) {
               if (stats_left_after_hammer[stat.value] == 0) {
@@ -427,9 +428,9 @@
                 }
                 $('#details').text(details_txt);
                 return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
-              } else {
-                pity_level_ups = Math.min(pity_level_ups, stats_left_after_hammer[stat.value]);
               }
+
+              pity_level_ups = Math.min(pity_level_ups, stats_left_after_hammer[stat.value]);
             }
           }
 
@@ -440,7 +441,6 @@
           // find how many level ups we can safely do
           let perf_level_ups = 0;
           let stats_left_after_perf = Object.assign({}, stats_left);
-
           while (perf_level_ups < max_level && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
@@ -452,6 +452,13 @@
 
             perf_level_ups++;
           }
+
+          let pity_level_ups = max_level;
+          stats.forEach((stat) => {
+            if (!isNaN(stats_left_after_hammer[stat.value])) {
+              pity_level_ups = Math.min(pity_level_ups, stats_left_after_hammer[stat.value]);
+            }
+          });
 
           let min_level_ups = Math.min(perf_level_ups, pity_level_ups);
 
