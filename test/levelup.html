@@ -415,7 +415,7 @@
             stats_left_after_hammer.total -= best_hammer.amt;
             hammers_used[best_hammer.stat_key]++;
             hammers_used.total++;
-            hammered_stats[stat.value] += best_hammer.amt;
+            hammered_stats[best_hammer.stat_key] += best_hammer.amt;
           }
         }
 
