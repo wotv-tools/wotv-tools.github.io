@@ -411,6 +411,10 @@
           });
 
           if (best_hammer.amt != 0) {
+            // these hammers are no different than pity rolls
+            if (best_hammer.amt == 1) {
+              break;
+            }
             stats_left_after_hammer[best_hammer.stat_key] -= best_hammer.amt;
             stats_left_after_hammer.total -= best_hammer.amt;
             hammers_used[best_hammer.stat_key]++;
@@ -420,6 +424,9 @@
         }
 
         let tar_level = max_level - stats_left_after_hammer.total;
+
+        if (tar_level == level) {
+
 
         // see if hammers can be used at the end
         if (tar_level >= level) {
