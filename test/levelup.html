@@ -436,8 +436,8 @@
               let num_flex_hammers = 0;
               let total_flex_amt = 0;
               let hammered_stats_copy = Object.assign({}, hammered_stats);
-
-              while (let amt = hammered_stats_copy[stat.value].shift()) {
+              let amt;
+              while (amt = hammered_stats_copy[stat.value].shift()) {
                 if (statByHammerAmount[amt] && stats_left_after_hammer[stat.value]) {
                   let total_flex_spots = 0;
                   statByHammerAmount[amt].forEach((flex_stat) => {
