@@ -454,6 +454,13 @@
           }
 
           let level_ups = tar_level - level;
+          // add back in hammers that only +1 (doesn't matter when we use them)
+          stats.forEach((stat) => {
+            if (hammers_used[stat.value] && hammerMap[stat.value] == 1) {
+              level_ups++;
+            }
+          });
+
           let min_level_ups = Math.min(perf_level_ups, level_ups);
 
           tar_level = level + min_level_ups;
