@@ -429,7 +429,7 @@
                 $('#details').text(details_txt);
                 return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
               } else {
-                pity_level_ups = Math.min(pity_level_ups, stats_left_after_perf[stat.value]);
+                pity_level_ups = Math.min(pity_level_ups, stats_left_after_hammer[stat.value]);
               }
             }
           }
