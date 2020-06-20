@@ -766,7 +766,7 @@
     let loadJP = false;
     location.search.substr(1).split('&').forEach((param) => {
       let params = param.split('=');
-      if (param[0] == 'jp') {
+      if (params[0] == 'jp') {
         loadJP = true;
       }
     });
