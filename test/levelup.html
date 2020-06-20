@@ -396,7 +396,8 @@
           };
 
           stats.forEach((stat) => {
-            if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 1) {
+            // don't use single hammers
+            if (stats_left_after_hammer[stat.value] > 1 && hammerMap[stat.value] > 1) {
               let stat_amt = Math.min(stats_left_after_hammer[stat.value], hammerMap[stat.value]);
               if (stat_amt > best_hammer.amt) {
                 best_hammer.amt = stat_amt;
@@ -413,78 +414,35 @@
           }
         }
 
-        // find how many perfect level ups we need
-        // this will be used for comparison
-        let perf_level_ups = 0;
-        let stats_left_after_perf = Object.assign({}, stats_left);
-        while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
-          stats.forEach((stat) => {
-            if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
-              let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
-              stats_left_after_perf[stat.value] -= amt_perf;
-              stats_left_after_perf.total -= amt_perf;
-            }
-          });
-
-          perf_level_ups++;
-        }
-
         let tar_level = max_level - stats_left_after_hammer.total;
 
         // see if hammers can be used at the end
-        if (tar_level == level) {
-          let lowest_pity_level_ups = levels_left;
-
+        if (tar_level >= level) {
           for (let stat of stats) {
-            if (hammers_used[stat.value] > 0 && hammerMap[stat.value] > 1) {
-              if (stats_left_after_hammer[stat.value] == 0 && hammerMap[stat.value] > 1) {
-                let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.';
-                if (hammers_used[stat.value] < hammers_used.total) {
-                  details_txt += ' I suggest only using ' + stat.label + ' hammer(s) now because we need to max out the ' + stat.label + ' stat. Other hammers can be used later or not needed at all if your stat increases are good.';
+            if (hammers_used[stat.value] > 0) {
+              if (hammerMap[stat.value] > 1) {
+                if (stats_left_after_hammer[stat.value] == 0)
+                  let details_txt = 'I have calculated that after using ' + hammers_used.total + ' hammer(s), the total number of stats left (' + stats_left_after_hammer.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.';
+                  if (hammers_used[stat.value] < hammers_used.total) {
+                    details_txt += ' I suggest only using ' + stat.label + ' hammer(s) now because we need to max out the ' + stat.label + ' stat. Other hammers can be used later or not needed at all if your stat increases are good.';
+                  }
+                  $('#details').text(details_txt);
+                  return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
                 }
-                $('#details').text(details_txt);
-                return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' hammer(s) to max out the ' + stat.label + ' stat.';
               } else {
-                // get lowest stat before we need to use hammers
-                let pity_level_ups = stats_left_after_hammer[stat.value];
-                // single hammers don't matter
-                if (hammerMap[stat.value] == 1) {
-                  pity_level_ups += hammers_used[stat.value];
-                }
-                lowest_pity_level_ups = Math.min(lowest_pity_level_ups, extra_level_ups);
+                // hammers that only +1 are no diff than pity rolls
+                tar_level++;
               }
             }
           }
 
-          tar_level += pity_level_ups;
-
           let level_ups = tar_level - level;
-          let min_level_ups = Math.min(perf_level_ups, level_ups);
 
-          tar_level = level + min_level_ups;
-
-          $('#details').text('I have calculated that you have at least ' + min_level_ups + ' more level(s) to try to get better stat increases and save hammers.'
-            + ' This is the lower number between number of perfect level ups to get max stats (' + perf_level_ups + ') and number of pity level ups (' + level_ups + ') to stay within range of max stats.');
-          return 'Level up the item until Level ' + (tar_level) + '.';
-        } else if (tar_level > level) {
-          // add back single hammers (can be used at any time)
-          stats.forEach((stat) => {
-            if (hammers_used[stat.value] && hammerMap[stat.value] == 1) {
-              tar_level += hammers_used[stat.value];
-            }
-          });
-
-          let level_ups = tar_level - level;
-          let min_level_ups = Math.min(perf_level_ups, level_ups);
-
-          $('#details').text('I have calculated that you have at least ' + min_level_ups + ' more level(s) to try to get better stat increases and save hammers.'
-            + ' This is the lower number between number of perfect level ups to get max stats (' + perf_level_ups + ') and number of pity level ups (' + level_ups + ') to stay within range of max stats.');
-          return 'Level up the item until Level ' + (tar_level) + '.';
-        } else {
-          let level_left_after_perf = max_level - level;
+          // find how many perfect level ups we need
+          // this will be used for comparison
+          let perf_level_ups = 0;
           let stats_left_after_perf = Object.assign({}, stats_left);
-
-          while (level_left_after_perf > 0 && stats_left_after_perf.total > level_left_after_perf) {
+          while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
@@ -493,12 +451,35 @@
               }
             });
 
-            level_left_after_perf--;
+            perf_level_ups++;
           }
 
-          tar_level = max_level - level_left_after_perf;
-          $('#details').text('I have calculated that you need at least ' + (tar_level - level) + ' more level(s) to try to get better stat increases. This is the number of perfect level ups you need to get back on track for max stats.');
-          return 'Level up the item until Level ' + tar_level + '.';
+          let min_level_ups = Math.min(perf_level_ups, level_ups);
+
+          tar_level = level + min_level_ups;
+
+          $('#details').text('I have calculated that you have at least ' + min_level_ups + ' more level(s) to try to get better stat increases and save hammers.'
+            + ' This is the lower number between number of perfect level ups to get max stats (' + perf_level_ups + ') and number of pity level ups (' + level_ups + ') to stay within range of max stats.');
+          return 'Level up the item until Level ' + (tar_level) + '.';
+        } else {
+          // find how many perfect level ups we need to get back to pity range
+          // this will be used for comparison
+          let perf_level_ups = 0;
+          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
+          while (perf_level_ups < levels_left && stats_left_after_perf.total > levels_left) {
+            stats.forEach((stat) => {
+              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
+                stats_left_after_perf[stat.value] -= amt_perf;
+                stats_left_after_perf.total -= amt_perf;
+              }
+            });
+
+            perf_level_ups++;
+          }
+
+          $('#details').text('I have calculated that you need at least ' + perf_level_ups + ' more level(s) to try to get better stat increases. This is the number of perfect level ups you need to get back on track for max stats.');
+          return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
         }
       }
     }
