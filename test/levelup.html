@@ -453,7 +453,7 @@
             perf_level_ups++;
           }
 
-          let level_ups = level - tar_level;
+          let level_ups = tar_level - level;
           let min_level_ups = Math.min(perf_level_ups, level_ups);
 
           tar_level = level + min_level_ups;
