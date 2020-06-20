@@ -936,6 +936,8 @@
     }));
 
     let artifactNameMap = {};
+    let artifactMap = {};
+    let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
       $.getJSON('en/ArtifactName.json', (data) => {
@@ -943,7 +945,36 @@
           artifactNameMap[info.key] = info.value;
         });
 
-        resolve();
+        $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
+          data.items.forEach((item) => {
+            if (item.type >= 0) {
+              let name = artifactNameMap[item.iname] ? artifactNameMap[item.iname] : item.iname;
+              artifactMap[item.iname] = item;
+              artifactMap[item.iname].name = name;
+
+              let artifactListEntry = {
+                label: name,
+                value : item.iname
+              };
+
+              item.cat.forEach((cat) => {
+                if (artifactListByCat[cat] == null) {
+                  artifactListByCat[cat] = [];
+                }
+
+                artifactListByCat[cat].push(artifactListEntry);
+              });
+            }
+          });
+
+          artifactListByCat.forEach((artifactList, index, list) => {
+            artifactList.sort((a, b) => {
+              return a.label > b.label ? 1 : -1;
+            });
+          });
+
+          resolve();
+        });
       });
     }));
 
@@ -971,43 +1002,6 @@
         artifactCategoryList.splice(6,1); // remove ROD
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
-
-        resolve();
-      });
-    }));
-
-    let artifactMap = {};
-    let artifactListByCat = [];
-    promiseList.push(new Promise((resolve, reject) => {
-      // 	20200422_4c9ea1e3\
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
-        data.items.forEach((item) => {
-          if (item.type >= 0) {
-            artifactMap[item.iname] = item;
-            artifactMap[item.iname].name = artifactNameMap[item.iname];
-
-            if (artifactNameMap[item.iname]) {
-              let artifactListEntry = {
-                label: artifactNameMap[item.iname],
-                value : item.iname
-              };
-
-              item.cat.forEach((cat) => {
-                if (artifactListByCat[cat] == null) {
-                  artifactListByCat[cat] = [];
-                }
-
-                artifactListByCat[cat].push(artifactListEntry);
-              });
-            }
-          }
-        });
-
-        artifactListByCat.forEach((artifactList, index, list) => {
-          artifactList.sort((a, b) => {
-            return a.label > b.label ? 1 : -1;
-          });
-        });
 
         resolve();
       });
