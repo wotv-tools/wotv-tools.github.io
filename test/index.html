@@ -670,13 +670,16 @@
           while (awake['mat' + mat_index] && mat_index <= 9) {
             let mat = awake['mat' + mat_index].split(',');
 
-            if (mats.total[mat[0]]) {
+            if (mats.awake[mat[0]]) {
               mats.awake[mat[0]].num += parseInt(mat[1]);
-              mats.total[mat[0]].num += parseInt(mat[1]);
             } else {
               mats.awake[mat[0]] = {
                 num: 0
               };
+            }
+            if (mats.total[mat[0]]) {
+              mats.total[mat[0]].num += parseInt(mat[1]);
+            } else {
               mats.total[mat[0]] = {
                 num: 0
               };
