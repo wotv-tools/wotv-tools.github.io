@@ -701,12 +701,13 @@
         let tr = $('<tr></tr>');
         let td = $('<td></td>');
 
-        if (materials[mat].type) {
-          let img_url = 'img/equipment/' + item.asset + '.png';
-          td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
-        } else if (item.icon) {
+        if (item.icon) {
           let img_url = 'img/equipment/' + item.icon + '.png';
-          td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          if (materials[mat].type) {
+            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          } else {
+            td.append('<div class="material"><img src="' + img_url + '"/></div>');
+          }
         } else {
           let img_url = 'img/items/' + mat + '.png';
           td.append('<div class="material"><img src="' + img_url + '"/></div>');
