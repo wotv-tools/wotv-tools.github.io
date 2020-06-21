@@ -344,7 +344,7 @@
 
       console.log('Levels left: ' + levels_left);
 
-      let stats_left = Object.assign({}, artifact_stats);
+      let stats_left = JSON.parse(JSON.stringify(artifact_stats));
       stats_left.total = 0;
       stats.forEach((stat) => {
         if (!isNaN(artifact_stats[stat.value]) && artifact_stats[stat.value] > item.status[0][stat.value]) {
@@ -380,7 +380,7 @@
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
-        let stats_left_after_hammer = Object.assign({}, stats_left);
+        let stats_left_after_hammer = JSON.parse(JSON.stringify(stats_left));
         let hammered_min_left = stats_left.total;
         let hammers_used = {
           total: 0
@@ -443,7 +443,7 @@
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
               let total_flex_amt = 0;
-              let hammered_stats_copy = Object.assign({}, hammered_stats);
+              let hammered_stats_copy = JSON.parse(JSON.stringify(hammered_stats));
               let amt;
               while (amt = hammered_stats_copy[stat.value].shift()) {
                 let flexible = false;
@@ -489,7 +489,7 @@
 
           console.log('Calculating how many perfect level ups are available for stats left over after best hammers...');
           let perf_level_ups = 0;
-          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
+          let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
           while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
@@ -507,7 +507,7 @@
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
           let perf_level_ups = 0;
-          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
+          let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
           while (perf_level_ups < levels_left && stats_left_after_perf.total > (levels_left - perf_level_ups)) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
