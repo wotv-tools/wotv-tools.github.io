@@ -476,21 +476,21 @@
         }
 
         for (let mat in mats.total) {
-          let item = mats.recipe[mat].type ? artifactMap[mat] : itemMap[mat];
-          let itemName = mats.recipe[mat].type ? artifactNameMap : itemNameMap[mat];
+          let item = mats.total[mat].type ? artifactMap[mat] : itemMap[mat];
+          let itemName = mats.total[mat].type ? artifactNameMap : itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
           let img_url = '/img/items/' + mat + '.png';
           let tr = $('<tr></tr>');
           let td = $('<td></td>');
 
-          if (mats.recipe[mat].type) {
+          if (mats.total[mat].type) {
             img_url = 'img/equipment/' + item.asset + '.png';
             td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
           } else {
             img_url = 'img/items/' + mat + '.png';
             td.append('<div class="material"><img src="' + img_url + '"/></div>');
           }
-          td.append('<div>' + mats.recipe[mat].num + 'x</div>');
+          td.append('<div>' + mats.total[mat].num + 'x</div>');
           tr.append(td);
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
