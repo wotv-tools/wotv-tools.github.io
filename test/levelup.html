@@ -331,6 +331,8 @@
         return;
       }
 
+      console.log('Calculating Advice...');
+
       let item = artifactMap[itemKey];
       let typeGrowth = growthMap[type];
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
@@ -339,6 +341,9 @@
       let levels_left = max_level - level;
       let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
+
+      console.log('Levels left:');
+      console.log(levels_left);
 
       let stats_left = Object.assign({}, artifact_stats);
       stats_left.total = 0;
@@ -349,9 +354,10 @@
           stats_left.total += stat_left;
         }
       });
+      console.log('Stats left:');
+      console.log(stats_left);
 
       if (stats_left.total == 0) {
-        $('#details').text('Your item has max stats.');
         return 'Congratulations!';
       } else if (levels_left == 0) {
         // find out if we can max the remaining stats with hamers
@@ -362,18 +368,17 @@
           hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
           hammers_used.total += hammers[stat.value];
         });
+        console.log('Hammers to use:');
+        console.log(hammers_used);
 
         if (hammers_used.total <= hammers_left) {
-          $('#details').text('You are out of level ups, but I have calculated that you can use ' + hammers_used.total + ' hammer(s) to max out the rest of your stats.');
           return 'You can max out your remaining stats using hammers.';
         } else {
-          $('#details').text('You are out of level ups. You have ' + hammers_left + ' hammer(s) left, but it seems like you will not max your stats.');
           return 'You did the best you could. You still have ' + hammers_left + ' hammers to use!';
         }
       } else if (stats_left.total <= levels_left) {
         // this means we are guaranteed max stats by purely pity rolls
         // note: this also means we can do better and may not need to level all the way to 50
-        $('#details').text('I have calculated that the total number of stats left (' + stats_left.total + ') is less than or equal to the total number of levels left (' + levels_left + '). Since you are guaranteed at least 1 stat to go up per level, you will max out this item just by leveling up.');
         return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
@@ -389,12 +394,13 @@
             hammered_stats[stat.value] = [];
           }
         });
+
         // keep going until we either run out of hammers or within range of pity rolls
         while (hammers_used.total < hammers_left && stats_left_after_hammer.total > levels_left) {
           // always use the most efficient hammer (most stats removed)
           let best_hammer = {
             amt: 0,
-            stat_key:''
+            stat: null
           };
 
           stats.forEach((stat) => {
@@ -402,24 +408,34 @@
               let stat_amt = Math.min(stats_left_after_hammer[stat.value], hammerMap[stat.value]);
               if (stat_amt > best_hammer.amt) {
                 best_hammer.amt = stat_amt;
-                best_hammer.stat_key = stat.value;
+                best_hammer.stat = stat;
               }
             }
           });
 
           if (best_hammer.amt != 0) {
-            stats_left_after_hammer[best_hammer.stat_key] -= best_hammer.amt;
+            stats_left_after_hammer[best_hammer.stat.value] -= best_hammer.amt;
             stats_left_after_hammer.total -= best_hammer.amt;
-            hammers_used[best_hammer.stat_key]++;
+            hammers_used[best_hammer.stat.value]++;
             hammers_used.total++;
-            hammered_stats[best_hammer.stat_key].unshift(best_hammer.amt);
+            hammered_stats[best_hammer.stat.value].unshift(best_hammer.amt);
+
+            best_hammer_text.append(best_hammer.stat.label + '(+' + best_hammer.amt + ') ')
           }
         }
+        console.log('Best hammer usage:');
+        console.log(hammers_used);
+
+        console.log('Stats left after best hammer usage:');
+        console.log(stats_left_after_hammer);
 
         let tar_level = max_level - stats_left_after_hammer.total;
+        console.log('Initial target level:');
+        console.log(tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
+          console.log('Finding flexible hammers...');
           let best_flex_amt = 0;
           stats.forEach((stat) => {
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
@@ -429,11 +445,12 @@
               let amt;
               while (amt = hammered_stats_copy[stat.value].shift()) {
                 for (let hammer of hammerList) {
-                  if (hammer.stat == stat.value) {
+                  if (hammer.stat.value == stat.value) {
                     continue;
                   }
 
                   if (hammer.amt >= amt && stats_left_after_hammer[stat.value] >= (total_flex_amt + amt)) {
+                    console.log(stat.label + ' hammer(s) can swap to ' + hammer.stat.label + ' hammer(s) for ' + amt + ' stats.';
                     num_flex_hammers++;
                     total_flex_amt += amt;
                     break;
@@ -444,8 +461,21 @@
               best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
             }
           });
+          console.log('Best flexible stat amount:');
+          console.log(best_flex_amt);
 
           tar_level += best_flex_amt;
+          console.log('New target level:');
+          console.log(tar_level);
+
+          // need to use hammers
+          if (tar_level == level) {
+            for (let stat of stats) {
+              if (hammers_used[stat.value]) {
+                return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' Hammers.';
+              }
+            }
+          }
 
           // find how many perfect level ups before we get max stats
           // this will be used for comparison
@@ -463,8 +493,9 @@
             perf_level_ups++;
           }
           let perf_tar_level = level + perf_level_ups;
+          console.log('Perfect level ups to max:');
+          console.log(perf_level_ups);
 
-          $('#details').text('I have calculated you have ' + Math.min(tar_level - level, perf_level_ups) + ' more level(s) to try to get better stat increases.')
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
           let perf_level_ups = 0;
@@ -480,9 +511,10 @@
 
             perf_level_ups++;
           }
+          console.log('Perfect level ups to Pity Range:');
+          console.log(perf_level_ups);
 
-          $('#details').text('I have calculated that you need at least ' + perf_level_ups + ' more level(s) to try to get better stat increases. This is the number of perfect level ups you need to get back on track for max stats.');
-          return 'Level up the item until Level ' + (perf_tar_level) + '.';
+          return 'Level up the item until Level ' + perf_tar_level + '.';
         }
       }
     }
@@ -549,7 +581,7 @@
           let stat = stats[item.status_up[0].eff_dst];
           hammerMap[stat.value] = item.status_up[0].val;
           hammerList.push({
-            stat: stat.value,
+            stat: stat,
             amt: item.status_up[0].val
           });
         });
