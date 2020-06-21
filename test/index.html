@@ -454,7 +454,10 @@
         $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats = getTotalMaterials(item.iname, level);
         $('#recipe_mats').append(getMaterialTableContents(mats.recipe));
-        $('#awake_mats').append(getMaterialTableContents(mats.awake));
+        mats.awake.stage.forEach((stageMats) => {
+          $('#awake_mats').append(getMaterialTableContents(stageMats));
+        });
+        $('#awake_mats').append(getMaterialTableContents(mats.awake.total));
         $('#total_mats').append(getMaterialTableContents(mats.total));
         $('#materials').removeClass('hidden');
       }
