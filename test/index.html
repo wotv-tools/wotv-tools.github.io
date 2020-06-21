@@ -455,14 +455,14 @@
         let mats = getTotalMaterials(item.iname, level);
 
         for (let mat in mats.recipe) {
-          let item = itemMap[mat];
-          let itemName = itemNameMap[mat];
+          let item = mats.recipe[mat].type ? artifactMap[mat] : itemMap[mat];
+          let itemName = mats.recipe[mat].type ? artifactNameMap : itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
           let img_url = '/img/items/' + mat + '.png';
           let tr = $('<tr></tr>');
           let td = $('<td></td>');
 
-          if (item.icon) {
+          if (mats.recipe[mat].type) {
             img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
             td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
           } else {
