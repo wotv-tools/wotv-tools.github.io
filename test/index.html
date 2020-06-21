@@ -649,7 +649,7 @@
             if (mats.total[material.id]) {
               mats.total[material.id].num += parseInt(material.num);
             } else {
-              mats.total[material.id] = material;
+              mats.total[material.id] = JSON.parse(JSON.stringify(material));
             }
             break;
           case 1:
@@ -659,13 +659,13 @@
               if (mats.total[key]) {
                 mats.total[key].num += parseInt(item_mats.total[key].num);
               } else {
-                mats.total[key] = item_mats.total[key];
+                mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
               }
             }
             break;
         }
 
-        mats.recipe[material.id] = material;
+        mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
       });
 
       let artifactAwake = artifactAwakeMap[iname];
