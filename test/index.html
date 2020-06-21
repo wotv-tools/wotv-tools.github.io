@@ -666,7 +666,7 @@
       let artifactAwake = artifactAwakeMap[iname];
       artifactAwake.awakes.forEach((awake, i) => {
         if (awake.lv <= lv) {
-          let mat_index = '1';
+          let mat_index = 1;
           while (awake['mat' + mat_index] && mat_index <= 9) {
             let mat = awake['mat' + mat_index].split(',');
 
