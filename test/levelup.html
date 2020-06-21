@@ -421,13 +421,13 @@
 
         if (tar_level >= level) {
           let statByHammerAmount = {};
-          hammerMap.forEach((stat) => {
+          for (let stat in hammerMap) {
             let amt = hammerMap[stat.value];
             if (statByHammerAmount[amt] == null) {
               statByHammerAmount[amt] = [];
             }
             statByHammerAmount[amt].push(stat.value);
-          });
+          }
 
           // find lowest flexible hammer amount
           let best_flex_amt = max_level;
