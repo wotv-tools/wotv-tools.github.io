@@ -685,9 +685,9 @@
         switch (material.type) {
           case 0:
             if (mats.total[material.id]) {
-              mats.total[material.id] = material;
-            } else {
               mats.total[material.id].num += material.num;
+            } else {
+              mats.total[material.id] = material;
             }
             break;
           case 1:
@@ -702,7 +702,7 @@
             }
             break;
         }
-        
+
         mats.recipe[material.id] = material;
       });
 
