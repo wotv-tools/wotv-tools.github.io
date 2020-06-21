@@ -424,10 +424,13 @@
         console.log('Best hammer usage:');
         console.log(hammers_used);
 
+        console.log('Stats hammered: ');
+        console.log(hammered_stats);
+
         console.log('Stats left after best hammer usage:');
         console.log(stats_left_after_hammer);
 
-        console.log('Min hammered stat left:' + hammered_min_left);
+        console.log('Min hammered stat left: ' + hammered_min_left);
 
         let tar_level = max_level - stats_left_after_hammer.total + hammered_min_left;
         console.log('Initial target level: ' + tar_level);
