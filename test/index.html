@@ -693,7 +693,7 @@
       let tableContent = $('<tbody></tbody>');
       for (let mat in materials) {
         let item = materials[mat].type ? artifactMap[mat] : itemMap[mat];
-        let itemName = materials[mat].type ? artifactNameMap : itemNameMap[mat];
+        let itemName = materials[mat].type ? artifactNameMap[mat] : itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
         let img_url = '/img/items/' + mat + '.png';
         let tr = $('<tr></tr>');
