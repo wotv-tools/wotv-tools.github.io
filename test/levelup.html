@@ -381,10 +381,10 @@
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
         let stats_left_after_hammer = Object.assign({}, stats_left);
+        let hammered_min_left = stats_left.total;
         let hammers_used = {
           total: 0
         };
-
         let hammered_stats = {};
         stats.forEach((stat) => {
           if (!isNaN(stats_left_after_hammer[stat.value]) && stats_left_after_hammer[stat.value] > 0) {
@@ -417,6 +417,8 @@
             hammers_used[best_hammer.stat.value]++;
             hammers_used.total++;
             hammered_stats[best_hammer.stat.value].unshift(best_hammer.amt);
+
+            hammered_min_left = Math.min(stats_left_after_hammer[best_hammer.stat.value]);
           }
         }
         console.log('Best hammer usage:');
@@ -425,7 +427,9 @@
         console.log('Stats left after best hammer usage:');
         console.log(stats_left_after_hammer);
 
-        let tar_level = max_level - stats_left_after_hammer.total;
+        console.log('Min hammered stat left:' + hammered_min_left);
+
+        let tar_level = max_level - stats_left_after_hammer.total + hammered_min_left;
         console.log('Initial target level: ' + tar_level);
 
         if (tar_level >= level) {
