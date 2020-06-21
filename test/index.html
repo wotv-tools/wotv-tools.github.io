@@ -162,19 +162,19 @@
       </div>
 
       <div id="materials" class="grid hidden">
-        <div class="cell">
+        <div id="recipe_mats" class="cell">
           <div class="cell_content">
-            <table id="recipe_mats"></table>
+            <table></table>
           </div>
         </div>
-        <div class="cell">
+        <div id="awake_mats" class="cell">
           <div class="cell_content">
-            <table id="awake_mats"></table>
+            <table></table>
           </div>
         </div>
-        <div class="cell">
+        <div id="total_mats" class="cell">
           <div class="cell_content">
-            <table id="total_mats"></table>
+            <table></table>
           </div>
         </div>
       </div>
@@ -448,17 +448,19 @@
       // get recipe
       $('#materials').addClass('hidden');
       $('#materials table').empty();
+      $('#materials #awake_mats').addClass('hidden');
       if (artifactRecipeMap[item.iname]) {
-        $('#recipe_mats').append('<tr><th colspan="2">Recipe Materials</th></tr>');
-        $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
+        $('#recipe_mats table').append('<tr><th colspan="2">Recipe Materials</th></tr>');
+        $('#total_mats table').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats = getTotalMaterials(item.iname, level);
-        $('#recipe_mats').append(getMaterialTableContents(mats.recipe));
-        $('#total_mats').append(getMaterialTableContents(mats.total));
-        $('#materials').removeClass('hidden');
+        $('#recipe_mats table').append(getMaterialTableContents(mats.recipe));
+        $('#total_mats table').append(getMaterialTableContents(mats.total));
+        $('#materials table').removeClass('hidden');
 
         if (Object.entries(mats.awake).length) {
-          $('#awake_mats').append('<tr><th colspan="2">Awakening Materials</th></tr>');
-          $('#awake_mats').append(getMaterialTableContents(mats.awake));
+          $('#awake_mats table').append('<tr><th colspan="2">Awakening Materials</th></tr>');
+          $('#awake_mats table').append(getMaterialTableContents(mats.awake));
+          $('#awake_mats table').removeClass('hidden');
         }
       }
 
