@@ -952,22 +952,23 @@
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
           data.items.forEach((item) => {
             if (item.type >= 0) {
-              let name = artifactNameMap[item.iname] ? artifactNameMap[item.iname] : item.iname;
-              artifactMap[item.iname] = item;
-              artifactMap[item.iname].name = name;
+              if (artifactNameMap[item.iname]) {
+                artifactMap[item.iname] = item;
+                artifactMap[item.iname].name = artifactNameMap[item.iname];
 
-              let artifactListEntry = {
-                label: name,
-                value : item.iname
-              };
+                let artifactListEntry = {
+                  label: artifactNameMap[item.iname],
+                  value : item.iname
+                };
 
-              item.cat.forEach((cat) => {
-                if (artifactListByCat[cat] == null) {
-                  artifactListByCat[cat] = [];
-                }
+                item.cat.forEach((cat) => {
+                  if (artifactListByCat[cat] == null) {
+                    artifactListByCat[cat] = [];
+                  }
 
-                artifactListByCat[cat].push(artifactListEntry);
-              });
+                  artifactListByCat[cat].push(artifactListEntry);
+                });
+              }
             }
           });
 
