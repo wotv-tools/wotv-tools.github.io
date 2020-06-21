@@ -342,8 +342,7 @@
       let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
 
-      console.log('Levels left:');
-      console.log(levels_left);
+      console.log('Levels left: ' + levels_left);
 
       let stats_left = Object.assign({}, artifact_stats);
       stats_left.total = 0;
@@ -354,8 +353,7 @@
           stats_left.total += stat_left;
         }
       });
-      console.log('Stats left:');
-      console.log(stats_left);
+      console.log('Stats left: ' + stats_left);
 
       if (stats_left.total == 0) {
         return 'Congratulations!';
@@ -368,8 +366,7 @@
           hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
           hammers_used.total += hammers[stat.value];
         });
-        console.log('Hammers to use:');
-        console.log(hammers_used);
+        console.log('Hammers to use: ' + hammers_used);
 
         if (hammers_used.total <= hammers_left) {
           return 'You can max out your remaining stats using hammers.';
@@ -428,8 +425,7 @@
         console.log(stats_left_after_hammer);
 
         let tar_level = max_level - stats_left_after_hammer.total;
-        console.log('Initial target level:');
-        console.log(tar_level);
+        console.log('Initial target level: ' + tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
@@ -459,15 +455,14 @@
               best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
             }
           });
-          console.log('Best flexible stat amount:');
-          console.log(best_flex_amt);
+          console.log('Best flexible stat amount: ' + best_flex_amt);
 
           tar_level += best_flex_amt;
-          console.log('New target level:');
-          console.log(tar_level);
+          console.log('New target level: ' + tar_level);
 
           // need to use hammers
           if (tar_level == level) {
+            console.log('No change. Use hammers now.');
             for (let stat of stats) {
               if (hammers_used[stat.value]) {
                 return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' Hammers.';
@@ -491,8 +486,7 @@
             perf_level_ups++;
           }
           let perf_tar_level = level + perf_level_ups;
-          console.log('Perfect level ups to max:');
-          console.log(perf_level_ups);
+          console.log('Perfect target level: ' + perf_tar_level);
 
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
