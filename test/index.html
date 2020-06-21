@@ -440,8 +440,8 @@
       $('#total_mats').empty();
       if (artifactRecipeMap[item.iname]) {
         $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
-        let mats_total = getTotalMaterials(item.iname, level);
-        for (mat in mats_total) {
+        let mats = getTotalMaterials(item.iname, level);
+        for (mat in mats.total) {
           let item = itemMap[mat];
           let itemName = itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
@@ -638,51 +638,62 @@
       $('#seals_display').text('(' + seal_txt.join(', ') + ')');
     }
     function getTotalMaterials(iname, lv) {
-      let mat_list = {};
+      let mats = {
+        awakening: {
+          stage: [],
+          total: {}
+        },
+        recipe: {},
+        total: {}
+      };
 
       artifactRecipeMap[iname].craft.forEach((material) => {
         switch (material.type) {
           case 0:
-            let itemName = itemNameMap[material.id];
-
-            if (!(material.id in mat_list)) {
-              mat_list[material.id] = 0;
+            if (!(material.id in mats.total)) {
+              mats.total[material.id] = 0;
             }
 
-            mat_list[material.id] += material.num;
+            mats.recipe[material.id] = material.num;
+            mats.total[material.id] += material.num;
             break;
           case 1:
-            let item_mat_list = getTotalMaterials(material.id, material.lv);
+            let item_mats = getTotalMaterials(material.id, material.lv);
 
-            for (key in item_mat_list) {
-              if (!(key in mat_list)) {
-                mat_list[key] = 0;
+            for (key in item_mats.total) {
+              if (!(key in mats.total)) {
+                mats.total[key] = 0;
               }
 
-              mat_list[key] += item_mat_list[key];
+              mats.total[key] += item_mats.total[key];
             }
+            mats.recipe[material.id] = material.num;
             break;
         }
       });
 
       let artifactAwake = artifactAwakeMap[iname];
-      artifactAwake.awakes.forEach((awake) => {
+      artifactAwake.awakes.forEach((awake, i) => {
         if (awake.lv <= lv) {
+          mats.awakening.stage[i] = {};
+
           for (key in awake) {
             if (key.startsWith('mat')) {
               let mat = awake[key].split(',');
 
-              if (!(mat[0] in mat_list)) {
-                mat_list[mat[0]] = 0;
+              if (!(mat[0] in mats.total)) {
+                mats.total[mat[0]] = 0;
               }
 
-              mat_list[mat[0]] += parseInt(mat[1]);
+              mats.total[mat[0]] += parseInt(mat[1]);
+              mats.awakening.stage[i][mat[0]] = parseInt(mat[1]);
+              mats.awakening.total[mat[0]] += parseInt(mat[1]);
             }
           }
         }
       });
 
-      return mat_list;
+      return mats;
     }
     function save(el) {
       if ($('#saved .selectable').length >= 10) {
