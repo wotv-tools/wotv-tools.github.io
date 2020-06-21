@@ -439,6 +439,7 @@
           // find lowest flexible hammer amount
           console.log('Finding flexible/must hammers...');
           let best_flex_amt = 0;
+          let must_hammer = false;
           for (let stat of stats) {
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
@@ -464,15 +465,19 @@
 
                 if (!flexible && stats_left_after_hammer[stat.value] == 0) {
                   console.log('Must Hammer found: ' + stat.label);
-                  best_flex_amt = 0;
-                  total_flex_amt = 0;
+                  must_hammer = true;
                   break;
                 }
               }
 
-              best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
+              if (must_hammer) {
+                best_flex_amt = 0;
+                break;
+              } else {
+                best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
+              }
             }
-          };
+          }
           console.log('Best flexible stat amount: ' + best_flex_amt);
 
           tar_level += best_flex_amt;
