@@ -433,6 +433,7 @@
 
           perf_level_ups++;
         }
+        let perf_tar_level = level + perf_level_ups;
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
@@ -464,10 +465,10 @@
           tar_level += best_flex_amt;
 
           $('#details').text('I have calculated you have ' + Math.min(level - tar_level, perf_level_ups) + ' more level(s) to try to get better stat increases.')
-          return 'Level up the item until Level ' Math.min(tar_level, level + perf_level_ups) + '.';
+          return 'Level up the item until Level ' Math.min(tar_level, perf_tar_level) + '.';
         } else {
           $('#details').text('I have calculated that you need at least ' + perf_level_ups + ' more level(s) to try to get better stat increases. This is the number of perfect level ups you need to get back on track for max stats.');
-          return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
+          return 'Level up the item until Level ' + (perf_tar_level) + '.';
         }
       }
     }
