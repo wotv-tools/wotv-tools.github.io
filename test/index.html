@@ -454,10 +454,7 @@
         $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats = getTotalMaterials(item.iname, level);
         $('#recipe_mats').append(getMaterialTableContents(mats.recipe));
-        mats.awake.stage.forEach((stageMats) => {
-          $('#awake_mats').append(getMaterialTableContents(stageMats));
-        });
-        $('#awake_mats').append(getMaterialTableContents(mats.awake.total));
+        $('#awake_mats').append(getMaterialTableContents(mats.awake));
         $('#total_mats').append(getMaterialTableContents(mats.total));
         $('#materials').removeClass('hidden');
       }
@@ -636,10 +633,7 @@
     }
     function getTotalMaterials(iname, lv) {
       let mats = {
-        awake: {
-          stage: [],
-          total: {}
-        },
+        awake: {},
         recipe: {},
         total: {}
       };
@@ -672,20 +666,21 @@
       let artifactAwake = artifactAwakeMap[iname];
       artifactAwake.awakes.forEach((awake, i) => {
         if (awake.lv <= lv) {
-          mats.awake.stage[i] = {};
+          let mat_index = '1';
+          while (awake['mat' + mat_index] && mat_index <= 9) {
+            let mat = awake[key].split(',');
 
-          for (key in awake) {
-            if (key.startsWith('mat')) {
-              let mat = awake[key].split(',');
-
-              if (!(mat[0] in mats.total)) {
-                mats.total[mat[0]] = 0;
-              }
-
-              mats.total[mat[0]] += parseInt(mat[1]);
-              mats.awake.stage[i][mat[0]] = parseInt(mat[1]);
-              mats.awake.total[mat[0]] += parseInt(mat[1]);
+            if (!(mat[0] in mats.total)) {
+              mats.awake[mat[0]] = {
+                num: 0
+              };
+              mats.total[mat[0]] = {
+                num: 0
+              };
             }
+
+            mats.awake[mat[0]].num += parseInt(mat[1]);
+            mats.total[mat[0]].num += parseInt(mat[1]);
           }
         }
       });
