@@ -436,7 +436,6 @@
           // find lowest flexible hammer amount
           console.log('Finding flexible/must hammers...');
           let best_flex_amt = 0;
-          let best_hammer_amt = 0;
           for (let stat of stats) {
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
@@ -444,6 +443,7 @@
               let hammered_stats_copy = Object.assign({}, hammered_stats);
               let amt;
               while (amt = hammered_stats_copy[stat.value].shift()) {
+                let flexible = false;
                 for (let hammer of hammerList) {
                   if (hammer.stat.value == stat.value) {
                     continue;
@@ -453,14 +453,16 @@
                     console.log(stat.label + ' hammer(s) can swap to ' + hammer.stat.label + ' hammer(s) for ' + (total_flex_amt + amt) + ' stats.');
                     num_flex_hammers++;
                     total_flex_amt += amt;
+                    flexible = true;
                     break;
                   }
                 }
 
-                // not flexible? check for must
-                if (stats_after_hammer[stat.value] == 0) {
-                  console.log(stat.label + ' hammer(s) are must hammers.');
-                  break; break;
+                if (!flexible && stats_left_after_hammer[stat.value] == 0) {
+                  console.log('Must Hammer found: ' + stat.label);
+                  best_flex_amt = 0;
+                  total_flex_amt = 0;
+                  break;
                 }
               }
 
