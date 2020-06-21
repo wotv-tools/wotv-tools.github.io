@@ -492,7 +492,7 @@
         } else {
           let perf_level_ups = 0;
           let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
-          while (perf_level_ups < levels_left && stats_left_after_perf.total > levels_left) {
+          while (perf_level_ups < levels_left && stats_left_after_perf.total > (levels_left - perf_level_ups)) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
@@ -503,8 +503,7 @@
 
             perf_level_ups++;
           }
-          console.log('Perfect level ups to Pity Range:');
-          console.log(perf_level_ups);
+          console.log('Perfect level ups to Pity Range: ' + perf_level_ups);
 
           return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
         }
