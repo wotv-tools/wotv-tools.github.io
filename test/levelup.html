@@ -418,7 +418,7 @@
             hammers_used.total++;
             hammered_stats[best_hammer.stat.value].unshift(best_hammer.amt);
 
-            hammered_min_left = Math.min(stats_left_after_hammer[best_hammer.stat.value]);
+            hammered_min_left = Math.min(hammered_min_left, stats_left_after_hammer[best_hammer.stat.value]);
           }
         }
         console.log('Best hammer usage:');
