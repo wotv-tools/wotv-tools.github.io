@@ -455,12 +455,12 @@
         let mats = getTotalMaterials(item.iname, level);
         $('#recipe_mats table').append(getMaterialTableContents(mats.recipe));
         $('#total_mats table').append(getMaterialTableContents(mats.total));
-        $('#materials table').removeClass('hidden');
+        $('#materials').removeClass('hidden');
 
         if (Object.entries(mats.awake).length) {
           $('#awake_mats table').append('<tr><th colspan="2">Awakening Materials</th></tr>');
           $('#awake_mats table').append(getMaterialTableContents(mats.awake));
-          $('#awake_mats table').removeClass('hidden');
+          $('#awake_mats').removeClass('hidden');
         }
       }
 
