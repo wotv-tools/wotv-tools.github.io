@@ -445,8 +445,9 @@
               let total_flex_amt = 0;
               let hammered_stats_copy = JSON.parse(JSON.stringify(hammered_stats));
               let amt;
+              let flexible = false;
+
               while (amt = hammered_stats_copy[stat.value].shift()) {
-                let flexible = false;
                 for (let hammer of hammerList) {
                   if (hammer.stat.value == stat.value) {
                     continue;
