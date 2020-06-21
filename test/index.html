@@ -164,6 +164,16 @@
       <div id="materials" class="grid hidden">
         <div class="cell">
           <div class="cell_content">
+            <table id="recipe_mats"></table>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell_content">
+            <table id="awake_mats"></table>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell_content">
             <table id="total_mats"></table>
           </div>
         </div>
@@ -437,11 +447,35 @@
 
       // get recipe
       $('#materials').addClass('hidden');
-      $('#total_mats').empty();
+      $('#materials table').empty();
       if (artifactRecipeMap[item.iname]) {
+        $('#recipe_mats').append('<tr><th colspan="2">Recipe</th></tr>');
+        $('#awake_mats').append('<tr><th colspan="2">Awakening</th></tr>');
         $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
         let mats = getTotalMaterials(item.iname, level);
-        for (mat in mats.total) {
+
+        for (let mat in mats.recipe) {
+          let item = itemMap[mat];
+          let itemName = itemNameMap[mat];
+          let mat_url = mat_link + encodeURIComponent(itemName);
+          let img_url = '/img/items/' + mat + '.png';
+          let tr = $('<tr></tr>');
+          let td = $('<td></td>');
+
+          if (item.icon) {
+            img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          } else {
+            img_url = 'img/items/' + mat + '.png';
+            td.append('<div class="material"><img src="' + img_url + '"/></div>');
+          }
+          td.append('<div>' + mats.recipe[mat] + 'x</div>');
+          tr.append(td);
+          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+          $('#recipe_mats').append(tr);
+        }
+
+        for (let mat in mats.total) {
           let item = itemMap[mat];
           let itemName = itemNameMap[mat];
           let mat_url = mat_link + encodeURIComponent(itemName);
