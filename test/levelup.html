@@ -418,23 +418,6 @@
 
         let tar_level = max_level - stats_left_after_hammer.total;
 
-        // find how many perfect level ups we need to get back to pity range
-        // this will be used for comparison
-        let perf_level_ups = 0;
-        let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
-        while (perf_level_ups < levels_left && stats_left_after_perf.total > levels_left) {
-          stats.forEach((stat) => {
-            if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
-              let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
-              stats_left_after_perf[stat.value] -= amt_perf;
-              stats_left_after_perf.total -= amt_perf;
-            }
-          });
-
-          perf_level_ups++;
-        }
-        let perf_tar_level = tar_level + perf_level_ups;
-
         if (tar_level >= level) {
           // find lowest flexible hammer amount
           let best_flex_amt = 0;
@@ -464,9 +447,40 @@
 
           tar_level += best_flex_amt;
 
+          // find how many perfect level ups before we get max stats
+          // this will be used for comparison
+          let perf_level_ups = 0;
+          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
+          while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
+            stats.forEach((stat) => {
+              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
+                stats_left_after_perf[stat.value] -= amt_perf;
+                stats_left_after_perf.total -= amt_perf;
+              }
+            });
+
+            perf_level_ups++;
+          }
+          let perf_tar_level = level + perf_level_ups;
+
           $('#details').text('I have calculated you have ' + Math.min(tar_level - level, perf_level_ups) + ' more level(s) to try to get better stat increases.')
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
+          let perf_level_ups = 0;
+          let stats_left_after_perf = Object.assign({}, stats_left_after_hammer);
+          while (perf_level_ups < levels_left && stats_left_after_perf.total > levels_left) {
+            stats.forEach((stat) => {
+              if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
+                stats_left_after_perf[stat.value] -= amt_perf;
+                stats_left_after_perf.total -= amt_perf;
+              }
+            });
+
+            perf_level_ups++;
+          }
+
           $('#details').text('I have calculated that you need at least ' + perf_level_ups + ' more level(s) to try to get better stat increases. This is the number of perfect level ups you need to get back on track for max stats.');
           return 'Level up the item until Level ' + (perf_tar_level) + '.';
         }
