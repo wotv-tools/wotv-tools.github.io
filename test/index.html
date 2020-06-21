@@ -684,26 +684,26 @@
       artifactRecipeMap[iname].craft.forEach((material) => {
         switch (material.type) {
           case 0:
-            if (!(material.id in mats.total)) {
-              mats.total[material.id] = 0;
+            if (mats.total[material.id]) {
+              mats.total[material.id] = material;
+            } else {
+              mats.total[material.id].num += material.num;
             }
-
-            mats.recipe[material.id] = material.num;
-            mats.total[material.id] += material.num;
             break;
           case 1:
             let item_mats = getTotalMaterials(material.id, material.lv);
 
-            for (key in item_mats.total) {
-              if (!(key in mats.total)) {
-                mats.total[key] = 0;
+            for (let key in item_mats.total) {
+              if (mats.total[key]) {
+                mats.total[key].num += item_mats.total[key].num;
+              } else {
+                mats.total[key] = item_mats.total[key];
               }
-
-              mats.total[key] += item_mats.total[key];
             }
-            mats.recipe[material.id] = material.num;
             break;
         }
+        
+        mats.recipe[material.id] = material;
       });
 
       let artifactAwake = artifactAwakeMap[iname];
