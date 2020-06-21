@@ -432,7 +432,7 @@
           // find lowest flexible hammer amount
           let best_flex_amt = max_level;
           stats.forEach((stat) => {
-            if (hammered_stats[stat.value].length > 0) {
+            if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
               let total_flex_amt = 0;
               let hammered_stats_copy = Object.assign({}, hammered_stats);
