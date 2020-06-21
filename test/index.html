@@ -456,7 +456,7 @@
             img_url = 'img/items/' + mat + '.png';
             td.append('<div class="material"><img src="' + img_url + '"/></div>');
           }
-          td.append('<div>' + mats_total[mat] + 'x</div>');
+          td.append('<div>' + mats.total[mat] + 'x</div>');
           tr.append(td);
           tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
           $('#total_mats').append(tr);
