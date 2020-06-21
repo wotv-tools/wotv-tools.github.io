@@ -679,14 +679,14 @@
               mats.awake[mat[0]].num += parseInt(mat[1]);
             } else {
               mats.awake[mat[0]] = {
-                num: 0
+                num: parseInt(mat[1])
               };
             }
             if (mats.total[mat[0]]) {
               mats.total[mat[0]].num += parseInt(mat[1]);
             } else {
               mats.total[mat[0]] = {
-                num: 0
+                num: parseInt(mat[1])
               };
             }
             mat_index++;
