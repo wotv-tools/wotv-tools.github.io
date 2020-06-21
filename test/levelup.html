@@ -445,6 +445,7 @@
               let num_flex_hammers = 0;
               let total_flex_amt = 0;
               let hammered_stats_copy = JSON.parse(JSON.stringify(hammered_stats));
+              let stats_left_after_hammer_copy = JSON.parse(JSON.stringify(stats_left_after_hammer));
               let amt;
               let flexible = false;
 
@@ -454,16 +455,14 @@
                     continue;
                   }
 
-                  let stat_flex_amt = 0;
-                  while (hammer.amt >= amt && stats_left_after_hammer[hammer.stat.value] >= (stat_flex_amt + amt)) {
-                    console.log(stat.label + ' hammer(s) can swap to ' + hammer.stat.label + ' hammer(s) for ' + (stat_flex_amt + amt) + ' stats.');
+                  if (hammer.amt >= amt && stats_left_after_hammer_copy[hammer.stat.value] >= amt)) {
+                    console.log(stat.label + ' hammer(s) can swap to ' + hammer.stat.label + ' hammer(s) for ' + amt + ' stats.');
+                    stats_left_after_hammer_copy[hammer.stat.value] -= amt;
                     num_flex_hammers++;
-                    stat_flex_amt += amt;
+                    total_flex_amt += amt;
                     flexible = true;
                     break;
                   }
-
-                  total_flex_amt += stat_flex_amt;
                 }
 
                 if (!flexible && stats_left_after_hammer[stat.value] == 0) {
