@@ -200,12 +200,13 @@ table th, table td {
 #materials .cell {
   width: 33%;
 }
-
+#materials .cell table {
+  width: 100%;
+}
 #materials .material {
   background-image: radial-gradient(closest-side, #FF0000, transparent);
   border-radius: 50%;
 }
-
 #materials .material.recipe {
   position: relative;
 }
