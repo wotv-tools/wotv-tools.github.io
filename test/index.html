@@ -490,7 +490,7 @@
         let buff_value_min = buff['val' + buff_index];
         let buff_value_max = buff['val' + buff_index + '1'];
         let buff_level = Math.min(level, growth.curve[0].lv);
-        let buff_value = Math.floor((level - 1) / (growth.curve[0].lv - 1) * (buff_value_max - buff_value_min) + buff_value_min);
+        let buff_value = Math.floor((buff_level - 1) / (growth.curve[0].lv - 1) * (buff_value_max - buff_value_min) + buff_value_min);
         switch (buff['type' + buff_index]) {
           // Elemental Killer
           case 119:
