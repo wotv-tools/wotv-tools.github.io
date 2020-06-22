@@ -162,9 +162,19 @@
       </div>
 
       <div id="materials" class="grid hidden">
-        <div class="cell">
+        <div id="recipe_mats" class="cell">
           <div class="cell_content">
-            <table id="total_mats"></table>
+            <table></table>
+          </div>
+        </div>
+        <div id="awake_mats" class="cell">
+          <div class="cell_content">
+            <table></table>
+          </div>
+        </div>
+        <div id="total_mats" class="cell">
+          <div class="cell_content">
+            <table></table>
           </div>
         </div>
       </div>
@@ -205,7 +215,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-17)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-21)</a> |
     <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -281,7 +291,7 @@
       }
 
       let item = artifactMap[itemKey];
-      let level = $('#level').val();
+      let level = parseInt($('#level').val());
       let item_sk = item['skl' + Math.ceil(level/10)];
 
       $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
@@ -319,18 +329,18 @@
           } else {
             if (skill.s_buffs) {
               skill.s_buffs.forEach((s_buff) => {
-                $('#skills').append(getBuffNames(s_buff));
+                $('#skills').append(getBuffNames(s_buff, skill.grow, level));
               });
             }
             if (skill.t_buffs) {
               skill.t_buffs.forEach((t_buff) => {
-                $('#skills').append(getBuffNames(t_buff));
+                $('#skills').append(getBuffNames(t_buff, skill.grow, level));
               });
             }
           }
         });
       }
-      
+
       if (!$.trim($('#skills').html())) {
           $('#skills').append('<div>-</div>');
       }
@@ -437,41 +447,31 @@
 
       // get recipe
       $('#materials').addClass('hidden');
-      $('#total_mats').empty();
+      $('#materials table').empty();
+      $('#materials #awake_mats').addClass('hidden');
       if (artifactRecipeMap[item.iname]) {
-        $('#total_mats').append('<tr><th colspan="2">Total Materials</th></tr>');
-        let mats_total = getTotalMaterials(item.iname, level);
-        for (mat in mats_total) {
-          let item = itemMap[mat];
-          let itemName = itemNameMap[mat];
-          let mat_url = mat_link + encodeURIComponent(itemName);
-          let img_url = '/img/items/' + mat + '.png';
-          let tr = $('<tr></tr>');
-          let td = $('<td></td>');
-
-          if (item.icon) {
-            img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
-            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
-          } else {
-            img_url = 'img/items/' + mat + '.png';
-            td.append('<div class="material"><img src="' + img_url + '"/></div>');
-          }
-          td.append('<div>' + mats_total[mat] + 'x</div>');
-          tr.append(td);
-          tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
-          $('#total_mats').append(tr);
-        }
-
+        $('#recipe_mats table').append('<tr><th colspan="2">Recipe Materials</th></tr>');
+        $('#total_mats table').append('<tr><th colspan="2">Total Materials</th></tr>');
+        let mats = getTotalMaterials(item.iname, level);
+        $('#recipe_mats table').append(getMaterialTableContents(mats.recipe));
+        $('#total_mats table').append(getMaterialTableContents(mats.total));
         $('#materials').removeClass('hidden');
+
+        if (Object.entries(mats.awake).length) {
+          $('#awake_mats table').append('<tr><th colspan="2">Awakening Materials</th></tr>');
+          $('#awake_mats table').append(getMaterialTableContents(mats.awake));
+          $('#awake_mats').removeClass('hidden');
+        }
       }
 
       $('#content').removeClass('hidden');
     }
 
-    function getBuffNames(_buff) {
+    function getBuffNames(_buff, grow, level) {
       let buffNamesEl = '';
       let buff = buffMap[_buff];
       let buff_text, killer_index_offset;
+      let growth = growthMap[grow];
 
       // NOT SURE WHY THESE ARE OFF
       switch (_buff) {
@@ -487,16 +487,19 @@
 
       let buff_index = 1;
       while (buff['type' + buff_index] && buff_index <= 9) {
+        let buff_value_min = buff['val' + buff_index];
+        let buff_value_max = buff['val' + buff_index + '1'];
+        let buff_value = Math.floor((level - 1) / (growth.curve[0].lv - 1) * (buff_value_max - buff_value_min) + buff_value_min);
         switch (buff['type' + buff_index]) {
           // Elemental Killer
           case 119:
             killer_index_offset = 83;
-            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff_value;
             break;
           // Species Killer
           case 120:
             killer_index_offset = 0;
-            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff['val' + buff_index];
+            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + killer_index_offset].value + ' ' + buff_value;
             break;
           // Condition Granted
           case 123:
@@ -505,7 +508,7 @@
             break;
           // Enchant
           case 134:
-            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0]].value + ' ' + buff['val' + buff_index];
+            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0]].value + ' ' + buff_value;
             break;
           default:
             buff_text = buffNameList[buff['type' + buff_index]].value;
@@ -516,7 +519,7 @@
                 break;
             }
 
-            buff_text += ' ' + buff['val' + buff_index]
+            buff_text += ' ' + buff_value;
             break;
         }
         buffNamesEl += '<div class="skill_desc">' + buff_text + '</div>';
@@ -634,51 +637,93 @@
       $('#seals_display').text('(' + seal_txt.join(', ') + ')');
     }
     function getTotalMaterials(iname, lv) {
-      let mat_list = {};
+      let mats = {
+        awake: {},
+        recipe: {},
+        total: {}
+      };
 
       artifactRecipeMap[iname].craft.forEach((material) => {
         switch (material.type) {
           case 0:
-            let itemName = itemNameMap[material.id];
-
-            if (!(material.id in mat_list)) {
-              mat_list[material.id] = 0;
+            if (mats.total[material.id]) {
+              mats.total[material.id].num += parseInt(material.num);
+            } else {
+              mats.total[material.id] = JSON.parse(JSON.stringify(material));
             }
-
-            mat_list[material.id] += material.num;
             break;
           case 1:
-            let item_mat_list = getTotalMaterials(material.id, material.lv);
+            let item_mats = getTotalMaterials(material.id, material.lv);
 
-            for (key in item_mat_list) {
-              if (!(key in mat_list)) {
-                mat_list[key] = 0;
+            for (let key in item_mats.total) {
+              if (mats.total[key]) {
+                mats.total[key].num += parseInt(item_mats.total[key].num);
+              } else {
+                mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
               }
-
-              mat_list[key] += item_mat_list[key];
             }
             break;
         }
+
+        mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
       });
 
       let artifactAwake = artifactAwakeMap[iname];
-      artifactAwake.awakes.forEach((awake) => {
+      artifactAwake.awakes.forEach((awake, i) => {
         if (awake.lv <= lv) {
-          for (key in awake) {
-            if (key.startsWith('mat')) {
-              let mat = awake[key].split(',');
+          let mat_index = 1;
+          while (awake['mat' + mat_index] && mat_index <= 9) {
+            let mat = awake['mat' + mat_index].split(',');
 
-              if (!(mat[0] in mat_list)) {
-                mat_list[mat[0]] = 0;
-              }
-
-              mat_list[mat[0]] += parseInt(mat[1]);
+            if (mats.awake[mat[0]]) {
+              mats.awake[mat[0]].num += parseInt(mat[1]);
+            } else {
+              mats.awake[mat[0]] = {
+                num: parseInt(mat[1])
+              };
             }
+            if (mats.total[mat[0]]) {
+              mats.total[mat[0]].num += parseInt(mat[1]);
+            } else {
+              mats.total[mat[0]] = {
+                num: parseInt(mat[1])
+              };
+            }
+            mat_index++;
           }
         }
       });
 
-      return mat_list;
+      return mats;
+    }
+    function getMaterialTableContents(materials) {
+      let tableContent = $('<tbody></tbody>');
+
+      for (let mat in materials) {
+        let item = materials[mat].type ? artifactMap[mat] : itemMap[mat];
+        let itemName = materials[mat].type ? artifactNameMap[mat] : itemNameMap[mat];
+        let mat_url = mat_link + encodeURIComponent(itemName);
+        let tr = $('<tr></tr>');
+        let td = $('<td></td>');
+
+        if (item.icon) {
+          let img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+          if (materials[mat].type) {
+            td.append('<div class="material"><img src="' + img_url + '"/></div>');
+          } else {
+            td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
+          }
+        } else {
+          let img_url = 'img/items/' + mat + '.png';
+          td.append('<div class="material"><img src="' + img_url + '"/></div>');
+        }
+        td.append('<div>' + materials[mat].num + 'x</div>');
+        tr.append(td);
+        tr.append('<td><a target="_blank" href="' + mat_url + '">' + itemName + '</a></td>');
+        tableContent.append(tr);
+      }
+
+      return tableContent.html();
     }
     function save(el) {
       if ($('#saved .selectable').length >= 10) {
@@ -763,6 +808,13 @@
     }
 
     let promiseList = [];
+    let loadJP = false;
+    location.search.substr(1).split('&').forEach((param) => {
+      let params = param.split('=');
+      if (params[0] == 'jp') {
+        loadJP = true;
+      }
+    });
 
     let typeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
@@ -773,7 +825,7 @@
           typeNameMap[info.key] = info.value;
         });
         // 20200422_4c9ea1e3
-        $.getJSON('data/ArtifactRandLot.json', (data) => {
+        $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRandLot.json', (data) => {
           data.items.forEach((item) => {
             typeMap[item.iname] = [];
             if (item.lot[0].grow1) {
@@ -804,7 +856,7 @@
     let growthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('data/Grow.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Grow.json', (data) => {
         data.items.forEach((item) => {
           growthMap[item.type] = {
             curve: item.curve,
@@ -819,7 +871,7 @@
     let buffMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON('data/Buff.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Buff.json', (data) => {
         data.items.forEach((item) => {
           buffMap[item.iname] = item;
         });
@@ -905,7 +957,7 @@
     let skillMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON('data/Skill.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Skill.json', (data) => {
         data.items.forEach((item) => {
           skillMap[item.iname] = item;
         });
@@ -929,6 +981,8 @@
     }));
 
     let artifactNameMap = {};
+    let artifactMap = {};
+    let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
       $.getJSON('en/ArtifactName.json', (data) => {
@@ -936,14 +990,44 @@
           artifactNameMap[info.key] = info.value;
         });
 
-        resolve();
+        $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
+          data.items.forEach((item) => {
+            if (item.type >= 0) {
+              if (artifactNameMap[item.iname]) {
+                artifactMap[item.iname] = item;
+                artifactMap[item.iname].name = artifactNameMap[item.iname];
+
+                let artifactListEntry = {
+                  label: artifactNameMap[item.iname],
+                  value : item.iname
+                };
+
+                item.cat.forEach((cat) => {
+                  if (artifactListByCat[cat] == null) {
+                    artifactListByCat[cat] = [];
+                  }
+
+                  artifactListByCat[cat].push(artifactListEntry);
+                });
+              }
+            }
+          });
+
+          artifactListByCat.forEach((artifactList, index, list) => {
+            artifactList.sort((a, b) => {
+              return a.label > b.label ? 1 : -1;
+            });
+          });
+
+          resolve();
+        });
       });
     }));
 
     let sealGrowthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('data/ArtifactGrowItem.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactGrowItem.json', (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up[0].eff_dst];
           sealGrowthMap[stat.value] = item.grow_up[0].val;
@@ -969,48 +1053,11 @@
       });
     }));
 
-    let artifactMap = {};
-    let artifactListByCat = [];
-    promiseList.push(new Promise((resolve, reject) => {
-      // 	20200422_4c9ea1e3
-      $.getJSON('data/Artifact.json', (data) => {
-        data.items.forEach((item) => {
-          if (item.type >= 0) {
-            artifactMap[item.iname] = item;
-            artifactMap[item.iname].name = artifactNameMap[item.iname];
-
-            if (artifactNameMap[item.iname]) {
-              let artifactListEntry = {
-                label: artifactNameMap[item.iname],
-                value : item.iname
-              };
-
-              item.cat.forEach((cat) => {
-                if (artifactListByCat[cat] == null) {
-                  artifactListByCat[cat] = [];
-                }
-
-                artifactListByCat[cat].push(artifactListEntry);
-              });
-            }
-          }
-        });
-
-        artifactListByCat.forEach((artifactList, index, list) => {
-          artifactList.sort((a, b) => {
-            return a.label > b.label ? 1 : -1;
-          });
-        });
-
-        resolve();
-      });
-    }));
-
     // RECIPES
     let artifactRecipeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON('data/ArtifactRecipe.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRecipe.json', (data) => {
         data.items.forEach((item) => {
           artifactRecipeMap[item.iname] = item;
         });
@@ -1022,7 +1069,7 @@
     let artifactAwakeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON('data/ArtifactAwake.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactAwake.json', (data) => {
         data.items.forEach((item) => {
           artifactAwakeMap[item.iname] = item;
         });
@@ -1034,7 +1081,7 @@
     let itemMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200506_199950f7
-      $.getJSON('data/Item.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Item.json', (data) => {
         data.items.forEach((item) => {
           itemMap[item.iname] = item;
         });
