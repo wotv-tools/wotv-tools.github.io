@@ -48,12 +48,11 @@
     <div id="inputs">
       <select id="category" onchange="onCategoryChange()">
         <option disabled selected>-- Select an category --</option>
+        <optgroup id="category-weapon" label="Weapon"></optgroup>
+        <optgroup id="category-armor" label="Armor"></optgroup>
+        <optgroup id="category-accessory" label="Accessory"></optgroup>
       </select>
-      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
-        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
-        <optgroup id="artifacts-armor" label="Armor"></optgroup>
-        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
-      </select>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
     </div>
     <div id="start_tip" class="tips">
@@ -1146,6 +1145,7 @@
           case 'HAND':
             if (artifactListByCat[i]) {
               categories.push({
+                type: 'weapon',
                 index: i,
                 label: 'Fist'
               });
@@ -1153,7 +1153,9 @@
             break;
           default:
             if (artifactListByCat[i]) {
+              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
               categories.push({
+                type: type,
                 index: i,
                 label: cat.value
               });
@@ -1167,7 +1169,7 @@
       });
 
       categories.forEach((category) => {
-        $('#category').append('<option value="' + category.index + '">' + category.label + '</option>');
+        $('#category-' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
       if (window.location.hash) {
