@@ -48,6 +48,9 @@
     <div id="inputs">
       <select id="category" onchange="onCategoryChange()">
         <option disabled selected>-- Select an category --</option>
+        <optgroup id="category-weapon" label="Weapon"></optgroup>
+        <optgroup id="category-armor" label="Armor"></optgroup>
+        <optgroup id="category-accessory" label="Accessory"></optgroup>
       </select>
       <select id="artifacts" class="hidden" onchange="onArtifactChange()">
         <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
@@ -1153,7 +1156,7 @@
             break;
           default:
             if (artifactListByCat[i]) {
-              let type = cat < 17 ? 'weapon' : (cat < 22 ? 'armor' : 'other');
+              let type = cat < 17 ? 'weapon' : (cat < 22 ? 'armor' : (cat == 22 ? 'accessory' : ''));
               categories.push({
                 cat: type,
                 index: i,
@@ -1169,7 +1172,7 @@
       });
 
       categories.forEach((category) => {
-        $('#category #category__' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
+        $('#category-' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
       if (window.location.hash) {
