@@ -1153,7 +1153,9 @@
             break;
           default:
             if (artifactListByCat[i]) {
+              let type = cat < 17 ? 'weapon' : (cat < 22 ? 'armor' : 'other');
               categories.push({
+                cat: type,
                 index: i,
                 label: cat.value
               });
@@ -1167,7 +1169,7 @@
       });
 
       categories.forEach((category) => {
-        $('#category').append('<option value="' + category.index + '">' + category.label + '</option>');
+        $('#category #category__' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
       if (window.location.hash) {
