@@ -1145,7 +1145,7 @@
           case 'HAND':
             if (artifactListByCat[i]) {
               categories.push({
-                cat: 'weapon',
+                type: 'weapon',
                 index: i,
                 label: 'Fist'
               });
@@ -1153,9 +1153,9 @@
             break;
           default:
             if (artifactListByCat[i]) {
-              let type = cat < 17 ? 'weapon' : (cat < 22 ? 'armor' : (cat == 22 ? 'accessory' : ''));
+              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
               categories.push({
-                cat: type,
+                type: type,
                 index: i,
                 label: cat.value
               });
