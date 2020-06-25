@@ -708,7 +708,11 @@
         let td = $('<td></td>');
 
         if (item.icon) {
-          let img_url = 'img/equipment/' + artifactMap[item.icon].asset + '.png';
+          item = artifactMap[item.icon];
+        }
+
+        if (item.asset) {
+          let img_url = 'img/equipment/' + item.asset + '.png';
           if (materials[mat].type) {
             td.append('<div class="material"><img src="' + img_url + '"/></div>');
           } else {
