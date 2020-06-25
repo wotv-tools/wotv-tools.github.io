@@ -665,7 +665,11 @@
             break;
         }
 
-        mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
+        if (mats.recipe[material.id]) {
+          mats.recipe[material.id].num += material.num;
+        } else {
+          mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
+        }
       });
 
       let artifactAwake = artifactAwakeMap[iname];
