@@ -1129,6 +1129,7 @@
     }
 
     Promise.all(promiseList).then(() => {
+      let categories = [];
       artifactCategoryList.forEach((cat, i) => {
         switch(cat.key) {
           case 'NONE':
@@ -1140,10 +1141,21 @@
             break;
           default:
             if (artifactListByCat[i]) {
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              categories.push({
+                index: i,
+                label: cat.value
+              });
             }
             break;
         }
+      });
+
+      categories.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      });
+
+      categories.forEach((category) => {
+        $('#category').append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
       if (window.location.hash) {
