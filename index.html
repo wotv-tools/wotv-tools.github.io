@@ -215,7 +215,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-21)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-25)</a> |
     <a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Report Issues</a> |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -1129,6 +1129,7 @@
     }
 
     Promise.all(promiseList).then(() => {
+      let categories = [];
       artifactCategoryList.forEach((cat, i) => {
         switch(cat.key) {
           case 'NONE':
@@ -1138,12 +1139,31 @@
           case 'THROWING':
           case 'SEPARATOR':
             break;
+          case 'HAND':
+            if (artifactListByCat[i]) {
+              categories.push({
+                index: i,
+                label: 'Fist'
+              });
+            }
+            break;
           default:
             if (artifactListByCat[i]) {
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              categories.push({
+                index: i,
+                label: cat.value
+              });
             }
             break;
         }
+      });
+
+      categories.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      });
+
+      categories.forEach((category) => {
+        $('#category').append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
       if (window.location.hash) {
