@@ -1139,6 +1139,14 @@
           case 'THROWING':
           case 'SEPARATOR':
             break;
+          case 'HAND':
+            if (artifactListByCat[i]) {
+              categories.push({
+                index: i,
+                label: 'Fist'
+              });
+            }
+            break;
           default:
             if (artifactListByCat[i]) {
               categories.push({
