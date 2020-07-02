@@ -446,19 +446,20 @@
 
       // get recipe
       $('#materials').addClass('hidden');
+      $('#materials .cell').addClass('hidden');
       $('#materials table').empty();
-      $('#materials #awake_mats').addClass('hidden');
       let mats = getTotalMaterials(item.iname, level);
-
       if (Object.entries(mats.recipe).length) {
         $('#recipe_mats table').append('<tr><th colspan="2">Recipe Materials</th></tr>');
         $('#recipe_mats table').append(getMaterialTableContents(mats.recipe));
+        $('#recipe_mats').removeClass('hidden');
         $('#materials').removeClass('hidden');
       }
 
       if (Object.entries(mats.total).length) {
         $('#total_mats table').append('<tr><th colspan="2">Total Materials</th></tr>');
         $('#total_mats table').append(getMaterialTableContents(mats.total));
+        $('#total_mats').removeClass('hidden');
         $('#materials').removeClass('hidden');
       }
       if (Object.entries(mats.awake).length) {
@@ -1016,7 +1017,7 @@
             if (item.iname.match(/AF_\w+_LW_\w+_2/).length) {
               continue;
             }
-            
+
             if (item.type >= 0) {
               if (artifactNameMap[item.iname]) {
                 artifactMap[item.iname] = item;
