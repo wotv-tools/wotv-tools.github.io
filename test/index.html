@@ -647,60 +647,62 @@
         total: {}
       };
 
-      artifactRecipeMap[iname].craft.forEach((material) => {
-        switch (material.type) {
-          case 0:
-            if (mats.total[material.id]) {
-              mats.total[material.id].num += parseInt(material.num);
-            } else {
-              mats.total[material.id] = JSON.parse(JSON.stringify(material));
-            }
-            break;
-          case 1:
-            let item_mats = getTotalMaterials(material.id, material.lv);
-
-            for (let key in item_mats.total) {
-              if (mats.total[key]) {
-                mats.total[key].num += parseInt(item_mats.total[key].num);
+      if (artifactRecipeMap[iname]) {
+        artifactRecipeMap[iname].craft.forEach((material) => {
+          switch (material.type) {
+            case 0:
+                mats.total[material.id].num += parseInt(material.num);
               } else {
-                mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
+                mats.total[material.id] = JSON.parse(JSON.stringify(material));
               }
-            }
-            break;
-        }
+              break;
+            case 1:
+              let item_mats = getTotalMaterials(material.id, material.lv);
 
-        if (mats.recipe[material.id]) {
-          mats.recipe[material.id].num += material.num;
-        } else {
-          mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
-        }
-      });
-
-      let artifactAwake = artifactAwakeMap[iname];
-      artifactAwake.awakes.forEach((awake, i) => {
-        if (awake.lv <= lv) {
-          let mat_index = 1;
-          while (awake['mat' + mat_index] && mat_index <= 9) {
-            let mat = awake['mat' + mat_index].split(',');
-
-            if (mats.awake[mat[0]]) {
-              mats.awake[mat[0]].num += parseInt(mat[1]);
-            } else {
-              mats.awake[mat[0]] = {
-                num: parseInt(mat[1])
-              };
-            }
-            if (mats.total[mat[0]]) {
-              mats.total[mat[0]].num += parseInt(mat[1]);
-            } else {
-              mats.total[mat[0]] = {
-                num: parseInt(mat[1])
-              };
-            }
-            mat_index++;
+              for (let key in item_mats.total) {
+                if (mats.total[key]) {
+                  mats.total[key].num += parseInt(item_mats.total[key].num);
+                } else {
+                  mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
+                }
+              }
+              break;
           }
-        }
-      });
+
+          if (mats.recipe[material.id]) {
+            mats.recipe[material.id].num += material.num;
+          } else {
+            mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
+          }
+        });
+      }
+
+      if (artifactAwakeMap[iname]) {
+        artifactAwakeMap[iname].awakes.forEach((awake, i) => {
+          if (awake.lv <= lv) {
+            let mat_index = 1;
+            while (awake['mat' + mat_index] && mat_index <= 9) {
+              let mat = awake['mat' + mat_index].split(',');
+
+              if (mats.awake[mat[0]]) {
+                mats.awake[mat[0]].num += parseInt(mat[1]);
+              } else {
+                mats.awake[mat[0]] = {
+                  num: parseInt(mat[1])
+                };
+              }
+              if (mats.total[mat[0]]) {
+                mats.total[mat[0]].num += parseInt(mat[1]);
+              } else {
+                mats.total[mat[0]] = {
+                  num: parseInt(mat[1])
+                };
+              }
+              mat_index++;
+            }
+          }
+        });
+      }
 
       return mats;
     }
