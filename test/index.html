@@ -1012,6 +1012,11 @@
 
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
           data.items.forEach((item) => {
+            // blacklisted items
+            if (item.iname.match(/AF_\w+_LW_\w+_2/).length) {
+              continue;
+            }
+            
             if (item.type >= 0) {
               if (artifactNameMap[item.iname]) {
                 artifactMap[item.iname] = item;
