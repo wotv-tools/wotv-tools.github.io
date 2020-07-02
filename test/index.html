@@ -589,13 +589,16 @@
       $('#level').change();
 
       $('#item_image').removeClass().addClass('equipment');
-      if (item.cat[0] > 0 && item.cat[0] < 17) {
-        $('#item_image').addClass('weapon');
-      } else if (item.cat[0] < 22) {
-        $('#item_image').addClass('armor');
-      } else if (item.cat[0] == 22) {
-        $('#item_image').addClass('accessory');
-      }
+      switch (item.type) {
+        case 0:
+          $('#item_image').addClass('weapon');
+          break;
+        case 1:
+          $('#item_image').addClass('armor');
+          break;
+        case 2:
+          $('#item_image').addClass('accessory');
+          break;
     }
 
     let seals = {}
@@ -1000,7 +1003,7 @@
 
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
           data.items.forEach((item) => {
-            if (item.type > 0) {
+            if (item.type >= 0) {
               if (artifactNameMap[item.iname]) {
                 artifactMap[item.iname] = item;
                 artifactMap[item.iname].name = artifactNameMap[item.iname];
