@@ -1000,7 +1000,7 @@
 
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
           data.items.forEach((item) => {
-            if (item.type >= 0) {
+            if (item.type > 0) {
               if (artifactNameMap[item.iname]) {
                 artifactMap[item.iname] = item;
                 artifactMap[item.iname].name = artifactNameMap[item.iname];
