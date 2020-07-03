@@ -214,7 +214,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-06-30)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-07-02)</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -446,21 +446,27 @@
 
       // get recipe
       $('#materials').addClass('hidden');
+      $('#materials .cell').addClass('hidden');
       $('#materials table').empty();
-      $('#materials #awake_mats').addClass('hidden');
-      if (artifactRecipeMap[item.iname]) {
+      let mats = getTotalMaterials(item.iname, level);
+      if (Object.entries(mats.recipe).length) {
         $('#recipe_mats table').append('<tr><th colspan="2">Recipe Materials</th></tr>');
-        $('#total_mats table').append('<tr><th colspan="2">Total Materials</th></tr>');
-        let mats = getTotalMaterials(item.iname, level);
         $('#recipe_mats table').append(getMaterialTableContents(mats.recipe));
-        $('#total_mats table').append(getMaterialTableContents(mats.total));
+        $('#recipe_mats').removeClass('hidden');
         $('#materials').removeClass('hidden');
+      }
 
-        if (Object.entries(mats.awake).length) {
-          $('#awake_mats table').append('<tr><th colspan="2">Awakening Materials</th></tr>');
-          $('#awake_mats table').append(getMaterialTableContents(mats.awake));
-          $('#awake_mats').removeClass('hidden');
-        }
+      if (Object.entries(mats.total).length) {
+        $('#total_mats table').append('<tr><th colspan="2">Total Materials</th></tr>');
+        $('#total_mats table').append(getMaterialTableContents(mats.total));
+        $('#total_mats').removeClass('hidden');
+        $('#materials').removeClass('hidden');
+      }
+      if (Object.entries(mats.awake).length) {
+        $('#awake_mats table').append('<tr><th colspan="2">Awakening Materials</th></tr>');
+        $('#awake_mats table').append(getMaterialTableContents(mats.awake));
+        $('#awake_mats').removeClass('hidden');
+        $('#materials').removeClass('hidden');
       }
 
       $('#content').removeClass('hidden');
@@ -589,12 +595,16 @@
       $('#level').change();
 
       $('#item_image').removeClass().addClass('equipment');
-      if (item.cat[0] > 0 && item.cat[0] < 17) {
-        $('#item_image').addClass('weapon');
-      } else if (item.cat[0] < 22) {
-        $('#item_image').addClass('armor');
-      } else if (item.cat[0] == 22) {
-        $('#item_image').addClass('accessory');
+      switch (item.type) {
+        case 0:
+          $('#item_image').addClass('weapon');
+          break;
+        case 1:
+          $('#item_image').addClass('armor');
+          break;
+        case 2:
+          $('#item_image').addClass('accessory');
+          break;
       }
     }
 
@@ -643,60 +653,63 @@
         total: {}
       };
 
-      artifactRecipeMap[iname].craft.forEach((material) => {
-        switch (material.type) {
-          case 0:
-            if (mats.total[material.id]) {
-              mats.total[material.id].num += parseInt(material.num);
-            } else {
-              mats.total[material.id] = JSON.parse(JSON.stringify(material));
-            }
-            break;
-          case 1:
-            let item_mats = getTotalMaterials(material.id, material.lv);
-
-            for (let key in item_mats.total) {
-              if (mats.total[key]) {
-                mats.total[key].num += parseInt(item_mats.total[key].num);
+      if (artifactRecipeMap[iname]) {
+        artifactRecipeMap[iname].craft.forEach((material) => {
+          switch (material.type) {
+            case 0:
+              if (mats.total[material.id]) {
+                mats.total[material.id].num += parseInt(material.num);
               } else {
-                mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
+                mats.total[material.id] = JSON.parse(JSON.stringify(material));
               }
-            }
-            break;
-        }
+              break;
+            case 1:
+              let item_mats = getTotalMaterials(material.id, material.lv);
 
-        if (mats.recipe[material.id]) {
-          mats.recipe[material.id].num += material.num;
-        } else {
-          mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
-        }
-      });
-
-      let artifactAwake = artifactAwakeMap[iname];
-      artifactAwake.awakes.forEach((awake, i) => {
-        if (awake.lv <= lv) {
-          let mat_index = 1;
-          while (awake['mat' + mat_index] && mat_index <= 9) {
-            let mat = awake['mat' + mat_index].split(',');
-
-            if (mats.awake[mat[0]]) {
-              mats.awake[mat[0]].num += parseInt(mat[1]);
-            } else {
-              mats.awake[mat[0]] = {
-                num: parseInt(mat[1])
-              };
-            }
-            if (mats.total[mat[0]]) {
-              mats.total[mat[0]].num += parseInt(mat[1]);
-            } else {
-              mats.total[mat[0]] = {
-                num: parseInt(mat[1])
-              };
-            }
-            mat_index++;
+              for (let key in item_mats.total) {
+                if (mats.total[key]) {
+                  mats.total[key].num += parseInt(item_mats.total[key].num);
+                } else {
+                  mats.total[key] = JSON.parse(JSON.stringify(item_mats.total[key]));
+                }
+              }
+              break;
           }
-        }
-      });
+
+          if (mats.recipe[material.id]) {
+            mats.recipe[material.id].num += material.num;
+          } else {
+            mats.recipe[material.id] = JSON.parse(JSON.stringify(material));
+          }
+        });
+      }
+
+      if (artifactAwakeMap[iname]) {
+        artifactAwakeMap[iname].awakes.forEach((awake, i) => {
+          if (awake.lv <= lv) {
+            let mat_index = 1;
+            while (awake['mat' + mat_index] && mat_index <= 9) {
+              let mat = awake['mat' + mat_index].split(',');
+
+              if (mats.awake[mat[0]]) {
+                mats.awake[mat[0]].num += parseInt(mat[1]);
+              } else {
+                mats.awake[mat[0]] = {
+                  num: parseInt(mat[1])
+                };
+              }
+              if (mats.total[mat[0]]) {
+                mats.total[mat[0]].num += parseInt(mat[1]);
+              } else {
+                mats.total[mat[0]] = {
+                  num: parseInt(mat[1])
+                };
+              }
+              mat_index++;
+            }
+          }
+        });
+      }
 
       return mats;
     }
@@ -1000,6 +1013,11 @@
 
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
           data.items.forEach((item) => {
+            // blacklisted items
+            if (item.iname.match(/AF_\w+_LW_\w+_2/)) {
+              return;
+            }
+
             if (item.type >= 0) {
               if (artifactNameMap[item.iname]) {
                 artifactMap[item.iname] = item;
