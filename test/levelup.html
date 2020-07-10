@@ -428,7 +428,7 @@
             hammered_min_left = Math.min(hammered_min_left, stats_left_after_hammer[best_hammer.stat.value]);
           }
         }
-        addDataDump('Best hammer usage:');
+        addDataDump('Best hammer usage (calculated by most stats removed using least hammers):');
         addDataDump(hammers_used);
 
         addDataDump('Stats hammered: ');
@@ -440,11 +440,11 @@
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
         let tar_level = max_level - stats_left_after_hammer.total + hammered_min_left;
-        addDataDump('Initial target level: ' + tar_level);
+        addDataDump('Initial target level (max level - stats left after hammer): ' + tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
-          addDataDump('Finding flexible/must hammers...');
+          addDataDump('Finding flexible/must hammers (hammers that do NOT need to used right now)...');
           let best_flex_amt = 0;
           let must_hammer = false;
           for (let stat of stats) {
@@ -490,11 +490,11 @@
           addDataDump('Best flexible stat amount: ' + best_flex_amt);
 
           tar_level += best_flex_amt;
-          addDataDump('New target level: ' + tar_level);
+          addDataDump('New target level (adjusted by best flexible stat amount): ' + tar_level);
 
           // need to use hammers
           if (tar_level == level) {
-            addDataDump('No change. Use hammers now.');
+            addDataDump('Already at target level. Use hammers now.');
             for (let stat of stats) {
               if (hammers_used[stat.value]) {
                 $('#details').text('Leveling further COULD result in missing stats. Hammering now should allow you to achieve max stats.')
@@ -503,7 +503,7 @@
             }
           }
 
-          addDataDump('Calculating how many perfect level ups are available for stats left over after best hammers...');
+          addDataDump('Calculating how many perfect level ups (max roll on ALL stats) are needed for stats left over after best hammers...');
           let perf_level_ups = 0;
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
           while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
@@ -519,7 +519,7 @@
           }
           let perf_tar_level = level + perf_level_ups;
           addDataDump('Perfect target level: ' + perf_tar_level);
-
+          addDataDump('Return lower target level between target level and perfect target level');
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
           let perf_level_ups = 0;
@@ -535,7 +535,7 @@
 
             perf_level_ups++;
           }
-          addDataDump('Perfect level ups to Pity Range: ' + perf_level_ups);
+          addDataDump('Perfect level ups needed before we can max stats using pity rolls only: ' + perf_level_ups);
 
           return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
         }
