@@ -88,3 +88,7 @@ table th, table td {
   background-image: url('img/units/LAPSstrn.png');
   left: -25px;
 }
+
+.speech_bubble.speech_ramada::after {
+  background-image: url('img/units/LAPSramd.png');
+}
