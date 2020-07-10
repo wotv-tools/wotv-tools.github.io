@@ -104,7 +104,7 @@
               <div id="details"></div>
             </div>
           </div>
-          <div id="data_dump"></div>
+          <div id="data_dump" style="size:"></div>
         </div>
       </div>
     </div>
@@ -321,6 +321,9 @@
 
     function getAdvice() {
       let text = calcAdvice();
+
+      addDataDump(text);
+      addDataDump('--------------------');
 
       $('#next_step .speech_bubble #advice_text').text(text);
       $('#next_step').removeClass('hidden');
