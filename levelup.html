@@ -48,19 +48,18 @@
     <div id="start_tip" class="tips">
       <div class="speech_bubble speech_ramada">
         <div>DISCLAIMER: This tool is still a WORK IN PROGRESS [BETA] and may give bad advice! Use at your own risk.</div>
-        <div>Welcome! This tool will TRY to calculate if you can max all the stats on your item. </div>
+        <div>Welcome! This tool will TRY to calculate if you can max all the stats on your item. This tool does NOT tell you when to use seals. Generally, seals should be used on your most desired stats (up to 3) for as many level ups as you want to spend seals on.</div>
       </div>
     </div>
 
     <div id="inputs">
       <select id="category" onchange="onCategoryChange()">
         <option disabled selected>-- Select an category --</option>
+        <optgroup id="category-weapon" label="Weapon"></optgroup>
+        <optgroup id="category-armor" label="Armor"></optgroup>
+        <optgroup id="category-accessory" label="Accessory"></optgroup>
       </select>
-      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
-        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
-        <optgroup id="artifacts-armor" label="Armor"></optgroup>
-        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
-      </select>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
       <select id="types" class="hidden" onchange="onTypeChange()"></select>
       <button id="advice" class="hidden" onclick="getAdvice()">Check Advice</button>
     </div>
@@ -104,7 +103,10 @@
               <div id="details"></div>
             </div>
           </div>
-          <div id="data_dump" style="size:"></div>
+          <div>
+            <p>DATA DUMP (How the stars were read)</p>
+            <div id="data_dump" style="size:"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -326,6 +328,7 @@
       addDataDump('--------------------');
       addDataDump(text);
       addDataDump('--------------------');
+      addDataDump('--------------------');
 
       $('#next_step .speech_bubble #advice_text').text(text);
       $('#next_step').removeClass('hidden');
@@ -386,7 +389,7 @@
       } else if (stats_left.total <= levels_left) {
         // this means we are guaranteed max stats by purely pity rolls
         // note: this also means we can do better and may not need to level all the way to 50
-        return 'You\'re on track to max stats! Just level this item up until you have max stats. Seals are not required.';
+        return 'You\'re on track to max stats! Just level this item up until you have max stats.';
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
         let stats_left_after_hammer = JSON.parse(JSON.stringify(stats_left));
@@ -500,7 +503,7 @@
             for (let stat of stats) {
               if (hammers_used[stat.value]) {
                 $('#details').text('Leveling further COULD result in missing stats. Hammering now should allow you to achieve max stats.')
-                return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' Hammers.';
+                return 'Use ' + hammers_used[stat.value] + ' ' + stat.label + ' Hammers. Then update your stats and ask for my advice, again.';
               }
             }
           }
@@ -522,8 +525,8 @@
           let perf_tar_level = level + perf_level_ups;
           addDataDump('Perfect target level: ' + perf_tar_level);
           addDataDump('Return lower target level between target level and perfect target level');
-          $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering]')
-          return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
+          $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
+          return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '. Then update your stats and ask for my advice, again.';
         } else {
           let perf_level_ups = 0;
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
@@ -541,7 +544,7 @@
           addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
 
           $('#details').text('This is the # of perfect level ups needed before using hammers.')
-          return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
+          return 'Level up the item until Level ' + (level + perf_level_ups) + '. Then update your stats and ask for my advice, again.';
         }
       }
     }
@@ -690,6 +693,7 @@
     }));
 
     Promise.all(promiseList).then(() => {
+      let categories = [];
       artifactCategoryList.forEach((cat, i) => {
         switch(cat.key) {
           case 'NONE':
@@ -699,15 +703,35 @@
           case 'THROWING':
           case 'SEPARATOR':
             break;
+          case 'HAND':
+            if (artifactListByCat[i]) {
+              categories.push({
+                type: 'weapon',
+                index: i,
+                label: 'Fist'
+              });
+            }
+            break;
           default:
             if (artifactListByCat[i]) {
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
+              categories.push({
+                type: type,
+                index: i,
+                label: cat.value
+              });
             }
             break;
         }
       });
 
-      $('#category').focus();
+      categories.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      });
+
+      categories.forEach((category) => {
+        $('#category-' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
+      });
     });
   </script>
 </body>
