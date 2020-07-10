@@ -544,7 +544,7 @@
 
     function addDataDump(text) {
       console.log(text);
-      $('#data_dump div:first-child').append('<div>' + JSON.stringify(text) + '</div>');
+      $('#data_dump > div:first-child').append('<div>' + JSON.stringify(text) + '</div>');
     }
 
     let promiseList = [];
