@@ -322,7 +322,7 @@
 
     function getAdvice() {
       let text = calcAdvice();
-      
+
       addDataDump('--------------------');
       addDataDump(text);
       addDataDump('--------------------');
@@ -386,7 +386,7 @@
       } else if (stats_left.total <= levels_left) {
         // this means we are guaranteed max stats by purely pity rolls
         // note: this also means we can do better and may not need to level all the way to 50
-        return 'You\'re on track to max stats! Just level this item up normally until you have max stats.';
+        return 'You\'re on track to max stats! Just level this item up until you have max stats. Seals are not required.';
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
         let stats_left_after_hammer = JSON.parse(JSON.stringify(stats_left));
@@ -522,6 +522,7 @@
           let perf_tar_level = level + perf_level_ups;
           addDataDump('Perfect target level: ' + perf_tar_level);
           addDataDump('Return lower target level between target level and perfect target level');
+          $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering]')
           return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '.';
         } else {
           let perf_level_ups = 0;
@@ -537,8 +538,9 @@
 
             perf_level_ups++;
           }
-          addDataDump('Perfect level ups needed before we can max stats using pity rolls only: ' + perf_level_ups);
+          addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
 
+          $('#details').text('This is the # of perfect level ups needed before using hammers.')
           return 'Level up the item until Level ' + (level + perf_level_ups) + '.';
         }
       }
