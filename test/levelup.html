@@ -55,14 +55,12 @@
     <div id="inputs">
       <select id="category" onchange="onCategoryChange()">
         <option disabled selected>-- Select an category --</option>
+        <optgroup id="category-weapon" label="Weapon"></optgroup>
+        <optgroup id="category-armor" label="Armor"></optgroup>
+        <optgroup id="category-accessory" label="Accessory"></optgroup>
       </select>
-      <select id="artifacts" class="hidden" onchange="onArtifactChange()">
-        <optgroup id="artifacts-weapon" label="Weapon"></optgroup>
-        <optgroup id="artifacts-armor" label="Armor"></optgroup>
-        <optgroup id="artifacts-accessory" label="Accessory"></optgroup>
-      </select>
-      <select id="types" class="hidden" onchange="onTypeChange()"></select>
-      <button id="advice" class="hidden" onclick="getAdvice()">Check Advice</button>
+      <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
+      <select id="level" class="hidden" onchange="onLevelChange()"></select>
     </div>
 
     <div id="content" class="hidden">
@@ -690,6 +688,7 @@
     }));
 
     Promise.all(promiseList).then(() => {
+      let categories = [];
       artifactCategoryList.forEach((cat, i) => {
         switch(cat.key) {
           case 'NONE':
@@ -699,15 +698,35 @@
           case 'THROWING':
           case 'SEPARATOR':
             break;
+          case 'HAND':
+            if (artifactListByCat[i]) {
+              categories.push({
+                type: 'weapon',
+                index: i,
+                label: 'Fist'
+              });
+            }
+            break;
           default:
             if (artifactListByCat[i]) {
-              $('#category').append('<option value="' + i + '">' + cat.value + '</option>');
+              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
+              categories.push({
+                type: type,
+                index: i,
+                label: cat.value
+              });
             }
             break;
         }
       });
 
-      $('#category').focus();
+      categories.sort((a, b) => {
+        return a.label > b.label ? 1 : -1;
+      });
+
+      categories.forEach((category) => {
+        $('#category-' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
+      });
     });
   </script>
 </body>
