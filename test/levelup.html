@@ -47,8 +47,8 @@
   <div id="main_content">
     <div id="start_tip" class="tips">
       <div class="speech_bubble speech_ramada">
-        <p>DISCLAIMER: This tool is still a Work In Progress and may give bad advice! Use at your own risk.</p>
-        <p>Welcome! This tool will TRY to calculate if you can max all the stats on your item. </p>
+        <div>DISCLAIMER: This tool is still a Work In Progress and may give bad advice! Use at your own risk.</div>
+        <div>Welcome! This tool will TRY to calculate if you can max all the stats on your item. </div>
       </div>
     </div>
 
@@ -541,7 +541,7 @@
 
     function addDataDump(text) {
       console.log(text);
-      $('#data_dump div:first-child').append('<p>' + JSON.stringify(text) + '</p>');
+      $('#data_dump div:first-child').append('<div>' + JSON.stringify(text) + '</div>');
     }
 
     let promiseList = [];
