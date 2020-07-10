@@ -60,9 +60,10 @@
         <optgroup id="category-accessory" label="Accessory"></optgroup>
       </select>
       <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
-      <select id="level" class="hidden" onchange="onLevelChange()"></select>
+      <select id="types" class="hidden" onchange="onTypeChange()"></select>
+      <button id="advice" class="hidden" onclick="getAdvice()">Check Advice</button>
     </div>
-
+    
     <div id="content" class="hidden">
       <div class="grid">
         <div class="cell" id="grow">
