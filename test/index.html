@@ -292,7 +292,7 @@
         level: $('#level').val()
       };
 
-      $('#copyText').text(window.location + '#' + btoa(JSON.stringify(hash)));
+      $('#copyText').text(window.location.href.replace(window.location.hash, "") + '#' + btoa(JSON.stringify(hash)));
       $('#copyText').select();
       document.execCommand('copy');
       alert('Copied Item Link to clipboard!');
