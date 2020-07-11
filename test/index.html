@@ -54,6 +54,8 @@
       </select>
       <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
+      <button id="itemLink" onclick="copyItemLink()" class="hidden">Copy Item Link</button>
+      <textarea id="copyText"></textarea>
     </div>
     <div id="start_tip" class="tips">
       <div class="speech_bubble">Welcome! This tool calculates the average stat gain for equipment. To get started, choose an equipment from the inputs above! If you wish to learn from my brother, click on the Awakening Prism at the top at anytime.</div>
@@ -281,6 +283,16 @@
     }
     function onLevelChange() {
       displayStats();
+    }
+
+    function copyItemLink() {
+      let unhash = {
+        category: $('#category').val(),
+        artifact: $('#artifacts').val(),
+        level: $('#level').val()
+      };
+
+      $('#copyText').text(window.location + '#' + btoa(JSON.stringify(hash)));
     }
 
     function displayStats() {
