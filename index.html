@@ -54,6 +54,8 @@
       </select>
       <select id="artifacts" class="hidden" onchange="onArtifactChange()"></select>
       <select id="level" class="hidden" onchange="onLevelChange()"></select>
+      <button id="itemLink" onclick="copyItemLink()" class="hidden">Copy Item Link</button>
+      <textarea id="copyText" style="opacity:0;height:0;width:0;"></textarea>
     </div>
     <div id="start_tip" class="tips">
       <div class="speech_bubble">Welcome! This tool calculates the average stat gain for equipment. To get started, choose an equipment from the inputs above! If you wish to learn from my brother, click on the Awakening Prism at the top at anytime.</div>
@@ -214,7 +216,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-07-02)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-07-10)</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
     <a target="_blank" href="legal.html">Legal</a>
@@ -281,6 +283,19 @@
     }
     function onLevelChange() {
       displayStats();
+    }
+
+    function copyItemLink() {
+      let hash = {
+        category: $('#category').val(),
+        artifact: $('#artifacts').val(),
+        level: $('#level').val()
+      };
+
+      $('#copyText').text(window.location.href.replace(window.location.hash, "") + '#' + btoa(JSON.stringify(hash)));
+      $('#copyText').select();
+      document.execCommand('copy');
+      alert('Copied Item Link to clipboard!');
     }
 
     function displayStats() {
@@ -593,6 +608,7 @@
       }
       $('#level').removeClass('hidden');
       $('#level').change();
+      $('#itemLink').removeClass('hidden');
 
       $('#item_image').removeClass().addClass('equipment');
       switch (item.type) {
