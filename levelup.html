@@ -378,7 +378,8 @@
           hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
           hammers_used.total += hammers[stat.value];
         });
-        addDataDump('Hammers to use: ' + hammers_used);
+        addDataDump('Hammers to use:');
+        addDataDump(hammers_used);
 
         if (hammers_used.total <= hammers_left) {
           return 'You can max out your remaining stats using hammers.';
