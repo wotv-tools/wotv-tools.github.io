@@ -1,0 +1,500 @@
+{
+  "infos": [
+    {
+      "key": "SE_ST_010101",
+      "value": "Part 1, Chapter 1, Scene 1"
+    },
+    {
+      "key": "SE_ST_010102",
+      "value": "Part 1, Chapter 1, Scene 2"
+    },
+    {
+      "key": "SE_ST_010103",
+      "value": "Part 1, Chapter 1, Scene 3"
+    },
+    {
+      "key": "SE_ST_010201",
+      "value": "Part 1, Chapter 2, Scene 1"
+    },
+    {
+      "key": "SE_ST_010202",
+      "value": "Part 1, Chapter 2, Scene 2"
+    },
+    {
+      "key": "SE_ST_010203",
+      "value": "Part 1, Chapter 2, Scene 3"
+    },
+    {
+      "key": "SE_ST_010301",
+      "value": "Part 1, Chapter 3, Scene 1"
+    },
+    {
+      "key": "SE_ST_010302",
+      "value": "Part 1, Chapter 3, Scene 2"
+    },
+    {
+      "key": "SE_ST_010303",
+      "value": "Part 1, Chapter 3, Scene 3"
+    },
+    {
+      "key": "SE_ST_010401",
+      "value": "Part 1, Chapter 4, Scene 1"
+    },
+    {
+      "key": "SE_ST_010402",
+      "value": "Part 1, Chapter 4, Scene 2"
+    },
+    {
+      "key": "SE_ST_010403",
+      "value": "Part 1, Chapter 4, Scene 3"
+    },
+    {
+      "key": "SE_ST_010501",
+      "value": "Part 1, Chapter 5, Scene 1"
+    },
+    {
+      "key": "SE_ST_010502",
+      "value": "Part 1, Chapter 5, Scene 2"
+    },
+    {
+      "key": "SE_ST_010503",
+      "value": "Part 1, Chapter 5, Scene 3"
+    },
+    {
+      "key": "SE_ST_010601",
+      "value": "Part 1, Chapter 6, Scene 1"
+    },
+    {
+      "key": "SE_ST_010602",
+      "value": "Part 1, Chapter 6, Scene 2"
+    },
+    {
+      "key": "SE_ST_010603",
+      "value": "Part 1, Chapter 6, Scene 3"
+    },
+    {
+      "key": "SE_ST_010701",
+      "value": "Part 1, Chapter 7, Scene 1"
+    },
+    {
+      "key": "SE_ST_010702",
+      "value": "Part 1, Chapter 7, Scene 2"
+    },
+    {
+      "key": "SE_WD_010101",
+      "value": "Lion's Great Forest"
+    },
+    {
+      "key": "SE_WD_010102",
+      "value": "Leonis Castle"
+    },
+    {
+      "key": "SE_WD_010103",
+      "value": "Mt. Sorgie"
+    },
+    {
+      "key": "SE_WD_010104",
+      "value": "Lion's Main Road"
+    },
+    {
+      "key": "SE_WD_010105",
+      "value": "Lion's Shrine"
+    },
+    {
+      "key": "SE_WD_010106",
+      "value": "North Symbus Plains"
+    },
+    {
+      "key": "SE_WD_010107",
+      "value": "South Symbus Plains"
+    },
+    {
+      "key": "SE_WD_010108",
+      "value": "Reedar Mountain Range"
+    },
+    {
+      "key": "SE_WD_010109",
+      "value": "Zanagar Fortress"
+    },
+    {
+      "key": "SE_WD_010110",
+      "value": "Rasheena Forest"
+    },
+    {
+      "key": "SE_WD_010201",
+      "value": "Syckle Fortress"
+    },
+    {
+      "key": "SE_WD_010202",
+      "value": "Yaarm Caverns"
+    },
+    {
+      "key": "SE_WD_010203",
+      "value": "White Wolf's Shrine"
+    },
+    {
+      "key": "SE_SB_01",
+      "value": "Beast's Den"
+    },
+    {
+      "key": "SE_SB_02",
+      "value": "Iron Giant Challenge"
+    },
+    {
+      "key": "SE_MU_SB_02",
+      "value": "Iron Giant Challenge"
+    },
+    {
+      "key": "SE_SB_03",
+      "value": "Chocolate Flan Challenge"
+    },
+    {
+      "key": "SE_MU_SB_03",
+      "value": "Chocolate Flan Challenge"
+    },
+    {
+      "key": "SE_EV_UNITEXP_01",
+      "value": "EXP Chamber"
+    },
+    {
+      "key": "SE_EV_GIL_01",
+      "value": "Gil Chamber"
+    },
+    {
+      "key": "SE_EV_AFEXP_01",
+      "value": "Ore Chamber"
+    },
+    {
+      "key": "SE_EV_VCEXP_01",
+      "value": "Growth Egg Reward Quest"
+    },
+    {
+      "key": "SE_EV_WAEXP_01",
+      "value": "Pot Reward Quest"
+    },
+    {
+      "key": "SE_EV_AW_FIRE",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_WIND",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_WATER",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_ICE",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_SOIL",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_DARK",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_THUN",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_AW_SHIN",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_EV_SM_FIRE_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_WTR_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_WIND_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_EAR_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_THUN_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_ICE_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_DARK_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_SM_SHIN_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_EV_AW_HIGH_01",
+      "value": "(Tentative) High-Level Material Chamber"
+    },
+    {
+      "key": "SE_EV_GIL",
+      "value": "Gil Chamber"
+    },
+    {
+      "key": "SE_EV_AFEXP",
+      "value": "Ore Chamber"
+    },
+    {
+      "key": "SE_BGN_QUEST",
+      "value": "Beginner Quest"
+    },
+    {
+      "key": "SE_EV_GL_1M_DL",
+      "value": "\"1 Million Downloads\" Celebratory Quest"
+    },
+    {
+      "key": "SE_EV_FF14_01",
+      "value": "FINAL FANTASY XIV: Shadowbringers"
+    },
+    {
+      "key": "SE_EV_FF14_EX_01",
+      "value": "FINAL FANTASY XIV: Shadowbringers [EX]"
+    },
+    {
+      "key": "SE_EV_ETRE",
+      "value": "Etre Training Quest"
+    },
+    {
+      "key": "SE_EV_ETRE_EX",
+      "value": "High Difficulty Etre Training Ex-Quest"
+    },
+    {
+      "key": "SE_EV_01_01",
+      "value": "The Admirable Prince"
+    },
+    {
+      "key": "SE_EV_01_EX_01",
+      "value": "The Admirable Prince"
+    },
+    {
+      "key": "SE_MU_EV_01_EX",
+      "value": "The Admirable Prince [EX]"
+    },
+    {
+      "key": "SE_EV_02_01",
+      "value": "Threat to the West, Rundall"
+    },
+    {
+      "key": "SE_EV_02_EX_01",
+      "value": "Threat to the West, Rundall"
+    },
+    {
+      "key": "SE_MU_EV_02_EX",
+      "value": "Threat to the West, Rundall [EX]"
+    },
+    {
+      "key": "SE_EV_03_01",
+      "value": "To Burn with Life"
+    },
+    {
+      "key": "SE_EV_03_EX_01",
+      "value": "To Burn with Life [EX]"
+    },
+    {
+      "key": "SE_MU_EV_03_EX",
+      "value": "[Multi] To Burn with Life [EX]"
+    },
+    {
+      "key": "SE_EV_SBEXP_01",
+      "value": "Magicite Reward Quest"
+    },
+    {
+      "key": "SE_EV_ANV_19_10",
+      "value": "Release Commemoration Quest"
+    },
+    {
+      "key": "SE_EV_GL_2M_DL",
+      "value": "\"2 Million Downloads\" Celebratory JP Reward Quest"
+    },
+    {
+      "key": "SE_EV_GL_3M_DL",
+      "value": "\"3 Million Downloads\" Celebration Quest"
+    },
+    {
+      "key": "SE_MU_AW_FIRE",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_WIND",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_WATER",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_ICE",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_SOIL",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_DARK",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_THUN",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_AW_SHIN",
+      "value": "(Tentative) Chamber of Job Enhancement Elemental Materials"
+    },
+    {
+      "key": "SE_MU_SM_FIRE_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_WTR_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_WIND_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_EAR_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_THUN_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_ICE_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_DARK_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_SM_SHIN_01",
+      "value": "Esper Awakening Chamber"
+    },
+    {
+      "key": "SE_MU_AW_HIGH_01",
+      "value": "(Tentative) High-Level Material Chamber"
+    },
+    {
+      "key": "SE_MU_EV_ETRE_EX",
+      "value": "[Multi] High Difficulty Etre Training Ex-Quest"
+    },
+    {
+      "key": "SE_EV_ART_CRF_01",
+      "value": "Equipment Training Quest"
+    },
+    {
+      "key": "SE_EV_FFT_01",
+      "value": "FINAL FANTASY TACTICS Quest"
+    },
+    {
+      "key": "SE_EV_FFT_01_EX",
+      "value": "FINAL FANTASY TACTICS Quest [EX]"
+    },
+    {
+      "key": "SE_MU_FFT_01_EX",
+      "value": "FINAL FANTASY TACTICS Quest [EX]"
+    },
+    {
+      "key": "SE_EV_ART_SCR_00",
+      "value": ""
+    },
+    {
+      "key": "SE_MU_EV_SCR_00",
+      "value": ""
+    },
+    {
+      "key": "SE_EV_ART_SCR_01",
+      "value": "High Difficulty Secret Book Reward Quest"
+    },
+    {
+      "key": "SE_MU_EV_SCR_01",
+      "value": "[Multi] High Difficulty Secret Book Reward Quest"
+    },
+    {
+      "key": "SE_EV_JP_001",
+      "value": "JP Reward Quest"
+    },
+    {
+      "key": "SE_EV_ART_CRF_02",
+      "value": "Brutal Difficulty Equipment Training Quest"
+    },
+    {
+      "key": "SE_MU_ART_CRF_02",
+      "value": "Brutal Difficulty Equipment Training Quest"
+    },
+    {
+      "key": "SE_EV_ART_CRF_03",
+      "value": "Equipment Training Quest"
+    },
+    {
+      "key": "SE_MU_ART_CRF_03",
+      "value": "Equipment Training Quest"
+    },
+    {
+      "key": "SE_EV_ART_SCR_02",
+      "value": "High Difficulty Secret Book Reward Quest"
+    },
+    {
+      "key": "SE_MU_EV_SCR_02",
+      "value": "[Multi] High Difficulty Secret Book Reward Quest"
+    },
+    {
+      "key": "SE_EV_BEGN_2001",
+      "value": "Unit Training Supportive Quest"
+    },
+    {
+      "key": "SE_EV_RAIN_01",
+      "value": "Limited Hard Quest (Rain)"
+    },
+    {
+      "key": "SE_EV_VKTR_01",
+      "value": "Limited Hard Quest (Viktora)"
+    },
+    {
+      "key": "SE_EV_THLA",
+      "value": "Salire Unit Shard Reward Quest"
+    },
+    {
+      "key": "SE_EV_THLA_EX",
+      "value": "High Difficulty Salire Unit Shard Reward Ex-Quest"
+    },
+    {
+      "key": "SE_MU_EV_THLA_EX",
+      "value": "[Multi] High Difficulty Salire Unit Shard Reward Ex-Quest"
+    },
+    {
+      "key": "SE_EV_ARENA_1",
+      "value": "Arena Mock Battle"
+    },
+    {
+      "key": "SE_EV_GL_FFEXU_01",
+      "value": "FF EXVIUS Universe Quest"
+    },
+    {
+      "key": "SE_EV_VNLA_01",
+      "value": "Limited Hard Quest (Vinera Fennes)"
+    },
+    {
+      "key": "SE_EV_NEWMAP_001",
+      "value": "Mock Guild Battle"
+    }
+  ]
+}

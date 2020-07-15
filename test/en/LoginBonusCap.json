@@ -1,0 +1,108 @@
+{
+  "infos": [
+    {
+      "key": "LB_BEGINNER_001",
+      "value": "Beginner Login Bonus"
+    },
+    {
+      "key": "LB_TOTAL_001",
+      "value": "Cumulative Login Bonus"
+    },
+    {
+      "key": "LB_202003",
+      "value": "March Login Bonus"
+    },
+    {
+      "key": "LB_202004",
+      "value": "April Login Bonus"
+    },
+    {
+      "key": "LB_202005",
+      "value": "May Login Bonus"
+    },
+    {
+      "key": "LB_202006",
+      "value": "June Login Bonus"
+    },
+    {
+      "key": "LB_202007",
+      "value": "July Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL_0001",
+      "value": "Release Commemoration"
+    },
+    {
+      "key": "LB_LIMIT_0001",
+      "value": "\"1 Million Downloads\" Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0000",
+      "value": "\"2 Million Downloads\" Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_COMEBACK_001",
+      "value": "Comeback Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_0007",
+      "value": "FFT Collaboration Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0001",
+      "value": "\"3 Million Downloads\" Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0002",
+      "value": "\"3 Million Downloads\" Celebratory Login Bonus Part II"
+    },
+    {
+      "key": "LB_LIMIT_GL0003",
+      "value": "\"4 Million Downloads\" Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0004",
+      "value": "\"Chapter 6 Released!\" Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0005",
+      "value": "\"5 Million Downloads\" Celebratory Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0006",
+      "value": "\"5 Million Downloads\" Celebratory Login Bonus Part II"
+    },
+    {
+      "key": "LB_LIMIT_GL0007",
+      "value": "Version Upgrade Celebration Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0008",
+      "value": "Raid Release Celebration Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0009",
+      "value": "Early Summer Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0010",
+      "value": "MOBIUS FINAL FANTASY Collaboration Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0011",
+      "value": "FF EXVIUS Universe Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0012",
+      "value": "FF EXVIUS Universe Login Bonus Part II"
+    },
+    {
+      "key": "LB_LIMIT_GL0013",
+      "value": "Guild Support Campaign Login Bonus"
+    },
+    {
+      "key": "LB_LIMIT_GL0014",
+      "value": "FF EXVIUS Universe Milestone Login Bonus"
+    }
+  ]
+}

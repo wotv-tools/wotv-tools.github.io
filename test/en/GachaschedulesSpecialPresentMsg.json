@@ -1,0 +1,652 @@
+{
+  "infos": [
+    {
+      "key": "init",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_unit_20191114",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_20191114",
+      "value": ""
+    },
+    {
+      "key": "ff14_gacha_20191114_01",
+      "value": "FFXIV Collaborative Summon Bonus"
+    },
+    {
+      "key": "ff14_gacha_20191114_10",
+      "value": "FFXIV Collaborative Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_20191118_10",
+      "value": ""
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step1",
+      "value": ""
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step2",
+      "value": ""
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218_step3",
+      "value": ""
+    },
+    {
+      "key": "Nstep_beginner_gacha_10_20191218",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_GL20200408_01",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200408_10",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_GL20200408_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_GL20200408_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_GL20200408_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_GL20200415_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_GL20200415_01",
+      "value": "\"2 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200415_10",
+      "value": "\"2 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200422_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200422_10",
+      "value": ""
+    },
+    {
+      "key": "fft_gacha_20191226_ORND_1",
+      "value": "FFT Collaborative Summon Bonus"
+    },
+    {
+      "key": "fft_gacha_20191226_ORND_10",
+      "value": "FFT Collaborative Summon Bonus"
+    },
+    {
+      "key": "fft_gacha_20191226_RAMZ_1",
+      "value": "FFT Collaborative Summon Bonus"
+    },
+    {
+      "key": "fft_gacha_20191226_RAMZ_10",
+      "value": "FFT Collaborative Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_1",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_2",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_3",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_4",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_5",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_6",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_7",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_8",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_9",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200422_10_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_GL20200422_01",
+      "value": "\"3 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200422_10",
+      "value": "\"3 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200429_01",
+      "value": "\"3 Million Downloads\" Celebration Part II Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_GL20200429_10",
+      "value": "\"3 Million Downloads\" Celebration Part II Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200506_01",
+      "value": "New Unit Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200506_10",
+      "value": "New Unit Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200506_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200513_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200513_01",
+      "value": "Equipment Training Quest Supportive Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200513_10",
+      "value": "Equipment Training Quest Supportive Summon Bonus"
+    },
+    {
+      "key": "p_gacha_vc_gl20200513_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_vc_gl20200513_01",
+      "value": "New Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_vc_gl20200513_10",
+      "value": "New Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200520_01",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200520_10",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200520_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200520_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200520_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_4unitvc_gl20200520_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200520_a_01",
+      "value": "\"5 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200520_a_10",
+      "value": "\"5 Million Downloads\" Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_01",
+      "value": "\"5 Million Downloads\" Celebration Part II Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_10",
+      "value": "\"5 Million Downloads\" Celebration Part II Featured Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_gl20200527_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_a_10",
+      "value": "\"5 Million Downloads\" Celebration Part II Bonus Included 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_a_10_1",
+      "value": "\"5 Million Downloads\" Celebration Part II Bonus Included 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_a_10_2",
+      "value": "\"5 Million Downloads\" Celebration Part II Bonus Included 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_a_10_3",
+      "value": "\"5 Million Downloads\" Celebration Part II Bonus Included 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200527_a_10_4",
+      "value": "\"5 Million Downloads\" Celebration Part II Bonus Included 10x Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_gl20200603_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_01",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_10",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200603_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200603_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_a_01",
+      "value": "Version Upgrade Celebration — Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_a_10",
+      "value": "Version Upgrade Celebration — Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10_1",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10_2",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10_3",
+      "value": "Version Upgrade Celebration — 5 Step Up Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10_4",
+      "value": "Version Upgrade Celebration — 5 Step Up Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10_5",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200603_b_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200610_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200610_01",
+      "value": "Raid Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200610_10",
+      "value": "Raid Celebration Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200617_01",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200617_10",
+      "value": "New Unit/Vision Card Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200617_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200617_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200617_a_01",
+      "value": "Early Summer Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200617_a_10",
+      "value": "Early Summer Featured Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_gl20200617_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_01",
+      "value": "MOBIUS FINAL FANTASY Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_10",
+      "value": "MOBIUS FINAL FANTASY Vision Card Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_a_01",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_a_10",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "no_coin_gacha_gl20200624_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_unit_gl20200624_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200624_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_4unitvc_gl20200624_10",
+      "value": ""
+    },
+    {
+      "key": "beginner_gacha_10_20200624",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_1",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_1",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_1",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_1",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_2",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_2",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_2",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_2",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_3",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_3",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_3",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_3",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_4",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_4",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_4",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_4",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_5",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_5",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_5",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_5",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_6",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_6",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_6",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_6",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step1_7",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 1 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step2_7",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 2 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_step3_7",
+      "value": "\"Chapter 7 Released!\" — Step Up 10x Summon Step 3 Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_b_10_7",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10_step1",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10_step2",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10_step3",
+      "value": "\"Chapter 7 Released!\" — 5-Step 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10_step4",
+      "value": "\"Chapter 7 Released!\" — 5-Step 10x Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10_step5",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200624_c_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200701_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_10_step3",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_10_step2",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_10_step1",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_10_base",
+      "value": ""
+    },
+    {
+      "key": "element-gacha_fire_wind_20200701_1",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon I Bonus"
+    },
+    {
+      "key": "element-gacha_fire_wind_20200701_10",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon I Bonus"
+    },
+    {
+      "key": "element-gacha_shine_soil_20200701_1",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon II Bonus"
+    },
+    {
+      "key": "element-gacha_shine_soil_20200701_10",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon II Bonus"
+    },
+    {
+      "key": "element-gacha_dark_water_20200701_1",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon III Bonus"
+    },
+    {
+      "key": "element-gacha_dark_water_20200701_10",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon III Bonus"
+    },
+    {
+      "key": "element-gacha_ice_thunder_20200701_1",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon IV Bonus"
+    },
+    {
+      "key": "element-gacha_ice_thunder_20200701_10",
+      "value": "Porcelain Tower Launch Celebration — Featured Summon IV Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_01",
+      "value": "FF EXVIUS Universe Collaborative Summon — Fryevia Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_10",
+      "value": "FF EXVIUS Universe Collaborative Summon — Fryevia Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_a_01",
+      "value": "FF EXVIUS Universe Collaborative Summon — Rain Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200701_a_10",
+      "value": "FF EXVIUS Universe Collaborative Summon — Rain Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200701_10",
+      "value": ""
+    },
+    {
+      "key": "p_gacha_vc_gl20200701_10",
+      "value": ""
+    },
+    {
+      "key": "no_coin_gacha_gl20200708_10",
+      "value": ""
+    },
+    {
+      "key": "gacha_unit_vc_gl20200708_a_01",
+      "value": "Porcelain Tower Launch Celebration Part II — Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200708_a_10",
+      "value": "Porcelain Tower Launch Celebration Part II — Featured Summon Bonus"
+    },
+    {
+      "key": "new-gacha_unit_vc_gl20200715_01",
+      "value": "Featured New Unit Summon Bonus"
+    },
+    {
+      "key": "new-gacha_unit_vc_gl20200715_10",
+      "value": "Featured New Unit Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200715_01",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "gacha_unit_vc_gl20200715_10",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "p_gacha_unit_gl20200715_10",
+      "value": ""
+    },
+    {
+      "key": "global_pickup_sterne_20200325_01",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "global_pickup_sterne_20200325_10",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "global_pickup_fredrica_20200401_01",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "global_pickup_fredrica_20200401_10",
+      "value": "Featured Summon Bonus"
+    },
+    {
+      "key": "global_ur_unit_fredrica_20200401",
+      "value": ""
+    },
+    {
+      "key": "global_ur_vc_fredrica_20200401",
+      "value": ""
+    }
+  ]
+}
