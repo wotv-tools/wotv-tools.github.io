@@ -245,6 +245,18 @@
       "value": "How do you do? Might someone fancy a quick bout?"
     },
     {
+      "key": "UN_LW_P_VNLA",
+      "value": "No matter what happens... I have no regrets!"
+    },
+    {
+      "key": "UN_LW_P_DRIO",
+      "value": "I will fight in order to protect those whom I love."
+    },
+    {
+      "key": "UN_LW_P_TREL",
+      "value": ""
+    },
+    {
       "key": "UN_LW_E_MONT",
       "value": ""
     },
@@ -294,6 +306,10 @@
     },
     {
       "key": "UN_LW_E_OOOO",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_LRNZ",
       "value": ""
     },
     {
@@ -402,6 +418,18 @@
     },
     {
       "key": "UN_LW_E_VNLA",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_DIAA",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_ORDR",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_DRZA",
       "value": ""
     },
     {
@@ -753,6 +781,10 @@
       "value": ""
     },
     {
+      "key": "UN_LW_E_02_NIN",
+      "value": ""
+    },
+    {
       "key": "UN_LW_E_SO_04",
       "value": ""
     },
@@ -777,6 +809,18 @@
       "value": ""
     },
     {
+      "key": "UN_LW_E_PR_01",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_02",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_01_THI",
+      "value": ""
+    },
+    {
       "key": "UN_LW_E_PR_01_HUN",
       "value": ""
     },
@@ -797,7 +841,27 @@
       "value": ""
     },
     {
+      "key": "UN_LW_E_PR_01_SWN",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_01_MNK",
+      "value": ""
+    },
+    {
       "key": "UN_LW_E_PR_02_MNK",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_01_LAN",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_01_SAM",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_01_NIN",
       "value": ""
     },
     {
@@ -809,7 +873,15 @@
       "value": ""
     },
     {
+      "key": "UN_LW_E_PR_01_DRG",
+      "value": ""
+    },
+    {
       "key": "UN_LW_E_PR_01_RDM",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_02_CLR",
       "value": ""
     },
     {
@@ -822,6 +894,10 @@
     },
     {
       "key": "UN_LW_E_PR_02_TIM",
+      "value": ""
+    },
+    {
+      "key": "UN_LW_E_PR_02_GRM",
       "value": ""
     },
     {

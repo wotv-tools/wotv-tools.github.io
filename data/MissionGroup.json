@@ -21,6 +21,13 @@
       "end_at": "2020/04/08 23:59:59"
     },
     {
+      "iname": "MG_GL_DAILY_GUILD_01",
+      "type": 1,
+      "category": 1,
+      "begin_at": "2020/07/15",
+      "end_at": "2020/07/21 23:59:59"
+    },
+    {
       "iname": "MG_STORY_001",
       "type": 2,
       "category": 3
@@ -281,6 +288,27 @@
       "end_at": "2020/06/17 23:59:59"
     },
     {
+      "iname": "MG_EV03_1_01",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/07/15",
+      "end_at": "2020/07/29 23:59:59"
+    },
+    {
+      "iname": "MG_EV03_1_02",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/07/15",
+      "end_at": "2020/07/29 23:59:59"
+    },
+    {
+      "iname": "MG_MU_EV03_1_02",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/07/15",
+      "end_at": "2020/07/29 23:59:59"
+    },
+    {
       "iname": "MG_ETRE01_01",
       "type": 2,
       "category": 2,
@@ -323,32 +351,46 @@
       "end_at": "2020/07/01 23:59:59"
     },
     {
+      "iname": "MG_EV_ART_SCR_00",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2119/12/26 18:05:00",
+      "end_at": "2120/01/09 14:59:59"
+    },
+    {
+      "iname": "MG_MU_ART_SCR_00",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2119/12/26 18:05:00",
+      "end_at": "2120/01/09 14:59:59"
+    },
+    {
       "iname": "MG_EV_ART_SCR_01",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/04/21 18:30:00",
-      "end_at": "2020/06/05 23:59:59"
+      "begin_at": "2020/07/08",
+      "end_at": "2020/07/15 23:59:59"
     },
     {
       "iname": "MG_MU_ART_SCR_01",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/04/21 18:30:00",
-      "end_at": "2020/06/05 23:59:59"
+      "begin_at": "2020/07/08",
+      "end_at": "2020/07/15 23:59:59"
     },
     {
       "iname": "MG_EV_ART_SCR_02",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/06/24",
-      "end_at": "2020/07/01 23:59:59"
+      "begin_at": "2020/07/08",
+      "end_at": "2020/07/15 23:59:59"
     },
     {
       "iname": "MG_MU_ART_SCR_02",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/06/24",
-      "end_at": "2020/07/01 23:59:59"
+      "begin_at": "2020/07/08",
+      "end_at": "2020/07/15 23:59:59"
     },
     {
       "iname": "MG_DAILY_002_5",
@@ -678,6 +720,13 @@
       "category": 8,
       "begin_at": "2020/02/29 12:00:00",
       "end_at": "2120/12/31 4:59:59"
+    },
+    {
+      "iname": "MG_LAPS_P_VNLA",
+      "type": 2,
+      "category": 6,
+      "begin_at": "2020/07/15",
+      "end_at": "2020/07/28 21:59:59"
     }
   ]
 }
