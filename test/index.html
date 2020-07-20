@@ -1215,7 +1215,7 @@
 
         if (searchParam[0] == 'i' && artifactMap[searchParam[1]]) {
           window.location.replace(
-            window.location.substring(0, window.location.indexOf('?'))
+            window.location.href.substring(0, window.location.href.indexOf('?'))
             + '#'
             + btoa(JSON.stringify({
               category: artifactMap[searchParam[1]].cat[0],
