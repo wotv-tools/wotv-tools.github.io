@@ -1210,6 +1210,17 @@
         $('#category-' + category.type).append('<option value="' + category.index + '">' + category.label + '</option>');
       });
 
+      window.location.search.substring(1).split('&').forEach((searchParamString) => {
+        let searchParam = searchParamString.split('=');
+
+        if (searchParam[0] == 'i' && artifactMap[searchParam[1]]) {
+          window.location.hash = btoa(JSON.stringify({
+            category: artifactMap[searchParam[1]].cat[0],
+            artifact: searchParam[1]
+          }));
+        }
+      });
+
       if (window.location.hash) {
         let unhash = JSON.parse(atob(window.location.hash.substr(1)));
 
