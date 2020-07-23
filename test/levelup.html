@@ -539,7 +539,7 @@
         } else {
           let perf_level_ups = 0;
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
-          while (stats_left_after_perf.total > (levels_left - perf_level_ups)) {
+          while (perf_level_ups <= levels_left && stats_left_after_perf.total > (levels_left - perf_level_ups)) {
             stats.forEach((stat) => {
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
@@ -551,12 +551,13 @@
             perf_level_ups++;
           }
 
-          addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
 
-          if (perf_level_ups > levels_left) {
-            $('#details').text('The # of perfect level ups needed to get max stats exceeds the # of levels left.')
+          if (stats_left_after_perf.total > 0) {
+            addDataDump('Stats left after perfect level ups: ' + stats_left_after_perf.total);
+            $('#details').text('Not enough levels left.')
             return 'You are unable to get max stats at this point.';
           } else {
+            addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
             $('#details').text('This is the # of perfect level ups needed before using hammers.')
             return 'Level up the item until Level ' + (level + perf_level_ups) + '. Then update your stats and ask for my advice, again.';
           }
