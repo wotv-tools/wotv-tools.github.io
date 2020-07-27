@@ -402,7 +402,6 @@
       } else {
         // find out if hammers can be used to get us in range to guarantee max stats with pity rolls
         let stats_left_after_hammer = JSON.parse(JSON.stringify(stats_left));
-        let hammered_min_left = stats_left.total;
         let hammers_used = {
           total: 0
         };
@@ -438,8 +437,6 @@
             hammers_used[best_hammer.stat.value]++;
             hammers_used.total++;
             hammered_stats[best_hammer.stat.value].unshift(best_hammer.amt);
-
-            hammered_min_left = Math.min(hammered_min_left, stats_left_after_hammer[best_hammer.stat.value]);
           }
         }
         addDataDump('Best hammer usage (calculated by most stats removed using least hammers):');
@@ -453,7 +450,7 @@
 
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
-        let tar_level = max_level - stats_left_after_hammer.total + hammered_min_left;
+        let tar_level = Math.max(level, max_level - stats_left_after_hammer.total);
         addDataDump('Initial target level (max level - stats left after hammer): ' + tar_level);
 
         if (tar_level >= level) {
