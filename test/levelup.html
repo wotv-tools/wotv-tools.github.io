@@ -453,8 +453,8 @@
 
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
-        let tar_level = level + (max_level - Math.min(max_level, level + stats_left_after_hammer.total));
-        addDataDump('Initial target level (level + (max_level - Math.min(max_level, level + stats_left_after_hammer.total))): ' + tar_level);
+        let tar_level = Math.min(max_level, level + stats_left_after_hammer.total);
+        addDataDump('Initial target level (Math.min(max_level, level + stats_left_after_hammer.total)): ' + tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
