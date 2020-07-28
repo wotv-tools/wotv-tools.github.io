@@ -384,8 +384,8 @@
           total: 0
         };
         stats.forEach((stat) => {
-          hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
-          hammers_used.total += hammers[stat.value];
+          hammers_used[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
+          hammers_used.total += hammers_used[stat.value];
         });
         addDataDump('Hammers to use:');
         addDataDump(hammers_used);
