@@ -384,7 +384,7 @@
           total: 0
         };
         stats.forEach((stat) => {
-          if (stats_left[stat.value]) {
+          if (stats_left[stat.value] && hammerMap[stat.value]) {
             hammers_used[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
             hammers_used.total += hammers_used[stat.value];
           }
