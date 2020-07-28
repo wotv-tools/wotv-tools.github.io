@@ -384,8 +384,10 @@
           total: 0
         };
         stats.forEach((stat) => {
-          hammers[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
-          hammers_used.total += hammers[stat.value];
+          if (stats_left[stat.value] && hammerMap[stat.value]) {
+            hammers_used[stat.value] = Math.ceil(stats_left[stat.value] / hammerMap[stat.value]);
+            hammers_used.total += hammers_used[stat.value];
+          }
         });
         addDataDump('Hammers to use:');
         addDataDump(hammers_used);
@@ -453,8 +455,8 @@
 
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
-        let tar_level = max_level - stats_left_after_hammer.total + hammered_min_left;
-        addDataDump('Initial target level (max level - stats left after hammer): ' + tar_level);
+        let tar_level = Math.min(max_level, level + stats_left_after_hammer.total);
+        addDataDump('Initial target level (Math.min(max_level, level + stats_left_after_hammer.total)): ' + tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
@@ -503,7 +505,7 @@
           }
           addDataDump('Best flexible stat amount: ' + best_flex_amt);
 
-          tar_level += best_flex_amt;
+          tar_level = Math.min(max_level, tar_level + best_flex_amt);
           addDataDump('New target level (adjusted by best flexible stat amount): ' + tar_level);
 
           // need to use hammers
@@ -534,8 +536,14 @@
           let perf_tar_level = level + perf_level_ups;
           addDataDump('Perfect target level: ' + perf_tar_level);
           addDataDump('Return lower target level between target level and perfect target level');
-          $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
-          return 'Level up the item until Level ' + Math.min(tar_level, perf_tar_level) + '. Then update your stats and ask for my advice, again.';
+          tar_level = Math.min(tar_level, perf_tar_level);
+          if (tar_level <= max_level) {
+            $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
+            return 'Level up the item until Level ' + tar_level + '. Then update your stats and ask for my advice, again.';
+          } else {
+            $('#details').text('Not enough levels left.')
+            return 'You are unable to get max stats at this point.';
+          }
         } else {
           let perf_level_ups = 0;
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
