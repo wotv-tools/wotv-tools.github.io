@@ -400,13 +400,14 @@
 
           best_seals.push({
             rate: artifact_rates[stat.value],
-            stat: stat.value
+            stat: stat.label
           });
         }
       });
 
+      // reverse sort
       best_seals.sort((a, b) => {
-        return a.rate > b.rate ? 1 : -1;
+        return a.rate < b.rate ? 1 : -1;
       });
 
       let best_seals_str = 'For better results, use the following seals: ';
