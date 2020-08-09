@@ -398,7 +398,7 @@
           stats_left.total += stat_left;
 
           best_seals.push({
-            rate: artifact_rates[stat.value],
+            ave_growth: artifact_rates[stat.value] * artifact_stats[stat.value],
             stat: stat.label
           });
         }
@@ -406,7 +406,7 @@
 
       // reverse sort
       best_seals.sort((a, b) => {
-        return a.rate < b.rate ? 1 : -1;
+        return a.ave_growth < b.ave_growth ? 1 : -1;
       });
 
       let best_seals_str = 'For better results, use the following seals: ';
