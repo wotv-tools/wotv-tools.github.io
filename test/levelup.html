@@ -409,7 +409,13 @@
         return a.rate > b.rate ? 1 : -1;
       });
 
-      let best_seals_str = 'For better results, use the following seals: ' + best_seals.slice(0, 3).join(', ') + '.';
+      let best_seals_str = 'For better results, use the following seals: ';
+      for (let i = 0; i < best_seals.length && i < 3; i++) {
+        if (i > 0) {
+          best_seals_str += ', ';
+        }
+        best_seals_str += best_seals[i].stat;
+      }
 
       addDataDump('Best Seals: ' + best_seals_str);
 
