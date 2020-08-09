@@ -267,6 +267,30 @@
       $('#advice').removeClass('hidden');
     }
 
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
+
+      stats.forEach((stat, i) => {
+        if (base[stat.value]) {
+          if (adjust[stat.value]) {
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
+          } else {
+            artifact_rates[stat.value] = base[stat.value];
+          }
+
+          if (sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
+          }
+        }
+      });
+
+      return artifact_rates;
+    }
+
     function getArtifactStats(curve, base) {
       let artifact_stats = {};
 
@@ -355,12 +379,14 @@
 
       let item = artifactMap[itemKey];
       let typeGrowth = growthMap[type];
+      let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
 
       let level = parseInt($('#levels').val());
       let levels_left = max_level - level;
       let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
+      let best_seals = [];
 
       addDataDump('Levels left: ' + levels_left);
 
@@ -371,8 +397,25 @@
           let stat_left = artifact_stats[stat.value] - parseInt($('.stat.stat_' + stat.value).val());
           stats_left[stat.value] = stat_left;
           stats_left.total += stat_left;
+
+          best_seals.push({
+            rate: artifact_rates[stat.value],
+            stat: stat.value
+          });
         }
       });
+
+      best_seals.sort((a, b) => {
+        return a.rate > b.rate ? 1 : -1;
+      });
+
+      let best_seals_str = 'For better results, use the following seals: ' + best_seals.slice(0, 3).join(', ') + '.';
+      for (let i = 0; i < 3 && i < best_seals.length; i++) {
+        best_seals_str +=
+      }
+
+      addDataDump('Best Seals: ' + best_seal_str);
+
       addDataDump('Stats left:');
       addDataDump(stats_left);
 
@@ -544,7 +587,7 @@
             addDataDump('Return lower target level between target level and perfect target level');
             tar_level = Math.min(tar_level, perf_tar_level);
             $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
-            return 'Level up the item until Level ' + tar_level + '. Then update your stats and ask for my advice, again.';
+            return 'Level up the item until Level ' + tar_level + '. ' + best_seals_str + ' Then update your stats and ask for my advice, again.';
           }
         } else {
           let perf_level_ups = 0;
@@ -569,7 +612,7 @@
           } else {
             addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
             $('#details').text('This is the # of perfect level ups needed before using hammers.')
-            return 'Level up the item until Level ' + (level + perf_level_ups) + '. Then update your stats and ask for my advice, again.';
+            return 'Level up the item until Level ' + (level + perf_level_ups) + '. ' + best_seals_str + ' Then update your stats and ask for my advice, again.';
           }
         }
       }
@@ -712,6 +755,19 @@
           artifactList.sort((a, b) => {
             return a.label > b.label ? 1 : -1;
           });
+        });
+
+        resolve();
+      });
+    }));
+
+    let sealGrowthMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactGrowItem.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up[0].eff_dst];
+          sealGrowthMap[stat.value] = item.grow_up[0].val;
         });
 
         resolve();
