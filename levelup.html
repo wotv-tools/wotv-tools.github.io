@@ -455,8 +455,8 @@
 
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
-        let tar_level = Math.min(max_level, level + stats_left_after_hammer.total);
-        addDataDump('Initial target level (Math.min(max_level, level + stats_left_after_hammer.total)): ' + tar_level);
+        let tar_level = Math.max(max_level - stats_left_after_hammer.total, Math.min(max_level, level + hammered_min_left));
+        addDataDump('Initial target level (Math.max(max_level - stats_left_after_hammer.total, Math.min(max_level, level + hammered_min_left))): ' + tar_level);
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
@@ -534,15 +534,17 @@
             perf_level_ups++;
           }
           let perf_tar_level = level + perf_level_ups;
-          addDataDump('Perfect target level: ' + perf_tar_level);
-          addDataDump('Return lower target level between target level and perfect target level');
-          tar_level = Math.min(tar_level, perf_tar_level);
-          if (tar_level <= max_level) {
-            $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
-            return 'Level up the item until Level ' + tar_level + '. Then update your stats and ask for my advice, again.';
-          } else {
+
+          if (stats_left_after_perf.total > 0) {
+            addDataDump('Stats left after perfect level ups: ' + stats_left_after_perf.total);
             $('#details').text('Not enough levels left.')
             return 'You are unable to get max stats at this point.';
+          } else {
+            addDataDump('Perfect target level: ' + perf_tar_level);
+            addDataDump('Return lower target level between target level and perfect target level');
+            tar_level = Math.min(tar_level, perf_tar_level);
+            $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
+            return 'Level up the item until Level ' + tar_level + '. Then update your stats and ask for my advice, again.';
           }
         } else {
           let perf_level_ups = 0;
