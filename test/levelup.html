@@ -398,7 +398,7 @@
           stats_left.total += stat_left;
 
           best_seals.push({
-            ave_growth: artifact_rates[stat.value] * typeGrowth.curve[0][stat.value],
+            ave_growth: artifact_rates[stat.value] * item.status[0][stat.value],
             stat: stat.label
           });
         }
