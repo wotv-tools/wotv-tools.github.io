@@ -49,7 +49,6 @@
       <div class="speech_bubble speech_ramada">
         <div>DISCLAIMER: This tool is still a WORK IN PROGRESS [BETA] and may give bad advice! Use at your own risk.</div>
         <div>Welcome! This tool will TRY to calculate if you can max all the stats on your item.</div>
-        <div>This tool does NOT tell you when to use seals. Generally, seals should be used on your most desired stats (up to 3) for as many level ups as you want to spend seals on.</div>
         <div>A flowchart of the logic performed can be found <a target="_blank" href="https://drive.google.com/file/d/1jCFxLkydGdesBd_PEkeWHRvVtvj1GddY/view">here</a>
       </div>
     </div>
@@ -121,7 +120,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-07-29)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-08-09)</a> |
     <a href="/">Equipment Calculator</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -267,6 +266,30 @@
       $('#advice').removeClass('hidden');
     }
 
+    function getArtifactRates(adjust, base) {
+      let artifact_rates = {};
+
+      stats.forEach((stat, i) => {
+        if (base[stat.value]) {
+          if (adjust[stat.value]) {
+            artifact_rates[stat.value] = base[stat.value] + adjust[stat.value];
+          } else {
+            artifact_rates[stat.value] = base[stat.value];
+          }
+
+          if (sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
+          if (artifact_rates[stat.value] < 0) {
+            artifact_rates[stat.value] = 0;
+          }
+        }
+      });
+
+      return artifact_rates;
+    }
+
     function getArtifactStats(curve, base) {
       let artifact_stats = {};
 
@@ -355,12 +378,14 @@
 
       let item = artifactMap[itemKey];
       let typeGrowth = growthMap[type];
+      let artifact_rates = getArtifactRates(typeGrowth.rstatus[0], item.randr[0]);
       let artifact_stats = getArtifactStats(typeGrowth.curve[0], item.status[1])
 
       let level = parseInt($('#levels').val());
       let levels_left = max_level - level;
       let hammers = parseInt($('#hammers').val());
       let hammers_left = item.hnum - hammers;
+      let best_seals = [];
 
       addDataDump('Levels left: ' + levels_left);
 
@@ -371,8 +396,30 @@
           let stat_left = artifact_stats[stat.value] - parseInt($('.stat.stat_' + stat.value).val());
           stats_left[stat.value] = stat_left;
           stats_left.total += stat_left;
+
+          best_seals.push({
+            ave_growth: artifact_rates[stat.value] * item.randa[0][stat.value],
+            stat: stat.label
+          });
         }
       });
+
+      // reverse sort
+      best_seals.sort((a, b) => {
+        return a.ave_growth < b.ave_growth ? 1 : -1;
+      });
+
+      let best_seals_str = 'For better results, use the following seals: ';
+      for (let i = 0; i < best_seals.length && i < 3; i++) {
+        if (i > 0) {
+          best_seals_str += ', ';
+        }
+        best_seals_str += best_seals[i].stat;
+      }
+
+      addDataDump('Best Seals: ' + best_seals_str);
+      addDataDump(best_seals);
+
       addDataDump('Stats left:');
       addDataDump(stats_left);
 
@@ -460,9 +507,8 @@
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
-          addDataDump('Finding flexible/must hammers (hammers that do NOT need to used right now)...');
+          addDataDump('Finding flexible hammers (hammers that do NOT need to used right now)...');
           let best_flex_amt = 0;
-          let must_hammer = false;
           for (let stat of stats) {
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
@@ -487,20 +533,9 @@
                     break;
                   }
                 }
-
-                if (!flexible && stats_left_after_hammer[stat.value] == 0) {
-                  addDataDump('Must Hammer found: ' + stat.label);
-                  must_hammer = true;
-                  break;
-                }
               }
 
-              if (must_hammer) {
-                best_flex_amt = 0;
-                break;
-              } else {
-                best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
-              }
+              best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
             }
           }
           addDataDump('Best flexible stat amount: ' + best_flex_amt);
@@ -544,7 +579,7 @@
             addDataDump('Return lower target level between target level and perfect target level');
             tar_level = Math.min(tar_level, perf_tar_level);
             $('#details').text('This is the lower target level between [# of perfect level ups needed before hammering] and [# of level ups before hammering].');
-            return 'Level up the item until Level ' + tar_level + '. Then update your stats and ask for my advice, again.';
+            return 'Level up the item until Level ' + tar_level + '. ' + best_seals_str + ' Then update your stats and ask for my advice, again.';
           }
         } else {
           let perf_level_ups = 0;
@@ -569,7 +604,7 @@
           } else {
             addDataDump('Perfect level ups needed before we can max stats using hammers and pity rolls only: ' + perf_level_ups);
             $('#details').text('This is the # of perfect level ups needed before using hammers.')
-            return 'Level up the item until Level ' + (level + perf_level_ups) + '. Then update your stats and ask for my advice, again.';
+            return 'Level up the item until Level ' + (level + perf_level_ups) + '. ' + best_seals_str + ' Then update your stats and ask for my advice, again.';
           }
         }
       }
@@ -712,6 +747,19 @@
           artifactList.sort((a, b) => {
             return a.label > b.label ? 1 : -1;
           });
+        });
+
+        resolve();
+      });
+    }));
+
+    let sealGrowthMap = {};
+    promiseList.push(new Promise((resolve, reject) => {
+      // init
+      $.getJSON('data/ArtifactGrowItem.json', (data) => {
+        data.items.forEach((item) => {
+          let stat = stats[item.grow_up[0].eff_dst];
+          sealGrowthMap[stat.value] = item.grow_up[0].val;
         });
 
         resolve();
