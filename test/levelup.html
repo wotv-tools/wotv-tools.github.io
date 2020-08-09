@@ -506,9 +506,8 @@
 
         if (tar_level >= level) {
           // find lowest flexible hammer amount
-          addDataDump('Finding flexible/must hammers (hammers that do NOT need to used right now)...');
+          addDataDump('Finding flexible hammers (hammers that do NOT need to used right now)...');
           let best_flex_amt = 0;
-          let must_hammer = false;
           for (let stat of stats) {
             if (hammered_stats[stat.value] && hammered_stats[stat.value].length > 0) {
               let num_flex_hammers = 0;
@@ -533,20 +532,9 @@
                     break;
                   }
                 }
-
-                if (!flexible && stats_left_after_hammer[stat.value] == 0) {
-                  addDataDump('Must Hammer found: ' + stat.label);
-                  must_hammer = true;
-                  break;
-                }
               }
 
-              if (must_hammer) {
-                best_flex_amt = 0;
-                break;
-              } else {
-                best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
-              }
+              best_flex_amt = Math.max(best_flex_amt, total_flex_amt);
             }
           }
           addDataDump('Best flexible stat amount: ' + best_flex_amt);
