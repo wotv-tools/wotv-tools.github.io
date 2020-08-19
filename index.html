@@ -216,7 +216,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-07-29)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-08-19)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -1087,8 +1087,6 @@
         artifactCategoryList = data.infos;
 
         // for some reason doesn't match exactly
-        artifactCategoryList.splice(4,1); // remove LARGESWORD
-        artifactCategoryList.splice(6,1); // remove ROD
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
 
@@ -1180,15 +1178,6 @@
           case 'WHIP':
           case 'THROWING':
           case 'SEPARATOR':
-            break;
-          case 'HAND':
-            if (artifactListByCat[i]) {
-              categories.push({
-                type: 'weapon',
-                index: i,
-                label: 'Fist'
-              });
-            }
             break;
           default:
             if (artifactListByCat[i]) {

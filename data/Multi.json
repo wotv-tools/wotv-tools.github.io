@@ -42,8 +42,19 @@
     },
     {
       "iname": "SE_MU_AW_HIGH_01",
+      "event_type": 1,
+      "image": "ev_aw_high_001",
+      "end": "2020/08/11 23:59:59"
+    },
+    {
+      "iname": "SE_MU_AW_HIGH_02",
       "event_type": 3,
-      "image": "ev_aw_high_001"
+      "image": "ev_aw_high_002"
+    },
+    {
+      "iname": "SE_MU_AW_HIGH_03",
+      "event_type": 3,
+      "image": "ev_aw_high_003"
     },
     {
       "iname": "SE_MU_SM_FIRE_01",
@@ -131,8 +142,8 @@
       "iname": "SE_MU_EV_SCR_02",
       "event_type": 1,
       "image": "ev_art_secret_02",
-      "start": "2020/07/22",
-      "end": "2020/08/04 23:59:59"
+      "start": "2020/08/18 18:30:00",
+      "end": "2020/08/25 17:59:59"
     },
     {
       "iname": "SE_MU_SB_02",
@@ -152,8 +163,8 @@
       "iname": "SE_MU_EV_02_EX",
       "event_type": 1,
       "image": "ev_02_ex_01",
-      "start": "2020/06/02 18:30:00",
-      "end": "2020/06/16 23:59:59"
+      "start": "2020/08/18 18:30:00",
+      "end": "2020/09/01 23:59:59"
     },
     {
       "iname": "SE_MU_EV_THLA_EX",
@@ -168,6 +179,20 @@
       "image": "ev_03_ex_01",
       "start": "2020/07/15",
       "end": "2020/07/28 21:59:59"
+    },
+    {
+      "iname": "SE_MU_EV_04_EX",
+      "event_type": 1,
+      "image": "ev_04_ex_01",
+      "start": "2020/08/05",
+      "end": "2020/08/18 17:59:59"
+    },
+    {
+      "iname": "SE_MU_SB_04",
+      "event_type": 1,
+      "image": "ev_summon_012",
+      "start": "2020/08/18 18:30:00",
+      "end": "2020/09/01 23:59:59"
     }
   ]
 }

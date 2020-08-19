@@ -103,6 +103,22 @@
     {
       "key": "SQ_WD_010203_02",
       "value": "Why Not Join a Guild?"
+    },
+    {
+      "key": "SQ_WD_010204_01",
+      "value": "Show Your Guild Members What You've Got!"
+    },
+    {
+      "key": "SQ_WD_010204_02",
+      "value": "Make Equipment with Materials and Recipes!"
+    },
+    {
+      "key": "SQ_WD_010205_01",
+      "value": "Chocobos Love to Work! ♪"
+    },
+    {
+      "key": "SQ_WD_010205_02",
+      "value": "So Now You're a Seasoned Arena Fighter... "
     }
   ]
 }

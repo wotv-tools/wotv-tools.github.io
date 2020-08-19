@@ -97,6 +97,10 @@
       "value": "Muraga Fennes defeated"
     },
     {
+      "key": "QE_ST_01080110",
+      "value": "Muraga Fennes defeated"
+    },
+    {
       "key": "QE_ST_01010110",
       "value": "Bandit Chief defeated"
     },
@@ -111,14 +115,6 @@
     {
       "key": "QE_ST_01050304",
       "value": "All allies annihilated except Sterne Leonis"
-    },
-    {
-      "key": "QE_ST_01010910",
-      "value": ""
-    },
-    {
-      "key": "QE_ST_01080110",
-      "value": "Muraga Fennes defeated"
     },
     {
       "key": "QE_ST_01060205",
@@ -166,43 +162,27 @@
     },
     {
       "key": "QE_ST_01070203",
-      "value": "Defeat Deah"
+      "value": "Deah defeated"
     },
     {
       "key": "QE_ST_01070209",
-      "value": "Defeat Oldoa"
+      "value": "Oldoa defeated"
     },
     {
-      "key": "QE_PT_001_BOSS_1",
-      "value": ""
+      "key": "QE_RAID_EV_08_01",
+      "value": "Defeat the Death Machine"
     },
     {
-      "key": "QE_PT_001_BOSS_2",
-      "value": ""
+      "key": "QE_RAID_EV_08_02",
+      "value": "Defeat the Death Machine"
     },
     {
-      "key": "QE_RAID_EV_10_01",
-      "value": ""
+      "key": "QE_RAID_EV_08_03",
+      "value": "Defeat the Death Machine"
     },
     {
-      "key": "QE_RAID_EV_10_02",
-      "value": ""
-    },
-    {
-      "key": "QE_RAID_EV_10_03",
-      "value": ""
-    },
-    {
-      "key": "QE_RAID_EV_10_04",
-      "value": ""
-    },
-    {
-      "key": "QE_RAID_EV_10_05",
-      "value": ""
-    },
-    {
-      "key": "QE_RAID_EV_10_06",
-      "value": ""
+      "key": "QE_ST_01010910",
+      "value": "Reach the front of the castle gates or annihilate the enemy"
     }
   ]
 }
