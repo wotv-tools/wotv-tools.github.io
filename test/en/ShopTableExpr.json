@@ -614,7 +614,7 @@
     },
     {
       "key": "IT_SET_UR_VC_01",
-      "value": "A special pack containing items such as a UR Guaranteed Vision Card Summon Ticket A and Rainbow Vision Spheres! *The UR Guaranteed Vision Card Summon Ticket cannot be used for limited vision cards, collaborative vision cards, or \"Serpentine Onslaught, Two-Headed Dragon.\" "
+      "value": "A special pack containing items such as a UR Guaranteed Vision Card Summon Ticket A and Rainbow Vision Spheres! *The UR Guaranteed Vision Card Summon Ticket A cannot be used for limited or collaborative vision cards."
     },
     {
       "key": "IT_SET_VC_EXP_03",
@@ -643,6 +643,62 @@
     {
       "key": "IT_SET_GROW_FF01_DMAC",
       "value": "A pack containing vision card shards necessary for Awakening \"Death Machine,\" as well as Growth Eggs (MR), Rainbow Vision Spheres, and Gil Snappers (L) necessary for enhancement!"
+    },
+    {
+      "key": "IT_SET_AW_SOIL_CM_03",
+      "value": "A special pack containing Earth Fragments of Thought, Earth Awakening Souls (2–6★), Rainbow Fragments of Thought, Rainbow Vision Spheres, and Earth Awakening Prisms! Essential for awakening earth element units!"
+    },
+    {
+      "key": "IT_SET_UR_UNIT_01",
+      "value": "A special pack containing a UR Guaranteed Unit Summon Ticket and items necessary for training units! *The UR Guaranteed Unit Summon Ticket cannot be used for limited or collaborative units."
+    },
+    {
+      "key": "IT_SET_VC_GROW_04",
+      "value": "A pack containing Growth Eggs (MR) and a Select Element Magicite (M) x25 Summon Ticket."
+    },
+    {
+      "key": "IT_SET_VC_GROW_05",
+      "value": "A special pack containing a Select UR Vision Card Shard x50 Summon Ticket, a Rainbow Vision Sphere, Growth Eggs (MR), and Gil Snappers (L)! *The Select UR Vision Card Shard x50 Summon Ticket cannot be used for limited or collaborative vision cards."
+    },
+    {
+      "key": "IT_SET_VC_EXP_DARK_GL01",
+      "value": "A special pack containing Purple Magicite (XL) and Growth Eggs (MR)! Essential for enhancing dark element espers!"
+    },
+    {
+      "key": "IT_SET_SMVC_VE_EXP",
+      "value": "A special pack stuffed with Growth Eggs (MR) together with bonus Growth Eggs (SR) and Gil Snappers (L)! Essential for enhancing vision cards!"
+    },
+    {
+      "key": "IT_SET_GROW_UR",
+      "value": "A special pack containing Rainbow Vision Spheres and a Rainbow Fragment of Thought."
+    },
+    {
+      "key": "IT_SET_JB_WIND_03",
+      "value": "A special pack containing Wind Alcrysts (Red), Praying Angel Statues (Red), Prowling Wyvern Statues (Red), and Faint Memories (Red)."
+    },
+    {
+      "key": "IT_SET_JB_WIND_02",
+      "value": "A special pack containing Wind Alcrysts (Yellow), Praying Angel Statues (Yellow), Prowling Wyvern Statues (Yellow), and Faint Memories (Yellow)."
+    },
+    {
+      "key": "IT_SET_JB_WIND_01",
+      "value": "A special pack containing Wind Alcrysts (Purple), Praying Angel Statues (Purple), Prowling Wyvern Statues (Purple), and Faint Memories (Purple)."
+    },
+    {
+      "key": "IT_SET_UNIT_EXP_L",
+      "value": "A special pack containing EXP Cubes (L/XL)."
+    },
+    {
+      "key": "IT_SET_TICKET_GL_01",
+      "value": "A special pack containing Expedition Tickets (5h/10h) that can be used to speed up Chocobo Expeditions!"
+    },
+    {
+      "key": "IT_SET_AW_WIND_CM_03",
+      "value": "A special pack containing Wind Fragments of Thought, Wind Awakening Souls (2–6★), Rainbow Fragments of Thought, Rainbow Vision Spheres, and Wind Awakening Prisms! Essential for awakening wind element units!"
+    },
+    {
+      "key": "IT_SET_GROW_ORDR",
+      "value": "A special pack filled with UR Oldoa Unit Shards necessary for Limit Breaking, Wind Fragments of Thought necessary for Awakening, and bonus items such as Rainbow Vision Spheres and a Rainbow Fragment of Thought!"
     }
   ]
 }

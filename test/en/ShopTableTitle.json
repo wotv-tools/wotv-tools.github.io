@@ -17,6 +17,10 @@
       "value": "Special Shop"
     },
     {
+      "key": "Realmoney-0819",
+      "value": "Special Shop"
+    },
+    {
       "key": "Begginer-20200317",
       "value": "Beginner's Shop"
     },
@@ -289,6 +293,42 @@
       "value": "General Shop"
     },
     {
+      "key": "Normal-20200415_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200415_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200415_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_C",
+      "value": "General Shop"
+    },
+    {
       "key": "Guerrilla-20191114A",
       "value": "Guerrilla Shop"
     },
@@ -553,12 +593,84 @@
       "value": "Guerrilla Shop"
     },
     {
+      "key": "Guerrilla-20200415A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200415B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200415C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501C",
+      "value": "Guerrilla Shop"
+    },
+    {
       "key": "Limited-gl20200729_A",
       "value": "FFI Collaboration Shop"
     },
     {
       "key": "Limited-20191227_A",
       "value": "FFT Collaboration Shop"
+    },
+    {
+      "key": "Limited-gl20200819",
+      "value": "Huge Version Upgrade Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200819_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200819_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200812",
+      "value": "Chapter 8 Release Shop"
+    },
+    {
+      "key": "Limited-gl20200812_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200812_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200805",
+      "value": "Summer 2020 Campaign Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200805_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200805_B",
+      "value": "Raid Support Featured Shop"
     },
     {
       "key": "Limited-gl20200729",
@@ -769,6 +881,30 @@
       "value": "FFXIV: Shadowbringers Collaborative Shop"
     },
     {
+      "key": "Event-EV02_1_20200201",
+      "value": "Threat to the West, Rundall Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Quest_20200401",
+      "value": "August Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200819_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200812_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200805_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Raid_20200207",
+      "value": "Chocolate Flan Raid Medal Exchange Shop"
+    },
+    {
       "key": "Event-Raid_20200309",
       "value": "White Marshmallow Raid Medal Exchange Shop"
     },
@@ -791,14 +927,6 @@
     {
       "key": "Event-Summon_GL20200701_A",
       "value": "Summon Medal Exchange Shop"
-    },
-    {
-      "key": "Event-EV02_1_20200201",
-      "value": "June Event Medal Exchange Shop"
-    },
-    {
-      "key": "Event-Raid_20200207",
-      "value": "Chocolate Flan Raid Medal Exchange Shop"
     },
     {
       "key": "Event-Summon_GL20200624_B",
@@ -1070,6 +1198,62 @@
     },
     {
       "key": "Event-Vision_N_gl20200701",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200805",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200805",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200805",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200805",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200805",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200805",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200805",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200805",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200805",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200805",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200805",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200805",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200805",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200805",
       "value": "N Vision Medal Exchange Shop"
     },
     {
@@ -1678,6 +1862,102 @@
     },
     {
       "key": "Limited-FIRE_2020_4",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_A",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_A",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_A",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_A",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_A",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_A",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_A",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_A",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_B",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_B",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_B",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_B",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_B",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_B",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_B",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_B",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_C",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_C",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_C",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_C",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_C",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_C",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_C",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_C",
       "value": "Ember Works"
     }
   ]

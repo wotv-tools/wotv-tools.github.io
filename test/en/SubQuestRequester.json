@@ -103,6 +103,22 @@
     {
       "key": "SQ_WD_010203_02",
       "value": "Guild Services Clerk"
+    },
+    {
+      "key": "SQ_WD_010204_01",
+      "value": "Guild Services Clerk"
+    },
+    {
+      "key": "SQ_WD_010204_02",
+      "value": "Rookie Blacksmith"
+    },
+    {
+      "key": "SQ_WD_010205_01",
+      "value": "Chocobo Fanboy"
+    },
+    {
+      "key": "SQ_WD_010205_02",
+      "value": "Veteran Gladiator"
     }
   ]
 }

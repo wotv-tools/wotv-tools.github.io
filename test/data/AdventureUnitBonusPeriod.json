@@ -119,6 +119,24 @@
       "begin_at": "2020/07/28 22:30:00",
       "end_at": "2020/08/04 23:59:59",
       "bonus_set_id": "BONUS_GL_015"
+    },
+    {
+      "iname": "GL_PERIOD_019",
+      "begin_at": "2020/08/05",
+      "end_at": "2020/08/11 23:59:59",
+      "bonus_set_id": "BONUS_GL_016"
+    },
+    {
+      "iname": "GL_PERIOD_020",
+      "begin_at": "2020/08/12",
+      "end_at": "2020/08/18 17:59:59",
+      "bonus_set_id": "BONUS_GL_017"
+    },
+    {
+      "iname": "GL_PERIOD_021",
+      "begin_at": "2020/08/18 18:30:00",
+      "end_at": "2020/08/25 17:59:59",
+      "bonus_set_id": "BONUS_GL_018"
     }
   ]
 }

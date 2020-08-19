@@ -103,6 +103,22 @@
     {
       "key": "SQ_WD_010203_02",
       "value": "Join a Guild"
+    },
+    {
+      "key": "SQ_WD_010204_01",
+      "value": "Participate in a Guild Battle"
+    },
+    {
+      "key": "SQ_WD_010204_02",
+      "value": "Craft an Equipment Item 1 time"
+    },
+    {
+      "key": "SQ_WD_010205_01",
+      "value": "Collect items found during Chocobo Expedition 10 times"
+    },
+    {
+      "key": "SQ_WD_010205_02",
+      "value": "Win in the Arena 10 times"
     }
   ]
 }
