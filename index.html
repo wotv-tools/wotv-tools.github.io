@@ -847,6 +847,7 @@
 
     let promiseList = [];
     let loadJP = false;
+    let timestamp = (new Date()).getTime();
     location.search.substr(1).split('&').forEach((param) => {
       let params = param.split('=');
       if (params[0] == 'jp') {
@@ -857,13 +858,13 @@
     let typeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('en/ArtifactGrow.json', (data) => {
+      $.getJSON('en/ArtifactGrow.json?t=' + timestamp, (data) => {
         let typeNameMap = {};
         data.infos.forEach((info) => {
           typeNameMap[info.key] = info.value;
         });
         // 20200422_4c9ea1e3
-        $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRandLot.json', (data) => {
+        $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRandLot.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             typeMap[item.iname] = [];
             if (item.lot[0].grow1) {
@@ -894,7 +895,7 @@
     let growthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Grow.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Grow.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           growthMap[item.type] = {
             curve: item.curve,
@@ -909,7 +910,7 @@
     let buffMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Buff.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Buff.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           buffMap[item.iname] = item;
         });
@@ -921,7 +922,7 @@
     let buffNameList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/Buff.json', (data) => {
+      $.getJSON('en/Buff.json?t=' + timestamp, (data) => {
         // pretty sure this is the right list
         // but needs modifications for now
         buffNameList = data.infos;
@@ -995,7 +996,7 @@
     let skillMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Skill.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Skill.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           skillMap[item.iname] = item;
         });
@@ -1007,7 +1008,7 @@
     let skillNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON('en/SkillName.json', (data) => {
+      $.getJSON('en/SkillName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           if (info.value) {
             skillNameMap[info.key] = info.value;
@@ -1023,12 +1024,12 @@
     let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/ArtifactName.json', (data) => {
+      $.getJSON('en/ArtifactName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           artifactNameMap[info.key] = info.value;
         });
 
-        $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json', (data) => {
+        $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             // blacklisted items
             if (item.iname.match(/AF_\w+_LW_\w+_2/)) {
@@ -1070,7 +1071,7 @@
     let sealGrowthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactGrowItem.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up[0].eff_dst];
           sealGrowthMap[stat.value] = item.grow_up[0].val;
@@ -1083,7 +1084,7 @@
     let artifactCategoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('en/ArtifactCategory.json', (data) => {
+      $.getJSON('en/ArtifactCategory.json?t=' + timestamp, (data) => {
         artifactCategoryList = data.infos;
 
         // for some reason doesn't match exactly
@@ -1098,7 +1099,7 @@
     let artifactRecipeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRecipe.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRecipe.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactRecipeMap[item.iname] = item;
         });
@@ -1110,7 +1111,7 @@
     let artifactAwakeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactAwake.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactAwake.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactAwakeMap[item.iname] = item;
         });
@@ -1122,7 +1123,7 @@
     let itemMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200506_199950f7
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Item.json', (data) => {
+      $.getJSON((loadJP ? 'jp' : '') + 'data/Item.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           itemMap[item.iname] = item;
         });
@@ -1134,7 +1135,7 @@
     let itemNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/ItemName.json', (data) => {
+      $.getJSON('en/ItemName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           itemNameMap[info.key] = info.value;
         });
