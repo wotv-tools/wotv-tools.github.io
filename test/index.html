@@ -152,7 +152,7 @@
                 <td></td>
               </tr>
               <tr id="equipment_pass" class="hidden">
-                <td onclick="toggleEqPass()">
+                <td>
                   Equipment Training Pass<br/>
                   <input id="eq_pass_val" type="checkbox" />
                 </td>
@@ -460,8 +460,7 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('#seals .stat.stat_' + stat.value + ' img').removeClass('hidden');
-            $('#equipment_pass .stat.stat_' + stat.value + ' span').removeClass('hidden');
+            $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
 
             let tdEl = '';
             if (seals[i]) {
