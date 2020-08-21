@@ -299,6 +299,7 @@
     function onArtifactChange() {
       $('#start_tip').addClass('dismissed');
       resetSeals();
+      $('#equipment_pass').addClass('hidden');
       setItemInfo();
     }
     function onLevelChange() {
@@ -627,6 +628,7 @@
           $('#save_tip').addClass('hidden');
           $('#grow_div').removeClass('hidden');
           $('#seals').removeClass('hidden');
+          $('#equipment_pass').removeClass('hidden');
           break;
       }
       $('#level').removeClass('hidden');
