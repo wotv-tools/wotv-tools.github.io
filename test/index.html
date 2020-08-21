@@ -151,6 +151,25 @@
                 </td>
                 <td></td>
               </tr>
+              <tr id="equipment_pass" class="hidden">
+                <td onclick="toggleEqPass()">
+                  Equipment Training Pass<br/>
+                  <input id="eq_pass_val" type="checkbox" />
+                </td>
+                <td class="stat stat_0"><span class="hidden">+15%</span></td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_3"><span class="hidden">+15%</span></td>
+                <td class="stat stat_4"><span class="hidden">+3%</span></td>
+                <td class="stat stat_5"><span class="hidden">+15%</span></td>
+                <td class="stat stat_6"><span class="hidden">+3%</span></td>
+                <td class="stat stat_7"><span class="hidden">+3%</span></td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_10"><span class="hidden">+3%</span></td>
+                <td class="stat stat_11"><span class="hidden">+3%</span></td>
+                <td></td>
+              </tr>
             </table>
           </div>
           <div id="seals_tip" class="tips hidden">
@@ -430,6 +449,7 @@
         }
 
         typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
+        $('#equipment_pass .stat span').addClass('hidden');
         stats.forEach((stat, i) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
@@ -439,7 +459,9 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
+            $('#seals .stat.stat_' + stat.value + ' img').removeClass('hidden');
+            $('#equipment_pass .stat.stat_' + stat.value + ' span').removeClass('hidden');
+
             let tdEl = '';
             if (seals[i]) {
               tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
@@ -629,23 +651,27 @@
     function resetSeals() {
       seals = {};
       $('#seals').addClass('hidden');
-      $('.stat img').addClass('hidden');
-      $('.stat').removeClass('seal_on');
-      $('.stat input').prop('checked', false);
+      $('#seals .stat img').addClass('hidden');
+      $('#seals .stat').removeClass('seal_on');
+      $('#seals .stat input').prop('checked', false);
     }
     function toggleSeal(stat_index) {
+      if ($('#seals .stat.stat_' + stat_index + ' img').hasClass('hidden')) {
+        return;
+      }
+
       $('#seals_tip').addClass('dismissed');
       $('#save_tip').removeClass('hidden');
 
       if (seals[stat_index] == 1) {
-        $('.stat.stat_' + stat_index).removeClass('seal_on');
-        $('.stat.stat_' + stat_index + ' input').prop('checked', false);
+        $('#seals .stat.stat_' + stat_index).removeClass('seal_on');
+        $('#seals .stat.stat_' + stat_index + ' input').prop('checked', false);
         delete seals[stat_index];
         displayStats();
       } else if (Object.keys(seals).length < 3) {
         seals[stat_index] = 1;
-        $('.stat.stat_' + stat_index).addClass('seal_on');
-        $('.stat.stat_' + stat_index + ' input').prop('checked', true);
+        $('#seals .stat.stat_' + stat_index).addClass('seal_on');
+        $('#seals .stat.stat_' + stat_index + ' input').prop('checked', true);
         displayStats();
       }
 
