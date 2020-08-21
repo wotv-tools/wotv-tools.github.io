@@ -298,8 +298,7 @@
     }
     function onArtifactChange() {
       $('#start_tip').addClass('dismissed');
-      resetSeals();
-      $('#equipment_pass').addClass('hidden');
+      resetSealsAndPass();
       setItemInfo();
     }
     function onLevelChange() {
@@ -450,7 +449,6 @@
         }
 
         typeStatsRow.append('<td><b>' + (type.label ? type.label : '-') + '</b></td>');
-        $('#equipment_pass .stat span').addClass('hidden');
         stats.forEach((stat, i) => {
           if (ave_stats[stat.value] > artifact_stats[stat.value]) {
             ave_stats[stat.value] = artifact_stats[stat.value];
@@ -648,12 +646,15 @@
     }
 
     let seals = {}
-    function resetSeals() {
+    function resetSealsAndPass() {
       seals = {};
       $('#seals').addClass('hidden');
       $('#seals .stat img').addClass('hidden');
       $('#seals .stat').removeClass('seal_on');
       $('#seals .stat input').prop('checked', false);
+
+      $('#equipment_pass').addClass('hidden');
+      $('#equipment_pass .stat span').addClass('hidden');
     }
     function toggleSeal(stat_index) {
       if ($('#seals .stat.stat_' + stat_index + ' img').hasClass('hidden')) {
