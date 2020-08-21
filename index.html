@@ -151,6 +151,25 @@
                 </td>
                 <td></td>
               </tr>
+              <tr id="equipment_pass" class="hidden">
+                <td>
+                  Equipment Training Pass<br/>
+                  <input id="eq_pass_val" type="checkbox" onchange="displayStats()" />
+                </td>
+                <td class="stat stat_0"><span class="hidden">+15%</span></td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_3"><span class="hidden">+15%</span></td>
+                <td class="stat stat_4"><span class="hidden">+3%</span></td>
+                <td class="stat stat_5"><span class="hidden">+15%</span></td>
+                <td class="stat stat_6"><span class="hidden">+3%</span></td>
+                <td class="stat stat_7"><span class="hidden">+3%</span></td>
+                <td></td>
+                <td></td>
+                <td class="stat stat_10"><span class="hidden">+3%</span></td>
+                <td class="stat stat_11"><span class="hidden">+3%</span></td>
+                <td></td>
+              </tr>
             </table>
           </div>
           <div id="seals_tip" class="tips hidden">
@@ -216,7 +235,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-08-19)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-08-21)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -279,7 +298,7 @@
     }
     function onArtifactChange() {
       $('#start_tip').addClass('dismissed');
-      resetSeals();
+      resetSealsAndPass();
       setItemInfo();
     }
     function onLevelChange() {
@@ -439,7 +458,6 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('.stat.stat_' + stat.value + ' img').removeClass('hidden');
             let tdEl = '';
             if (seals[i]) {
               tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
@@ -595,6 +613,7 @@
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
               $('#seals .stat_' + i + ' img').removeClass('hidden');
+              $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
             }
@@ -605,6 +624,7 @@
           $('#save_tip').addClass('hidden');
           $('#grow_div').removeClass('hidden');
           $('#seals').removeClass('hidden');
+          $('#equipment_pass').removeClass('hidden');
           break;
       }
       $('#level').removeClass('hidden');
@@ -626,26 +646,33 @@
     }
 
     let seals = {}
-    function resetSeals() {
+    function resetSealsAndPass() {
       seals = {};
       $('#seals').addClass('hidden');
-      $('.stat img').addClass('hidden');
-      $('.stat').removeClass('seal_on');
-      $('.stat input').prop('checked', false);
+      $('#seals .stat img').addClass('hidden');
+      $('#seals .stat').removeClass('seal_on');
+      $('#seals .stat input').prop('checked', false);
+
+      $('#equipment_pass').addClass('hidden');
+      $('#equipment_pass .stat span').addClass('hidden');
     }
     function toggleSeal(stat_index) {
+      if ($('#seals .stat.stat_' + stat_index + ' img').hasClass('hidden')) {
+        return;
+      }
+
       $('#seals_tip').addClass('dismissed');
       $('#save_tip').removeClass('hidden');
 
       if (seals[stat_index] == 1) {
-        $('.stat.stat_' + stat_index).removeClass('seal_on');
-        $('.stat.stat_' + stat_index + ' input').prop('checked', false);
+        $('#seals .stat.stat_' + stat_index).removeClass('seal_on');
+        $('#seals .stat.stat_' + stat_index + ' input').prop('checked', false);
         delete seals[stat_index];
         displayStats();
       } else if (Object.keys(seals).length < 3) {
         seals[stat_index] = 1;
-        $('.stat.stat_' + stat_index).addClass('seal_on');
-        $('.stat.stat_' + stat_index + ' input').prop('checked', true);
+        $('#seals .stat.stat_' + stat_index).addClass('seal_on');
+        $('#seals .stat.stat_' + stat_index + ' input').prop('checked', true);
         displayStats();
       }
 
@@ -823,6 +850,7 @@
 
     function getArtifactRates(adjust, base) {
       let artifact_rates = {};
+      let passEnabled = $('#equipment_pass input').prop('checked');
 
       stats.forEach((stat, i) => {
         if (base[stat.value]) {
@@ -836,8 +864,15 @@
             artifact_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
+          if (passEnabled && sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
           if (artifact_rates[stat.value] < 0) {
             artifact_rates[stat.value] = 0;
+          }
+          if (artifact_rates[stat.value] > 100) {
+            artifact_rates[stat.value] = 100;
           }
         }
       });
