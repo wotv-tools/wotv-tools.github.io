@@ -154,7 +154,7 @@
               <tr id="equipment_pass" class="hidden">
                 <td>
                   Equipment Training Pass<br/>
-                  <input id="eq_pass_val" type="checkbox" />
+                  <input id="eq_pass_val" type="checkbox" onchange="displayStats()" />
                 </td>
                 <td class="stat stat_0"><span class="hidden">+15%</span></td>
                 <td></td>
@@ -460,8 +460,6 @@
           }
 
           if (!isNaN(artifact_stats[stat.value] && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0)) {
-            $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
-
             let tdEl = '';
             if (seals[i]) {
               tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
@@ -617,6 +615,7 @@
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
               $('#seals .stat_' + i + ' img').removeClass('hidden');
+              $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
             }
@@ -850,6 +849,7 @@
 
     function getArtifactRates(adjust, base) {
       let artifact_rates = {};
+      let passEnabled = $('#equipment_pass input').prop('checked');
 
       stats.forEach((stat, i) => {
         if (base[stat.value]) {
@@ -863,8 +863,15 @@
             artifact_rates[stat.value] += sealGrowthMap[stat.value];
           }
 
+          if (passEnabled && sealGrowthMap[stat.value]) {
+            artifact_rates[stat.value] += sealGrowthMap[stat.value];
+          }
+
           if (artifact_rates[stat.value] < 0) {
             artifact_rates[stat.value] = 0;
+          }
+          if (artifact_rates[stat.value] > 100) {
+            artifact_rates[stat.value] = 100;
           }
         }
       });
