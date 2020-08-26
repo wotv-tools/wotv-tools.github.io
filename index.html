@@ -1069,7 +1069,7 @@
             // blacklisted items
             if (item.iname.match(/AF_\w+_2/)
                 && (artifactNameMap[item.iname] == null
-                    || !artifactNameMap[item.iname].match(/\w+\+2/))
+                    || !artifactNameMap[item.iname].match(/.+\+2/))
                 ) {
               return;
             }
