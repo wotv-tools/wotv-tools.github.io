@@ -1067,7 +1067,8 @@
         $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             // blacklisted items
-            if (item.iname.match(/AF_\w+_2/) && !item.name.match(/\w+\+2/)) {
+            if (item.iname.match(/AF_\w+_2/)
+                && !artifactNameMap[item.iname].match(/\w+\+2/)) {
               return;
             }
 
