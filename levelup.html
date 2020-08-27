@@ -559,14 +559,29 @@
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
           while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
             stats.forEach((stat) => {
+              let total_amt = 0;
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
                 stats_left_after_perf[stat.value] -= amt_perf;
                 stats_left_after_perf.total -= amt_perf;
+                total_amt += amt_perf;
               }
             });
 
-            perf_level_ups++;
+            if (total_amt > 0) {
+              perf_level_ups++;
+            } else {
+              // rest can't grow (Sortilege special case)
+              // just add as perf level ups (pity rolls)
+              stats.forEach((stat) => {
+                if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
+                  let amt_perf = stats_left_after_perf[stat.value];
+                  stats_left_after_perf[stat.value] -= amt_perf;
+                  stats_left_after_perf.total -= amt_perf;
+                  perf_level_ups += amt_perf;
+                }
+              });
+            }
           }
           let perf_tar_level = level + perf_level_ups;
 
