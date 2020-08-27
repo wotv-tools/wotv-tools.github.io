@@ -570,7 +570,7 @@
           }
           let perf_tar_level = level + perf_level_ups;
 
-          if (stats_left_after_perf.total > 0) {
+          if (stats_left_after_perf.total > 0 && perf_level_ups >= levels_left) {
             addDataDump('Stats left after perfect level ups: ' + stats_left_after_perf.total);
             $('#details').text('Not enough levels left.')
             return 'You are unable to get max stats at this point.';
