@@ -558,8 +558,9 @@
           let perf_level_ups = 0;
           let stats_left_after_perf = JSON.parse(JSON.stringify(stats_left_after_hammer));
           while (perf_level_ups < levels_left && stats_left_after_perf.total > 0) {
+            let total_amt = 0;
+
             stats.forEach((stat) => {
-              let total_amt = 0;
               if (!isNaN(stats_left_after_perf[stat.value]) && stats_left_after_perf[stat.value] > 0) {
                 let amt_perf = Math.min(item.randa[0][stat.value], stats_left_after_perf[stat.value]);
                 stats_left_after_perf[stat.value] -= amt_perf;
