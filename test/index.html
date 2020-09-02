@@ -404,7 +404,11 @@
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
                 // guessing growth for no rstatus growth
-                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
+                ave_stats[stat.value] = item.status[0][stat.value]
+                    + (item.status[1][stat.value]
+                    - item.status[0][stat.value])
+                      * Math.min(level-1, typeGrowth.curve[0].lv-1)
+                      / (typeGrowth.curve[0].lv-1);
               }
             });
 
@@ -420,9 +424,17 @@
 
               stats.forEach((stat) => {
                 if (!isNaN(artifact_stats[stat.value])) {
-                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
-                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+                  if (!isNaN(artifact_rates[stat.value])
+                      && !isNaN(item.randa[0][stat.value])) {
+                        // only increase average and add to pity rate
+                        // if increase is possible
+                        ave_stats[stat.value] += item.randa[0][stat.value]
+                            * artifact_rates[stat.value] / 100;
+                        pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+                  }
 
+                  // can still be pity stat as long as stat exists
+                  // even without actual rate/amount increases
                   if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
                       pity_stat = stat.value;
                   }
