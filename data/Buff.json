@@ -3215,9 +3215,6 @@
     },
     {
       "iname": "BUFF_FFT_AGRA_S_4",
-      "conds": [
-        2
-      ],
       "turn": 3,
       "timing": 2,
       "chktgt": 0,
@@ -11873,26 +11870,6 @@
       "val11": 30
     },
     {
-      "iname": "BUFF_FFT_ACC_001_1_S",
-      "timing": 0,
-      "chktgt": 0,
-      "chktiming": 0,
-      "type1": 85,
-      "calc1": 3,
-      "val1": 5,
-      "val11": 10
-    },
-    {
-      "iname": "BUFF_FFT_ACC_001_5_S",
-      "timing": 0,
-      "chktgt": 0,
-      "chktiming": 0,
-      "type1": 85,
-      "calc1": 3,
-      "val1": 10,
-      "val11": 20
-    },
-    {
       "iname": "BUFF_FFT_SWO_002_2",
       "timing": 0,
       "chktgt": 0,
@@ -11947,6 +11924,26 @@
       "calc2": 1,
       "val2": 8,
       "val21": 8
+    },
+    {
+      "iname": "BUFF_FFT_ACC_001_1_S",
+      "timing": 0,
+      "chktgt": 0,
+      "chktiming": 0,
+      "type1": 85,
+      "calc1": 3,
+      "val1": 5,
+      "val11": 10
+    },
+    {
+      "iname": "BUFF_FFT_ACC_001_5_S",
+      "timing": 0,
+      "chktgt": 0,
+      "chktiming": 0,
+      "type1": 85,
+      "calc1": 3,
+      "val1": 10,
+      "val11": 20
     },
     {
       "iname": "BUFF_WTH_SUN",

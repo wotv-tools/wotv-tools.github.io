@@ -235,7 +235,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-08-26)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-09-02)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -404,7 +404,11 @@
             stats.forEach((stat) => {
               if (!isNaN(artifact_stats[stat.value])) {
                 // guessing growth for no rstatus growth
-                ave_stats[stat.value] = item.status[0][stat.value] + (item.status[1][stat.value] - item.status[0][stat.value]) * Math.min(level-1, typeGrowth.curve[0].lv-1) / (typeGrowth.curve[0].lv-1);
+                ave_stats[stat.value] = item.status[0][stat.value]
+                    + (item.status[1][stat.value]
+                    - item.status[0][stat.value])
+                      * Math.min(level-1, typeGrowth.curve[0].lv-1)
+                      / (typeGrowth.curve[0].lv-1);
               }
             });
 
@@ -420,9 +424,17 @@
 
               stats.forEach((stat) => {
                 if (!isNaN(artifact_stats[stat.value])) {
-                  ave_stats[stat.value] += item.randa[0][stat.value] * artifact_rates[stat.value] / 100;
-                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+                  if (!isNaN(artifact_rates[stat.value])
+                      && !isNaN(item.randa[0][stat.value])) {
+                        // only increase average and add to pity rate
+                        // if increase is possible
+                        ave_stats[stat.value] += item.randa[0][stat.value]
+                            * artifact_rates[stat.value] / 100;
+                        pity_rate *= (1 - (artifact_rates[stat.value] / 100));
+                  }
 
+                  // can still be pity stat as long as stat exists
+                  // even without actual rate/amount increases
                   if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
                       pity_stat = stat.value;
                   }

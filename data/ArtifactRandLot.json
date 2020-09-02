@@ -892,6 +892,15 @@
       ]
     },
     {
+      "iname": "AF_FFT_SWO_002",
+      "lot": [
+        {
+          "grow1": "AFGROW_AIM_50",
+          "gwait1": 50
+        }
+      ]
+    },
+    {
       "iname": "AF_LOT_FFT_ACC_001",
       "lot": [
         {
@@ -914,15 +923,6 @@
           "gwait2": 50,
           "grow3": "AFGROW_BAR_50",
           "gwait3": 50
-        }
-      ]
-    },
-    {
-      "iname": "AF_FFT_SWO_002",
-      "lot": [
-        {
-          "grow1": "AFGROW_AIM_50",
-          "gwait1": 50
         }
       ]
     }
