@@ -423,22 +423,22 @@
               let pity_stat;
 
               stats.forEach((stat) => {
-                if (!isNaN(artifact_stats[stat.value])) {
-                  if (!isNaN(artifact_rates[stat.value])
-                      && !isNaN(item.randa[0][stat.value])) {
-                        // only increase average and add to pity rate
-                        // if increase is possible
-                        ave_stats[stat.value] += item.randa[0][stat.value]
-                            * artifact_rates[stat.value] / 100;
-                        pity_rate *= (1 - (artifact_rates[stat.value] / 100));
-                  }
+                if (!isNaN(artifact_rates[stat.value])) {
+                  // pity rate still affected even if growth amount is 0
+                  pity_rate *= (1 - (artifact_rates[stat.value] / 100));
 
-                  // can still be pity stat as long as stat exists
-                  // even without actual rate/amount increases
                   if (!pity_stat || artifact_rates[stat.value] > artifact_rates[pity_stat]) {
                       pity_stat = stat.value;
                   }
+                }
 
+                if (!isNaN(artifact_stats[stat.value])
+                    && !isNaN(item.randa[0][stat.value])
+                    && !isNaN(artifact_rates[stat.value])) {
+                  ave_stats[stat.value] += item.randa[0][stat.value]
+                          * artifact_rates[stat.value] / 100;
+                  // can still be pity stat as long as stat exists
+                  // even without actual rate/amount increases
                   if (ave_stats[stat.value] > artifact_stats[stat.value]) {
                     ave_stats[stat.value] = artifact_stats[stat.value];
                     artifact_rates[stat.value] = 0;
@@ -624,10 +624,13 @@
           stats.forEach((stat, i) => {
             if (item.randa[0][stat.value]) {
               $('#grow_amt').append('<td>+' + item.randa[0][stat.value] + '</td>');
-              $('#seals .stat_' + i + ' img').removeClass('hidden');
-              $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
             } else {
               $('#grow_amt').append('<td>-</td>');
+            }
+
+            if (item.status[0][stat.value] || item.status[1][stat.vaue]) {
+              $('#seals .stat_' + i + ' img').removeClass('hidden');
+              $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
             }
           });
 
