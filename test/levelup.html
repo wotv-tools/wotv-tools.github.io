@@ -502,7 +502,9 @@
 
         addDataDump('Min hammered stat left: ' + hammered_min_left);
 
-        let tar_level = Math.max(max_level - stats_left_after_hammer.total, Math.min(max_level, level + hammered_min_left));
+        let tar_level = Math.max(
+          max_level - stats_left_after_hammer.total,      // min levels before hammer
+          Math.min(max_level, level + hammered_min_left));// min levels after hammer adjustments
         addDataDump('Initial target level (Math.max(max_level - stats_left_after_hammer.total, Math.min(max_level, level + hammered_min_left))): ' + tar_level);
 
         if (tar_level >= level) {
