@@ -628,7 +628,7 @@
               $('#grow_amt').append('<td>-</td>');
             }
 
-            if (item.status[0][stat.value] != 0 || item.status[1][stat.value] != 0) {
+            if (item.status[0][stat.value] && item.status[0][stat.value] != item.status[1][stat.value]) {
               $('#seals .stat_' + i + ' img').removeClass('hidden');
               $('#equipment_pass .stat.stat_' + i + ' span').removeClass('hidden');
             }
