@@ -560,7 +560,8 @@
             break;
           // Enchant
           case 134:
-            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0]].value + ' ' + buff_value;
+            let enchant_index_offset = 1;
+            buff_text = buffNameList[buff['type' + buff_index] + buff['tag' + buff_index][0] + enchant_index_offset].value + ' ' + buff_value;
             break;
           default:
             buff_text = buffNameList[buff['type' + buff_index]].value;
