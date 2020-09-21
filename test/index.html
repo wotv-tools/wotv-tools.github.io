@@ -779,7 +779,7 @@
 
       for (let mat in materials) {
         let item = materials[mat].type ? artifactMap[mat] : itemMap[mat];
-        let itemName = materials[mat].type ? artifactNameMap[mat] : itemNameMap[mat];
+        let itemName = materials[mat].type ? (artifactNameMap[mat] ? artifactNameMap[mat] : mat) : itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
         let tr = $('<tr></tr>');
         let td = $('<td></td>');
@@ -1094,7 +1094,7 @@
             if (item.type >= 0) {
               if (artifactNameMap[item.iname] || loadJP) {
                 artifactMap[item.iname] = item;
-                artifactMap[item.iname].name = artifactNameMap[item.iname];
+                artifactMap[item.iname].name = artifactNameMap[item.iname] ? artifactNameMap[item.iname] : item.iname;
 
                 let artifactListEntry = {
                   label: artifactNameMap[item.iname],
