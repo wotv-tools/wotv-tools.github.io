@@ -235,7 +235,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-09-16)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-09-23)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -779,7 +779,7 @@
 
       for (let mat in materials) {
         let item = materials[mat].type ? artifactMap[mat] : itemMap[mat];
-        let itemName = materials[mat].type ? artifactNameMap[mat] : itemNameMap[mat];
+        let itemName = materials[mat].type ? (artifactNameMap[mat] ? artifactNameMap[mat] : mat) : itemNameMap[mat];
         let mat_url = mat_link + encodeURIComponent(itemName);
         let tr = $('<tr></tr>');
         let td = $('<td></td>');
@@ -1092,9 +1092,9 @@
             }
 
             if (item.type >= 0) {
-              if (artifactNameMap[item.iname]) {
+              if (artifactNameMap[item.iname] || loadJP) {
                 artifactMap[item.iname] = item;
-                artifactMap[item.iname].name = artifactNameMap[item.iname];
+                artifactMap[item.iname].name = artifactNameMap[item.iname] ? artifactNameMap[item.iname] : item.iname;
 
                 let artifactListEntry = {
                   label: artifactNameMap[item.iname],
