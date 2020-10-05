@@ -469,7 +469,7 @@
             ave_stats[stat.value] = Math.round(ave_stats[stat.value]);
           }
 
-          if (!isNaN(artifact_stats[stat.value]) && item.status[0][stat.value] != 0 && artifact_stats[stat.value] != 0) {
+          if (!isNaN(artifact_stats[stat.value]) && (item.status[0][stat.value] != 0 || artifact_stats[stat.value] != 0)) {
             let tdEl = '';
             if (seals[i]) {
               tdEl = '<td><b>' + ave_stats[stat.value] + '</b> / ' + artifact_stats[stat.value];
