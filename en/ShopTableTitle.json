@@ -1,0 +1,2692 @@
+{
+  "infos": [
+    {
+      "key": "Realmoney-0101",
+      "value": "Special Shop"
+    },
+    {
+      "key": "Realmoney-0603",
+      "value": "Special Shop"
+    },
+    {
+      "key": "Realmoney-0715",
+      "value": "Special Shop"
+    },
+    {
+      "key": "Realmoney-0729",
+      "value": "Special Shop"
+    },
+    {
+      "key": "Realmoney-0819",
+      "value": "Special Shop"
+    },
+    {
+      "key": "Realmoney-0826",
+      "value": ""
+    },
+    {
+      "key": "Realmoney-0923",
+      "value": ""
+    },
+    {
+      "key": "Realmoney-1007",
+      "value": ""
+    },
+    {
+      "key": "Begginer-gl20200909",
+      "value": "Beginner's Shop"
+    },
+    {
+      "key": "Begginer-20200317",
+      "value": "Beginner's Shop"
+    },
+    {
+      "key": "Begginer-20191114",
+      "value": "Beginner's Shop"
+    },
+    {
+      "key": "Normal-20191114_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191114_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191114_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191122_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191122_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191122_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191130_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191130_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191130_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191209_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191209_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191209_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191218_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191218_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191218_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191227_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191227_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20191227_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200101_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200101_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200101_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200108_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200108_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200108_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200115_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200115_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200115_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200122_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200122_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200122_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200201_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200201_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200201_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200207_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200207_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200207_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200214_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200214_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200214_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200221_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200221_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200221_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200317_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200317_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200317_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200319_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200319_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200319_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200321_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200321_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200321_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200323_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200323_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200323_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200325_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200325_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200325_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200328_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200328_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200328_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200401_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200401_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200401_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200408_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200408_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200408_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200415_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200415_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200415_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200422_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200501_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200507_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200507_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200507_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200514_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200514_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200514_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200521_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200521_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200521_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200601_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200601_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200601_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200610_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200610_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200610_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200617_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200617_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200617_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200624_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200624_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200624_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200701_A",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200701_B",
+      "value": "General Shop"
+    },
+    {
+      "key": "Normal-20200701_C",
+      "value": "General Shop"
+    },
+    {
+      "key": "Guerrilla-20191114A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191114B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191114C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL_20191122A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL_20191122B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL_20191122C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191130A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191130B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191130C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL20200415A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL20200415B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-GL20200415C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191218A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191218B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191218C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191227A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191227B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20191227C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200101A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200101B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200101C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200108A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200108B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200108C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200115A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200115B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200115C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200122A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200122B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200122C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200201A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200201B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200201C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200207A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200207B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200207C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200214A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200214B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200214C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200221A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200221B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200221C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200317A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200317B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200317C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200319A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200319B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200319C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200321A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200321B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200321C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200323A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200323B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200323C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200325A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200325B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200325C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200328A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200328B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200328C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200401A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200401B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200401C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200408A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200408B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200408C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200415A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200415B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200415C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200422C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200501C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200507A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200507B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200507C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200514A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200514B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200514C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200521A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200521B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200521C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200601A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200601B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200601C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200610A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200610B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200610C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200617A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200617B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200617C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200624A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200624B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200624C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200701A",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200701B",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Guerrilla-20200701C",
+      "value": "Guerrilla Shop"
+    },
+    {
+      "key": "Limited-20200422_A",
+      "value": "FFT Part II Collaboration Shop"
+    },
+    {
+      "key": "Limited-gl20200729_A",
+      "value": "FFI Collaboration Shop"
+    },
+    {
+      "key": "Limited-20191227_A",
+      "value": "FFT Collaboration Shop"
+    },
+    {
+      "key": "Limited-20200501_C",
+      "value": "FFT Reissue Collaboration Shop"
+    },
+    {
+      "key": "Limited-gl20201014",
+      "value": "Six-Month Anniversary Part IV Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20201014_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20201007",
+      "value": "Six-Month Anniversary Part III Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20201007_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20201007_B",
+      "value": "Featured Shop"
+    },
+    {
+      "key": "Limited-gl20200930",
+      "value": "Six-Month Anniversary Part II Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200930_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200930_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200923",
+      "value": "Six-Month Anniversary Part I Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200923_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200923_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200916",
+      "value": "Six-Month Anniversary Countdown Part IV Shop"
+    },
+    {
+      "key": "Limited-gl20200916_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200916_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200909",
+      "value": "Six-Month Anniversary Countdown Part III Shop"
+    },
+    {
+      "key": "Limited-gl20200909_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200909_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200902",
+      "value": "Six-Month Anniversary Countdown Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200826",
+      "value": "Six-Month Anniversary Countdown Part I Shop"
+    },
+    {
+      "key": "Limited-gl20200819",
+      "value": "Huge Version Upgrade Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200819_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200819_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200812",
+      "value": "Chapter 8 Release Shop"
+    },
+    {
+      "key": "Limited-gl20200812_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200812_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200805",
+      "value": "Summer 2020 Campaign Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200805_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200805_B",
+      "value": "Raid Support Featured Shop"
+    },
+    {
+      "key": "Limited-gl20200729",
+      "value": "Summer 2020 Campaign Shop"
+    },
+    {
+      "key": "Limited-gl20200729_B",
+      "value": "Featured Unit/Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200722",
+      "value": "Raid Celebration Special Shop"
+    },
+    {
+      "key": "Limited-gl20200722_A",
+      "value": "Featured New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200722_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200715",
+      "value": "Guild Support Campaign Shop"
+    },
+    {
+      "key": "Limited-gl20200715_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200715_B",
+      "value": "Featured Unit/Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200708",
+      "value": "Porcelain Tower Launch Celebration Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200708_A",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200701",
+      "value": "FF EXVIUS Universe Campaign Shop"
+    },
+    {
+      "key": "Limited-gl20200701_A",
+      "value": "Porcelain Tower Launch Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200701_B_1",
+      "value": "Featured Unit/Vision Card Shop I"
+    },
+    {
+      "key": "Limited-gl20200701_B_2",
+      "value": "Featured Unit/Vision Card Shop II"
+    },
+    {
+      "key": "Limited-gl20200701_B_3",
+      "value": "Featured Unit/Vision Card Shop III"
+    },
+    {
+      "key": "Limited-gl20200701_B_4",
+      "value": "Featured Unit/Vision Card Shop IV"
+    },
+    {
+      "key": "Limited-gl20200624_A",
+      "value": "MOBIUS FINAL FANTASY Collaboration Shop"
+    },
+    {
+      "key": "Limited-gl20200624",
+      "value": "\"Chapter 7 Released!\" Shop"
+    },
+    {
+      "key": "Limited-gl20200624_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200617",
+      "value": "Early Summer Special Shop"
+    },
+    {
+      "key": "Limited-gl20200617_A",
+      "value": "Featured New Unit & Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200617_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200610",
+      "value": "Raid Celebration Special Shop"
+    },
+    {
+      "key": "Limited-gl20200610_A",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200603_B",
+      "value": "Version Upgrade Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200603",
+      "value": "Featured New Unit & Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200603_A",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200527",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200527_A",
+      "value": "\"5 Million Downloads\" Celebration Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200520",
+      "value": "Featured New Unit & Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200520_A",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200520_B",
+      "value": "\"5 Million Downloads\" Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200513",
+      "value": "New Vision Card Shop"
+    },
+    {
+      "key": "Limited-gl20200513_A",
+      "value": "\"Chapter 6 Released!\" Shop"
+    },
+    {
+      "key": "Limited-gl20200513_B",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200506_A",
+      "value": "\"4 Million Downloads\" Celebration Shop"
+    },
+    {
+      "key": "Limited-gl20200506",
+      "value": "New Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200429",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200429_A",
+      "value": "\"3 Million Downloads\" Celebration Part II Shop"
+    },
+    {
+      "key": "Limited-gl20200422",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-gl20200422_A",
+      "value": "\"3 Million Downloads\" Celebration Shop"
+    },
+    {
+      "key": "Limited-20191114",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-20191120",
+      "value": "\"1 Million Downloads\" Celebration Shop"
+    },
+    {
+      "key": "Limited-GL_20200408",
+      "value": "\"2 Million Downloads\" Celebration Shop"
+    },
+    {
+      "key": "Limited-20191122",
+      "value": "Featured Unit Shop"
+    },
+    {
+      "key": "Limited-20191130_A",
+      "value": "Featured New Unit Shop"
+    },
+    {
+      "key": "Limited-20200415",
+      "value": "Featured Shop"
+    },
+    {
+      "key": "Event-Quest_20200422",
+      "value": "FFT Part II Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Quest_GL20200729",
+      "value": "FFI Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200729_C",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-FF14_1_20191114",
+      "value": "Tomestone of Goetia Exchange Shop"
+    },
+    {
+      "key": "Event-FF14_2_20191114",
+      "value": "FFXIV Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Limited-FF14_3_20191114",
+      "value": "FFXIV: Shadowbringers Collaborative Shop"
+    },
+    {
+      "key": "Event-EV02_1_20200201",
+      "value": "Threat to the West, Rundall Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20200501_A",
+      "value": "FFT Reissue Summon Medal A Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20200501_B",
+      "value": "FFT Reissue Summon Medal B Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20200422_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20200422_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Raid_20200610",
+      "value": "Raid Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Quest_20200601",
+      "value": "Gouga and Saiga: Part I Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20201014_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20201007_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200930_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200923_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Unit_gl20200923",
+      "value": "UR Unit Piece Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200916_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200909_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Raid_20200507",
+      "value": "Raid Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Quest_20200401",
+      "value": "August Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200819_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200812_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200805_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Raid_20200207",
+      "value": "Chocolate Flan Raid Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Raid_20200309",
+      "value": "White Marshmallow Raid Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Quest_20200301",
+      "value": "July Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Tower_20200317",
+      "value": "Tower Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200722_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200715_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200701_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200624_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200617_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200603_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200520_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200513_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200506_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-FFT_1_20191227",
+      "value": "FFT Event Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20191227_A",
+      "value": "FFT Summon Medal A Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_20191227_B",
+      "value": "FFT Summon Medal B Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200325_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200401_A",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Summon_GL20200408_B",
+      "value": "Summon Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_20200201",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_20200201",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_20200201",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_20200201",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_20191130",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_20191130",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_20191130",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_20191130",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_20191130",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_20191130",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_20191130",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_20191130",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_20191130",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_20191130",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200501",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200501",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200501",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200501",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200501",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200501",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200501",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200501",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200501",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200501",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200501",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200501",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200501",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200501",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200601",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200601",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200601",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200601",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200601",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200601",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200601",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200601",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200601",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200601",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200601",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200601",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200601",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200601",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200701",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200701",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200701",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200701",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200701",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200701",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200701",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200701",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200701",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200701",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200701",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200701",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200701",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200701",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200805",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200805",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200805",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200805",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200805",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200805",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200805",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200805",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200805",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200805",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200805",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200805",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200805",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200805",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200923",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20200902",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20200902",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20200902",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200923",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20200902",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20200902",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20200902",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20200902",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20200902",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20200902",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20200902",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20200902",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20200902",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20200902",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20200902",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Friend_gl20201007",
+      "value": "Friend Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Arena_gl20201007",
+      "value": "Arena Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Match_gl20201007",
+      "value": "PVP Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Guild_gl20201007",
+      "value": "Guild Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_UR_gl20201007",
+      "value": "UR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SSR_gl20201007",
+      "value": "MR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_SR_gl20201007",
+      "value": "SR Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_R_gl20201007",
+      "value": "R Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Soul_N_gl20201007",
+      "value": "N Soul Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_UR_gl20201007",
+      "value": "UR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SSR_gl20201007",
+      "value": "MR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_SR_gl20201007",
+      "value": "SR Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_R_gl20201007",
+      "value": "R Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Event-Vision_N_gl20201007",
+      "value": "N Vision Medal Exchange Shop"
+    },
+    {
+      "key": "Limited-WATER_2019_11_13",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2019_11_14",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_11_15",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_11_16",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2019_11_17",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_11_17",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_11_18",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_11_19",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2019_11_20",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2019_11_21",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_11_29",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_11_23",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2019_11_24",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_11_24",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_11_25",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_11_26",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2019_12_04",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2019_12_05",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_12_06",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_12_07",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE2019_12_08",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_12_08",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_12_09",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_12_10",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2019_12_04_2",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2019_12_05_2",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_12_06_2",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_12_07_2",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE2019_12_08_2",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_12_08_2",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_12_09_2",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_12_10_2",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_1",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_2",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_12_27",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_12_28",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE2019_12_29",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_12_29",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_12_30",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_12_31",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_1_2",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_2_2",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2019_12_27_2",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2019_12_28_2",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE2019_12_29_2",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2019_12_29_2",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2019_12_30_2",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2019_12_31_2",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_8",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_9",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_1_10",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_1_11",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_1_12",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_1_12",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_1_6",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_1_7",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_15",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_16",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_1_17",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_1_18",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_1_19",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_1_19",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_1_13",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_1_14",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_22",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_23",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_1_24",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_1_25",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_1_26",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_1_26",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_1_20",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_1_21",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_1_29",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_1_30",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_1_31",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_2_01",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_2_02",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_2_02",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_1_27",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_1_28",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_2_05",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_2_06",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_2_07",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_2_08",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_2_09",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_2_09",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_2_03",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_2_04",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_2_12",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_2_13",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_2_14",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_2_15",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_2_16",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_2_16",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_2_10",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_2_11",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_2_19",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_2_20",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_2_21",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_2_22",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_2_23",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_2_23",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_2_17",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_2_18",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_2_26",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_2_27",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_2_28",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_2_29",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_3_01",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_3_01",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_2_24",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_2_25",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_3_04",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_3_05",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_3_06",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_3_07",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_3_08",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_3_08",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_3_02",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_3_03",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_3_11",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_3_12",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_3_13",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_3_14",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_3_15",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_3_15",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_3_09",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_3_10",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_3_18",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_3_19",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_3_20",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_3_21",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_3_22",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_3_22",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_3_16",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_3_17",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_3_25",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_3_26",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_3_27",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_3_28",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_3_29",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_3_29",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_3_23",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_3_24",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_A",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_A",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_A",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_A",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_A",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_A",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_A",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_A",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_B",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_B",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_B",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_B",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_B",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_B",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_B",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_B",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_C",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_C",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_C",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_C",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_C",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_C",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_C",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_C",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_4_D",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_4_D",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_4_D",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_4_D",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_4_D",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_4_D",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_4_D",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_4_D",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_5",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_5",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_5",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_5",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_5",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_5",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_5",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_5",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_5_B",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_5_B",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_5_B",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_5_B",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_5_B",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_5_B",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_5_B",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_5_B",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_5_C",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_5_C",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_5_C",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_5_C",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_5_C",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_5_C",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_5_C",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_5_C",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_5_D",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_5_D",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_5_D",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_5_D",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_5_D",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_5_D",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_5_D",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_5_D",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_6_A",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_6_A",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_6_A",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_6_A",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_6_A",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_6_A",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_6_A",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_6_A",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_6_B",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_6_B",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_6_B",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_6_B",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_6_B",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_6_B",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_6_B",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_6_B",
+      "value": "Ember Works"
+    },
+    {
+      "key": "Limited-WATER_2020_6_C",
+      "value": "Flood Works"
+    },
+    {
+      "key": "Limited-WIND_2020_6_C",
+      "value": "Gale Works"
+    },
+    {
+      "key": "Limited-THUNDER_2020_6_C",
+      "value": "Spark Works"
+    },
+    {
+      "key": "Limited-SOIL_2020_6_C",
+      "value": "Stone Works"
+    },
+    {
+      "key": "Limited-SHINE_2020_6_C",
+      "value": "Dawn Works"
+    },
+    {
+      "key": "Limited-DARK_2020_6_C",
+      "value": "Dusk Works"
+    },
+    {
+      "key": "Limited-ICE_2020_6_C",
+      "value": "Chill Works"
+    },
+    {
+      "key": "Limited-FIRE_2020_6_C",
+      "value": "Ember Works"
+    }
+  ]
+}
