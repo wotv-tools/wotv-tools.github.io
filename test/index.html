@@ -1045,7 +1045,10 @@
         for (let i = 0; i < 31; i++) {
           buffNameList.splice(183,1);
         }
-
+        // insert 6 dummy
+        for (let i = 0; i < 6; i++) {
+          buffNameList.splice(183,0,null);
+        }
         resolve();
       });
     }));
