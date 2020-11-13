@@ -2005,6 +2005,18 @@
       "value": "An item required to Limit Break a unit"
     },
     {
+      "key": "IT_PI_LW_SCAL",
+      "value": "An item required to Limit Break a unit"
+    },
+    {
+      "key": "IT_PI_LW_MRAL",
+      "value": "An item required to Limit Break a unit"
+    },
+    {
+      "key": "IT_PI_LW_CHEL",
+      "value": "An item required to Limit Break a unit"
+    },
+    {
       "key": "IT_SB_EXP_FIRE_01",
       "value": "Grants esper EXP (S)"
     },
@@ -2309,6 +2321,14 @@
       "value": "An item required to awaken Bloody Moon to 3★"
     },
     {
+      "key": "IT_SB_AW_AGON_R2",
+      "value": "An item required to awaken Aigaion to 2★"
+    },
+    {
+      "key": "IT_SB_AW_AGON_R3",
+      "value": "An item required to awaken Aigaion to 3★"
+    },
+    {
       "key": "IT_TICKET_STORY",
       "value": "A ticket that can be used to skip Story Quest battles"
     },
@@ -2589,6 +2609,10 @@
       "value": "A recipe required to craft a Coral Sword"
     },
     {
+      "key": "IT_AF_LW_SWO_023",
+      "value": "A recipe required to craft a Lohengrin"
+    },
+    {
       "key": "IT_AF_LW_BSW_001",
       "value": "A recipe required to craft a Claymore"
     },
@@ -2747,6 +2771,10 @@
     {
       "key": "IT_AF_LW_HAT_004",
       "value": "A recipe required to craft a Sage's Hat"
+    },
+    {
+      "key": "IT_AF_LW_HAT_005",
+      "value": "A recipe required to craft a Wolf Mask"
     },
     {
       "key": "IT_AF_LW_CLT_001",
@@ -2981,10 +3009,6 @@
       "value": "Specification undefined"
     },
     {
-      "key": "IT_EC_SUMMON_11_A",
-      "value": "A medal that can be acquired during New Unit/Vision Card Summons (Expires 2:59 p.m. PST, 12/9/2019)"
-    },
-    {
       "key": "IT_EC_SUMMON_12_A",
       "value": "A medal that can be acquired during New Unit/Vision Card and Winter Holiday Summons (Expires 11:59 p.m. PST, 12/31/2019)"
     },
@@ -3097,6 +3121,10 @@
       "value": "A medal that can be acquired during New Unit/Vision Card Summons (Expires 17:59, 11/17/2020, World Time (PST))"
     },
     {
+      "key": "IT_EC_SUMMON_11_A",
+      "value": "A medal that can be acquired during New Unit/Vision Card Summons (Expires 23:59, 12/1/2020, World Time (PST))"
+    },
+    {
       "key": "IT_EC_FFT_1",
       "value": "An item that can be acquired in FFT Collaborative Events and exchanged for various items at the FFT Event Medal Exchange Shop"
     },
@@ -3151,6 +3179,10 @@
     {
       "key": "IT_EC_EV05_1",
       "value": "An item that can be acquired in Gouga and Saiga: Part I and exchanged for various items at the Gouga and Saiga: Part I Medal Exchange Shop"
+    },
+    {
+      "key": "IT_EC_EV06_1",
+      "value": "An item that can be acquired via A Damsel in Distress Events and exchanged for various items at the A Damsel in Distress Medal Exchange Shop"
     },
     {
       "key": "IT_EC_FF1_1",
@@ -3391,6 +3423,14 @@
     {
       "key": "IT_US_G_U_SSR_UR_07",
       "value": "A ticket necessary to perform the Autumn 2020 Campaign Part I — MR+ Guaranteed Unit Summon. *This ticket cannot be used after 10/28/2020, World Time (PST). *Limited and collaborative units are not included in this Summon. "
+    },
+    {
+      "key": "IT_US_G_U_SSR_UR_08",
+      "value": "A ticket necessary to perform the Autumn 2020 Campaign Part II — MR+ Guaranteed Unit Summon. *This ticket cannot be used after 11/11/2020, World Time (PST). *Limited and collaborative units are not included in this Summon. "
+    },
+    {
+      "key": "IT_US_G_U_SSR_UR_09",
+      "value": "A ticket necessary to perform the Chapter 10 Release — MR+ Guaranteed Vision Card Summon. *This ticket cannot be used after 11/18/2020, World Time (PST). *Limited and collaborative vision cards are not included in this Summon. "
     },
     {
       "key": "IT_US_SE_UR_V_01",
@@ -3721,6 +3761,14 @@
       "value": "An item required to awaken a vision card"
     },
     {
+      "key": "IT_VPI_LW_AGON",
+      "value": "An item required to awaken a vision card"
+    },
+    {
+      "key": "IT_VPI_LW_GUREN",
+      "value": "An item required to awaken a vision card"
+    },
+    {
       "key": "IT_VC_EXP_01",
       "value": "Grants vision card EXP (S)"
     },
@@ -3891,6 +3939,14 @@
     {
       "key": "IT_US_GL_SE_VPI_10",
       "value": "A Select UR Vision Card Shard x50 Summon Ticket for vision cards released by October 14. *Cannot be used for limited or collaborative vision cards"
+    },
+    {
+      "key": "IT_US_GL_SE_VPI_11",
+      "value": "A Select UR Vision Card Shard x100 Summon Ticket for vision cards released by November 11. *Cannot be used for limited or collaborative vision cards"
+    },
+    {
+      "key": "IT_US_GL_SE_VPI_12",
+      "value": "A Select UR Vision Card Shard x50 Summon Ticket for vision cards released by November 11. *Cannot be used for limited or collaborative vision cards"
     },
     {
       "key": "IT_US_SE_UR_U_02",

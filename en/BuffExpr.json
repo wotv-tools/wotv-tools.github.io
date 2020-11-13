@@ -1605,6 +1605,10 @@
       "value": ""
     },
     {
+      "key": "BUFF_FNRR_M_04_2",
+      "value": ""
+    },
+    {
       "key": "BUFF_TITN_M_01",
       "value": ""
     },
@@ -1626,6 +1630,38 @@
     },
     {
       "key": "BUFF_BLMN_M_02",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_03",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_04_1",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_04_2",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_05",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_06_1",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_06_2",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_M_06_3",
+      "value": ""
+    },
+    {
+      "key": "BUFF_AGON_R_01",
       "value": ""
     },
     {
@@ -1833,6 +1869,10 @@
       "value": ""
     },
     {
+      "key": "BUFF_LB_LW_SCAL",
+      "value": ""
+    },
+    {
       "key": "BUFF_SMN_MABR",
       "value": ""
     },
@@ -1874,6 +1914,10 @@
     },
     {
       "key": "BUFF_SMN_BLMN",
+      "value": ""
+    },
+    {
+      "key": "BUFF_SMN_AGON",
       "value": ""
     },
     {
@@ -2322,6 +2366,18 @@
     },
     {
       "key": "BUFF_MA_LW_HWLT",
+      "value": ""
+    },
+    {
+      "key": "BUFF_MA_LW_SCAL",
+      "value": ""
+    },
+    {
+      "key": "BUFF_MA_LW_MRAL",
+      "value": ""
+    },
+    {
+      "key": "BUFF_MA_LW_CHEL",
       "value": ""
     },
     {
@@ -2874,6 +2930,26 @@
     },
     {
       "key": "BUFF_VC_LW_HALL_GSMAX",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_GS",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_GS_AW",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_GSMAX",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_GUREN_GS",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_GUREN_GSAW",
       "value": ""
     },
     {
@@ -3582,6 +3658,38 @@
     },
     {
       "key": "BUFF_VC_LW_BLMN_PAW",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_P",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_PAW",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_AGON_PMAX",
+      "value": ""
+    },
+    {
+      "key": "BUFF_GL_VC_LW_AGON_P2",
+      "value": ""
+    },
+    {
+      "key": "BUFF_GL_VC_LW_AGON_P2AW",
+      "value": ""
+    },
+    {
+      "key": "BUFF_GL_VC_LW_AGON_P2MAX",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_GUREN_P",
+      "value": ""
+    },
+    {
+      "key": "BUFF_VC_LW_GUREN_PAW",
       "value": ""
     },
     {
@@ -4726,6 +4834,22 @@
     },
     {
       "key": "BUFF_CLT_LW_HWLT_1_1",
+      "value": ""
+    },
+    {
+      "key": "BUFF_ACC_LW_SCAL_1_1",
+      "value": ""
+    },
+    {
+      "key": "BUFF_SWO_LW_MRAL_1_1",
+      "value": ""
+    },
+    {
+      "key": "BUFF_SWO_LW_MRAL_1_1_EN",
+      "value": ""
+    },
+    {
+      "key": "BUFF_ROD_LW_CHEL_1_1",
       "value": ""
     },
     {
@@ -8777,6 +8901,138 @@
       "value": "Raises Stats when equipped to Unit."
     },
     {
+      "key": "BUFF_AGON_01",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_02",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_03",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_04",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_05",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_06",
+      "value": "Boosts Evocation Magic."
+    },
+    {
+      "key": "BUFF_AGON_07",
+      "value": "Boosts Evocation Magic."
+    },
+    {
+      "key": "BUFF_AGON_08",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_09",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_10",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_11",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_12",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_13",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_14",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_15",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_16",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_17",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_18",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_19",
+      "value": "Boosts Evocation Magic."
+    },
+    {
+      "key": "BUFF_AGON_20",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_21",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_22",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_23",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_24",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_25",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_26",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_27",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_28",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_29",
+      "value": "Raises Stats when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_30",
+      "value": "Boosts Evocation Magic."
+    },
+    {
+      "key": "BUFF_AGON_31",
+      "value": "Boosts Evocation Magic."
+    },
+    {
+      "key": "BUFF_AGON_32",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
+      "key": "BUFF_AGON_33",
+      "value": "Bestows Ability when equipped to Unit."
+    },
+    {
       "key": "BUFF_ARMN_01",
       "value": "Raises Stats when equipped to Unit."
     },
@@ -9601,6 +9857,10 @@
       "value": "Raises Missile Res/MAG"
     },
     {
+      "key": "BUFF_ARENA_GL_00001",
+      "value": "Raises Missile Res."
+    },
+    {
       "key": "BUFF_GVG_001",
       "value": "Raises Dark Attack."
     },
@@ -9618,7 +9878,11 @@
     },
     {
       "key": "BUFF_GVG_007",
-      "value": "Raises Magic Attack"
+      "value": "Raises Magic Attack."
+    },
+    {
+      "key": "BUFF_GVG_GL_001",
+      "value": "Raises Wind Attack."
     },
     {
       "key": "BUFF_CLASSMATCH_001",

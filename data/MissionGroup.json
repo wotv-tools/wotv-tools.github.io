@@ -435,6 +435,20 @@
       "end_at": "2020/10/14 23:59:59"
     },
     {
+      "iname": "MG_EV_FNRR_01",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/11",
+      "end_at": "2020/11/25 23:59:59"
+    },
+    {
+      "iname": "MG_MU_FNRR_01",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/11",
+      "end_at": "2020/11/25 23:59:59"
+    },
+    {
       "iname": "MG_EV_ART_CRF_01",
       "type": 2,
       "category": 2,
@@ -482,6 +496,20 @@
       "category": 2,
       "begin_at": "2020/10/20 18:30:00",
       "end_at": "2020/11/04 23:59:59"
+    },
+    {
+      "iname": "MG_EV_ART_CRF_05",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
+    },
+    {
+      "iname": "MG_MU_ART_CRF_05",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
     },
     {
       "iname": "MG_EV01_1_01",
@@ -589,6 +617,27 @@
       "end_at": "2020/10/21 23:59:59"
     },
     {
+      "iname": "MG_EV06_1_01",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
+    },
+    {
+      "iname": "MG_EV06_1_02",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
+    },
+    {
+      "iname": "MG_MU_EV06_1_02",
+      "type": 2,
+      "category": 2,
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
+    },
+    {
       "iname": "MG_ETRE01_01",
       "type": 2,
       "category": 2,
@@ -676,15 +725,15 @@
       "iname": "MG_EV_SCR_01",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/10/28",
-      "end_at": "2020/11/04 23:59:59"
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
     },
     {
       "iname": "MG_MU_SCR_01",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/10/28",
-      "end_at": "2020/11/04 23:59:59"
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
     },
     {
       "iname": "MG_EV_SCR_02",
@@ -718,15 +767,15 @@
       "iname": "MG_EV_SCR_04",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/10/14",
-      "end_at": "2020/10/21 23:59:59"
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
     },
     {
       "iname": "MG_MU_SCR_04",
       "type": 2,
       "category": 2,
-      "begin_at": "2020/10/14",
-      "end_at": "2020/10/21 23:59:59"
+      "begin_at": "2020/11/04",
+      "end_at": "2020/11/18 23:59:59"
     },
     {
       "iname": "MG_EV_SCR_05",
