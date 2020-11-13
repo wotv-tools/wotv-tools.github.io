@@ -1405,6 +1405,46 @@
       "value": "Any Means Necessary"
     },
     {
+      "key": "QE_ST_01100101",
+      "value": "The Crystals"
+    },
+    {
+      "key": "QE_ST_01100102",
+      "value": "Outwit"
+    },
+    {
+      "key": "QE_ST_01100103",
+      "value": "Do Not Dare Turn Tail"
+    },
+    {
+      "key": "QE_ST_01100104",
+      "value": "The Devastation of «Rubeus» I"
+    },
+    {
+      "key": "QE_ST_01100105",
+      "value": "The Devastation of «Rubeus» II"
+    },
+    {
+      "key": "QE_ST_01100106",
+      "value": "I Cannot Go On"
+    },
+    {
+      "key": "QE_ST_01100107",
+      "value": "Dark Clouds"
+    },
+    {
+      "key": "QE_ST_01100108",
+      "value": "For Leonis Castle I"
+    },
+    {
+      "key": "QE_ST_01100109",
+      "value": "For Leonis Castle II"
+    },
+    {
+      "key": "QE_ST_01100110",
+      "value": "Not Your Enemy"
+    },
+    {
       "key": "QE_HA_LW_ZZAN",
       "value": "Shard Quest: Zazan"
     },
@@ -1659,6 +1699,22 @@
     {
       "key": "QE_HA_LW_RRIR",
       "value": "Shard Quest: Loreila"
+    },
+    {
+      "key": "QE_HA_LW_SCAL",
+      "value": "Shard Quest: Skahal"
+    },
+    {
+      "key": "QE_HA_LW_MRAL",
+      "value": "Shard Quest: Mariale"
+    },
+    {
+      "key": "QE_HA_LW_HWLT",
+      "value": "Shard Quest: Howlet"
+    },
+    {
+      "key": "QE_HA_LW_CHEL",
+      "value": "Shard Quest: Chel"
     },
     {
       "key": "QE_CH_LW_ZZAN",
@@ -1975,6 +2031,22 @@
     {
       "key": "QE_CH_LW_RIRY_01",
       "value": "Rairyuu (Halloween)"
+    },
+    {
+      "key": "QE_CH_LW_SCAL",
+      "value": "Skahal"
+    },
+    {
+      "key": "QE_CH_LW_MRAL",
+      "value": "Mariale"
+    },
+    {
+      "key": "QE_CH_LW_HWLT",
+      "value": "Howlet"
+    },
+    {
+      "key": "QE_CH_LW_CHEL",
+      "value": "Chel"
     },
     {
       "key": "QE_EV_GL_CDOWN_01_9",
@@ -2313,6 +2385,18 @@
       "value": "Brutal Difficulty Ifrit Challenge"
     },
     {
+      "key": "QE_SB_FNRR_02",
+      "value": "High Difficulty Fenrir Challenge"
+    },
+    {
+      "key": "QE_SB_FNRR_03",
+      "value": "Brutal Difficulty Fenrir Challenge"
+    },
+    {
+      "key": "QE_MU_FNRR_04",
+      "value": "Brutal Difficulty Fenrir Challenge"
+    },
+    {
       "key": "QE_EV_JP_001",
       "value": "JP Reward Quest"
     },
@@ -2367,6 +2451,30 @@
     {
       "key": "QE_EV_BEGN_2001",
       "value": "Unit Training Supportive Quest"
+    },
+    {
+      "key": "QE_CHAL_01_01",
+      "value": "[High Difficulty] Challenge Quest"
+    },
+    {
+      "key": "QE_CHAL_01_02",
+      "value": "[Brutal Difficulty] Challenge Quest I"
+    },
+    {
+      "key": "QE_CHAL_01_03",
+      "value": "[Brutal Difficulty] Challenge Quest II"
+    },
+    {
+      "key": "QE_CHAL_02_01",
+      "value": "[High Difficulty] Challenge Quest II"
+    },
+    {
+      "key": "QE_CHAL_02_02",
+      "value": "[Brutal Difficulty] Challenge Quest II #1"
+    },
+    {
+      "key": "QE_CHAL_02_03",
+      "value": "[Brutal Difficulty] Challenge Quest II #2"
     },
     {
       "key": "QE_EV_01_01",
@@ -2633,16 +2741,52 @@
       "value": "Gouga and Saiga: Part I [EX2]"
     },
     {
-      "key": "QE_CHAL_01_01",
-      "value": "[High Difficulty] Challenge Quest"
+      "key": "QE_EV_06_01",
+      "value": "Ep. 1: A Knight's Duty I"
     },
     {
-      "key": "QE_CHAL_01_02",
-      "value": "[Brutal Difficulty] Challenge Quest I"
+      "key": "QE_EV_06_02",
+      "value": "Ep. 2: A Knight's Duty II"
     },
     {
-      "key": "QE_CHAL_01_03",
-      "value": "[Brutal Difficulty] Challenge Quest II"
+      "key": "QE_EV_06_03",
+      "value": "Ep. 3: Journey Without Destination"
+    },
+    {
+      "key": "QE_EV_06_04",
+      "value": "Ep. 4: We Wait until Nightfall"
+    },
+    {
+      "key": "QE_EV_06_05",
+      "value": "Ep. 5: Infiltrate I"
+    },
+    {
+      "key": "QE_EV_06_06",
+      "value": "Ep. 6: Infiltrate II"
+    },
+    {
+      "key": "QE_EV_06_07",
+      "value": "Ep. 7: The Dungeon"
+    },
+    {
+      "key": "QE_EV_06_08",
+      "value": "Ep. 8: Escape I"
+    },
+    {
+      "key": "QE_EV_06_09",
+      "value": "Ep. 9: Escape II"
+    },
+    {
+      "key": "QE_EV_06_10",
+      "value": "Ep. 10: The Best Brother in the World"
+    },
+    {
+      "key": "QE_EV_06_EX",
+      "value": "A Damsel in Distress [EX]"
+    },
+    {
+      "key": "QE_MU_EV_06_EX",
+      "value": "A Damsel in Distress [EX]"
     },
     {
       "key": "QE_EV_SB_EXP_FIR",
@@ -2795,6 +2939,14 @@
     {
       "key": "QE_EV_ART_CRF_06",
       "value": "Equipment Training Quest (Golden Axe)"
+    },
+    {
+      "key": "QE_EV_ART_CRF_09",
+      "value": "Equipment Training Quest (Platinum Rod)"
+    },
+    {
+      "key": "QE_MU_ART_CRF_09",
+      "value": "Equipment Training Quest (Platinum Rod)"
     },
     {
       "key": "QE_MU_IFRT_04",
@@ -2963,6 +3115,10 @@
     {
       "key": "QE_SB_BLMN_01",
       "value": "Bloody Moon Battle"
+    },
+    {
+      "key": "QE_SB_AGON_01",
+      "value": "Aigaion Battle"
     },
     {
       "key": "QE_RAID_EV_06_01",
@@ -3325,6 +3481,18 @@
       "value": "Mock Guild Battle (Advanced)"
     },
     {
+      "key": "QE_EV_GL_NMAP_002_1",
+      "value": "Mock Guild Battle (Novice)"
+    },
+    {
+      "key": "QE_EV_GL_NMAP_002_2",
+      "value": "Mock Guild Battle (Intermediate)"
+    },
+    {
+      "key": "QE_EV_GL_NMAP_002_3",
+      "value": "Mock Guild Battle (Advanced)"
+    },
+    {
       "key": "QE_ARENA_00001",
       "value": "Arena"
     },
@@ -3353,6 +3521,10 @@
       "value": "Graveyard"
     },
     {
+      "key": "QE_ARENA_GL_00001",
+      "value": "Forest"
+    },
+    {
       "key": "QE_GVG_00001",
       "value": "Arena"
     },
@@ -3379,6 +3551,10 @@
     {
       "key": "QE_GVG_00010",
       "value": "Graveyard"
+    },
+    {
+      "key": "QE_GVG_GL_00001",
+      "value": "Ancient Ruins"
     },
     {
       "key": "QE_PVP_FRE_0001",

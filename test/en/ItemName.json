@@ -2005,6 +2005,18 @@
       "value": "Howlet Unit Shard"
     },
     {
+      "key": "IT_PI_LW_SCAL",
+      "value": "Skahal Unit Shard"
+    },
+    {
+      "key": "IT_PI_LW_MRAL",
+      "value": "Mariale Unit Shard"
+    },
+    {
+      "key": "IT_PI_LW_CHEL",
+      "value": "Chel Unit Shard"
+    },
+    {
       "key": "IT_SB_EXP_FIRE_01",
       "value": "Red Magicite (S)"
     },
@@ -2309,6 +2321,14 @@
       "value": "Bloody Moon’s Awakening Stone (3★)"
     },
     {
+      "key": "IT_SB_AW_AGON_R2",
+      "value": "Aigaion's Awakening Stone (2★)"
+    },
+    {
+      "key": "IT_SB_AW_AGON_R3",
+      "value": "Aigaion's Awakening Stone (3★)"
+    },
+    {
       "key": "IT_TICKET_STORY",
       "value": "Story Skip Ticket"
     },
@@ -2589,6 +2609,10 @@
       "value": "Coral Sword Crafting Recipe"
     },
     {
+      "key": "IT_AF_LW_SWO_023",
+      "value": "Lohengrin Crafting Recipe"
+    },
+    {
       "key": "IT_AF_LW_BSW_001",
       "value": "Claymore Crafting Recipe"
     },
@@ -2747,6 +2771,10 @@
     {
       "key": "IT_AF_LW_HAT_004",
       "value": "Sage's Hat Crafting Recipe"
+    },
+    {
+      "key": "IT_AF_LW_HAT_005",
+      "value": "Wolf Mask Crafting Recipe"
     },
     {
       "key": "IT_AF_LW_CLT_001",
@@ -2981,10 +3009,6 @@
       "value": "Summon Medal"
     },
     {
-      "key": "IT_EC_SUMMON_11_A",
-      "value": "November Summon Medal A"
-    },
-    {
       "key": "IT_EC_SUMMON_12_A",
       "value": "December Summon Medal A"
     },
@@ -3097,6 +3121,10 @@
       "value": "October Summon Medal B"
     },
     {
+      "key": "IT_EC_SUMMON_11_A",
+      "value": "November Summon Medal A"
+    },
+    {
       "key": "IT_EC_FFT_1",
       "value": "FFT Event Medal"
     },
@@ -3151,6 +3179,10 @@
     {
       "key": "IT_EC_EV05_1",
       "value": "Gouga and Saiga: Part I Medal"
+    },
+    {
+      "key": "IT_EC_EV06_1",
+      "value": "A Damsel in Distress Medal"
     },
     {
       "key": "IT_EC_FF1_1",
@@ -3391,6 +3423,14 @@
     {
       "key": "IT_US_G_U_SSR_UR_07",
       "value": "[Autumn 2020 Campaign Part I] MR+ Guaranteed Unit Summon Ticket"
+    },
+    {
+      "key": "IT_US_G_U_SSR_UR_08",
+      "value": "[Autumn 2020 Campaign Part II] MR+ Guaranteed Unit Summon Ticket"
+    },
+    {
+      "key": "IT_US_G_U_SSR_UR_09",
+      "value": "[Chapter 10 Release] MR+ Guaranteed Vision Card Summon Ticket"
     },
     {
       "key": "IT_US_SE_UR_V_01",
@@ -3721,6 +3761,14 @@
       "value": "\"Exorcists\" Vision Card Shard"
     },
     {
+      "key": "IT_VPI_LW_AGON",
+      "value": "\"Steel-Plated Destruction, Aigaion\" Vision Card Shard"
+    },
+    {
+      "key": "IT_VPI_LW_GUREN",
+      "value": "\"Chivalrous Outlaws, «Rubeus»\" Vision Card Shard"
+    },
+    {
       "key": "IT_VC_EXP_01",
       "value": "Growth Egg (N)"
     },
@@ -3890,6 +3938,14 @@
     },
     {
       "key": "IT_US_GL_SE_VPI_10",
+      "value": "Select UR Vision Card Shard x50 Summon Ticket"
+    },
+    {
+      "key": "IT_US_GL_SE_VPI_11",
+      "value": "Select UR Vision Card Shard x100 Summon Ticket"
+    },
+    {
+      "key": "IT_US_GL_SE_VPI_12",
       "value": "Select UR Vision Card Shard x50 Summon Ticket"
     },
     {

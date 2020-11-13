@@ -2509,6 +2509,54 @@
       "value": "DEF Up"
     },
     {
+      "key": "SK_LW_MST_M_1_SUB",
+      "value": "Deals Dmg (L) to targets within range based on caster's MAG stat & Guaranteed Hit."
+    },
+    {
+      "key": "SK_LW_MST_M_2_SUB",
+      "value": "Bestows a barrier on self that reduces Phys Dmg (3 times)."
+    },
+    {
+      "key": "SK_LW_MST_M_3_SUB",
+      "value": "Raises Faith of allies within area around self."
+    },
+    {
+      "key": "SK_LW_MST_FIRE_S_1",
+      "value": "Deals Fire Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_ICE_S_1",
+      "value": "Deals Ice Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_WIND_S_1",
+      "value": "Deals Wind Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_THUN_S_1",
+      "value": "Deals Lightning Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_WATR_S_1",
+      "value": "Deals Water Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_SOIL_S_1",
+      "value": "Deals Earth Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_SHIN_S_1",
+      "value": "Deals Light Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_DARK_S_1",
+      "value": "Deals Dark Dmg (S) to target based on caster's MAG stat & chance of lowering CT (S)."
+    },
+    {
+      "key": "SK_LW_MST_S_2",
+      "value": "Raises own Jump/Move by 1 for 3 turns."
+    },
+    {
       "key": "SK_FFT_AGRA_ATK",
       "value": ""
     },
@@ -4049,6 +4097,10 @@
       "value": "Deals Ice Magic Dmg (L) to targets within area around self & chance of inflicting Paralysis for 3 turns."
     },
     {
+      "key": "SK_FNRR_M_04_2",
+      "value": "Deals Ice Magic Dmg (L) to targets within area around self & chance of inflicting Paralysis for 3 turns."
+    },
+    {
       "key": "SK_TITN_ATK",
       "value": ""
     },
@@ -4123,6 +4175,38 @@
     {
       "key": "SK_TNBR_M_04_R",
       "value": "Deals DMG to target based on number of killed allies & Guaranteed Hit."
+    },
+    {
+      "key": "SK_AGON_ATK",
+      "value": ""
+    },
+    {
+      "key": "SK_AGON_M_01",
+      "value": "Deals Dmg (S) to targets within range."
+    },
+    {
+      "key": "SK_AGON_M_02",
+      "value": "Deals Dmg (Max) to target."
+    },
+    {
+      "key": "SK_AGON_M_03",
+      "value": "Deals Dmg (L) to targets within area around self & chance of inflicting Paralysis for 3 turns."
+    },
+    {
+      "key": "SK_AGON_M_04",
+      "value": "Significantly raises own ATK/MAG for 3 turns & significantly lowers Evasion Rate for 3 turns."
+    },
+    {
+      "key": "SK_AGON_M_05",
+      "value": "Significantly raises own DEF/SPR for 3 turns."
+    },
+    {
+      "key": "SK_AGON_M_06",
+      "value": "Lowers own ATK/MAG/DEF/SPR for 5 turns & bestows Quicken (stackable up to 3 times)."
+    },
+    {
+      "key": "SK_AGON_R_01",
+      "value": "High chance of Counterattack when taking Dmg & chance of inflicting Stop on target."
     },
     {
       "key": "SK_LW_E_VIK_ATK",
@@ -4369,6 +4453,10 @@
       "value": "Lowers target's Wind Res for 3 turns, then deals Dmg (L) based on caster's MAG stat."
     },
     {
+      "key": "SK_LB_LW_SCAL",
+      "value": "Deals 3-Hit Dmg (L) to targets within range based on caster's MAG stat & chance of inflicting Paralysis for 3 turns."
+    },
+    {
       "key": "SK_SMN_IFRT",
       "value": "Evokes Ifrit, deals Fire Dmg (Max) to targets within range & activates temporary Map Effects (raises allies' ATK/MAG & significantly lowers enemies' Fire Res)."
     },
@@ -4467,6 +4555,10 @@
     {
       "key": "SK_SMN_BLMN",
       "value": "Evokes Bloody Moon, deals Dark Dmg (L) to targets within area around self & chance of inflicting Doom."
+    },
+    {
+      "key": "SK_SMN_AGON",
+      "value": "Evokes Aigaion, deals Lightning Dmg (L) to targets within area around self & chance of inflicting Paralysis for 3 turns."
     },
     {
       "key": "SK_US_POTION",
@@ -4901,6 +4993,18 @@
       "value": "SPR Piercing Rate +20, MAG +10%"
     },
     {
+      "key": "SK_MA_LW_SCAL",
+      "value": "MAG +20%, Activation Time -20%"
+    },
+    {
+      "key": "SK_MA_LW_MRAL",
+      "value": "Hate +5, Area Attack Res +15"
+    },
+    {
+      "key": "SK_MA_LW_CHEL",
+      "value": "AGI +10%, Activation Time -25%"
+    },
+    {
       "key": "SK_LW_SLASH_1",
       "value": "Slash ATK +2"
     },
@@ -5287,6 +5391,18 @@
     {
       "key": "SK_CLT_LW_HWLT_1_1",
       "value": "Consumes own HP to evade all Phys Attacks for 1 turn."
+    },
+    {
+      "key": "SK_ACC_LW_SCAL_1_1",
+      "value": "Consumes own HP to significantly raise ally's MAG for 3 turns."
+    },
+    {
+      "key": "SK_SWO_LW_MRAL_1_1",
+      "value": ""
+    },
+    {
+      "key": "SK_ROD_LW_CHEL_1_1",
+      "value": ""
     },
     {
       "key": "SK_ACC_LW_MONT_ARENA",
@@ -6117,6 +6233,26 @@
       "value": ""
     },
     {
+      "key": "SK_VC_LW_AGON_GS",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_AGON_GS_AW",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_AGON_GSMAX",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_GUREN_GS",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_GUREN_GSAW",
+      "value": ""
+    },
+    {
       "key": "SK_VC_LW_TITN_P",
       "value": ""
     },
@@ -6226,6 +6362,38 @@
     },
     {
       "key": "SK_VC_LW_BLMN_PAW",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_AGON_P",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_AGON_PAW",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_AGON_PMAX",
+      "value": ""
+    },
+    {
+      "key": "SK_GL_VC_LW_AGON_P2",
+      "value": ""
+    },
+    {
+      "key": "SK_GL_VC_LW_AGON_P2AW",
+      "value": ""
+    },
+    {
+      "key": "SK_GL_VC_LW_AGON_P2MAX",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_GUREN_P",
+      "value": ""
+    },
+    {
+      "key": "SK_VC_LW_GUREN_PAW",
       "value": ""
     },
     {
@@ -7799,6 +7967,22 @@
     {
       "key": "SK_GMK_ATK_KENZAN",
       "value": "Gimmick Attack (Fixed Dmg)"
+    },
+    {
+      "key": "SK_GMK_ATK_CANN_1",
+      "value": "Gimmick Attack (Rundall Cannon Single Unit)"
+    },
+    {
+      "key": "SK_GMK_ATK_CANN_2",
+      "value": "Gimmick Attack (Rundall Cannon Area)"
+    },
+    {
+      "key": "SK_GMK_ATK_KATA_1_EN",
+      "value": "Gimmick Attack (Catapult Single Unit)"
+    },
+    {
+      "key": "SK_GMK_ATK_KATA_2_EN",
+      "value": "Gimmick Attack (Catapult Area)"
     },
     {
       "key": "SK_LW_WAR_P_2",
