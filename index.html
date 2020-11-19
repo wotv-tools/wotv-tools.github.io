@@ -33,14 +33,8 @@
   <div id="header">
     Equipment Calculator
     <div id="css_toggle" onclick="toggleCSS()">
-      <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
-      <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
-    </div>
-    <div id="support_link">
-      <a target="_blank" href="https://www.buymeacoffee.com/sairenkao">
-        <img src="img/items/IT_LP_WW_01.png" title="Buy me visiore"/>
-        <span>Buy me visiore</span>
-      </a>
+      <img id="light" src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
+      <img id="dark" src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
     </div>
   </div>
 
@@ -77,9 +71,9 @@
                 <td><b>Type</b></td>
                 <td id="type"></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td id="skills" colspan="2"></td>
-              </tr>
+              </tr> -->
             </table>
           </div>
         </div>
@@ -114,39 +108,39 @@
               <tr id="seals" class="hidden">
                 <th>Seals</th>
                 <td class="stat stat_0" onclick="toggleSeal(0)">
-                  <label for=""><img src="img/items/IT_AF_SUP_HP.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_HP.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td></td>
                 <td></td>
                 <td class="stat stat_3" onclick="toggleSeal(3)">
-                  <label for=""><img src="img/items/IT_AF_SUP_ATK.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_ATK.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td class="stat stat_4" onclick="toggleSeal(4)">
-                  <label for=""><img src="img/items/IT_AF_SUP_DEF.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_DEF.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td class="stat stat_5" onclick="toggleSeal(5)">
-                  <label for=""><img src="img/items/IT_AF_SUP_MAG.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_MAG.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td class="stat stat_6" onclick="toggleSeal(6)">
-                  <label for=""><img src="img/items/IT_AF_SUP_MND.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_MND.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td class="stat stat_7" onclick="toggleSeal(7)">
-                  <label for=""><img src="img/items/IT_AF_SUP_HIT.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_HIT.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td></td>
                 <td></td>
                 <td class="stat stat_10" onclick="toggleSeal(10)">
-                  <label for=""><img src="img/items/IT_AF_SUP_AVO.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_AVO.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td class="stat stat_11" onclick="toggleSeal(11)">
-                  <label for=""><img src="img/items/IT_AF_SUP_CRI.png"/></label>
+                  <label for=""><img src="https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/IT_AF_SUP_CRI.png"/></label>
                   <input type="checkbox" class="hidden" disabled />
                 </td>
                 <td></td>
@@ -235,7 +229,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-11-12)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-11-19)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -328,7 +322,7 @@
       let level = parseInt($('#level').val());
       let item_sk = item['skl' + Math.ceil(level/10)];
 
-      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
+      $('#item_image img').attr('src', 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/equipment/' + item.asset + '.png');
 
       $('#type').empty();
       item.cat.forEach((cat) => {
@@ -354,30 +348,30 @@
           break;
       }
 
-      $('#skills').empty();
-      if (item_sk) {
-        item_sk.forEach((skl) => {
-          let skill = skillMap[skl];
-          if (skill.grow == 'SKILL_DEFAULT' && skillNameMap[skl]) {
-              $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
-          } else {
-            if (skill.s_buffs) {
-              skill.s_buffs.forEach((s_buff) => {
-                $('#skills').append(getBuffNames(s_buff, skill.grow, level));
-              });
-            }
-            if (skill.t_buffs) {
-              skill.t_buffs.forEach((t_buff) => {
-                $('#skills').append(getBuffNames(t_buff, skill.grow, level));
-              });
-            }
-          }
-        });
-      }
-
-      if (!$.trim($('#skills').html())) {
-          $('#skills').append('<div>-</div>');
-      }
+      // $('#skills').empty();
+      // if (item_sk) {
+      //   item_sk.forEach((skl) => {
+      //     let skill = skillMap[skl];
+      //     if (skill.grow == 'SKILL_DEFAULT' && skillNameMap[skl]) {
+      //         $('#skills').append('<div class="skill_desc">' + skillNameMap[skl] + '</div>');
+      //     } else {
+      //       if (skill.s_buffs) {
+      //         skill.s_buffs.forEach((s_buff) => {
+      //           $('#skills').append(getBuffNames(s_buff, skill.grow, level));
+      //         });
+      //       }
+      //       if (skill.t_buffs) {
+      //         skill.t_buffs.forEach((t_buff) => {
+      //           $('#skills').append(getBuffNames(t_buff, skill.grow, level));
+      //         });
+      //       }
+      //     }
+      //   });
+      // }
+      //
+      // if (!$.trim($('#skills').html())) {
+      //     $('#skills').append('<div>-</div>');
+      // }
 
       // $('#desc').empty();
       // $('#desc').append(artifactFlavorMap[item.iname]);
@@ -797,14 +791,14 @@
         }
 
         if (item.asset) {
-          let img_url = 'img/equipment/' + item.asset + '.png';
+          let img_url = 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/equipment/' + item.asset + '.png';
           if (materials[mat].type) {
             td.append('<div class="material"><img src="' + img_url + '"/></div>');
           } else {
             td.append('<div class="material recipe"><img src="' + img_url + '"/></div>');
           }
         } else {
-          let img_url = 'img/items/' + mat + '.png';
+          let img_url = 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/items/' + mat + '.png';
           td.append('<div class="material"><img src="' + img_url + '"/></div>');
         }
         td.append('<div>' + materials[mat].num + 'x</div>');
@@ -823,7 +817,7 @@
       let newEl = $(el).clone();
       let itemKey = $('#artifacts').val();
       let item = artifactMap[itemKey];
-      let item_td = $('#skills').clone();
+      // let item_td = $('#skills').clone();
       item_td.attr('colspan', null);
       item_td.attr('id', null);
       item_td.prepend('<div><b>' + item.name + '</b></div>');
@@ -920,15 +914,16 @@
     });
 
     let typeMap = {};
+    const RAW_GIT_URL = 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master';
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('en/ArtifactGrow.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactGrow.json?t=' + timestamp, (data) => {
         let typeNameMap = {};
         data.infos.forEach((info) => {
           typeNameMap[info.key] = info.value;
         });
         // 20200422_4c9ea1e3
-        $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRandLot.json?t=' + timestamp, (data) => {
+        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactRandLot.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             typeMap[item.iname] = [];
             if (item.lot[0].grow1) {
@@ -959,7 +954,7 @@
     let growthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Grow.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Grow.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           growthMap[item.type] = {
             curve: item.curve,
@@ -974,7 +969,7 @@
     let buffMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Buff.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Buff.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           buffMap[item.iname] = item;
         });
@@ -986,7 +981,7 @@
     let buffNameList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/Buff.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/Buff.json?t=' + timestamp, (data) => {
         // pretty sure this is the right list
         // but needs modifications for now
         buffNameList = data.infos;
@@ -1063,7 +1058,7 @@
     let skillMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Skill.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Skill.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           skillMap[item.iname] = item;
         });
@@ -1075,7 +1070,7 @@
     let skillNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON('en/SkillName.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/SkillName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           if (info.value) {
             skillNameMap[info.key] = info.value;
@@ -1091,12 +1086,12 @@
     let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/ArtifactName.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           artifactNameMap[info.key] = info.value;
         });
 
-        $.getJSON((loadJP ? 'jp' : '') + 'data/Artifact.json?t=' + timestamp, (data) => {
+        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Artifact.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             // blacklisted items
             if (item.iname.match(/AF_\w+_2/)
@@ -1141,7 +1136,7 @@
     let sealGrowthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up[0].eff_dst];
           sealGrowthMap[stat.value] = item.grow_up[0].val;
@@ -1154,7 +1149,7 @@
     let artifactCategoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('en/ArtifactCategory.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactCategory.json?t=' + timestamp, (data) => {
         artifactCategoryList = data.infos;
 
         // for some reason doesn't match exactly
@@ -1169,7 +1164,7 @@
     let artifactRecipeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactRecipe.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactRecipe.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactRecipeMap[item.iname] = item;
         });
@@ -1181,7 +1176,7 @@
     let artifactAwakeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON((loadJP ? 'jp' : '') + 'data/ArtifactAwake.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactAwake.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactAwakeMap[item.iname] = item;
         });
@@ -1193,7 +1188,7 @@
     let itemMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200506_199950f7
-      $.getJSON((loadJP ? 'jp' : '') + 'data/Item.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Item.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           itemMap[item.iname] = item;
         });
@@ -1205,7 +1200,7 @@
     let itemNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/ItemName.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ItemName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           itemNameMap[info.key] = info.value;
         });
