@@ -36,12 +36,6 @@
       <img id="light" src="img/items/IT_UN_AW_SHINE.png" title="Turn off Dark Mode"/>
       <img id="dark" src="img/items/IT_UN_AW_DARK.png" title="Turn on Dark Mode"/>
     </div>
-    <div id="support_link">
-      <a target="_blank" href="https://www.buymeacoffee.com/sairenkao">
-        <img src="img/items/IT_LP_WW_01.png" title="Buy me visiore"/>
-        <span>Buy me visiore</span>
-      </a>
-    </div>
   </div>
 
   <div id="main_content">
@@ -235,7 +229,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-11-12)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-11-19)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -929,7 +923,7 @@
           typeNameMap[info.key] = info.value;
         });
         // 20200422_4c9ea1e3
-        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/ArtifactRandLot.json?t=' + timestamp, (data) => {
+        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactRandLot.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             typeMap[item.iname] = [];
             if (item.lot[0].grow1) {
@@ -960,7 +954,7 @@
     let growthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/Grow.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Grow.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           growthMap[item.type] = {
             curve: item.curve,
@@ -975,7 +969,7 @@
     let buffMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/Buff.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Buff.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           buffMap[item.iname] = item;
         });
@@ -1064,7 +1058,7 @@
     let skillMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200429_0d4b0c72
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/Skill.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Skill.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           skillMap[item.iname] = item;
         });
@@ -1097,7 +1091,7 @@
           artifactNameMap[info.key] = info.value;
         });
 
-        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/Artifact.json?t=' + timestamp, (data) => {
+        $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Artifact.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             // blacklisted items
             if (item.iname.match(/AF_\w+_2/)
@@ -1142,7 +1136,7 @@
     let sealGrowthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up[0].eff_dst];
           sealGrowthMap[stat.value] = item.grow_up[0].val;
@@ -1170,7 +1164,7 @@
     let artifactRecipeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/ArtifactRecipe.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactRecipe.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactRecipeMap[item.iname] = item;
         });
@@ -1182,7 +1176,7 @@
     let artifactAwakeMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/ArtifactAwake.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/ArtifactAwake.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           artifactAwakeMap[item.iname] = item;
         });
@@ -1194,7 +1188,7 @@
     let itemMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200506_199950f7
-      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + 'data/Item.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + (loadJP ? '/jp' : '') + '/data/Item.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           itemMap[item.iname] = item;
         });
