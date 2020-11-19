@@ -322,7 +322,7 @@
       let level = parseInt($('#level').val());
       let item_sk = item['skl' + Math.ceil(level/10)];
 
-      $('#item_image img').attr('src', 'img/equipment/' + item.asset + '.png');
+      $('#item_image img').attr('src', 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master/img/equipment/' + item.asset + '.png');
 
       $('#type').empty();
       item.cat.forEach((cat) => {
