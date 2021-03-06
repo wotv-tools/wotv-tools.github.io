@@ -1155,6 +1155,7 @@
         // for some reason doesn't match exactly
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+		artifactCategoryList.splice(23,1); // SEPARATOR
 
         resolve();
       });
@@ -1247,7 +1248,7 @@
             break;
           default:
             if (artifactListByCat[i]) {
-              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
+              let type = i < 17 ? 'weapon' :  (i > 22 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : '')));
               categories.push({
                 type: type,
                 index: i,
