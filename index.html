@@ -229,7 +229,7 @@
 
   <footer>
     <a href="https://www.reddit.com/r/wotv_ffbe/comments/gd685f/lets_congregate_some_resources/">Other WotV Resources</a> |
-    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2020-11-19)</a> |
+    <a target="_blank" href="changelogs.html">Change Logs (Last updated 2021-03-11)</a> |
     <a href="levelup.html">Level Up Assistant</a> |
     Report Issues (<a target="_blank" href="https://github.com/wotv-tools/wotv-tools.github.io/issues/new">Github</a>|<a target="_blank" href="https://www.reddit.com/message/compose/?to=sairenkao&subject=Equipment%20Calculator">Reddit</a>) |
     <a target="_blank" href="https://github.com/shalzuth/wotv-ffbe-dump">Data source</a> |
@@ -1152,9 +1152,10 @@
       $.getJSON(RAW_GIT_URL + '/en/ArtifactCategory.json?t=' + timestamp, (data) => {
         artifactCategoryList = data.infos;
 
-        // for some reason doesn't match exactly
+        // Those categories are present in the category file but not counted in category id in artifact file, they must be deleted
         artifactCategoryList.splice(18,2); // LIGHTSHIELD, HEAVYSHIELD
         artifactCategoryList.splice(22,3); // LIGHTARMOR, HEAVYARMOR, ROBE
+		artifactCategoryList.splice(23,1); // SEPARATOR
 
         resolve();
       });
@@ -1247,7 +1248,8 @@
             break;
           default:
             if (artifactListByCat[i]) {
-              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : ''));
+			  // consider i > 22 as weapons, but this need to be reviewed when new equipment categories are released
+              let type = i < 17 ? 'weapon' : (i < 22 ? 'armor' : (i == 22 ? 'accessory' : 'weapon'));
               categories.push({
                 type: type,
                 index: i,
