@@ -635,15 +635,16 @@
     let timestamp = (new Date()).getTime();
 
     let typeMap = {};
+    const RAW_GIT_URL = 'https://raw.githubusercontent.com/shalzuth/wotv-ffbe-dump/master';
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('en/ArtifactGrow.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactGrow.json?t=' + timestamp, (data) => {
         let typeNameMap = {};
         data.infos.forEach((info) => {
           typeNameMap[info.key] = info.value;
         });
         // 20200422_4c9ea1e3
-        $.getJSON('data/ArtifactRandLot.json?t=' + timestamp, (data) => {
+        $.getJSON(RAW_GIT_URL + '/data/ArtifactRandLot.json?t=' + timestamp, (data) => {
           data.items.forEach((item) => {
             typeMap[item.iname] = [];
             if (item.lot[0].grow1) {
@@ -674,7 +675,7 @@
     let growthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('data/Grow.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/data/Grow.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           growthMap[item.type] = {
             curve: item.curve,
@@ -689,7 +690,7 @@
     let hammerMap = {};
     let hammerList = [];
     promiseList.push(new Promise((resolve, reject) => {
-      $.getJSON('data/ArtifactHummer.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/data/ArtifactHummer.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.status_up[0].eff_dst];
           hammerMap[stat.value] = item.status_up[0].val;
@@ -710,7 +711,7 @@
     let artifactNameMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // 20200422_4c9ea1e3 translations
-      $.getJSON('en/ArtifactName.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactName.json?t=' + timestamp, (data) => {
         data.infos.forEach((info) => {
           artifactNameMap[info.key] = info.value;
         });
@@ -721,7 +722,7 @@
 
     let artifactCategoryList = [];
     promiseList.push(new Promise((resolve, reject) => {
-      $.getJSON('en/ArtifactCategory.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/en/ArtifactCategory.json?t=' + timestamp, (data) => {
         artifactCategoryList = data.infos;
 
         // for some reason doesn't match exactly
@@ -735,7 +736,7 @@
     let artifactMap = {};
     let artifactListByCat = [];
     promiseList.push(new Promise((resolve, reject) => {
-      $.getJSON('data/Artifact.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/data/Artifact.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           if (item.type >= 0 && item.rtype != 'AF_LOT_50' && item.rtype != 'AF_LOT_TRUST') {
             artifactMap[item.iname] = item;
@@ -771,7 +772,7 @@
     let sealGrowthMap = {};
     promiseList.push(new Promise((resolve, reject) => {
       // init
-      $.getJSON('data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
+      $.getJSON(RAW_GIT_URL + '/data/ArtifactGrowItem.json?t=' + timestamp, (data) => {
         data.items.forEach((item) => {
           let stat = stats[item.grow_up[0].eff_dst];
           sealGrowthMap[stat.value] = item.grow_up[0].val;
